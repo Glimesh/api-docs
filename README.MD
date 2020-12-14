@@ -8,13 +8,13 @@ This repo is divided into topics. Each topic has a tutorial for each language as
 
 This repo is a work in progress. We will do our best to keep this updated!
 
->Interested in contributing? Click [here]() to help out!
+>Interested in contributing? Click [here](CONTRIBUTING.md) to help out!
 
 ## Topics
  
--  [Getting a user access token](https://github.com/Glimesh/api-docs/FILE)
--  [Making requests to the API](https://github.com/Glimesh/api-docs/FILE)
--  [Creating a developer application](https://github.com/Glimesh/api-docs/FILE)
+-  [Getting a user access token](Topics/OAuth/AccessToken/generalInfo.md)
+-  [Making requests to the API](Topics/API/QueryAPI)
+-  [Creating a developer application](Topics/DevApplication/generalInfo.md)
 
 Not seeing what you are looking for? Consider adding a tutorial for it or talking to us about it on discord.
 
@@ -22,6 +22,7 @@ Not seeing what you are looking for? Consider adding a tutorial for it or talkin
 
 Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
+ - [Create API requests on Glimesh](https://glimesh.tv/api)
  - Our developer channel in [Discord](https://discord.gg/Glimesh)
 
 
