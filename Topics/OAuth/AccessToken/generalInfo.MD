@@ -29,7 +29,7 @@ Once you have the code you need to make a request to Glimesh. We will exchange t
 `POST https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=CODE&redirect_uri=REDIRECT_URL&client_id=CLIENTID&client_secret=SECRETID`
 
 Send a POST request with the URL above replacing the code,redirect url, client ID, and secret ID. Remember to **keep the secret ID hidden** from your users. When Glimesh receives the POST request it will send back the information we want. Once it is parsed it will look like this:
-```JSON
+```JS
 {
   access_token: 'qwertyuiopo1234567890',
   created_at: '2020-12-14T15:15:29',
@@ -47,7 +47,7 @@ Now you can query the Glimesh API on behalf of a user. This token will expire af
 
 There are a few errors you may encounter while requesting a token.
 
-```JSON
+```JS
 
 {
   error: 'invalid_grant',
@@ -58,7 +58,7 @@ There are a few errors you may encounter while requesting a token.
 
 This means something is wrong with your URL. You can only use each code once. You must send the request with the `grant_type=authorization_code` for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted. 
 
-```JSON
+```JS
 
 {
   error: 'invalid_request',
