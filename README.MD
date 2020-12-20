@@ -12,9 +12,9 @@ This repo is a work in progress. We will do our best to keep this updated!
 
 ## Topics
  
--  [Getting a user access token](Topics/OAuth/AccessToken/generalInfo.md)
+-  [Getting a user access token](Topics/OAuth/AccessToken)
 -  [Making requests to the API](Topics/API/QueryAPI)
--  [Creating a developer application](Topics/DevApplication/generalInfo.md)
+-  [Creating a developer application](Topics/DevApplication/generalInfo.MD)
 
 Not seeing what you are looking for? Consider adding a tutorial for it or talking to us about it on discord.
 
