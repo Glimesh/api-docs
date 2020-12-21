@@ -2,6 +2,8 @@
 
 Although making an application is easy, developers new to OAuth may find some of it confusing. This tutorial will explain the basics of what information is asked for and what is it used for.
 
+> Ready to make your application? [Start here](https://glimesh.tv/users/settings/applications)
+
 ## Name 
 
 The name of your project is a user friendly name for your application. Both Glimesh and your users will see this when they authenticate with your app.
