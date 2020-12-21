@@ -2,7 +2,7 @@
   
 A refresh token allows you to get a new access token without having your user authenticate again. It is a standard part of OAuth 2.
 
-> Looking for authentication flow? Start with [access tokens](./AccessToken/generalInfo.MD)
+> Looking for authentication flow? Start with [access tokens](../AccessToken/generalInfo.MD)
 
  
 ## Refreshing A Token

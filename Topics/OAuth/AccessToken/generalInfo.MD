@@ -43,6 +43,8 @@ Send a POST request with the URL above replacing the code,redirect url, client I
 
 Now you can query the Glimesh API on behalf of a user. This token will expire after a few hours so you need to refresh it or ask the user for a new one. If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).
 
+> Ready to refresh your token? Continue with OAuth [here]((../RefreshToken/refresh.md))
+
 ## Common Errors
 
 There are a few errors you may encounter while requesting a token.
