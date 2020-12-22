@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.79.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Glimesh API Requests With NodeJS#This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.
+ Need a refresh? This tutorial explains the basics of graphql. https://graphql.org/learn/schema/
+ Creating the Project#We need to create a basic project.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Glimesh API Requests With NodeJS#This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.
+ Need a refresh? This tutorial explains the basics of graphql. https://graphql.org/learn/schema/
+ Creating the Project#We need to create a basic project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/docs/api/query-api/nodejs/node-query/" />
+
+<title>Node Query | API-Docs</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.0f40b4e83b0db00d11c595295e7f5f85f51436d20a5b6790534cb30c9f46a201.css" integrity="sha256-D0C06DsNsA0RxZUpXn9fhfUUNtIKW2eQU0yzDJ9GogE=">
+<script defer src="/en.search.min.f857aa6da6e195cd09052ff6cf1ad94134797612c83773e66cf0be8bdb5cce15.js" integrity="sha256-&#43;Feqbabhlc0JBS/2zxrZQTR5dhLIN3PmbPC&#43;i9tczhU="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/glimesh.png" alt="Logo" /><span>API-Docs</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf7b3283e3790c00c8caaa140299052b" class="toggle" checked />
+    <label for="section-bf7b3283e3790c00c8caaa140299052b" class="flex justify-between">
+      <a  class="">Api</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ed972e555096d8550e03791bdee2d785" class="toggle" checked />
+    <label for="section-ed972e555096d8550e03791bdee2d785" class="flex justify-between">
+      <a  class="">Query Api</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/api/query-api/basic-query/" class="">Basic Query</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/api/query-api/nodejs/node-query/" class=" active">Node Query</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-77b689354c3957af984655a0c2fd22a8" class="toggle"  />
+    <label for="section-77b689354c3957af984655a0c2fd22a8" class="flex justify-between">
+      <a  class="">Authencation</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aebb5af2da1c119d07d9f85dc9a357bc" class="toggle"  />
+    <label for="section-aebb5af2da1c119d07d9f85dc9a357bc" class="flex justify-between">
+      <a  class="">Access Token</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/authencation/accesstoken/accesstoken/" class="">Access Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/authencation/accesstoken/nodejs/node-access-token/" class="">Node Access Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8169bead43f336d6f8a5a3a9e0c253a4" class="toggle"  />
+    <label for="section-8169bead43f336d6f8a5a3a9e0c253a4" class="flex justify-between">
+      <a  class="">Refresh Token</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/authencation/refreshtoken/refreshtoken/" class="">Refresh Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/contributing/" class="">Contributing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/dev-app/" class="">Dev App</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Node Query</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#creating-the-project">Creating the Project</a></li>
+    <li><a href="#starting-up">Starting Up</a></li>
+    <li><a href="#define-options">Define Options</a></li>
+    <li><a href="#send-request">Send Request</a></li>
+    <li><a href="#common-errors">Common Errors</a></li>
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="glimesh-api-requests-with-nodejs">
+  Glimesh API Requests With NodeJS
+  <a class="anchor" href="#glimesh-api-requests-with-nodejs">#</a>
+</h1>
+<p>This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.</p>
+<blockquote>
+<p>Need a refresh? This tutorial explains the basics of graphql. <a href="https://graphql.org/learn/schema/">https://graphql.org/learn/schema/</a></p>
+</blockquote>
+<h2 id="creating-the-project">
+  Creating the Project
+  <a class="anchor" href="#creating-the-project">#</a>
+</h2>
+<p>We need to create a basic project. In your terminal type</p>
+<p><code>npm init -y</code> .</p>
+<p>This will create a project.JSON file. This project uses the <a href="https://www.npmjs.com/package/request">Request</a> npm package. It helps with sending requests to the server and handling the response. In your terminal type</p>
+<p><code>npm install request</code>.</p>
+<p>That is the only package that you will need!</p>
+<h2 id="starting-up">
+  Starting Up
+  <a class="anchor" href="#starting-up">#</a>
+</h2>
+<p>In your project create a blank JS file. I will title mine &ldquo;glimesh.js&rdquo;. Start by importing the Request library. Paste this at the top of your file.</p>
+<pre><code>var request = require('request');
+</code></pre><p>Now we need to build our query. The Glimesh API docs can be found <a href="https://github.com/Glimesh/glimesh.tv/wiki/GraphQL-API">here</a>. It is a work in progress. In this example we will ask Glimesh for the name and ID of our user. If you are using an access token you can get this data in the <strong>myself</strong> object.
+<code>query{ myself { username, id } }</code>
+However, we need to convert this so JS can understand it. To do this we create a data variable. Paste this under the import statement above.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">query {
+</span><span style="color:#e6db74">myself {
+</span><span style="color:#e6db74">username,
+</span><span style="color:#e6db74">id}
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">`</span>
+</code></pre></div><p>If you are going to use a client ID you have to specify which user to get data for. This is because a client ID does not have a user identity. This query will return the same data as the <strong>myself</strong> object.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">query {
+</span><span style="color:#e6db74">user (username: &#34;USERNAME&#34;){
+</span><span style="color:#e6db74">username,
+</span><span style="color:#e6db74">id}
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">`</span>
+</code></pre></div><p>Feel free to replace <code>USERNAME</code> with your own username! Since we are not accessing any private information we do not need any special permissions/scopes.</p>
+<blockquote>
+<p>Leave the quotations around <code>&quot;USERNAME&quot;</code>. Glimesh processes our query as graphQL. Even though <code>data</code> is a string Glimesh will convert it to graphQL when it receives our request. GraphQL requires that the user we search for be a string. Since we used `` to encase the contents of <code>data</code>, quotations must be used to keep your username a string.</p>
+</blockquote>
+<h2 id="define-options">
+  Define Options
+  <a class="anchor" href="#define-options">#</a>
+</h2>
+<p>Next we set up the call to the API. We need to add our data variable from above and our authentication as a header. We do this with the options variable. If you do not already have an authentication method (Client ID or Access Token) you need to get one now. Paste this below your query.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>,
+    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://glimesh.tv/api&#39;</span>,
+    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bearer Your_Token&#39;</span>
+    }
+};
+</code></pre></div><p>Notice we are sending the <strong>data</strong> variable from before. If you are using an access token replace &ldquo;Your_Token&rdquo; with your access token in the Authorization string.  It should look like this.
+<code>'Authorization': 'Bearer qertyuiop123456789'</code></p>
+<p>If you are using a client ID replace &ldquo;Bearer&rdquo; with &ldquo;Client-ID&rdquo; and &ldquo;Your_Token&rdquo; with your client ID. It should look like this.</p>
+<p><code>'Authorization':  'Client-ID qwertyuiop123456789'</code></p>
+<h2 id="send-request">
+  Send Request
+  <a class="anchor" href="#send-request">#</a>
+</h2>
+<p>Now we set up the request. We ask Glimesh for data and we setup a callback function to handle it when it arrives. The server will normally respond in less than one second. Paste this below the options variable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">callback</span>(<span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">response</span>, <span style="color:#a6e22e">body</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">error</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) { <span style="color:#75715e">//if all works as it should...
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">body</span>); <span style="color:#75715e">//The unfiltered response
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">convertedResponse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">body</span>); <span style="color:#75715e">//Convert the response so we can use it
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`The user is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">convertedResponse</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">myself</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> and the ID is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">convertedResponse</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">myself</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+    } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">error</span>) <span style="color:#75715e">//log any errors. 
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">body</span>) <span style="color:#75715e">//sometimes the body contains the error.
+</span><span style="color:#75715e"></span>    }
+}
+</code></pre></div><p>If you searched for a <strong>user</strong> instead of <strong>myself</strong> you need to change the <code>convertedResponse</code> output to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`The user </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">convertedResponse</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> has an ID of </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">convertedResponse</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+
+</code></pre></div><p>Finally we send the request. At the bottom of the file add this line.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">request</span>(<span style="color:#a6e22e">options</span>, <span style="color:#a6e22e">callback</span>);
+</code></pre></div><p>When you are ready, <strong>save the file</strong> and type the line below in your terminal to query the API!</p>
+<p><code>node filename.js</code></p>
+<p>Make sure to replace &ldquo;filename&rdquo; with the name of your file! For example -</p>
+<p><code>node glimesh.js</code></p>
+<h2 id="common-errors">
+  Common Errors
+  <a class="anchor" href="#common-errors">#</a>
+</h2>
+<ul>
+<li><code>You must be logged in to access the API.</code></li>
+</ul>
+<blockquote>
+<p>Cause: The auth string is incorrect. Make sure the token is valid. They expire after a short period and a new token is needed. You should also check the auth string. It should look like this <code>'Authorization': 'Bearer qertyuiop123456789'</code> or <code>'Authorization': 'Client-ID qertyuiop123456789'</code> depending on the auth method you used.</p>
+</blockquote>
+<ul>
+<li><code>Internal Server Error</code></li>
+</ul>
+<blockquote>
+<p>Cause: This is usually user error rather than a server error. Ensure the auth info is correct and check your query. The query is a string but the contents of that variable are graphQL. If you think your query is correct try it <a href="https://glimesh.tv/api">here</a>. Don&rsquo;t forget to remove the `` when testing on the API site.
+<em><strong>Note that you must be signed in to use the API website!</strong></em></p>
+</blockquote>
+<ul>
+<li><code>syntax error before: \&quot;\\\&quot;query\\\&quot;\&quot;&quot;</code></li>
+</ul>
+<blockquote>
+<p>Cause: Your query is in the incorrect format. Ensure it matches the example in the code above. You can only request properties that exist and you must have the proper permissions to access them. Check the <a href="https://github.com/Glimesh/glimesh.tv/wiki/GraphQL-API">API docs</a> for more information.</p>
+</blockquote>
+<h1 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h1>
+<p>This is the basis for most API requests. If you have any questions let us know in the #dev channel in our <a href="https://Discord.gg/Glimesh">Discord</a>.</p>
+<p>The full file can be found here.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">request</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;request&#39;</span>); <span style="color:#75715e">//Import the library
+</span><span style="color:#75715e">//Define the data we want from Glimesh. 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">query {
+</span><span style="color:#e6db74">myself {
+</span><span style="color:#e6db74">username,
+</span><span style="color:#e6db74">id}
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">`</span>
+<span style="color:#75715e">// If you used a client ID the myself object will not exist. Try this:
+</span><span style="color:#75715e"></span><span style="color:#75715e">/*
+</span><span style="color:#75715e">var data = `
+</span><span style="color:#75715e">query {
+</span><span style="color:#75715e">user (username: &#34;USERNAME&#34;){
+</span><span style="color:#75715e">username,
+</span><span style="color:#75715e">id}
+</span><span style="color:#75715e">}`
+</span><span style="color:#75715e">*/</span>
+<span style="color:#75715e">//Make sure to replace USERNAME with a user!
+</span><span style="color:#75715e"></span>
+
+<span style="color:#75715e">//Tell the request library where to send the request and how to add auth
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> {
+    <span style="color:#a6e22e">method</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+    <span style="color:#a6e22e">body</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span>,
+    <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;https://glimesh.tv/api&#39;</span>,
+    <span style="color:#a6e22e">headers</span><span style="color:#f92672">:</span> {
+        <span style="color:#e6db74">&#39;Authorization&#39;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bearer Token_Here&#39;</span> <span style="color:#75715e">//If you are using a client ID use &#39;Authorization&#39;: &#39;Client-ID qwertyuiop123456789&#39; 
+</span><span style="color:#75715e"></span>    }
+};
+
+<span style="color:#75715e">//Callback function runs when the data is recieved. We convert it to an object on arrival.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">callback</span>(<span style="color:#a6e22e">error</span>, <span style="color:#a6e22e">response</span>, <span style="color:#a6e22e">body</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">error</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>) {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">body</span>); <span style="color:#75715e">//The unfiltered response
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">convertedResponse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">body</span>); <span style="color:#75715e">//Convert the response
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`You are </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">convertedResponse</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">myself</span>.<span style="color:#a6e22e">username</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> and your ID is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">convertedResponse</span>.<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">myself</span>.<span style="color:#a6e22e">id</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+        <span style="color:#75715e">// If you are using a client ID you will have requested the user object. Use the line below instead!
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">// console.log(`The user ${convertedResponse.data.user.username} has an ID of ${convertedResponse.data.user.id}`);
+</span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">error</span>); <span style="color:#75715e">//log any errors
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">body</span>);
+    }
+}
+
+<span style="color:#75715e">//send the request
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">request</span>(<span style="color:#a6e22e">options</span>, <span style="color:#a6e22e">callback</span>);
+
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#creating-the-project">Creating the Project</a></li>
+    <li><a href="#starting-up">Starting Up</a></li>
+    <li><a href="#define-options">Define Options</a></li>
+    <li><a href="#send-request">Send Request</a></li>
+    <li><a href="#common-errors">Common Errors</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
