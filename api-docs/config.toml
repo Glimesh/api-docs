@@ -1,0 +1,10 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "API-Docs"
+publishDir = "docs"
+[params]
+  bookCollapseSection = "true"
+  BookTheme = "dark"
+  BookLogo = "glimesh.png"
+ignoreFiles = "docs/example/"
+
