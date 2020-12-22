@@ -1,4 +1,3 @@
-baseURL = "https://Glimesh.github.io/api-docs"
 languageCode = "en-us"
 title = "API-Docs"
 publishDir = "docs"
