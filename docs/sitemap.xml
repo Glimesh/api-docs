@@ -3,68 +3,68 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/docs/api/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/api/</loc>
   </url>
   
   <url>
-    <loc>/docs/api/query-api/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/api/query-api/</loc>
   </url>
   
   <url>
-    <loc>/docs/authencation/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/authencation/</loc>
   </url>
   
   <url>
-    <loc>/docs/authencation/accesstoken/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/</loc>
   </url>
   
   <url>
-    <loc>/docs/authencation/refreshtoken/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/</loc>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://glimesh.github.io/api-docs/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/docs/api/query-api/basic-query/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/</loc>
   </url>
   
   <url>
-    <loc>/docs/api/query-api/nodejs/node-query/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/</loc>
   </url>
   
   <url>
-    <loc>/docs/authencation/accesstoken/accesstoken/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/accesstoken/</loc>
   </url>
   
   <url>
-    <loc>/docs/authencation/accesstoken/nodejs/node-access-token/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/nodejs/node-access-token/</loc>
   </url>
   
   <url>
-    <loc>/docs/authencation/refreshtoken/refreshtoken/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</loc>
   </url>
   
   <url>
-    <loc>/docs/contributing/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/contributing/</loc>
   </url>
   
   <url>
-    <loc>/docs/dev-app/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/dev-app/</loc>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://glimesh.github.io/api-docs/categories/</loc>
   </url>
   
   <url>
-    <loc>/docs/</loc>
+    <loc>https://glimesh.github.io/api-docs/docs/</loc>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://glimesh.github.io/api-docs/tags/</loc>
   </url>
   
 </urlset>

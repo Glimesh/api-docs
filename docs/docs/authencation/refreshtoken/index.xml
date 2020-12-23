@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>API-Docs</title>
-    <link>/docs/authencation/refreshtoken/</link>
+    <link>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/</link>
     <description>Recent content on API-Docs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/docs/authencation/refreshtoken/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
-      <link>/docs/authencation/refreshtoken/refreshtoken/</link>
+      <link>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authencation/refreshtoken/refreshtoken/</guid>
+      <guid>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</guid>
       <description>Refresh Tokens#A refresh token allows you to get a new access token without having your user authenticate again. It is a standard part of OAuth 2.
  Looking for authentication flow? Start with access tokens
  Refreshing A Token#Refresh tokens are sent when you request an access token. You can pull them from the data that Glimesh sends you.

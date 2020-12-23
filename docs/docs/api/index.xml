@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>API-Docs</title>
-    <link>/docs/api/</link>
+    <link>https://glimesh.github.io/api-docs/docs/api/</link>
     <description>Recent content on API-Docs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/docs/api/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://glimesh.github.io/api-docs/docs/api/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
