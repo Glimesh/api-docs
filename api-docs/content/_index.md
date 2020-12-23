@@ -12,7 +12,7 @@ This repo is a work in progress. We will do our best to keep this updated!
 
 ## Topics
  
--  [Getting a user access token](docs/authentication/accesstoken/accesstoken/)
+-  [Getting a user access token](docs/authencation/accesstoken/accesstoken/)
 -  [Making requests to the API](docs/api/query-api/basic-query/)
 -  [Creating a developer application](docs/dev-app/)
 
