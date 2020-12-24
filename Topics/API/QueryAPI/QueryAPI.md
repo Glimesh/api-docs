@@ -15,7 +15,7 @@ Replace "YOUR_TOKEN" with your access token. If you are using a client ID to aut
 
 `Authorization: 'Client-ID YOUR_CLIENT_ID'` 
 
-Replace "YOUR_CLIENT_ID" with your ID. This will allows you access to the API. 
+Replace "YOUR_CLIENT_ID" with your ID. This will allow you access to the API. 
 
 >  A client ID can use the API in read only mode. An access token is limited by its scopes. 
 
