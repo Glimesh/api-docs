@@ -2,9 +2,11 @@ baseURL = "https://glimesh.github.io/api-docs"
 languageCode = "en-us"
 title = "API-Docs"
 publishDir = "../docs"
+enableGitInfo = true
 [params]
   bookCollapseSection = "true"
   BookTheme = "dark"
   BookLogo = "glimesh.png"
+  BookRepo = 'https://github.com/Glimesh/api-docs'
 ignoreFiles = "docs/example/"
 

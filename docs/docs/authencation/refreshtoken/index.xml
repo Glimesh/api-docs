@@ -12,9 +12,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</guid>
-      <description>Refresh Tokens#A refresh token allows you to get a new access token without having your user authenticate again. It is a standard part of OAuth 2.
+      <description>Refresh Tokens #  A refresh token allows you to get a new access token without having your user authenticate again. It is a standard part of OAuth 2.
  Looking for authentication flow? Start with access tokens
- Refreshing A Token#Refresh tokens are sent when you request an access token. You can pull them from the data that Glimesh sends you.
+ Refreshing A Token #  Refresh tokens are sent when you request an access token. You can pull them from the data that Glimesh sends you.
 { access_token: &amp;#39;qwertyuiopo1234567890&amp;#39;, created_at: &amp;#39;2020-12-14T15:15:29&amp;#39;, expires_in: 21600, refresh_token: &amp;#39;qwertyuiop0987654321&amp;#39;, scope: &amp;#39;public email chat streamkey&amp;#39;, token_type: &amp;#39;bearer&amp;#39; } You can refresh a token at any time.</description>
     </item>
     
