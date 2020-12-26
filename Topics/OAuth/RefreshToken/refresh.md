@@ -23,9 +23,9 @@ You can refresh a token at any time. You do not need to wait for the access toke
 
 Send a POST request to:
 
-`https://glimesh.tv/api/oauth/token?grant_type=refresh_token&refresh_token=REFRESH_TOKEN&redirect_uri=REDIRECT_URL&client_id=CLIENT_ID&client_secret=SECRET_ID&code=CODE`
+`https://glimesh.tv/api/oauth/token?grant_type=refresh_token&refresh_token=REFRESH_TOKEN&redirect_uri=REDIRECT_URL&client_id=CLIENT_ID&client_secret=SECRET_ID`
 
-Make sure to replace REFRESH_TOKEN, REDIRECT_URL, CLIENT_ID, SECRET_ID, and CODE with their corresponding values. You must use the same information that was sent when you requested an access token. If you want new scopes you must request a new token. 
+Make sure to replace REFRESH_TOKEN, REDIRECT_URL, CLIENT_ID, and SECRET_ID with their corresponding values. You must use the same values that were sent when you requested an access token. If you want new scopes you must request a new token. 
 
 Provided you formatted your request correctly Glimesh will send you back a new refresh token and access token.
 ```JS
