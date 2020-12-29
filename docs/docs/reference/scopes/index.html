@@ -5,19 +5,19 @@
   <meta name="generator" content="Hugo 0.79.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Welcome#This is the repo hosting all of the Glimesh Developer docs. We have separated the information into language specific guides (Node,Python,C,etc). Each topic also has a file explaining the basics of the spec. If you have any questions let us know in our Discord!
-Structure#This repo is divided into topics. Each topic has a tutorial for each programming language as they are added. The tutorial contains a full guide explaining the topic as basic as possible.">
+<meta name="description" content="Scopes#Scopes are permissions that a developer application requests from a client. The client must approve all of the scopes that you request. You should only request scopes that you plan to use. Below documents all of the available scopes.
+ public: Get public information about the user and other users on Glimesh. email: View the email of the user. chat: View and speak in a chatroom. Note that speaking through the api is not yet supported.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://glimesh.github.io/api-docs/" />
-
-<title> | API-Docs</title>
+<meta property="og:description" content="Scopes#Scopes are permissions that a developer application requests from a client. The client must approve all of the scopes that you request. You should only request scopes that you plan to use. Below documents all of the available scopes.
+ public: Get public information about the user and other users on Glimesh. email: View the email of the user. chat: View and speak in a chatroom. Note that speaking through the api is not yet supported." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/reference/scopes/" />
+<meta property="article:modified_time" content="2020-12-29T16:36:24-06:00" />
+<title>Scopes | API-Docs</title>
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.cafcf4f6a44d3ee127aa860ce997d010fb01fb3b272a748a0c57947d1c5db35d.css" integrity="sha256-yvz09qRNPuEnqoYM6ZfQEPsB&#43;zsnKnSKDFeUfRxds10=">
 <script defer src="/api-docs/en.search.min.eee4f4067b5f8c58ec5838e4b323c6b91514d7c55b8df1cb3fc344771a4a095d.js" integrity="sha256-7uT0BntfjFjsWDjksyPGuRUU18VbjfHLP8NEdxpKCV0="></script>
-<link rel="alternate" type="application/rss+xml" href="https://glimesh.github.io/api-docs/index.xml" title="API-Docs" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -244,7 +244,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle"  />
+    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle" checked />
     <label for="section-084ba1dbb512652712ad881ff8045610" class="flex justify-between">
       <a  class="">Reference</a>
       <span>▾</span>
@@ -261,7 +261,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://glimesh.github.io/api-docs/docs/reference/scopes/" class="">Scopes</a>
+    <a href="https://glimesh.github.io/api-docs/docs/reference/scopes/" class=" active">Scopes</a>
   
 
         </li>
@@ -333,7 +333,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/api-docs/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong></strong>
+  <strong>Scopes</strong>
 
   <label for="toc-control">
     
@@ -346,13 +346,7 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#structure">Structure</a></li>
-    <li><a href="#topics">Topics</a></li>
-    <li><a href="#links">Links</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
 
   </aside>
@@ -362,40 +356,18 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="welcome">
-  Welcome
-  <a class="anchor" href="#welcome">#</a>
+  <article class="markdown"><h1 id="scopes">
+  Scopes
+  <a class="anchor" href="#scopes">#</a>
 </h1>
-<p>This is the repo hosting all of the Glimesh Developer docs. We have separated the information into language specific guides (Node,Python,C,etc). Each topic also has a file explaining the basics of the spec. If you have any questions let us know in our <a href="https://discord.gg/Glimesh">Discord</a>!</p>
-<h2 id="structure">
-  Structure
-  <a class="anchor" href="#structure">#</a>
-</h2>
-<p>This repo is divided into topics. Each topic has a tutorial for each programming language as they are added. The tutorial contains a full guide explaining the topic as basic as possible. Code snippets are included as well as a working example upon completion of the tutorial. In addition to the tutorials a basic spec is added. This does not have any code and is intended so languages without tutorials can still access the Glimesh service.</p>
-<p>This documentation is a work in progress. We will do our best to keep this updated!</p>
-<blockquote>
-<p>Interested in contributing? Click <a href="docs/contributing">here</a> to help out!</p>
-</blockquote>
-<h2 id="topics">
-  Topics
-  <a class="anchor" href="#topics">#</a>
-</h2>
+<p>Scopes are permissions that a developer application requests from a client. The client must approve all of the scopes that you request. You should only request scopes that you plan to use. Below documents all of the available scopes.</p>
 <ul>
-<li><a href="docs/authencation/accesstoken/accesstoken/">Getting a user access token</a></li>
-<li><a href="docs/api/query-api/basic-query/">Making requests to the API</a></li>
-<li><a href="docs/dev-app/">Creating a developer application</a></li>
+<li><strong>public</strong>: Get public information about the user and other users on Glimesh.</li>
+<li><strong>email</strong>: View the email of the user.</li>
+<li><strong>chat</strong>: View and speak in a chatroom.  <em>Note that speaking through the api is not yet supported.</em></li>
+<li><strong>stream</strong> View the streamkey of the user.</li>
 </ul>
-<p>Not seeing what you are looking for? Consider adding a tutorial for it or talking to us about it on discord.</p>
-<h2 id="links">
-  Links
-  <a class="anchor" href="#links">#</a>
-</h2>
-<p>Links you may find useful:</p>
-<ul>
-<li><a href="https://glimesh.tv/users/settings/applications">Glimesh developer applications</a></li>
-<li><a href="https://glimesh.tv/api">Create API requests on Glimesh</a></li>
-<li>Our developer channel in <a href="https://discord.gg/Glimesh">Discord</a></li>
-</ul>
+<p><em>Note that more scopes will be added when the chat API is fully complete.</em></p>
 </article>
  
       
@@ -406,9 +378,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/610f6ffc5556d48441d47dc8bb1404120f885c35" title='Last modified by aMytho | December 24, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/16dcced05d3db7f8d9a694a21a6533267f7e9330" title='Last modified by MythoAway7 | December 29, 2020' target="_blank" rel="noopener">
       <img src="/api-docs/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>December 24, 2020</span>
+      <span>December 29, 2020</span>
     </a>
   </div>
 
@@ -434,13 +406,7 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents">
-  <ul>
-    <li><a href="#structure">Structure</a></li>
-    <li><a href="#topics">Topics</a></li>
-    <li><a href="#links">Links</a></li>
-  </ul>
-</nav>
+  <nav id="TableOfContents"></nav>
 
  
     </aside>
