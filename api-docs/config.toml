@@ -9,4 +9,6 @@ enableGitInfo = true
   BookLogo = "glimesh.png"
   BookRepo = 'https://github.com/Glimesh/api-docs'
 ignoreFiles = "docs/example/"
+[markup.goldmark.renderer]
+  unsafe = true
 
