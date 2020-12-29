@@ -15,10 +15,7 @@ Make sure to replace your client ID and your redirect URL. The redirect URL must
 
 The current scopes are:
 
- - **public**: Get public information about the user and other users on Glimesh. 
- - **email**:  View the email of the user.
- - **chat**: View and speak in a chatroom.  *Note that speaking through the api is not yet supported.*
- - **streamkey**: View the streamkey of the user.
+{{% content "docs/reference/scopesReference.md" %}}
 
 When the user is sent to the link they will have to accept your app scopes. They will then be sent to your apps redirect URL. Glimesh will send a code inside the URL when they are sent back to your app. You need to extract it from the URL.
 
