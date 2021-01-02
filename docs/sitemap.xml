@@ -28,6 +28,10 @@
   </url>
   
   <url>
+    <loc>https://glimesh.github.io/api-docs/docs/chat/</loc>
+  </url>
+  
+  <url>
     <loc>https://glimesh.github.io/api-docs/docs/reference/</loc>
     <lastmod>2020-12-29T16:36:24-06:00</lastmod>
   </url>
@@ -61,6 +65,10 @@
   <url>
     <loc>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</loc>
     <lastmod>2020-12-26T12:27:31-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/chat/chatconnection/</loc>
   </url>
   
   <url>
