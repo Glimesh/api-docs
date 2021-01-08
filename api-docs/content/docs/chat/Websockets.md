@@ -1,6 +1,6 @@
-# Connecting to Chat
+# Chat WebSockets
 
-Glimesh uses WebSockets to allow for communication between you and the chat API.  To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the `chat` scope to post messages.
+Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the `chat` scope to post messages.
 
 
 ## Preparing the Connection
@@ -27,7 +27,7 @@ Start by opening a secure websocket connection to the URL you are using. When th
 ````
 Notice that this is a JSON array. Some WebSocket libraries only allow you to send strings or specially formatted JSON. Sometimes you need to encase the data in a string. If the connection closes immediately you may need to change the type of your request.  This depends purely on your library, if you are having trouble talk to us in our [discord.](https://discord.gg/Glimesh)
 
-> JS example using the ws NPM package:
+> Javascript example using the ws NPM package:
 >  ```JS
 >  connection.send(["1","1","__absinthe__:control","phx_join",{}]);  // Doesn't work :(
 >  connection.send('["1","1","__absinthe__:control","phx_join",{}]');  // Option 1
@@ -91,7 +91,7 @@ Now Glimesh won't disconnect us  and we have a stable chat connection! Next we w
 
 ## Incoming Messages
 
-First let's handle incoming messages.  A chat message sent from the API would look like this: 
+First let's handle incoming messages. A chat message sent from the API would look like this: 
 ```JSON
 [null,null,"__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D","subscription:data",{"result":{"data":{"chatMessage":{"message":"hello world!","user":{"avatar":"/uploads/avatars/Mytho.png?v=63762672056","username":"Mytho"}}}},"subscriptionId":"__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D"}]
 ```
@@ -116,6 +116,35 @@ Only access tokens with the `chat` scope can talk in chat. Client IDs are read o
 ["1","1","__absinthe__:control","phx_reply",{"response":{"data":{"createChatMessage":{"message":"Hello There!"}}},"status":"ok"}]
 ```
 
+## WebSocket API Queries
+
+You don't need to disconnect from the connection to make a normal API request. You can send requests from within your websocket connection! As with normal queries you are limited by the scope of your access token or client ID. Let's build a simple request.
+
+```GraphQL
+
+query {
+  followers(streamerUsername: "CHANNEL") {
+    id,
+    user {
+      username
+    }
+  }
+}
+
+```
+In this example we request the ID and username of the followers of a channel. Replace CHANNEL with any streamer on Glimesh. Keep in mind that they must be a channel and not just a normal user.  Add this query as the payload in the message that we will send to the API. As with all requests we must make this valid JSON before sending it to Glimesh. 
+
+```
+["1","1","__absinthe__:control","doc",{"query":"query {followers(streamerUsername: \"CHANNEL\") {id,user {username}}}"}]
+```
+> This snippet is already JSON, you may have to make adjustments depending on your websocket library. 
+
+Glimesh will respond:
+
+```JSON
+["1","1","__absinthe__:control","phx_reply",{"response":{"data":{"followers":[{"id":"613","user":{"username":"Mytho"}},{"id":"629","user":{"username":"TheCat"}},{"id":"752","user":{"username":"Kirby"}},{"id":"11992","user":{"username":"RainbowFist"}}]}},"status":"ok"}]
+```
+
 This is all the info you will need to connect and use the chat API.  If you have any questions talk to us in our [discord!](https://discord.gg/Glimesh)
 
 
@@ -125,5 +154,3 @@ The most common issue is the connection closing with no message as to why. One o
 
  1. Heartbeat: You must send a heartbeat message to Glimesh every 30 seconds or Glimesh will drop the connection.
  2. Format: The chat API must receive data in the proper format. Most requests will need to be sent in a JSON array. The refs must be surrounded by quotes. The message in the mutation must also contain quotes. You may have to use a backslash to properly format the chat message. `\"message data\"`
-
-*This doc is being revised*
