@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.79.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Chat WebSockets #  Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
+Preparing the Connection #  First, build your URL that you will connect to.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Chat WebSockets #  Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
+Preparing the Connection #  First, build your URL that you will connect to." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/websockets/" />
+<meta property="article:modified_time" content="2021-01-08T09:33:25-06:00" />
+<title>Websockets | API-Docs</title>
+<link rel="manifest" href="/api-docs/manifest.json">
+<link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/api-docs/book.min.cafcf4f6a44d3ee127aa860ce997d010fb01fb3b272a748a0c57947d1c5db35d.css" integrity="sha256-yvz09qRNPuEnqoYM6ZfQEPsB&#43;zsnKnSKDFeUfRxds10=">
+<script defer src="/api-docs/en.search.min.f546a35ed68f85fbde5ced46183a6d1c442a3ccfb70f15ea73944624c6f83a9c.js" integrity="sha256-9UajXtaPhfveXO1GGDptHEQqPM&#43;3DxXqc5RGJMb4Opw="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css"/>
+<script src="https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js"></script>
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/api-docs"><img src="/api-docs/glimesh.png" alt="Logo" /><span>API-Docs</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf7b3283e3790c00c8caaa140299052b" class="toggle"  />
+    <label for="section-bf7b3283e3790c00c8caaa140299052b" class="flex justify-between">
+      <a  class="">Api</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ed972e555096d8550e03791bdee2d785" class="toggle"  />
+    <label for="section-ed972e555096d8550e03791bdee2d785" class="flex justify-between">
+      <a  class="">Query Api</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/" class="">Basic Query</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/" class="">Node Query</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/voyager/" class="">Voyager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-77b689354c3957af984655a0c2fd22a8" class="toggle"  />
+    <label for="section-77b689354c3957af984655a0c2fd22a8" class="flex justify-between">
+      <a  class="">Authencation</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aebb5af2da1c119d07d9f85dc9a357bc" class="toggle"  />
+    <label for="section-aebb5af2da1c119d07d9f85dc9a357bc" class="flex justify-between">
+      <a  class="">Access Token</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authencation/accesstoken/accesstoken/" class="">Access Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authencation/accesstoken/nodejs/node-access-token/" class="">Node Access Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8169bead43f336d6f8a5a3a9e0c253a4" class="toggle"  />
+    <label for="section-8169bead43f336d6f8a5a3a9e0c253a4" class="flex justify-between">
+      <a  class="">Refresh Token</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/" class="">Refresh Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="toggle" checked />
+    <label for="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="flex justify-between">
+      <a  class="">Chat</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c7ac9316f3056fdea1a344042fc8cb8" class="toggle"  />
+    <label for="section-9c7ac9316f3056fdea1a344042fc8cb8" class="flex justify-between">
+      <a  class="">Projects</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/" class="">Site Wide Subscription</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/mutations/" class="">Mutations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/websockets/" class=" active">Websockets</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle"  />
+    <label for="section-084ba1dbb512652712ad881ff8045610" class="flex justify-between">
+      <a  class="">Reference</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/chat/" class="">Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/scopes/" class="">Scopes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/contributing/" class="">Contributing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/dev-app/" class="">Dev App</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/api-docs/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Websockets</strong>
+
+  <label for="toc-control">
+    
+    <img src="/api-docs/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#preparing-the-connection">Preparing the Connection</a></li>
+    <li><a href="#joining-chat">Joining Chat</a></li>
+    <li><a href="#incoming-messages">Incoming Messages</a></li>
+    <li><a href="#sending-messages">Sending Messages</a></li>
+    <li><a href="#websocket-api-queries">WebSocket API Queries</a></li>
+    <li><a href="#connection-issues">Connection Issues</a></li>
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="chat-websockets">
+  Chat WebSockets
+  <a class="anchor" href="#chat-websockets">#</a>
+</h1>
+<p>Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the <code>chat</code> scope to post messages.</p>
+<h2 id="preparing-the-connection">
+  Preparing the Connection
+  <a class="anchor" href="#preparing-the-connection">#</a>
+</h2>
+<p>First, build your URL that you will connect to.  It should look like this:</p>
+<pre><code class="language-URL" data-lang="URL">wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;token=TOKEN_HERE
+</code></pre><p>That URL is for access token authentication. If you are using a client ID use this instead:</p>
+<pre><code class="language-URL" data-lang="URL">wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;client_id=CLIENT_ID
+</code></pre><blockquote>
+<p>Make sure to replace TOKEN_HERE or CLIENT_ID with the proper token or ID.</p>
+</blockquote>
+<p>Start by opening a secure websocket connection to the URL you are using. When the connection is opened we send Glimesh a join request in JSON format to stay connected to the socket.  The array below is a example of what this should look like.</p>
+<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;phx_join&quot;,{}]
+</code></pre><p>Notice that this is a JSON array. Some WebSocket libraries only allow you to send strings or specially formatted JSON. Sometimes you need to encase the data in a string. If the connection closes immediately you may need to change the type of your request.  This depends purely on your library, if you are having trouble talk to us in our <a href="https://discord.gg/Glimesh">discord.</a></p>
+<blockquote>
+<p>Javascript example using the ws NPM package:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>([<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_join&#34;</span>,{}]);  <span style="color:#75715e">// Doesn&#39;t work :(
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);  <span style="color:#75715e">// Option 1
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>([<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_join&#34;</span>,{}])); <span style="color:#75715e">//Safer option
+</span></code></pre></div></blockquote>
+<p>The first value is the join ref. The second is the normal ref. They can be useful for multi-connections but we will use the value of 1 for all refs in this doc. The third is the topic. The fourth is the event.  The fifth is for a payload. Glimesh does not require a payload for this request so we can leave this blank <em>{}</em> .</p>
+<p>If Glimesh successfully receives our request we will get a response similar to what we sent. Notice that the first two values are the same. The response tells us that Glimesh is ready.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_reply&#34;</span>,{<span style="color:#f92672">&#34;response&#34;</span>:{},<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>}]
+</code></pre></div><h2 id="joining-chat">
+  Joining Chat
+  <a class="anchor" href="#joining-chat">#</a>
+</h2>
+<p>Now that Glimesh has accepted our connection we can connect to a chat. You will need a channel ID for the channel you want to connect to. If you do not know the channel ID you can query the API for it. Simply replace Mytho with the proper user.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-GraphQL" data-lang="GraphQL">
+<span style="color:#66d9ef">query</span> {
+  <span style="color:#a6e22e">channel</span>(username: <span style="color:#e6db74">&#34;Mytho&#34;</span>) {
+    <span style="color:#a6e22e">id</span>
+  }
+}
+
+</code></pre></div><blockquote>
+<p>Remember: Channel IDs and user IDs are different things. Everyone is a user but not everyone has a channel.</p>
+</blockquote>
+<p>Once you have the ID we can join the chat. Send this through the connection:</p>
+<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&quot;,&quot;variables&quot;:{} ]
+</code></pre><p><em>Make sure to replace 6 with your channel ID!</em> The query we just sent will determine what data is sent to us every time a chat message appears in chat. In this example we requested the message and the user who sent it. We ask for the username and avatar of the user in the <code>user</code> object.</p>
+<blockquote>
+<p>To view a list of everything you can request check out the API docs <a href="https://glimesh.tv/api">here</a> (Docs =&gt; subscription =&gt; chatMessage).</p>
+</blockquote>
+<p>Glimesh will send us a response:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_reply&#34;</span>,{<span style="color:#f92672">&#34;response&#34;</span>:{<span style="color:#f92672">&#34;subscriptionId&#34;</span>:<span style="color:#e6db74">&#34;__absinthe__:doc:-576460752303349214:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D&#34;</span>},<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>}]
+</code></pre></div><p>Now we are connected to chat! The only thing left to do is send a heartbeat to Glimesh so the connection won&rsquo;t be closed. You need to send a heartbeat every 30 seconds. Structure it as follows:</p>
+<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;phoenix&quot;,&quot;heartbeat&quot;,{}]
+</code></pre><p>Glimesh will respond with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#e6db74">&#34;null&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;phoenix&#34;</span>,<span style="color:#e6db74">&#34;phx_reply&#34;</span>,{<span style="color:#f92672">&#34;response&#34;</span>:{},<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>}]
+</code></pre></div><p>Now Glimesh won&rsquo;t disconnect us  and we have a stable chat connection! Next we will parse incoming messages and send messages back to chat.</p>
+<h2 id="incoming-messages">
+  Incoming Messages
+  <a class="anchor" href="#incoming-messages">#</a>
+</h2>
+<p>First let&rsquo;s handle incoming messages. A chat message sent from the API would look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">null</span>,<span style="color:#e6db74">&#34;__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D&#34;</span>,<span style="color:#e6db74">&#34;subscription:data&#34;</span>,{<span style="color:#f92672">&#34;result&#34;</span>:{<span style="color:#f92672">&#34;data&#34;</span>:{<span style="color:#f92672">&#34;chatMessage&#34;</span>:{<span style="color:#f92672">&#34;message&#34;</span>:<span style="color:#e6db74">&#34;hello world!&#34;</span>,<span style="color:#f92672">&#34;user&#34;</span>:{<span style="color:#f92672">&#34;avatar&#34;</span>:<span style="color:#e6db74">&#34;/uploads/avatars/Mytho.png?v=63762672056&#34;</span>,<span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;Mytho&#34;</span>}}}},<span style="color:#f92672">&#34;subscriptionId&#34;</span>:<span style="color:#e6db74">&#34;__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D&#34;</span>}]
+</code></pre></div><p>It is returning the data that we requested when we connected to this channel. The subscription ID helps you keep track of which channel the message is from. When you receive a message you need to parse the JSON data. Then you can get any of the data from the response.</p>
+<blockquote>
+<p>The chat API is being worked on so the structure will likely change in a future update.</p>
+</blockquote>
+<h2 id="sending-messages">
+  Sending Messages
+  <a class="anchor" href="#sending-messages">#</a>
+</h2>
+<p>Next we will send a message back to chat. We must use a mutation to do so.  Send this to chat:</p>
+<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;mutation {createChatMessage(channelId:6, message: {message: \&quot;Hello There!\&quot;}) {message }}&quot;,&quot;variables&quot;:{}}]
+</code></pre><blockquote>
+<p>Don&rsquo;t forget to replace 6 with your channel ID and Hello World with your message!  The \ before the quotes are used to prevent the JSON structure from breaking. Depending on how your lib handles ws messages they may not be necessary.
+The format for sending messages is very strict, ensure Glimesh receives your data as valid JSON.</p>
+</blockquote>
+<p>Only access tokens with the <code>chat</code> scope can talk in chat. Client IDs are read only. In the above data we requested to have the message returned to us when Glimesh sent it to chat. Glimesh will confirm that the message was received:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_reply&#34;</span>,{<span style="color:#f92672">&#34;response&#34;</span>:{<span style="color:#f92672">&#34;data&#34;</span>:{<span style="color:#f92672">&#34;createChatMessage&#34;</span>:{<span style="color:#f92672">&#34;message&#34;</span>:<span style="color:#e6db74">&#34;Hello There!&#34;</span>}}},<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>}]
+</code></pre></div><h2 id="websocket-api-queries">
+  WebSocket API Queries
+  <a class="anchor" href="#websocket-api-queries">#</a>
+</h2>
+<p>You don&rsquo;t need to disconnect from the connection to make a normal API request. You can send requests from within your websocket connection! As with normal queries you are limited by the scope of your access token or client ID. Let&rsquo;s build a simple request.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-GraphQL" data-lang="GraphQL">
+<span style="color:#66d9ef">query</span> {
+  <span style="color:#a6e22e">followers</span>(streamerUsername: <span style="color:#e6db74">&#34;CHANNEL&#34;</span>) {
+    <span style="color:#a6e22e">id</span>,
+    user {
+      username
+    }
+  }
+}
+
+</code></pre></div><p>In this example we request the ID and username of the followers of a channel. Replace CHANNEL with any streamer on Glimesh. Keep in mind that they must be a channel and not just a normal user.  Add this query as the payload in the message that we will send to the API. As with all requests we must make this valid JSON before sending it to Glimesh.</p>
+<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;query {followers(streamerUsername: \&quot;CHANNEL\&quot;) {id,user {username}}}&quot;}]
+</code></pre><blockquote>
+<p>This snippet is already JSON, you may have to make adjustments depending on your websocket library.</p>
+</blockquote>
+<p>Glimesh will respond:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_reply&#34;</span>,{<span style="color:#f92672">&#34;response&#34;</span>:{<span style="color:#f92672">&#34;data&#34;</span>:{<span style="color:#f92672">&#34;followers&#34;</span>:[{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;613&#34;</span>,<span style="color:#f92672">&#34;user&#34;</span>:{<span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;Mytho&#34;</span>}},{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;629&#34;</span>,<span style="color:#f92672">&#34;user&#34;</span>:{<span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;TheCat&#34;</span>}},{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;752&#34;</span>,<span style="color:#f92672">&#34;user&#34;</span>:{<span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;Kirby&#34;</span>}},{<span style="color:#f92672">&#34;id&#34;</span>:<span style="color:#e6db74">&#34;11992&#34;</span>,<span style="color:#f92672">&#34;user&#34;</span>:{<span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;RainbowFist&#34;</span>}}]}},<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#e6db74">&#34;ok&#34;</span>}]
+</code></pre></div><p>This is all the info you will need to connect and use the chat API.  If you have any questions talk to us in our <a href="https://discord.gg/Glimesh">discord!</a></p>
+<h2 id="connection-issues">
+  Connection Issues
+  <a class="anchor" href="#connection-issues">#</a>
+</h2>
+<p>The most common issue is the connection closing with no message as to why. One of two things has happened:</p>
+<ol>
+<li>Heartbeat: You must send a heartbeat message to Glimesh every 30 seconds or Glimesh will drop the connection.</li>
+<li>Format: The chat API must receive data in the proper format. Most requests will need to be sent in a JSON array. The refs must be surrounded by quotes. The message in the mutation must also contain quotes. You may have to use a backslash to properly format the chat message. <code>\&quot;message data\&quot;</code></li>
+</ol>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/2383c0f88173c34a551e5ba7e456bdc8c25e367c" title='Last modified by aMytho | January 8, 2021' target="_blank" rel="noopener">
+      <img src="/api-docs/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>January 8, 2021</span>
+    </a>
+  </div>
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#preparing-the-connection">Preparing the Connection</a></li>
+    <li><a href="#joining-chat">Joining Chat</a></li>
+    <li><a href="#incoming-messages">Incoming Messages</a></li>
+    <li><a href="#sending-messages">Sending Messages</a></li>
+    <li><a href="#websocket-api-queries">WebSocket API Queries</a></li>
+    <li><a href="#connection-issues">Connection Issues</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
