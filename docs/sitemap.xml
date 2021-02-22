@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>https://glimesh.github.io/api-docs/docs/api/live-updates/</loc>
+  </url>
+  
+  <url>
     <loc>https://glimesh.github.io/api-docs/docs/api/query-api/</loc>
     <lastmod>2020-12-22T17:53:20-06:00</lastmod>
   </url>
@@ -49,6 +53,10 @@
   </url>
   
   <url>
+    <loc>https://glimesh.github.io/api-docs/docs/api/live-updates/channels/</loc>
+  </url>
+  
+  <url>
     <loc>https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/</loc>
     <lastmod>2020-12-24T16:42:15-06:00</lastmod>
   </url>
@@ -76,6 +84,14 @@
   <url>
     <loc>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</loc>
     <lastmod>2020-12-26T12:27:31-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/chat/chat-tokens/</loc>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/chat/moderation/</loc>
   </url>
   
   <url>
@@ -114,13 +130,37 @@
   </url>
   
   <url>
+    <loc>https://glimesh.github.io/api-docs/docs/reference/channel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/reference/channelreference/</loc>
+  </url>
+  
+  <url>
     <loc>https://glimesh.github.io/api-docs/docs/reference/chat/</loc>
     <lastmod>2021-01-08T09:33:25-06:00</lastmod>
   </url>
   
   <url>
+    <loc>https://glimesh.github.io/api-docs/docs/reference/chatparts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/reference/chatpartsreference/</loc>
+  </url>
+  
+  <url>
     <loc>https://glimesh.github.io/api-docs/docs/reference/chatreference/</loc>
     <lastmod>2021-01-08T09:33:25-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/reference/mod/</loc>
+  </url>
+  
+  <url>
+    <loc>https://glimesh.github.io/api-docs/docs/reference/modreference/</loc>
   </url>
   
   <url>

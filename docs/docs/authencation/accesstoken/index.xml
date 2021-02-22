@@ -12,8 +12,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/accesstoken/</guid>
-      <description>Access Tokens #  An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
-Requesting A Token #  Before requesting a token you must have a developer application. You will need your client ID, secret ID, and redirect URL. First you need to have a user authenticate with your app. The user must be directed to https://glimesh.</description>
+      <description>Access Tokens#An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
+Requesting A Token#Before requesting a token you must have a developer application. You will need your client ID, secret ID, and redirect URL. First you need to have a user authenticate with your app. The user must be directed to https://glimesh.</description>
     </item>
     
     <item>
@@ -22,9 +22,9 @@ Requesting A Token #  Before requesting a token you must have a developer applic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/nodejs/node-access-token/</guid>
-      <description>Getting User Tokens With NodeJS #  This is a basic tutorial for getting an auth token from a user using Oauth with NodeJS. This guide assumes you know basic JS and understand the workings of Oauth 2.
+      <description>Getting User Tokens With NodeJS#This is a basic tutorial for getting an auth token from a user using Oauth with NodeJS. This guide assumes you know basic JS and understand the workings of Oauth 2.
  Need a refresh? This tutorial explains the basics of Oauth 2 https://darutk.medium.com/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb
- Creating the Project #  We need to create a basic project. In your terminal type:
+ Creating the Project#We need to create a basic project. In your terminal type:
 npm init -y</description>
     </item>
     

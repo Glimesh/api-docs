@@ -13,7 +13,7 @@
       
       <guid>https://glimesh.github.io/api-docs/docs/api/voyager/</guid>
       <description>Voyager is an interactive GraphQL API explorer. It allows you to view all the data in our API. Click and drag to move around the explorer. Click on a field to view its properties. Scoll to adjust zoom.
-Loading...  // Render GraphQLVoyager.init(document.getElementById(&#39;voyager&#39;), { hideDocs: true, hideSettings: true, displayOptions: { sortByAlphabet: true, }, introspection: { &#34;data&#34;: { &#34;__schema&#34;: { &#34;directives&#34;: [ { &#34;args&#34;: [ { &#34;defaultValue&#34;: null, &#34;description&#34;: &#34;Included when true.</description>
+Loading...// Render GraphQLVoyager.init(document.getElementById(&#39;voyager&#39;), {hideDocs: true,hideSettings: false,displayOptions: {sortByAlphabet: true,},introspection: {&#34;data&#34;: {&#34;__schema&#34;: {&#34;directives&#34;: [{&#34;args&#34;: [{&#34;defaultValue&#34;: null,&#34;description&#34;: &#34;Included when true.</description>
     </item>
     
   </channel>

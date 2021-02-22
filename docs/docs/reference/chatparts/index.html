@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.79.1" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Chat Parts#All the possbile data to query from a chat part.
+subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, type, ...on EmoteToken { src, text, type, url }, ...on TextToken { text, type }, ...on UrlToken { text, type, url } } } } A possible response. (Dependent on query and message)
+[ null, null, &#34;__absinthe__:doc:-576460752302054414:1C57C19163D4D59F61626243BCCA79AB4E50D5C4C2BD8BDA0DDCE83517B20C16&#34;, &#34;subscription:data&#34;, { &#34;result&#34;:{ &#34;data&#34;:{ &#34;chatMessage&#34;:{ &#34;tokens&#34;:[ { &#34;text&#34;:&#34;Hello Glimesh Devs &#34;, &#34;type&#34;:&#34;text&#34; }, { &#34;src&#34;:&#34;/emotes/svg/glimsmile.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Chat Parts#All the possbile data to query from a chat part.
+subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, type, ...on EmoteToken { src, text, type, url }, ...on TextToken { text, type }, ...on UrlToken { text, type, url } } } } A possible response. (Dependent on query and message)
+[ null, null, &#34;__absinthe__:doc:-576460752302054414:1C57C19163D4D59F61626243BCCA79AB4E50D5C4C2BD8BDA0DDCE83517B20C16&#34;, &#34;subscription:data&#34;, { &#34;result&#34;:{ &#34;data&#34;:{ &#34;chatMessage&#34;:{ &#34;tokens&#34;:[ { &#34;text&#34;:&#34;Hello Glimesh Devs &#34;, &#34;type&#34;:&#34;text&#34; }, { &#34;src&#34;:&#34;/emotes/svg/glimsmile." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/reference/chatparts/" />
+
+<title>Chat Parts | API-Docs</title>
+<link rel="manifest" href="/api-docs/manifest.json">
+<link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
+<script defer src="/api-docs/en.search.min.804052be24fa007a26e3ad581689ac8f5222a80884e3e9855726ac4904f2e791.js" integrity="sha256-gEBSviT6AHom461YFomsj1IiqAiE4&#43;mFVyasSQTy55E="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css"/>
+<script src="https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js"></script>
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/api-docs"><img src="/api-docs/glimesh.png" alt="Logo" /><span>API-Docs</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bf7b3283e3790c00c8caaa140299052b" class="toggle"  />
+    <label for="section-bf7b3283e3790c00c8caaa140299052b" class="flex justify-between">
+      <a  class="">Api</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ed8e1e4d4f4c1e3672708d733258fa51" class="toggle"  />
+    <label for="section-ed8e1e4d4f4c1e3672708d733258fa51" class="flex justify-between">
+      <a  class="">Live Updates</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/" class="">Channels</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ed972e555096d8550e03791bdee2d785" class="toggle"  />
+    <label for="section-ed972e555096d8550e03791bdee2d785" class="flex justify-between">
+      <a  class="">Query Api</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/" class="">Basic Query</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/" class="">Node Query</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/voyager/" class="">Voyager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-77b689354c3957af984655a0c2fd22a8" class="toggle"  />
+    <label for="section-77b689354c3957af984655a0c2fd22a8" class="flex justify-between">
+      <a  class="">Authencation</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-aebb5af2da1c119d07d9f85dc9a357bc" class="toggle"  />
+    <label for="section-aebb5af2da1c119d07d9f85dc9a357bc" class="flex justify-between">
+      <a  class="">Access Token</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authencation/accesstoken/accesstoken/" class="">Access Token</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authencation/accesstoken/nodejs/node-access-token/" class="">Node Access Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8169bead43f336d6f8a5a3a9e0c253a4" class="toggle"  />
+    <label for="section-8169bead43f336d6f8a5a3a9e0c253a4" class="flex justify-between">
+      <a  class="">Refresh Token</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/" class="">Refresh Token</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="toggle"  />
+    <label for="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="flex justify-between">
+      <a  class="">Chat</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9c7ac9316f3056fdea1a344042fc8cb8" class="toggle"  />
+    <label for="section-9c7ac9316f3056fdea1a344042fc8cb8" class="flex justify-between">
+      <a  class="">Projects</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/" class="">Site Wide Subscription</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/chat-tokens/" class="">Chat Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/moderation/" class="">Moderation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/mutations/" class="">Mutations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/chat/websockets/" class="">Websockets</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle" checked />
+    <label for="section-084ba1dbb512652712ad881ff8045610" class="flex justify-between">
+      <a  class="">Reference</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/channel/" class="">Channel</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/chat/" class="">Chat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/chatparts/" class=" active">Chat Parts</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/mod/" class="">Mod</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/reference/scopes/" class="">Scopes</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/contributing/" class="">Contributing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/dev-app/" class="">Dev App</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/api-docs/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Chat Parts</strong>
+
+  <label for="toc-control">
+    
+    <img src="/api-docs/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav id="TableOfContents"></nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="chat-parts">
+  Chat Parts
+  <a class="anchor" href="#chat-parts">#</a>
+</h1>
+<p>All the possbile data to query from a chat part.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">
+<span style="color:#a6e22e">subscription</span>{
+  <span style="color:#a6e22e">chatMessage</span>(<span style="color:#a6e22e">channelId</span><span style="color:#f92672">:</span><span style="color:#ae81ff">6</span>) {
+    <span style="color:#a6e22e">message</span>,
+    <span style="color:#a6e22e">user</span> {
+      <span style="color:#a6e22e">id</span>
+    },
+    <span style="color:#a6e22e">tokens</span> {
+        <span style="color:#a6e22e">text</span>,
+        <span style="color:#a6e22e">type</span>,
+      ...<span style="color:#a6e22e">on</span> <span style="color:#a6e22e">EmoteToken</span> {
+        <span style="color:#a6e22e">src</span>,
+        <span style="color:#a6e22e">text</span>,
+        <span style="color:#a6e22e">type</span>,
+        <span style="color:#a6e22e">url</span>
+      },
+      ...<span style="color:#a6e22e">on</span> <span style="color:#a6e22e">TextToken</span> {
+        <span style="color:#a6e22e">text</span>,
+        <span style="color:#a6e22e">type</span>
+      },
+      ...<span style="color:#a6e22e">on</span> <span style="color:#a6e22e">UrlToken</span> {
+        <span style="color:#a6e22e">text</span>,
+        <span style="color:#a6e22e">type</span>,
+        <span style="color:#a6e22e">url</span>
+      }
+    }
+  }
+}
+<p></code></pre></div><p>A possible response. (Dependent on query and message)</p></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">[
+   <span style="color:#66d9ef">null</span>,
+   <span style="color:#66d9ef">null</span>,
+   <span style="color:#e6db74">&#34;__absinthe__:doc:-576460752302054414:1C57C19163D4D59F61626243BCCA79AB4E50D5C4C2BD8BDA0DDCE83517B20C16&#34;</span>,
+   <span style="color:#e6db74">&#34;subscription:data&#34;</span>,
+   {
+      <span style="color:#f92672">&#34;result&#34;</span>:{
+         <span style="color:#f92672">&#34;data&#34;</span>:{
+            <span style="color:#f92672">&#34;chatMessage&#34;</span>:{
+               <span style="color:#f92672">&#34;tokens&#34;</span>:[
+                  {
+                     <span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;Hello Glimesh Devs &#34;</span>,
+                     <span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;text&#34;</span>
+                  },
+                  {
+                     <span style="color:#f92672">&#34;src&#34;</span>:<span style="color:#e6db74">&#34;/emotes/svg/glimsmile.svg&#34;</span>,
+                     <span style="color:#f92672">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;:glimsmile:&#34;</span>,
+                     <span style="color:#f92672">&#34;type&#34;</span>:<span style="color:#e6db74">&#34;emote&#34;</span>,
+                     <span style="color:#f92672">&#34;url&#34;</span>:<span style="color:#e6db74">&#34;https://glimesh.tv/emotes/svg/glimsmile-af9a10c9d4c4181dbd87ab245d3e3bee.svg?vsn=d&#34;</span>
+                  },
+                  {
+                    <span style="color:#f92672">&#34;text&#34;</span>: <span style="color:#e6db74">&#34;http://glimdrops.com&#34;</span>,
+                    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;url&#34;</span>,
+                    <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://glimdrops.com&#34;</span>
+                  },
+               ]
+            }
+         }
+      },
+     <span style="color:#f92672">&#34;subscriptionId&#34;</span>:<span style="color:#e6db74">&#34;__absinthe__:doc:-576460752302054414:1C57C19163D4D59F61626243BCCA79AB4E50D5C4C2BD8BDA0DDCE83517B20C16&#34;</span>
+   }
+]
+</code></pre></div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents"></nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
