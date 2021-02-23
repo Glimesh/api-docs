@@ -5,15 +5,15 @@
   <meta name="generator" content="Hugo 0.79.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Chat#Shows all of the fields in the chatMessage object.
-chatMessage { id, insertedAt, message, updatedAt, channel { // Channel data  }, user { // User data  } }">
+<meta name="description" content="Access Tokens#An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
+Requesting A Token#Before requesting a token you must have a developer application. You will need your client ID, secret ID, and redirect URL. First you need to have a user authenticate with your app. The user must be directed to https://glimesh.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Chat#Shows all of the fields in the chatMessage object.
-chatMessage { id, insertedAt, message, updatedAt, channel { // Channel data  }, user { // User data  } }" />
+<meta property="og:description" content="Access Tokens#An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
+Requesting A Token#Before requesting a token you must have a developer application. You will need your client ID, secret ID, and redirect URL. First you need to have a user authenticate with your app. The user must be directed to https://glimesh." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/reference/chat/" />
-<meta property="article:modified_time" content="2021-01-08T09:33:25-06:00" />
-<title>Chat | API-Docs</title>
+<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/" />
+<meta property="article:modified_time" content="2021-02-23T12:58:15-06:00" />
+<title>Access Token | API-Docs</title>
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
@@ -192,7 +192,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-46070fb9a15f8281e5989a88905887d2" class="toggle"  />
+    <input type="checkbox" id="section-46070fb9a15f8281e5989a88905887d2" class="toggle" checked />
     <label for="section-46070fb9a15f8281e5989a88905887d2" class="flex justify-between">
       <a  class="">Authentication</a>
       <span>▾</span>
@@ -209,7 +209,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-cd9d01c15ace32e6fd3da5d1201bcd57" class="toggle"  />
+    <input type="checkbox" id="section-cd9d01c15ace32e6fd3da5d1201bcd57" class="toggle" checked />
     <label for="section-cd9d01c15ace32e6fd3da5d1201bcd57" class="flex justify-between">
       <a  class="">Access Token</a>
       <span>▾</span>
@@ -226,7 +226,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/" class="">Access Token</a>
+    <a href="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/" class=" active">Access Token</a>
   
 
         </li>
@@ -406,7 +406,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle" checked />
+    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle"  />
     <label for="section-084ba1dbb512652712ad881ff8045610" class="flex justify-between">
       <a  class="">Reference</a>
       <span>▾</span>
@@ -436,7 +436,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://glimesh.github.io/api-docs/docs/reference/chat/" class=" active">Chat</a>
+    <a href="https://glimesh.github.io/api-docs/docs/reference/chat/" class="">Chat</a>
   
 
         </li>
@@ -547,7 +547,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/api-docs/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Chat</strong>
+  <strong>Access Token</strong>
 
   <label for="toc-control">
     
@@ -560,7 +560,12 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#requesting-a-token">Requesting A Token</a></li>
+    <li><a href="#common-errors">Common Errors</a></li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -570,25 +575,68 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="chat">
-  Chat
-  <a class="anchor" href="#chat">#</a>
+  <article class="markdown"><h1 id="access-tokens">
+  Access Tokens
+  <a class="anchor" href="#access-tokens">#</a>
 </h1>
-<p>Shows all of the fields in the chatMessage object.</p>
+<p>An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.</p>
+<h2 id="requesting-a-token">
+  Requesting A Token
+  <a class="anchor" href="#requesting-a-token">#</a>
+</h2>
+<p>Before requesting a token you must have a <a href="https://glimesh.tv/users/settings/applications">developer application</a>. You will need your client ID, secret ID, and redirect URL.
+<img src="https://i.imgur.com/IIzwkHc.png" alt="app image" /></p>
+<p>First you need to have a user authenticate with your app. The user must be directed to <code>https://glimesh.tv/oauth/authorize?response_type=code&amp;state=&amp;client_id=CLIENT_ID&amp;scope=public%20email%20chat%20streamkey&amp;redirect_uri=REDIRECT_URL</code></p>
+<p>Make sure to replace your client ID and your redirect URL. The redirect URL must match one of the URL&rsquo;s on your application. Scopes are space separated values that determine what permissions you want from the user. Only request the scopes that you need.</p>
+<p>The current scopes are:</p>
+<ul>
+<li><strong>public</strong>: Get public information about the user and other users on Glimesh.</li>
+<li><strong>email</strong>: View the email of the user.</li>
+<li><strong>chat</strong>: View and speak in a chatroom.  <em>Note that speaking through the api is not yet supported.</em></li>
+<li><strong>stream</strong> View the streamkey of the user.</li>
+</ul>
+<p>When the user is sent to the link they will have to accept your app scopes. They will then be sent to your apps redirect URL. Glimesh will send a code inside the URL when they are sent back to your app. You need to extract it from the URL.</p>
+<p><code>http://your-app.com/some/area?code=qwertyuiop123</code></p>
+<p>Once you have the code you need to make a request to Glimesh. We will exchange the code for an access token.</p>
+<p><code>POST https://glimesh.tv/api/oauth/token?grant_type=authorization_code&amp;code=CODE&amp;redirect_uri=REDIRECT_URL&amp;client_id=CLIENTID&amp;client_secret=SECRETID</code></p>
+<p>Send a POST request with the URL above replacing the code,redirect url, client ID, and secret ID. Remember to <strong>keep the secret ID hidden</strong> from your users. When Glimesh receives the POST request it will send back the information we want. Once it is parsed it will look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">{
+  <span style="color:#a6e22e">access_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;qwertyuiopo1234567890&#39;</span>,
+  <span style="color:#a6e22e">created_at</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;2020-12-14T15:15:29&#39;</span>,
+  <span style="color:#a6e22e">expires_in</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">21600</span>,
+  <span style="color:#a6e22e">refresh_token</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;qwertyuiop0987654321&#39;</span>,
+  <span style="color:#a6e22e">scope</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;public email chat streamkey&#39;</span>,
+  <span style="color:#a6e22e">token_type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;bearer&#39;</span>
+}
+
+</code></pre></div><p>Now you can query the Glimesh API on behalf of a user. This token will expire after a few hours so you need to refresh it or ask the user for a new one. If you have any questions talk to us in the #dev channel in our <a href="https://discord.gg/Glimesh">Discord</a>.</p>
+<blockquote>
+<p>Ready to refresh your token? Continue with OAuth <a href="/api-docs/docs/authencation/refreshtoken/refreshtoken/">here</a></p>
+</blockquote>
+<h2 id="common-errors">
+  Common Errors
+  <a class="anchor" href="#common-errors">#</a>
+</h2>
+<p>There are a few errors you may encounter while requesting a token.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">
-  <span style="color:#a6e22e">chatMessage</span> {
-    <span style="color:#a6e22e">id</span>,
-    <span style="color:#a6e22e">insertedAt</span>,
-    <span style="color:#a6e22e">message</span>,
-    <span style="color:#a6e22e">updatedAt</span>,
-    <span style="color:#a6e22e">channel</span> { 
-      <span style="color:#75715e">// Channel data
-</span><span style="color:#75715e"></span>    },
-    <span style="color:#a6e22e">user</span> { 
-      <span style="color:#75715e">// User data
-</span><span style="color:#75715e"></span>    }
-  }
-<p></code></pre></div></p>
+{
+  <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;invalid_grant&#39;</span>,
+  <span style="color:#a6e22e">error_description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.&#39;</span>
+}
+
+</code></pre></div><p>This means something is wrong with your URL. You can only use each code once. You must send the request with the <code>grant_type=authorization_code</code> for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">
+{
+  <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;invalid_request&#39;</span>,
+  <span style="color:#a6e22e">error_description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.&#39;</span>
+}
+
+</code></pre></div><p>This is a request error. Some part of your URL is not necessary or missing. Ensure the parameters in the URL are spelled correctly. You should also check that you have all of the required data in the URL.</p>
+<p><code>Error: 401 Unauthorized. You must be logged in to access the API.</code></p>
+<p>This is an authentication issue. This is commonly seen when querying the API but I added it here because it most likely means you must request another token. You must renew or request a new token and send the API request to Glimesh properly.  Tokens expire after a few hours unless they are renewed.</p>
+<blockquote>
+<p>Stuck with something? Talk to us in <a href="https://discord.gg/Glimesh">Discord</a>. We would be happy to help you!</p>
+</blockquote>
 </article>
  
       
@@ -599,9 +647,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/2383c0f88173c34a551e5ba7e456bdc8c25e367c" title='Last modified by aMytho | January 8, 2021' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/55504d3fd17f2022328cb5c0b8b27d0cf7af17bc" title='Last modified by MythoAway7 | February 23, 2021' target="_blank" rel="noopener">
       <img src="/api-docs/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 8, 2021</span>
+      <span>February 23, 2021</span>
     </a>
   </div>
 
@@ -627,7 +675,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#requesting-a-token">Requesting A Token</a></li>
+    <li><a href="#common-errors">Common Errors</a></li>
+  </ul>
+</nav>
 
  
     </aside>

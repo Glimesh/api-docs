@@ -52,20 +52,20 @@ Loading...// Render GraphQLVoyager.init(document.getElementById(&#39;voyager&#
     
     <item>
       <title></title>
-      <link>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/accesstoken/</link>
+      <link>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/accesstoken/</guid>
+      <guid>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/</guid>
       <description>Access Tokens#An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
 Requesting A Token#Before requesting a token you must have a developer application. You will need your client ID, secret ID, and redirect URL. First you need to have a user authenticate with your app. The user must be directed to https://glimesh.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/nodejs/node-access-token/</link>
+      <link>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://glimesh.github.io/api-docs/docs/authencation/accesstoken/nodejs/node-access-token/</guid>
+      <guid>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/</guid>
       <description>Getting User Tokens With NodeJS#This is a basic tutorial for getting an auth token from a user using Oauth with NodeJS. This guide assumes you know basic JS and understand the workings of Oauth 2.
  Need a refresh? This tutorial explains the basics of Oauth 2 https://darutk.medium.com/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb
  Creating the Project#We need to create a basic project. In your terminal type:
@@ -74,10 +74,10 @@ npm init -y</description>
     
     <item>
       <title></title>
-      <link>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</link>
+      <link>https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://glimesh.github.io/api-docs/docs/authencation/refreshtoken/refreshtoken/</guid>
+      <guid>https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/</guid>
       <description>Refresh Tokens#A refresh token allows you to get a new access token without having your user authenticate again. It is a standard part of OAuth 2.
  Looking for authentication flow? Start with access tokens
  Refreshing A Token#Refresh tokens are sent when you request an access token. You can pull them from the data that Glimesh sends you.
