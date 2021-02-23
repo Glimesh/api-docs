@@ -2,7 +2,7 @@
   
 Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.
 
-> Need authentication? Start with [access tokens](/api-docs/docs/authencation/accesstoken/accesstoken/)
+> Need authentication? Start with [access tokens](/api-docs/docs/authentication/accesstoken/accesstoken/)
 
 > Websocket tutorial can be found [here](/api-docs/docs/chat/websockets/) 
 
