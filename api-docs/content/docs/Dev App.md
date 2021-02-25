@@ -1,3 +1,6 @@
+---
+weight: 40
+---
 # Developer Application
 
 Although making an application is easy, developers new to OAuth may find some of it confusing. This tutorial will explain the basics of what information is asked for and what is it used for.

@@ -1,3 +1,6 @@
+---
+weight: 30
+---
 ## Contributing
 
 Thanks for wanting to contribute to the api-docs! We are grateful for your help.

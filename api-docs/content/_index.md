@@ -10,7 +10,7 @@ This documentation is a work in progress. We will do our best to keep this updat
 
 >Interested in contributing? Click [here](docs/contributing) to help out!
 
-## Topics
+## Get Started
  
 -  [Getting a user access token](docs/authentication/accesstoken/accesstoken/)
 -  [Making requests to the API](docs/api/query-api/basic-query/)
