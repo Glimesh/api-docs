@@ -97,6 +97,6 @@ After (Websocket)
 
 After the title was changed Glimesh sent us the new title.  All properties will function the same way. Using this format you can listen to any property of any channel on Glimesh! 
 
-> Looking for a reference? Click [here](/api-docs/docs/reference/channel/) to view all the channel properties. 
+> Looking for a reference? Click [here](/api-docs/content/docs/reference/channel) to view all the channel properties. 
 
 If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).
