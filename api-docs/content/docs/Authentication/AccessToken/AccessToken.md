@@ -1,15 +1,19 @@
 # Access Tokens
-  
+
 An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
 
- 
+> This guide is for getting a token from a real user. If you are just testing or don't want to setup authentication yet you can use [client credentials](/api-docs/docs/authentication/accesstoken/clientcredentials/)
+
 ## Requesting A Token
 
 Before requesting a token you must have a [developer application](https://glimesh.tv/users/settings/applications). You will need your client ID, secret ID, and redirect URL.
 ![app image](https://i.imgur.com/IIzwkHc.png)
 
 
-First you need to have a user authenticate with your app. The user must be directed to `https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=CLIENT_ID&scope=public%20email%20chat%20streamkey&redirect_uri=REDIRECT_URL`
+First you need to have a user authenticate with your app. The user must be directed to
+```URL
+https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=CLIENT_ID&scope=public%20email%20chat%20streamkey&redirect_uri=REDIRECT_URL
+```
 
 Make sure to replace your client ID and your redirect URL. The redirect URL must match one of the URL's on your application. Scopes are space separated values that determine what permissions you want from the user. Only request the scopes that you need.
 
@@ -19,11 +23,15 @@ The current scopes are:
 
 When the user is sent to the link they will have to accept your app scopes. They will then be sent to your apps redirect URL. Glimesh will send a code inside the URL when they are sent back to your app. You need to extract it from the URL.
 
-`http://your-app.com/some/area?code=qwertyuiop123`
+```URL
+http://your-app.com/some/area?code=qwertyuiop123
+```
 
 Once you have the code you need to make a request to Glimesh. We will exchange the code for an access token.
 
-`POST https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=CODE&redirect_uri=REDIRECT_URL&client_id=CLIENTID&client_secret=SECRETID`
+```URL
+POST https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=CODE&redirect_uri=REDIRECT_URL&client_id=CLIENTID&client_secret=SECRETID
+```
 
 Send a POST request with the URL above replacing the code,redirect url, client ID, and secret ID. Remember to **keep the secret ID hidden** from your users. When Glimesh receives the POST request it will send back the information we want. Once it is parsed it will look like this:
 ```JS
@@ -55,7 +63,7 @@ There are a few errors you may encounter while requesting a token.
 
 ```
 
-This means something is wrong with your URL. You can only use each code once. You must send the request with the `grant_type=authorization_code` for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted. 
+This means something is wrong with your URL. You can only use each code once. You must send the request with the `grant_type=authorization_code` for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted.
 
 ```JS
 

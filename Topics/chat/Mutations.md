@@ -2,23 +2,25 @@
 
 This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view [this tutorial](/api-docs/docs/chat/websockets/). To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the `chat` scope to post messages.
 
+> If you are testing you can use [client credentials](/api-docs/docs/authentication/accesstoken/clientcredentials/) to get an access token. This will allow you to talk as your own account without going through the entire auth process.
+
 ## Starting Up
 
 Since we are not using a websocket connection we have to manually query and send chat messages. This is done through the Glimesh API. We can query any channel for chat messages. We can also send messages to any channel that we choose. Understanding how API requests work will be important for completing this tutorial.
 
 > New to the API? Read [this](/api-docs/docs/api/query-api/basic-query/) before starting.
 
-## Authentication 
+## Authentication
 
-All API requests must contain the proper authentication. The authentication value should be included as a header of the request. This value will change depending on the authentication type. For access tokens use: 
+All API requests must contain the proper authentication. The authentication value should be included as a header of the request. This value will change depending on the authentication type. For access tokens use:
 
-`Authorization: 'Bearer YOUR_TOKEN'` . 
+`Authorization: 'Bearer YOUR_TOKEN'` .
 
 Replace "YOUR_TOKEN" with your access token. If you are using a client ID to authenticate you must use this instead:
 
-`Authorization: 'Client-ID YOUR_CLIENT_ID'` 
+`Authorization: 'Client-ID YOUR_CLIENT_ID'`
 
-Replace "YOUR_CLIENT_ID" with your ID. This will allow you access to the API. 
+Replace "YOUR_CLIENT_ID" with your ID. This will allow you access to the API.
 
 >  A client ID can only use the API in read only mode. An access token must have the `chat` scope.
 
@@ -83,7 +85,7 @@ Glimesh will respond with a set of JSON data. You need to parse it to get the da
 
 ## Sending Messages
 
-The Glimesh API uses mutations to send messages. The request must contain this mutation with a channel ID and a chat message. Structure it as show below. Make sure to replace MESSAGE with your chat message and ID with your channel ID. 
+The Glimesh API uses mutations to send messages. The request must contain this mutation with a channel ID and a chat message. Structure it as show below. Make sure to replace MESSAGE with your chat message and ID with your channel ID.
 
 ```GraphQL
 
@@ -121,4 +123,4 @@ Glimesh will return with the message that was sent to chat. If you want more dat
 
 ```
 
-This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our [discord](https://discord.gg/Glimesh). 
+This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our [discord](https://discord.gg/Glimesh).

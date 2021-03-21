@@ -2,6 +2,7 @@
 
 Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the `chat` scope to post messages.
 
+> If you are testing you can use [client credentials](/api-docs/docs/authentication/accesstoken/clientcredentials/) to get an access token. This will allow you to talk as your own account without going through the entire auth process.
 
 ## Preparing the Connection
 
@@ -18,9 +19,9 @@ wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&client_id=CLIENT_ID
 ```
 
 
- >Make sure to replace TOKEN_HERE or CLIENT_ID with the proper token or ID. 
+ >Make sure to replace TOKEN_HERE or CLIENT_ID with the proper token or ID.
 
-Start by opening a secure websocket connection to the URL you are using. When the connection is opened we send Glimesh a join request in JSON format to stay connected to the socket.  The array below is a example of what this should look like. 
+Start by opening a secure websocket connection to the URL you are using. When the connection is opened we send Glimesh a join request in JSON format to stay connected to the socket.  The array below is a example of what this should look like.
 
 ````
 ["1","1","__absinthe__:control","phx_join",{}]
@@ -29,9 +30,8 @@ Notice that this is a JSON array. Some WebSocket libraries only allow you to sen
 
 > Javascript example using the ws NPM package:
 >  ```JS
->  connection.send(["1","1","__absinthe__:control","phx_join",{}]);  // Doesn't work :(
 >  connection.send('["1","1","__absinthe__:control","phx_join",{}]');  // Option 1
->  connection.send(JSON.stringify(["1","1","__absinthe__:control","phx_join",{}])); //Safer option
+>  connection.send(JSON.stringify(["1","1","__absinthe__:control","phx_join",{}])); //Preferred option
 >  ```
 
 
@@ -46,7 +46,7 @@ If Glimesh successfully receives our request we will get a response similar to w
 
 ## Joining Chat
 
-Now that Glimesh has accepted our connection we can connect to a chat. You will need a channel ID for the channel you want to connect to. If you do not know the channel ID you can query the API for it. Simply replace Mytho with the proper user. 
+Now that Glimesh has accepted our connection we can connect to a chat. You will need a channel ID for the channel you want to connect to. If you do not know the channel ID you can query the API for it. Simply replace Mytho with the proper user.
 
 ```GraphQL
 
@@ -57,16 +57,16 @@ query {
 }
 
 ```
-> Remember: Channel IDs and user IDs are different things. Everyone is a user but not everyone has a channel. 
+> Remember: Channel IDs and user IDs are different things. Everyone is a user but not everyone has a channel.
 
- Once you have the ID we can join the chat. Send this through the connection: 
+ Once you have the ID we can join the chat. Send this through the connection:
 
 ```
 ["1","1","__absinthe__:control","doc",{"query":"subscription{ chatMessage(channelId: 6) { user { username avatar } message } }","variables":{} ]
 ```
 
 
-*Make sure to replace 6 with your channel ID!* The query we just sent will determine what data is sent to us every time a chat message appears in chat. In this example we requested the message and the user who sent it. We ask for the username and avatar of the user in the `user` object. 
+*Make sure to replace 6 with your channel ID!* The query we just sent will determine what data is sent to us every time a chat message appears in chat. In this example we requested the message and the user who sent it. We ask for the username and avatar of the user in the `user` object.
 
 > To view a list of everything you can request check out the API docs [here](https://glimesh.tv/api) (Docs => subscription => chatMessage).
 
@@ -91,11 +91,11 @@ Now Glimesh won't disconnect us  and we have a stable chat connection! Next we w
 
 ## Incoming Messages
 
-First let's handle incoming messages. A chat message sent from the API would look like this: 
+First let's handle incoming messages. A chat message sent from the API would look like this:
 ```JSON
 [null,null,"__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D","subscription:data",{"result":{"data":{"chatMessage":{"message":"hello world!","user":{"avatar":"/uploads/avatars/Mytho.png?v=63762672056","username":"Mytho"}}}},"subscriptionId":"__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D"}]
 ```
-It is returning the data that we requested when we connected to this channel. The subscription ID helps you keep track of which channel the message is from. When you receive a message you need to parse the JSON data. Then you can get any of the data from the response. 
+It is returning the data that we requested when we connected to this channel. The subscription ID helps you keep track of which channel the message is from. When you receive a message you need to parse the JSON data. Then you can get any of the data from the response.
 
 > The chat API is being worked on so the structure will likely change in a future update.
 
@@ -132,12 +132,12 @@ query {
 }
 
 ```
-In this example we request the ID and username of the followers of a channel. Replace CHANNEL with any streamer on Glimesh. Keep in mind that they must be a channel and not just a normal user.  Add this query as the payload in the message that we will send to the API. As with all requests we must make this valid JSON before sending it to Glimesh. 
+In this example we request the ID and username of the followers of a channel. Replace CHANNEL with any streamer on Glimesh. Keep in mind that they must be a channel and not just a normal user.  Add this query as the payload in the message that we will send to the API. As with all requests we must make this valid JSON before sending it to Glimesh.
 
 ```
 ["1","1","__absinthe__:control","doc",{"query":"query {followers(streamerUsername: \"CHANNEL\") {id,user {username}}}"}]
 ```
-> This snippet is already JSON, you may have to make adjustments depending on your websocket library. 
+> This snippet is already JSON, you may have to make adjustments depending on your websocket library.
 
 Glimesh will respond:
 
