@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>API-Docs</title>
+    <link>https://glimesh.github.io/api-docs/docs/developerresources/</link>
+    <description>Recent content on API-Docs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://glimesh.github.io/api-docs/docs/developerresources/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://glimesh.github.io/api-docs/docs/developerresources/libraries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://glimesh.github.io/api-docs/docs/developerresources/libraries/</guid>
+      <description>Community Libraries#This is a list of community created libraries to help communicate with the API. All of these libraries are community made and not official in any way.
+NodeJS/TypeScript#https://www.npmjs.com/package/glimesh-chat
+A library for connecting to chat and using moderator actions such as timeouts and bans.
+An access token is required to use this module.
+Maintained by Innectic</description>
+    </item>
+    
+  </channel>
+</rss>

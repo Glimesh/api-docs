@@ -14,7 +14,7 @@ Normally the event requires a channel ID as a parameter. Since we don't specify 
 [null,null,"__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D","subscription:data",{"result":{"data":{"chatMessage":{"message":"hello world!","user":{"avatar":"/uploads/avatars/Mytho.png?v=63762672056","username":"Mytho"}}}},"subscriptionId":"__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D"}]
 ```
 
-In the example above we requested the message as well as the username and avatar of the chatter. This query shows all of the possible data we can get from a chat message. 
+In the example above we requested the message as well as the username and avatar of the chatter. This query shows all of the possible data we can get from a chat message.
 
 ```graphql
 
@@ -24,11 +24,30 @@ subscription {
     insertedAt,
     message,
     updatedAt,
-    channel { 
+    channel {
       # Channel data
     },
-    user { 
+    user {
       # User data
+    },
+    tokens {
+        text,
+        type,
+      ...on EmoteToken {
+        src,
+        text,
+        type,
+        url
+      },
+      ...on TextToken {
+        text,
+        type
+      },
+      ...on UrlToken {
+        text,
+        type,
+        url
+      }
     }
   }
 }

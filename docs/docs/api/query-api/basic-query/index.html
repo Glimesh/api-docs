@@ -19,7 +19,7 @@
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
-<script defer src="/api-docs/en.search.min.0dc437db238675dde5f4c6c95366bd5c6d016085cf408d38b3db510a480d3d91.js" integrity="sha256-DcQ32yOGdd3l9MbJU2a9XG0BYIXPQI04s9tRCkgNPZE="></script>
+<script defer src="/api-docs/en.search.min.3c03b794aa793c6548494537998bfd6e2c0dd789ce7d38499e433c9cdd093cd9.js" integrity="sha256-PAO3lKp5PGVISUU3mYv9biwN14nOfThJnkM8nN0JPNk="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -111,6 +111,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/" class="">Channels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/" class="">Followers</a>
   
 
         </li>
@@ -220,6 +233,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/" class="">Client Credentials</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -514,6 +540,41 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c51f25d1917de848e9ad26913759c6eb" class="toggle"  />
+    <label for="section-c51f25d1917de848e9ad26913759c6eb" class="flex justify-between">
+      <a  class="">Developer Resources</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/developerresources/libraries/" class="">Libraries</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
 
@@ -592,10 +653,10 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#authentication">#</a>
 </h2>
 <p>All requests made to Glimesh must contain the proper authentication. The authentication  value should be included as a header of the request. This value will change depending on the authentication type. For access tokens use:</p>
-<p><code>Authorization: 'Bearer YOUR_TOKEN'</code> .</p>
-<p>Replace &ldquo;YOUR_TOKEN&rdquo; with your access token. If you are using a client ID to authenticate you must use this instead:</p>
-<p><code>Authorization: 'Client-ID YOUR_CLIENT_ID'</code></p>
-<p>Replace &ldquo;YOUR_CLIENT_ID&rdquo; with your ID. This will allow you access to the API.</p>
+<p><code>Authorization: Bearer YOUR_TOKEN</code></p>
+<p>Replace YOUR_TOKEN with your access token. If you are using a client ID to authenticate you must use this instead:</p>
+<p><code>Authorization: Client-ID YOUR_CLIENT_ID</code></p>
+<p>Replace YOUR_CLIENT_ID with your ID. This will allow you access to the API.</p>
 <blockquote>
 <p>A client ID can use the API in read only mode. An access token is limited by its scopes.</p>
 </blockquote>

@@ -16,7 +16,7 @@ Structure#This repo is divided into topics. Each topic has a tutorial for eac
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
-<script defer src="/api-docs/en.search.min.0dc437db238675dde5f4c6c95366bd5c6d016085cf408d38b3db510a480d3d91.js" integrity="sha256-DcQ32yOGdd3l9MbJU2a9XG0BYIXPQI04s9tRCkgNPZE="></script>
+<script defer src="/api-docs/en.search.min.3c03b794aa793c6548494537998bfd6e2c0dd789ce7d38499e433c9cdd093cd9.js" integrity="sha256-PAO3lKp5PGVISUU3mYv9biwN14nOfThJnkM8nN0JPNk="></script>
 <link rel="alternate" type="application/rss+xml" href="https://glimesh.github.io/api-docs/index.xml" title="API-Docs" />
 <!--
 Made with Book Theme
@@ -109,6 +109,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/" class="">Channels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/" class="">Followers</a>
   
 
         </li>
@@ -218,6 +231,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/" class="">Client Credentials</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -512,6 +538,41 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c51f25d1917de848e9ad26913759c6eb" class="toggle"  />
+    <label for="section-c51f25d1917de848e9ad26913759c6eb" class="flex justify-between">
+      <a  class="">Developer Resources</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/developerresources/libraries/" class="">Libraries</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
 
@@ -563,7 +624,14 @@ https://github.com/alex-shpak/hugo-book
   <nav id="TableOfContents">
   <ul>
     <li><a href="#structure">Structure</a></li>
-    <li><a href="#topics">Topics</a></li>
+    <li><a href="#get-started">Get Started</a>
+      <ul>
+        <li><a href="#create-a-dev-app">Create a Dev App</a></li>
+        <li><a href="#basic-queries">Basic Queries</a></li>
+        <li><a href="#websocket-connections">WebSocket Connections</a></li>
+        <li><a href="#oauth-authentication">OAuth Authentication</a></li>
+      </ul>
+    </li>
     <li><a href="#links">Links</a></li>
   </ul>
 </nav>
@@ -590,14 +658,43 @@ https://github.com/alex-shpak/hugo-book
 <blockquote>
 <p>Interested in contributing? Click <a href="docs/contributing">here</a> to help out!</p>
 </blockquote>
-<h2 id="topics">
-  Topics
-  <a class="anchor" href="#topics">#</a>
+<h2 id="get-started">
+  Get Started
+  <a class="anchor" href="#get-started">#</a>
 </h2>
+<p>It is recommended to follow these tutorials in this order. This will give you a basic understanding of the API and what you can do with it.</p>
 <ul>
-<li><a href="docs/authentication/accesstoken/accesstoken/">Getting a user access token</a></li>
-<li><a href="docs/api/query-api/basic-query/">Making requests to the API</a></li>
+<li>
+<h3 id="create-a-dev-app">
+  Create a Dev App
+  <a class="anchor" href="#create-a-dev-app">#</a>
+</h3>
+</li>
 <li><a href="docs/dev-app/">Creating a developer application</a></li>
+<li>
+<h3 id="basic-queries">
+  Basic Queries
+  <a class="anchor" href="#basic-queries">#</a>
+</h3>
+</li>
+<li><a href="docs/api/query-api/basic-query/">Making requests to the API</a></li>
+<li>
+<h3 id="websocket-connections">
+  WebSocket Connections
+  <a class="anchor" href="#websocket-connections">#</a>
+</h3>
+</li>
+<li><a href="docs/chat/websockets/">Connecting to chat</a></li>
+<li><a href="docs/api/live-updates/channels/">Channel Updates</a></li>
+<li>
+<h3 id="oauth-authentication">
+  OAuth Authentication
+  <a class="anchor" href="#oauth-authentication">#</a>
+</h3>
+</li>
+<li><a href="docs/authentication/accesstoken/clientcredentials/">Generating your own access token</a></li>
+<li><a href="docs/authentication/accesstoken/accesstoken/">Getting a users access token</a></li>
+<li><a href="docs/authentication/refreshtoken/refreshtoken/">Refreshing an access token</a></li>
 </ul>
 <p>Not seeing what you are looking for? Consider adding a tutorial for it or talking to us about it on discord.</p>
 <h2 id="links">
@@ -607,7 +704,7 @@ https://github.com/alex-shpak/hugo-book
 <p>Links you may find useful:</p>
 <ul>
 <li><a href="https://glimesh.tv/users/settings/applications">Glimesh developer applications</a></li>
-<li><a href="https://glimesh.tv/api">Create API requests on Glimesh</a></li>
+<li><a href="https://glimesh.tv/api">Create API requests on Glimesh without a dev environment</a></li>
 <li>Our developer channel in <a href="https://discord.gg/Glimesh">Discord</a></li>
 </ul>
 </article>
@@ -620,9 +717,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/55504d3fd17f2022328cb5c0b8b27d0cf7af17bc" title='Last modified by MythoAway7 | February 23, 2021' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/908c5793d715cc773a831384e4d865ba05725a57" title='Last modified by MythoAway7 | February 25, 2021' target="_blank" rel="noopener">
       <img src="/api-docs/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 23, 2021</span>
+      <span>February 25, 2021</span>
     </a>
   </div>
 
@@ -651,7 +748,14 @@ https://github.com/alex-shpak/hugo-book
   <nav id="TableOfContents">
   <ul>
     <li><a href="#structure">Structure</a></li>
-    <li><a href="#topics">Topics</a></li>
+    <li><a href="#get-started">Get Started</a>
+      <ul>
+        <li><a href="#create-a-dev-app">Create a Dev App</a></li>
+        <li><a href="#basic-queries">Basic Queries</a></li>
+        <li><a href="#websocket-connections">WebSocket Connections</a></li>
+        <li><a href="#oauth-authentication">OAuth Authentication</a></li>
+      </ul>
+    </li>
     <li><a href="#links">Links</a></li>
   </ul>
 </nav>

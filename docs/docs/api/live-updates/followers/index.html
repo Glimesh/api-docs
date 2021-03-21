@@ -5,15 +5,17 @@
   <meta name="generator" content="Hugo 0.79.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Site Wide Chat Messages#The Glimesh API allows you to subscribe to any channel to listen for chat messages. There is no limit to the amount of channels that you can listen to. In this project we will listen for every chat message from every user across the entire site. Before starting you should fully understand the WebSocket Tutorial.
-First we need to open a websocket connection to Glimesh.">
+<meta name="description" content="Follower Alerts#This is a tutorial for follow alerts. This guide assumes you have a client ID or an access token from a user. You should also have a websocket connection open from this tutorial. Having basic GraphQL knowledge would also be helpful.
+ New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
+ Building the Subscription#Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Site Wide Chat Messages#The Glimesh API allows you to subscribe to any channel to listen for chat messages. There is no limit to the amount of channels that you can listen to. In this project we will listen for every chat message from every user across the entire site. Before starting you should fully understand the WebSocket Tutorial.
-First we need to open a websocket connection to Glimesh." />
+<meta property="og:description" content="Follower Alerts#This is a tutorial for follow alerts. This guide assumes you have a client ID or an access token from a user. You should also have a websocket connection open from this tutorial. Having basic GraphQL knowledge would also be helpful.
+ New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
+ Building the Subscription#Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/" />
-<meta property="article:modified_time" content="2021-01-08T09:33:25-06:00" />
-<title>Site Wide Subscription | API-Docs</title>
+<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/" />
+<meta property="article:modified_time" content="2021-03-21T13:38:51-05:00" />
+<title>Followers | API-Docs</title>
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
@@ -74,7 +76,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-bf7b3283e3790c00c8caaa140299052b" class="toggle"  />
+    <input type="checkbox" id="section-bf7b3283e3790c00c8caaa140299052b" class="toggle" checked />
     <label for="section-bf7b3283e3790c00c8caaa140299052b" class="flex justify-between">
       <a  class="">Api</a>
       <span>▾</span>
@@ -91,7 +93,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-ed8e1e4d4f4c1e3672708d733258fa51" class="toggle"  />
+    <input type="checkbox" id="section-ed8e1e4d4f4c1e3672708d733258fa51" class="toggle" checked />
     <label for="section-ed8e1e4d4f4c1e3672708d733258fa51" class="flex justify-between">
       <a  class="">Live Updates</a>
       <span>▾</span>
@@ -121,7 +123,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/" class="">Followers</a>
+    <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/" class=" active">Followers</a>
   
 
         </li>
@@ -323,7 +325,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="toggle" checked />
+    <input type="checkbox" id="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="toggle"  />
     <label for="section-05db2d31fc2e5a419ce9fd1c0e938e4e" class="flex justify-between">
       <a  class="">Chat</a>
       <span>▾</span>
@@ -340,7 +342,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-9c7ac9316f3056fdea1a344042fc8cb8" class="toggle" checked />
+    <input type="checkbox" id="section-9c7ac9316f3056fdea1a344042fc8cb8" class="toggle"  />
     <label for="section-9c7ac9316f3056fdea1a344042fc8cb8" class="flex justify-between">
       <a  class="">Projects</a>
       <span>▾</span>
@@ -357,7 +359,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/" class=" active">Site Wide Subscription</a>
+    <a href="https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/" class="">Site Wide Subscription</a>
   
 
         </li>
@@ -608,7 +610,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/api-docs/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Site Wide Subscription</strong>
+  <strong>Followers</strong>
 
   <label for="toc-control">
     
@@ -621,7 +623,12 @@ https://github.com/alex-shpak/hugo-book
   
   <aside class="hidden clearfix">
     
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#building-the-subscription">Building the Subscription</a></li>
+    <li><a href="#follower-query">Follower Query</a></li>
+  </ul>
+</nav>
 
 
   </aside>
@@ -631,52 +638,118 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="site-wide-chat-messages">
-  Site Wide Chat Messages
-  <a class="anchor" href="#site-wide-chat-messages">#</a>
+  <article class="markdown"><h1 id="follower-alerts">
+  Follower Alerts
+  <a class="anchor" href="#follower-alerts">#</a>
 </h1>
-<p>The Glimesh API allows you to subscribe to any channel to listen for chat messages. There is no limit to the amount of channels that you can listen to. In this project we will listen for every chat message from every user across the entire site. Before starting you should fully understand the <a href="/api-docs/docs/chat/websockets/">WebSocket Tutorial</a>.</p>
-<p>First we need to open a websocket connection to Glimesh. Use the process from the websocket tutorial linked above to get the connection open. Instead of subscribing to a specific channel you want to subscribe to the <code>chatMessage</code> event. You can do so with this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;doc&#34;</span>,{<span style="color:#f92672">&#34;query&#34;</span>:<span style="color:#e6db74">&#34;subscription{ chatMessage { user { username avatar } message } }&#34;</span>}]
-</code></pre></div><p>Normally the event requires a channel ID as a parameter. Since we don&rsquo;t specify which channel to listen to it connects to every channel on the site. All you have to do is log the messages as they come in!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JSON" data-lang="JSON">[<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">null</span>,<span style="color:#e6db74">&#34;__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D&#34;</span>,<span style="color:#e6db74">&#34;subscription:data&#34;</span>,{<span style="color:#f92672">&#34;result&#34;</span>:{<span style="color:#f92672">&#34;data&#34;</span>:{<span style="color:#f92672">&#34;chatMessage&#34;</span>:{<span style="color:#f92672">&#34;message&#34;</span>:<span style="color:#e6db74">&#34;hello world!&#34;</span>,<span style="color:#f92672">&#34;user&#34;</span>:{<span style="color:#f92672">&#34;avatar&#34;</span>:<span style="color:#e6db74">&#34;/uploads/avatars/Mytho.png?v=63762672056&#34;</span>,<span style="color:#f92672">&#34;username&#34;</span>:<span style="color:#e6db74">&#34;Mytho&#34;</span>}}}},<span style="color:#f92672">&#34;subscriptionId&#34;</span>:<span style="color:#e6db74">&#34;__absinthe__:doc:-576460752298178591:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D&#34;</span>}]
-</code></pre></div><p>In the example above we requested the message as well as the username and avatar of the chatter. This query shows all of the possible data we can get from a chat message.</p>
+<p>This is a tutorial for follow alerts. This guide assumes you have a <a href="https://glimesh.tv/users/settings/applications">client ID</a> or an access token from a user. You should also have a websocket connection open from <a href="/api-docs/docs/chat/websockets/">this</a> tutorial.  Having basic GraphQL knowledge would also be helpful.</p>
+<blockquote>
+<p>New to GraphQL? This tutorial explains the basics. <a href="https://graphql.org/learn/schema/">https://graphql.org/learn/schema/</a></p>
+</blockquote>
+<h2 id="building-the-subscription">
+  Building the Subscription
+  <a class="anchor" href="#building-the-subscription">#</a>
+</h2>
+<p>Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required. A streamer ID is equal to the channel ID. You can acquire the ID with the below query.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql">
+<span style="color:#66d9ef">query</span> {
+  <span style="color:#a6e22e">channel</span>(username:<span style="color:#e6db74">&#34;Mytho&#34;</span>) {
+    <span style="color:#a6e22e">id</span>
+  }
+}
+
+</code></pre></div><blockquote>
+<p>Make sure to replace Mytho with the channel name.</p>
+</blockquote>
+<p>We will insert this ID into the below subscription. You must subscribe to this event through a websocket connection. Glimesh will notify us whenever a user follows the channel.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql">
 <span style="color:#66d9ef">subscription</span> {
-  <span style="color:#a6e22e">chatMessage</span> {
+  <span style="color:#a6e22e">followers</span>(streamerId:<span style="color:#a6e22e">6</span>) {
+    hasLiveNotifications,
     id,
     insertedAt,
-    message,
+    streamer {
+      username
+    },
     updatedAt,
-    channel {
-      <span style="color:#75715e"># Channel data</span>
-    },
     user {
-      <span style="color:#75715e"># User data</span>
-    },
-    tokens {
-        text,
-        <span style="color:#66d9ef">type</span>,
-      <span style="color:#66d9ef">...</span><span style="color:#a6e22e">on</span> EmoteToken {
-        src,
-        text,
-        <span style="color:#66d9ef">type</span>,
-        <span style="color:#a6e22e">url</span>
-      },
-      <span style="color:#66d9ef">...on</span> TextToken {
-        text,
-        <span style="color:#66d9ef">type</span>
-      },
-      <span style="color:#66d9ef">...</span><span style="color:#a6e22e">on</span> UrlToken {
-        text,
-        <span style="color:#66d9ef">type</span>,
-        <span style="color:#a6e22e">url</span>
-      }
+      username
     }
   }
 }
 
-</code></pre></div><p>This is all of the info required to listen to every chatroom. If you have any questions talk to us on our <a href="https://discord.gg/Glimesh">Discord</a>.</p>
+</code></pre></div><p>The above subscription shows all of the properties we can receive. This excludes nested properties. This information will be sent to us whenever the specified channel gets a new follower.</p>
+<blockquote>
+<p>Need a tutorial for connecting to the API with websockets? Click <a href="/api-docs/docs/chat/websockets/">here</a></p>
+</blockquote>
+<h2 id="follower-query">
+  Follower Query
+  <a class="anchor" href="#follower-query">#</a>
+</h2>
+<p>A subscription is the standard way to get follower alerts. However, this is not the only method to get the followers of a channel. We can make a query to get the followers of a channel as well as the followers of a user. You will need name of the streamer or of the user. The following query will return the followers of a streamer.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-GraphQL" data-lang="GraphQL"><span style="color:#66d9ef">query</span> {
+  <span style="color:#a6e22e">followers</span>(streamerUsername:<span style="color:#e6db74">&#34;Mytho&#34;</span>) {
+    <span style="color:#a6e22e">hasLiveNotifications</span>,
+    id,
+    insertedAt,
+    streamer {
+      username
+    },
+    updatedAt,
+    user {
+      username
+    }
+  }
+}
+</code></pre></div><p>We requested the same properties as before. Glimesh will send us a JSON format response.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS">
+{
+  <span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;followers&#34;</span><span style="color:#f92672">:</span> [
+      {
+        <span style="color:#e6db74">&#34;hasLiveNotifications&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+        <span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;16946&#34;</span>,
+        <span style="color:#e6db74">&#34;insertedAt&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2021-02-06T01:04:42&#34;</span>,
+        <span style="color:#e6db74">&#34;streamer&#34;</span><span style="color:#f92672">:</span> {
+          <span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Mytho&#34;</span>
+        },
+        <span style="color:#e6db74">&#34;updatedAt&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2021-02-06T01:04:42&#34;</span>,
+        <span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">:</span> {
+          <span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Heiwa&#34;</span>
+        }
+      },
+      {
+        <span style="color:#e6db74">&#34;hasLiveNotifications&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>,
+        <span style="color:#e6db74">&#34;id&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;629&#34;</span>,
+        <span style="color:#e6db74">&#34;insertedAt&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2020-08-09T16:35:55&#34;</span>,
+        <span style="color:#e6db74">&#34;streamer&#34;</span><span style="color:#f92672">:</span> {
+          <span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Mytho&#34;</span>
+        },
+        <span style="color:#e6db74">&#34;updatedAt&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;2020-08-09T16:35:55&#34;</span>,
+        <span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">:</span> {
+          <span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;TheCat&#34;</span>
+        }
+      },
+      <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">so</span> <span style="color:#a6e22e">on</span>...
+
+</code></pre></div><p>We can also request who a user is following. The query is nearly identical. The only thing we change is the parameter. Replace <code>streamerUsername</code> with <code>userUsername</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql">
+<span style="color:#66d9ef">query</span> {
+  <span style="color:#a6e22e">followers</span>(userUsername:<span style="color:#e6db74">&#34;Mytho&#34;</span>) {
+    <span style="color:#a6e22e">hasLiveNotifications</span>,
+    id,
+    insertedAt,
+    streamer {
+      username
+    },
+    updatedAt,
+    user {
+      username
+    }
+  }
+}
+
+</code></pre></div><p>Stuck with something? Talk to us in <a href="https://discord.gg/Glimesh">Discord</a>. We would be happy to help you!</p>
 </article>
  
       
@@ -687,9 +760,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/2383c0f88173c34a551e5ba7e456bdc8c25e367c" title='Last modified by aMytho | January 8, 2021' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/05d08106eeaa2336d0ba09a77a454109bafe90a1" title='Last modified by aMytho | March 21, 2021' target="_blank" rel="noopener">
       <img src="/api-docs/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>January 8, 2021</span>
+      <span>March 21, 2021</span>
     </a>
   </div>
 
@@ -715,7 +788,12 @@ https://github.com/alex-shpak/hugo-book
     
     <aside class="book-toc">
       
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#building-the-subscription">Building the Subscription</a></li>
+    <li><a href="#follower-query">Follower Query</a></li>
+  </ul>
+</nav>
 
  
     </aside>

@@ -5,19 +5,18 @@
   <meta name="generator" content="Hugo 0.79.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Shows all the properties of the channel object. Note that for nested objects only one propery is shown.
-subscription { channel(id:6) { bans {reason}, category {name}, chatMessages {message}, chatRulesHtml, chatRulesMd, hmacKey, id, inaccessible, insertedAt, language, moderationLogs {action}, moderators {canBan}, status, stream {id}, streamKey, streamer {displayname}, tags {name}, thumbnail, title, updatedAt } } ">
+<meta name="description" content="">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Shows all the properties of the channel object. Note that for nested objects only one propery is shown.
-subscription { channel(id:6) { bans {reason}, category {name}, chatMessages {message}, chatRulesHtml, chatRulesMd, hmacKey, id, inaccessible, insertedAt, language, moderationLogs {action}, moderators {canBan}, status, stream {id}, streamKey, streamer {displayname}, tags {name}, thumbnail, title, updatedAt } } " />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/reference/channelreference/" />
-<meta property="article:modified_time" content="2021-02-21T19:47:40-06:00" />
-<title>Channel Reference | API-Docs</title>
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/developerresources/" />
+
+<title>Developer Resources | API-Docs</title>
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
 <script defer src="/api-docs/en.search.min.3c03b794aa793c6548494537998bfd6e2c0dd789ce7d38499e433c9cdd093cd9.js" integrity="sha256-PAO3lKp5PGVISUU3mYv9biwN14nOfThJnkM8nN0JPNk="></script>
+<link rel="alternate" type="application/rss+xml" href="https://glimesh.github.io/api-docs/docs/developerresources/index.xml" title="API-Docs" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -432,7 +431,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle" checked />
+    <input type="checkbox" id="section-084ba1dbb512652712ad881ff8045610" class="toggle"  />
     <label for="section-084ba1dbb512652712ad881ff8045610" class="flex justify-between">
       <a  class="">Reference</a>
       <span>▾</span>
@@ -545,9 +544,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c51f25d1917de848e9ad26913759c6eb" class="toggle"  />
+    <input type="checkbox" id="section-c51f25d1917de848e9ad26913759c6eb" class="toggle" checked />
     <label for="section-c51f25d1917de848e9ad26913759c6eb" class="flex justify-between">
-      <a  class="">Developer Resources</a>
+      <a  class="active">Developer Resources</a>
       <span>▾</span>
     </label>
   
@@ -608,7 +607,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/api-docs/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Channel Reference</strong>
+  <strong>Developer Resources</strong>
 
   <label for="toc-control">
     
@@ -631,33 +630,7 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>Shows all the properties of the channel object. Note that for nested objects only one propery is shown.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">subscription</span> {
-  <span style="color:#a6e22e">channel</span>(<span style="color:#a6e22e">id</span><span style="color:#f92672">:</span><span style="color:#ae81ff">6</span>) {
-    <span style="color:#a6e22e">bans</span> {<span style="color:#a6e22e">reason</span>},
-    <span style="color:#a6e22e">category</span> {<span style="color:#a6e22e">name</span>},
-    <span style="color:#a6e22e">chatMessages</span> {<span style="color:#a6e22e">message</span>},
-    <span style="color:#a6e22e">chatRulesHtml</span>,
-    <span style="color:#a6e22e">chatRulesMd</span>,
-    <span style="color:#a6e22e">hmacKey</span>,
-    <span style="color:#a6e22e">id</span>,
-    <span style="color:#a6e22e">inaccessible</span>,
-    <span style="color:#a6e22e">insertedAt</span>,
-    <span style="color:#a6e22e">language</span>,
-    <span style="color:#a6e22e">moderationLogs</span> {<span style="color:#a6e22e">action</span>},
-    <span style="color:#a6e22e">moderators</span> {<span style="color:#a6e22e">canBan</span>},
-    <span style="color:#a6e22e">status</span>,
-    <span style="color:#a6e22e">stream</span> {<span style="color:#a6e22e">id</span>},
-    <span style="color:#a6e22e">streamKey</span>, 
-    <span style="color:#a6e22e">streamer</span> {<span style="color:#a6e22e">displayname</span>},
-    <span style="color:#a6e22e">tags</span> {<span style="color:#a6e22e">name</span>},
-    <span style="color:#a6e22e">thumbnail</span>,
-    <span style="color:#a6e22e">title</span>,
-    <span style="color:#a6e22e">updatedAt</span>
-  }
-}
-
-</code></pre></div></article>
+  <article class="markdown"></article>
  
       
 
@@ -667,9 +640,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/9a5f733b3c2d4a425de666827f45565eb33b4370" title='Last modified by MythoAway7 | February 21, 2021' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/Glimesh/api-docs/commit/908c5793d715cc773a831384e4d865ba05725a57" title='Last modified by MythoAway7 | February 25, 2021' target="_blank" rel="noopener">
       <img src="/api-docs/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>February 21, 2021</span>
+      <span>February 25, 2021</span>
     </a>
   </div>
 
@@ -682,10 +655,6 @@ https://github.com/alex-shpak/hugo-book
       </footer>
 
       
-  
-  <div class="book-comments">
-
-</div>
   
  
 

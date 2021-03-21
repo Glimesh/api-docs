@@ -6,10 +6,10 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Chat WebSockets#Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
-Preparing the Connection#First, build your URL that you will connect to.">
+ If you are testing you can use client credentials to get an access token.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="Chat WebSockets#Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
-Preparing the Connection#First, build your URL that you will connect to." />
+ If you are testing you can use client credentials to get an access token." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/websockets/" />
 <meta property="article:modified_time" content="2021-01-08T09:33:25-06:00" />
@@ -17,7 +17,7 @@ Preparing the Connection#First, build your URL that you will connect to." />
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
-<script defer src="/api-docs/en.search.min.0dc437db238675dde5f4c6c95366bd5c6d016085cf408d38b3db510a480d3d91.js" integrity="sha256-DcQ32yOGdd3l9MbJU2a9XG0BYIXPQI04s9tRCkgNPZE="></script>
+<script defer src="/api-docs/en.search.min.3c03b794aa793c6548494537998bfd6e2c0dd789ce7d38499e433c9cdd093cd9.js" integrity="sha256-PAO3lKp5PGVISUU3mYv9biwN14nOfThJnkM8nN0JPNk="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -109,6 +109,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/" class="">Channels</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/" class="">Followers</a>
   
 
         </li>
@@ -218,6 +231,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/" class="">Client Credentials</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -512,6 +538,41 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c51f25d1917de848e9ad26913759c6eb" class="toggle"  />
+    <label for="section-c51f25d1917de848e9ad26913759c6eb" class="flex justify-between">
+      <a  class="">Developer Resources</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://glimesh.github.io/api-docs/docs/developerresources/libraries/" class="">Libraries</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
 
@@ -584,6 +645,9 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#chat-websockets">#</a>
 </h1>
 <p>Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the <code>chat</code> scope to post messages.</p>
+<blockquote>
+<p>If you are testing you can use <a href="/api-docs/docs/authentication/accesstoken/clientcredentials/">client credentials</a> to get an access token. This will allow you to talk as your own account without going through the entire auth process.</p>
+</blockquote>
 <h2 id="preparing-the-connection">
   Preparing the Connection
   <a class="anchor" href="#preparing-the-connection">#</a>
@@ -600,9 +664,8 @@ https://github.com/alex-shpak/hugo-book
 </code></pre><p>Notice that this is a JSON array. Some WebSocket libraries only allow you to send strings or specially formatted JSON. Sometimes you need to encase the data in a string. If the connection closes immediately you may need to change the type of your request.  This depends purely on your library, if you are having trouble talk to us in our <a href="https://discord.gg/Glimesh">discord.</a></p>
 <blockquote>
 <p>Javascript example using the ws NPM package:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>([<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_join&#34;</span>,{}]);  <span style="color:#75715e">// Doesn&#39;t work :(
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);  <span style="color:#75715e">// Option 1
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>([<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_join&#34;</span>,{}])); <span style="color:#75715e">//Safer option
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);  <span style="color:#75715e">// Option 1
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">connection</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>([<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;__absinthe__:control&#34;</span>,<span style="color:#e6db74">&#34;phx_join&#34;</span>,{}])); <span style="color:#75715e">//Preferred option
 </span></code></pre></div></blockquote>
 <p>The first value is the join ref. The second is the normal ref. They can be useful for multi-connections but we will use the value of 1 for all refs in this doc. The third is the topic. The fourth is the event.  The fifth is for a payload. Glimesh does not require a payload for this request so we can leave this blank <em>{}</em> .</p>
 <p>If Glimesh successfully receives our request we will get a response similar to what we sent. Notice that the first two values are the same. The response tells us that Glimesh is ready.</p>

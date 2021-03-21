@@ -8,12 +8,23 @@
     <language>en-us</language><atom:link href="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
+      <link>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/</guid>
+      <description>Client Credentials (Access Token)#An access token can be used to query the Glimesh API on behalf of a user. Normally you have to get a token from a user. Client credentials allows us to generate an access token for our own account to act as an authenticated user. This is frequently used for testing purposes.
+Requesting A Token#Before requesting a token you must have a developer application.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/</guid>
       <description>Access Tokens#An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
-Requesting A Token#Before requesting a token you must have a developer application. You will need your client ID, secret ID, and redirect URL. First you need to have a user authenticate with your app. The user must be directed to https://glimesh.</description>
+ This guide is for getting a token from a real user. If you are just testing or don&amp;rsquo;t want to setup authentication yet you can use client credentials
+ Requesting A Token#Before requesting a token you must have a developer application.</description>
     </item>
     
     <item>

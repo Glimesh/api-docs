@@ -43,7 +43,7 @@
       
       <guid>https://glimesh.github.io/api-docs/docs/chat/websockets/</guid>
       <description>Chat WebSockets#Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
-Preparing the Connection#First, build your URL that you will connect to.</description>
+ If you are testing you can use client credentials to get an access token.</description>
     </item>
     
   </channel>
