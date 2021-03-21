@@ -1,8 +1,9 @@
 # Access Tokens
-  
+
 An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
 
- 
+> If you are testing you can use [client credentials](/api-docs/docs/authentication/accesstoken/clientcredentials/) to get an access token. This will allow you to talk as your own account without going through the entire auth process.
+
 ## Requesting A Token
 
 Before requesting a token you must have a [developer application](https://glimesh.tv/users/settings/applications). You will need your client ID, secret ID, and redirect URL.
@@ -15,7 +16,7 @@ Make sure to replace your client ID and your redirect URL. The redirect URL must
 
 The current scopes are:
 
- - **public**: Get public information about the user and other users on Glimesh. 
+ - **public**: Get public information about the user and other users on Glimesh.
  - **email**:  View the email of the user.
  - **chat**: View and speak in a chatroom.  *Note that speaking through the api is not yet supported.*
  - **streamkey**: View the streamkey of the user.
@@ -58,7 +59,7 @@ There are a few errors you may encounter while requesting a token.
 
 ```
 
-This means something is wrong with your URL. You can only use each code once. You must send the request with the `grant_type=authorization_code` for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted. 
+This means something is wrong with your URL. You can only use each code once. You must send the request with the `grant_type=authorization_code` for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted.
 
 ```JS
 
