@@ -16,7 +16,9 @@
 NodeJS/TypeScript#https://www.npmjs.com/package/glimesh-chat
 A library for connecting to chat and using moderator actions such as timeouts and bans.
 An access token is required to use this module.
-Maintained by Innectic</description>
+Maintained by Innectic
+C##https://www.nuget.org/packages/StreamingClientLibrary.Glimesh/
+A library for connecting to the Glimesh chat API in C#.</description>
     </item>
     
   </channel>

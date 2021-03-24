@@ -10,3 +10,12 @@ A library for connecting to chat and using moderator actions such as timeouts an
 An access token is required to use this module.
 
 *Maintained by [Innectic](https://glimesh.tv/Innectic)*
+
+## C#
+https://www.nuget.org/packages/StreamingClientLibrary.Glimesh/
+
+A library for connecting to the Glimesh chat API in C#.
+
+This library has other functions for subscriptions and queries.
+
+*Maintained by [SaviorXTanren](https://glimesh.tv/SaviorXTanren)*

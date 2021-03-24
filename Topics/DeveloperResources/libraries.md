@@ -3,8 +3,6 @@
 This is a list of community created libraries to help communicate with the API. All of these libraries are **community made** and **not official** in any way.
 
 
-## Java
-
 ## NodeJS/TypeScript
 https://www.npmjs.com/package/glimesh-chat
 
@@ -17,5 +15,10 @@ An access token is required to use this module.
 [Getting Started]()
 
 ## C#
+https://www.nuget.org/packages/StreamingClientLibrary.Glimesh/
 
-## C++
+A library for connecting to the Glimesh chat API in C#.
+
+This library has other functions for subscriptions and queries.
+
+*Maintained by [SaviorXTanren](https://glimesh.tv/SaviorXTanren)*
