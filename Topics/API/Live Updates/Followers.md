@@ -7,12 +7,12 @@ This is a tutorial for follow alerts. This guide assumes you have a [client ID](
 
 ## Building the Subscription
 
-Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required. A streamer ID is equal to the channel ID. You can acquire the ID with the below query.
+Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required. A streamer ID is equal to the user ID. You can acquire the ID with the below query.
 
 ```graphql
 
 query {
-  channel(username:"Mytho") {
+  user(username:"Mytho") {
     id
   }
 }

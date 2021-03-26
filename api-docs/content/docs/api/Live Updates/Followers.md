@@ -1,18 +1,18 @@
 
 # Follower Alerts
 
-This is a tutorial for follow alerts. This guide assumes you have a [client ID](https://glimesh.tv/users/settings/applications) or an access token from a user. You should also have a websocket connection open from [this](/api-docs/docs/chat/websockets/) tutorial.  Having basic GraphQL knowledge would also be helpful.
+This is a tutorial for follow alerts. This guide assumes you have a [client ID](https://glimesh.tv/users/settings/applications) or an access token from a user. You should also have a websocket connection open from [this](/api-docs/docs/chat/websockets/) tutorial. Having basic GraphQL knowledge would also be helpful.
 > New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
 
 
 ## Building the Subscription
 
-Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required. A streamer ID is equal to the channel ID. You can acquire the ID with the below query.
+Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required. A streamer ID is equal to the user ID. You can acquire the ID with the below query.
 
 ```graphql
 
 query {
-  channel(username:"Mytho") {
+  user(username:"Mytho") {
     id
   }
 }
