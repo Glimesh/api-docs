@@ -44,9 +44,26 @@ mutation {
 
 ```
 
+Deletes a message.
 
+```js
 
+mutation {
+  deleteMessage(channelId:6, messageId: 999) {
+    action,
+    channel {id},
+    insertedAt,
+    moderator {
+      displayname
+    },
+    updatedAt,
+    user {
+      displayname
+    }
+  }
+}
 
+```
 
 Shows all of the properties for a moderation log.
 

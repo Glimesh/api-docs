@@ -17,6 +17,7 @@ Glimesh has various methods to help streamers moderate their chat. All of the be
 | unbanUser | Removes the ban on a user. |
 | longTimeoutUser | Prevents a user from typing for 15 minutes. |
 | shortTimeoutUser | Prevents a user from typing for 5 minutes. |
+| deleteMessage | Removes a message from chat. |
 
 To use any of these methods you must have the proper rank in the chat. You need to be a streamer or a moderator in their chat. You also need the user ID of the user who will receive the action and the channel ID of the channel in which the action will take place.  You can get a channel ID with the below query.
 
@@ -110,7 +111,24 @@ mutation {
 
 ```
 
-Attempting to unban a user that is not banned will return an internal server error. Attempting to use any moderator action on a user that does not exist will return "not found". Using moderator actions in a channel that you do not have the authorization will result in an error. If you need more information about what properties you can receive from a moderator action check out the [moderator reference](/api-docs/docs/reference/mod/). It provides a list of all the properties you can request. [Glimesh.tv/api](https://glimesh.tv/api) has a full list of all the API features.
+### Delete Messages
+
+You can also delete messages. You need the channel ID and the message ID. The message ID can be attained by querying the messages in a channel or by requesting it in a chatMessage subscription. Use this mutation to delete a message.
+
+```graphql
+
+mutation {
+  deleteMessage(channelId:6, messageId: 111) {
+    action,
+    moderator {
+      displayname
+    }
+  }
+}
+
+```
+
+Attempting to unban a user that is not banned will return an internal server error. Attempting to use any moderator action on a user or message that does not exist will return "not found". Using moderator actions in a channel that you do not have the authorization will result in an error. If you need more information about what properties you can receive from a moderator action check out the [moderator reference](/api-docs/docs/reference/mod/). It provides a list of all the properties you can request. [Glimesh.tv/api](https://glimesh.tv/api) has a full list of all the API features.
 
 ## Moderation Log
 
