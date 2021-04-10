@@ -12,7 +12,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/</guid>
-      <description>Site Wide Chat Messages#The Glimesh API allows you to subscribe to any channel to listen for chat messages. There is no limit to the amount of channels that you can listen to. In this project we will listen for every chat message from every user across the entire site. Before starting you should fully understand the WebSocket Tutorial.
+      <description>Site Wide Chat Messages #  The Glimesh API allows you to subscribe to any channel to listen for chat messages. There is no limit to the amount of channels that you can listen to. In this project we will listen for every chat message from every user across the entire site. Before starting you should fully understand the WebSocket Tutorial.
 First we need to open a websocket connection to Glimesh.</description>
     </item>
     

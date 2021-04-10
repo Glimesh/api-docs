@@ -12,7 +12,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/chat/chat-tokens/</guid>
-      <description>Chat Tokens#Chat tokens are a different way to handle messages sent from chat. A normal message is just a simple string. A chat token is an array of data that shows you all sorts of information about the message and what it contains.
+      <description>Chat Tokens #  Chat tokens are a different way to handle messages sent from chat. A normal message is just a simple string. A chat token is an array of data that shows you all sorts of information about the message and what it contains.
  This is a continuation of the websocket tutorial. If you have not already completed the tutorial you can do so here. A chat connection is required for this tutorial.</description>
     </item>
     
@@ -22,7 +22,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/chat/moderation/</guid>
-      <description>Chat Moderation#Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
+      <description>Chat Moderation #  Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
  New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
   If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial here.</description>
     </item>
@@ -33,7 +33,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/chat/mutations/</guid>
-      <description>Chat Mutations#This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view this tutorial. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments.</description>
+      <description>Chat Mutations #  This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view this tutorial. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments.</description>
     </item>
     
     <item>
@@ -42,7 +42,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://glimesh.github.io/api-docs/docs/chat/websockets/</guid>
-      <description>Chat WebSockets#Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
+      <description>Chat WebSockets #  Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
  If you are testing you can use client credentials to get an access token.</description>
     </item>
     

@@ -5,13 +5,13 @@
   <meta name="generator" content="Hugo 0.79.1" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Glimesh API Requests With NodeJS#This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.
+<meta name="description" content="Glimesh API Requests With NodeJS #  This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.
  Need a refresh? This tutorial explains the basics of graphql. https://graphql.org/learn/schema/
- Creating the Project#We need to create a basic project.">
+ Creating the Project #  We need to create a basic project.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Glimesh API Requests With NodeJS#This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.
+<meta property="og:description" content="Glimesh API Requests With NodeJS #  This is a basic tutorial for communicating with the Glimesh API using NodeJS. This guide assumes you know basic JS and have an access token from a user. You can use a client ID if you do not yet have a token. Having basic GraphQL knowledge would also be helpful.
  Need a refresh? This tutorial explains the basics of graphql. https://graphql.org/learn/schema/
- Creating the Project#We need to create a basic project." />
+ Creating the Project #  We need to create a basic project." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/" />
 <meta property="article:modified_time" content="2020-12-22T17:53:20-06:00" />
@@ -19,7 +19,7 @@
 <link rel="manifest" href="/api-docs/manifest.json">
 <link rel="icon" href="/api-docs/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/api-docs/book.min.4b53eeb588f75ee8d167188c6112d5918363d01776e01745616156129efa4644.css" integrity="sha256-S1PutYj3XujRZxiMYRLVkYNj0Bd24BdFYWFWEp76RkQ=">
-<script defer src="/api-docs/en.search.min.1ab8538cc005116b8c3d4db0df5ecb0e2d6e0cf25034ceda62c2fe6779e6e980.js" integrity="sha256-GrhTjMAFEWuMPU2w317LDi1uDPJQNM7aYsL&#43;Z3nm6YA="></script>
+<script defer src="/api-docs/en.search.min.a38bb601a228f6c86816828c8a655df5d2c20414339d86f58a31819767a742f6.js" integrity="sha256-o4u2AaIo9shoFoKMimVd9dLCBBQznYb1ijGBl2enQvY="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -665,7 +665,7 @@ https://github.com/alex-shpak/hugo-book
 <p>In your project create a blank JS file. I will title mine &ldquo;glimesh.js&rdquo;. Start by importing the Request library. Paste this at the top of your file.</p>
 <pre><code>var request = require('request');
 </code></pre><p>Now we need to build our query. The Glimesh API docs can be found <a href="https://github.com/Glimesh/glimesh.tv/wiki/GraphQL-API">here</a>. It is a work in progress. In this example we will ask Glimesh for the name and ID of our user. If you are using an access token you can get this data in the <strong>myself</strong> object.
-<code>query{ myself { username, id } }</code>
+<code>query{ myself { username, id } }</code>
 However, we need to convert this so JS can understand it. To do this we create a data variable. Paste this under the import statement above.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JS" data-lang="JS"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
 </span><span style="color:#e6db74">query {
