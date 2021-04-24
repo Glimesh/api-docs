@@ -30,6 +30,7 @@ const app = express(); // Creates endpoints for the server.
 const request = require('request'); //Request package
 var clientID = ""; // ID for connecting your users to your app.
 var secretID = ""; //ID to verify your app, keep private.
+var redirectUri = "http://localhost:3000/success"; //The redirect path you want to encode into the auth request
 
 ```
 This imports the modules our server will need. The server will use the *app* variable for creating endpoints. The IDs are used so Glimesh can identify our app. We will insert the IDs later.
@@ -53,7 +54,7 @@ Paste this in your file:
 //When a user visits http://localhost:3000/auth
 app.get('/auth', (req, res) => {
 //redirects the user to the glimesh authenication page
-res.redirect(301, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=http://localhost:3000/success');
+res.redirect(301, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=' + encodeURIComponent(redirectUri));
 });
 
 ```
@@ -113,7 +114,7 @@ app.get("/success", (req, res) => {
     var options = {
         method: 'POST',
         body: "",
-        url: "https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=" + code + "&redirect_uri=http://localhost:3000/success&client_id=" + clientID + "&client_secret=" + secretID
+        url: "https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=" + code + "&redirect_uri=" + encodeURIComponent(redirectUri) + "&client_id=" + clientID + "&client_secret=" + secretID
     };
     request(options, (error, response, body) => {
         if (!error && response.statusCode == 200) { //If all is as it should be
@@ -157,6 +158,7 @@ const app = express(); // Creates endpoints for the server.
 const request = require('request'); //Request package
 var clientID = ""; // ID for connecting your users to your app.
 var secretID = ""; //ID to verify your app, keep private.
+var redirectUri = "http://localhost:3000/success"; //The redirect path you want to encode into the auth request
 
 const port = process.env.PORT || 3000; //Opens the server on port 3000
 app.listen(port, () => console.log('App listening on port ' + port));
@@ -165,7 +167,7 @@ app.listen(port, () => console.log('App listening on port ' + port));
 //When a user visits http://localhost:3000/auth
 app.get('/auth', (req, res) => {
 	//redirects the user to the glimesh authenication page
-	res.redirect(301, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=http://localhost:3000/success');
+	res.redirect(301, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=' + encodeURIComponent(redirectUri));
 });
 
 app.get("/success", (req, res) => {
@@ -176,7 +178,7 @@ app.get("/success", (req, res) => {
 	var options = {
 		method:  'POST',
 		body:  "",
-		url: "https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=" + code + "&redirect_uri=http://localhost:3000/success&client_id=" + clientID + "&client_secret=" + secretID
+		url: "https://glimesh.tv/api/oauth/token?grant_type=authorization_code&code=" + code + "&redirect_uri=" + encodeURIComponent(redirectUri) + "&client_id=" + clientID + "&client_secret=" + secretID
 	};
 	request(options, (error, response, body) => { //Send glimesh the code for a token in return
 		if (!error && response.statusCode == 200) { //If all is as it should be
