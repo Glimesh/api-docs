@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "API-Docs"
 publishDir = "../docs"
 enableGitInfo = true
+theme = "book"
 [params]
   bookCollapseSection = "true"
   BookTheme = "dark"
