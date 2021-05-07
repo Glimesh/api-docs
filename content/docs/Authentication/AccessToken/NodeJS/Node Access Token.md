@@ -4,14 +4,14 @@ This is a basic tutorial for getting an auth token from a user using Oauth with 
 
 > Need a refresh? This tutorial explains the basics of Oauth 2
 > https://darutk.medium.com/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb
-  
+
 ## Creating the Project
 
 We need to create a basic project. In your terminal type:
 
-`npm init -y` 
+`npm init -y`
 
-This will create a project.JSON file. This project uses the 
+This will create a project.JSON file. This project uses the
 [Express](https://www.npmjs.com/package/request)  and [Request](https://www.npmjs.com/package/request ) packages.  Install them with:
 
 `npm install express request`
@@ -36,7 +36,7 @@ var redirectUri = "http://localhost:3000/success"; //The redirect path you want 
 This imports the modules our server will need. The server will use the *app* variable for creating endpoints. The IDs are used so Glimesh can identify our app. We will insert the IDs later.
 
 ## Creating the server
-  
+
 First we need to tell the server to listen for connections. We also need to tell the server which port to be on. I would recommend 8080 or 3000.
 Paste this in your file:
 ```JS
@@ -54,7 +54,7 @@ Paste this in your file:
 //When a user visits http://localhost:3000/auth
 app.get('/auth', (req, res) => {
 //redirects the user to the glimesh authenication page
-res.redirect(301, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=' + encodeURIComponent(redirectUri));
+res.redirect(307, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=' + encodeURIComponent(redirectUri));
 });
 
 ```
@@ -88,7 +88,7 @@ var secretID = "SECRET_HERE"
 
 ```
 
-We need to create an endpoint for Glimesh to redirect to. In the previous section we told Glimesh to redirect to `locahhost:3000/success`. Let's create it! 
+We need to create an endpoint for Glimesh to redirect to. In the previous section we told Glimesh to redirect to `locahhost:3000/success`. Let's create it!
 
 ``` JS
 
@@ -139,7 +139,7 @@ Replace FILE_NAME with the name of your file. This will start up the web server.
 Once that is complete and the server is running head to `http://localhost:3000/auth` replacing the port number with the correct port. It will redirect you to your client application page. Accept it and it will redirect you back to your server at the `/success` endpoint.
 
 >Please note that you must be logged in before authorizing. A bug prevents you from entering your account info and proceeding to the client app screen.
-> If you are not logged in you must sign in and then go back to `/auth` 
+> If you are not logged in you must sign in and then go back to `/auth`
 
 ![Auth Image](https://i.imgur.com/fWawNSS.png)
 
@@ -148,7 +148,7 @@ You should see a confirmation message in your browser. The server is now sending
 ![Imgur](https://i.imgur.com/67sv2eV.png)
 
 You can use the *access_token* to query the API on the users behalf. This will expire after a few hours so you will need to refresh the token or get a new one.  If you have any question talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).  We would love to hear what you are making!
-  
+
 The full file can be found here.
 
 ```JS
@@ -167,7 +167,7 @@ app.listen(port, () => console.log('App listening on port ' + port));
 //When a user visits http://localhost:3000/auth
 app.get('/auth', (req, res) => {
 	//redirects the user to the glimesh authenication page
-	res.redirect(301, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=' + encodeURIComponent(redirectUri));
+	res.redirect(307, 'https://glimesh.tv/oauth/authorize?response_type=code&state=&client_id=' + clientID + '&scope=public%20email%20chat%20streamkey&redirect_uri=' + encodeURIComponent(redirectUri));
 });
 
 app.get("/success", (req, res) => {

@@ -62,7 +62,7 @@ query {
  Once you have the ID we can join the chat. Send this through the connection:
 
 ```
-["1","1","__absinthe__:control","doc",{"query":"subscription{ chatMessage(channelId: 6) { user { username avatar } message } }","variables":{} ]
+["1","1","__absinthe__:control","doc",{"query":"subscription{ chatMessage(channelId: 6) { user { username avatar } message } }","variables":{} }]
 ```
 
 
@@ -76,7 +76,9 @@ Glimesh will send us a response:
 ["1","1","__absinthe__:control","phx_reply",{"response":{"subscriptionId":"__absinthe__:doc:-576460752303349214:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D"},"status":"ok"}]
 ```
 
-Now we are connected to chat! The only thing left to do is send a heartbeat to Glimesh so the connection won't be closed. You need to send a heartbeat every 30 seconds. Structure it as follows:
+## Staying Connected (heartbeat)
+
+Now we are connected to chat! The only thing left to do is send a heartbeat to Glimesh so the connection won't be closed. You need to send a heartbeat every 20 seconds. Structure it as follows:
 
 ```
 ["1","1","phoenix","heartbeat",{}]
