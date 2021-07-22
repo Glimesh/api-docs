@@ -1,10 +1,10 @@
 # Refresh Tokens
-  
+
 A refresh token allows you to get a new access token without having your user authenticate again. It is a standard part of OAuth 2.
 
-> Looking for authentication flow? Start with [access tokens](/api-docs/docs/authencation/accesstoken/accesstoken/)
+> Looking for authentication flow? Start with [access tokens](/api-docs/docs/authentication/accesstoken/accesstoken/)
 
- 
+
 ## Refreshing A Token
 
 Refresh tokens are sent when you request an access token. You can pull them from the data that Glimesh sends you.
@@ -28,7 +28,7 @@ https://glimesh.tv/api/oauth/token?grant_type=refresh_token&refresh_token=REFRES
 client_id=CLIENT_ID&client_secret=SECRET_ID
 ```
 
-Make sure to replace REFRESH_TOKEN, REDIRECT_URL, CLIENT_ID, and SECRET_ID with their corresponding values. They must match the values that were sent when you requested an access token. If you want new scopes you must request a new token. 
+Make sure to replace REFRESH_TOKEN, REDIRECT_URL, CLIENT_ID, and SECRET_ID with their corresponding values. They must match the values that were sent when you requested an access token. If you want new scopes you must request a new token.
 
 Provided you formatted your request correctly Glimesh will send you back a new refresh token and access token.
 ```JS
@@ -48,7 +48,7 @@ This will allow you to use the new token and continue to query the Glimesh API. 
 
  - You cannot get new scopes from refresh tokens. You must make the user authenticate again with the new scopes.
  - Access tokens last for about 6 hours. You can refresh them earlier if needed.
- - Refresh tokens last for about 1 year. 
- - If a user revokes your dev app you cannot use the access or refresh tokens. This would require the user to authenticate again. 
+ - Refresh tokens last for about 1 year.
+ - If a user revokes your dev app you cannot use the access or refresh tokens. This would require the user to authenticate again.
 
 If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).

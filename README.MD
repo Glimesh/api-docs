@@ -26,7 +26,3 @@ Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
  - [Create API requests on Glimesh](https://glimesh.tv/api)
  - Our developer channel in [Discord](https://discord.gg/Glimesh)
-
-
-
- *This file is a working draft*
