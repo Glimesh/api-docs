@@ -62,7 +62,7 @@ Next we set up the call to the API. We need to add our data variable from above 
 var options = {
     method: 'POST',
     body: data,
-    url: 'https://glimesh.tv/api',
+    url: 'https://glimesh.tv/api/graph',
     headers: {
         'Authorization': 'Bearer Your_Token'
     }
@@ -92,9 +92,7 @@ function callback(error, response, body) {
 ```
 If you searched for a **user** instead of **myself** you need to change the `convertedResponse` output to: 
 ```JS
-
 console.log(`The user ${convertedResponse.data.user.username} has an ID of ${convertedResponse.data.user.id}`);
-
 ```
 Finally we send the request. At the bottom of the file add this line.
 ```JS
@@ -151,7 +149,7 @@ id}
 var options = {
     method: 'POST',
     body: data,
-    url: 'https://glimesh.tv/api',
+    url: 'https://glimesh.tv/api/graph',
     headers: {
         'Authorization': 'Bearer Token_Here' //If you are using a client ID use 'Authorization': 'Client-ID qwertyuiop123456789' 
     }

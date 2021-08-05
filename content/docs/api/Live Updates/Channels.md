@@ -9,7 +9,7 @@ Using graphQL subscriptions we can listen for changes to a channel without makin
 
 ## Selecting a Channel
 
-Before we can subscribe to a user we need a channel ID. This will specify which channel we are wanting to connect to. The easiest way to get a channel ID is to go to [glimesh.tv/api](https://glimesh.tv/api) and make the following query. Simply replace YOURNAME with the channel you want to listen to.
+Before we can subscribe to a user we need a channel ID. This will specify which channel we are wanting to connect to. The easiest way to get a channel ID is to and make the following query. Simply replace YOURNAME with the channel you want to listen to.
 
 ```GraphQL
 query {

@@ -31,7 +31,7 @@ id}
 ```
 Make sure to change "USERNAME" to a user on Glimesh. We are requesting the username and ID of the user. Now that we have our authentication and our query we can request the data. Send a POST request with our query and header from above to:
 
-`https://glimesh.tv/api`
+`https://glimesh.tv/api/graph`
 
 Glimesh will send a JSON formatted response when it receives our request.
 ```JSON
