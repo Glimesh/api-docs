@@ -2,7 +2,7 @@
 
 Insomnia is a GraphQL explorer. It allows you to make queries without needing a dev environment. It is the recommended way to learn the API and is helpful if you are new to programming.
 
-> We have a folder with a collection to handle auth and make common requests.
+> We have a JSON file with a collection to handle auth and make common requests in Insomnia. You can download it [here](https://github.com/Glimesh/api-docs/tree/master/static/GlimeshCollection.json)
 
 
 ## Getting Started
@@ -11,20 +11,20 @@ First we need to download Insomnia. They have a free tier which is more than eno
 
 ### Glimesh Collection
 
-If you downloaded the Glimesh Collection this will be a very fast setup. Drag the folder directly into the editor. This will import all our requests and our environment variables.
+If you downloaded the Glimesh Collection this will be a very fast setup. Drag the file directly into the editor. This will import all our requests and our environment variables.
 
-First we need to setup our variables to authenticate our requests. On the top left select the "no environment" button. Then "manage environments" . Add your client ID / secret to their matching values. If you do not yet have an ID you can get one by creating a dev app.
+First we need to set up our variables to authenticate our requests. On the top left select the "no environment" button. Then "manage environments" . Add your client ID / secret to their matching values. If you do not yet have an ID you can get one by creating a dev app.
 
 ![img](https://i.imgur.com/iwfuVTa.png)
 
 Insomnia will automatically run the auth request now that the variables are filled in.
 
-The folder contains a few common requests. To test one, click on the request. Then select the send button. Your response will appear on the right.
+The file contains a few common requests. To test one, click on the request. Then select the send button. Your response will appear on the right.
 
 ![example query](https://i.imgur.com/gM3Mi8f.png)
 
 
-All the requests in this folder have the auth header. If you make a new request you will have to add it yourself. Simple have the header name  as "Authorization" and the value your *access_token* environment variable (ctrl+space to view env variables). You can use the *default_url* variable for the URL.
+All the requests in this file have the auth header. If you make a new request you will have to add it yourself. Simply have the header name  as "Authorization" and the value your *access_token* environment variable (ctrl+space to view env variables). You can use the *default_url* variable for the URL.
 
 ![Header example](https://i.imgur.com/PoJqnn7.png)
 
@@ -33,7 +33,7 @@ All the requests in this folder have the auth header. If you make a new request 
 
 Create a new collection. For this tutorial we will call this collection "Glimesh".
 
-First we will handle authentication. Generally its easiest to make 1 auth request and have your credentials be environment variables. We will start with the variables first. On the top left press environment. Then manage environments. Copy the below JSON into the box.
+First we will handle authentication. Generally it's easiest to make 1 auth request and have your credentials be environment variables. We will start with the variables first. On the top left press environment. Then manage environments. Copy the below JSON into the box.
 
 ```json
 {
@@ -45,15 +45,22 @@ First we will handle authentication. Generally its easiest to make 1 auth reques
 ```
 Copy your ID/secret into their places. For the access token we need to make a request that will authenticate you. Close the environments box.
 
-Create a new request on the left. Use your `https://glimesh.tv/api/oauth/token` for the URL. It needs to be a POST request with a multipart-form body. Title the request Auth.
+Create a new request on the left. Use `https://glimesh.tv/api/oauth/token` for the URL. It needs to be a POST request with a multipart-form body. Title the request Auth.
 
 Use the following values for the form entries.
 
 ![Auth headers](https://i.imgur.com/LlD0k1V.png)
 
-The purple boxes are the variables from earlier. Press ctrl+space to view the variables and enter them into their boxes. To verify that the request is valid send the request. You should receive an access token from the response. If you don't receive one make sure all the values are correct.
+The purple boxes are the variables from earlier. Press ctrl+space to view all variables and select the proper variables. To verify that the request is valid send the request. You should receive an access token from the response. If you don't receive one make sure all the values are correct.
 
 > Note that I have 5 headers, you will not have that many for this request. The default Insomnia headers will suffice.
+
+Next we need to set our access token to the *access_token* variable in Insomnia. Open the environment tab from earlier. In the access token value after Bearer press ctrl+space. Select response => body-attribute. Click on the box that appeared in the value.
+
+Request must be set to out Auth Request from eariler. Filter must be $.access_token . This pulls the token from the auth response. The trigger behavior must be set to "when expired". Max age is 21600 (the life of the token).
+![token](https://i.imgur.com/Q4niJEK.png)
+
+ Select done. Close the variable window.
 
 Now we can make a request to get data from the API. Create a new request. You can use the *base_url* variable or enter the URL manually.
 
@@ -73,7 +80,7 @@ query {
 }
 ```
 
-All that's left is to make the request! Select send on the top and the result will be on the right. You can make any number of requests in this format. The Glimesh collection includes basic requests and can be downloaded here.
+All that's left is to make the request! Select send on the top and the result will be on the right. You can make any number of requests in this format. The Glimesh collection includes basic requests and can be downloaded [here](https://github.com/Glimesh/api-docs/tree/master/static/GlimeshCollection.json)
 
 
 ## Generating Code
