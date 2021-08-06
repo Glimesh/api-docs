@@ -7,10 +7,9 @@ Shows all the queries related to moderation. Note that for nested properties onl
 
 
 
-Short and long timeouts have the same properties. 
+Short and long timeouts have the same properties.
 
 ```js
-
 mutation {
   shortTimeoutUser(channelId:6, userId:201) {
     action,
@@ -21,14 +20,12 @@ mutation {
     user {displayname}
   }
 }
-
 ```
 
 
 Banning and unbanning a user have the same properties.
 
 ```js
-
 mutation {
   banUser(channelId:6, userId:201) {
     action,
@@ -39,17 +36,13 @@ mutation {
     user {displayname}
   }
 }
-
-
-
 ```
 
 Deletes a message.
 
 ```js
-
 mutation {
-  deleteMessage(channelId:6, messageId: 999) {
+  deleteChatMessage(channelId:6, messageId: 999) {
     action,
     channel {id},
     insertedAt,
@@ -62,24 +55,31 @@ mutation {
     }
   }
 }
-
 ```
 
 Shows all of the properties for a moderation log.
 
 ```js
-
 query {
-  channel(id:6) {
+  channel(id: 6) {
     moderationLogs {
-      action,
-      channel {id},
-      insertedAt,
-      moderator {username},
-      updatedAt,
-      user {use}
+      edges {
+        node {
+          action
+          channel {
+            id
+          }
+          insertedAt
+          moderator {
+            username
+          }
+          updatedAt
+          user {
+            username
+          }
+        }
+      }
     }
   }
 }
-
 ```

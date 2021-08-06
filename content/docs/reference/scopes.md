@@ -4,4 +4,4 @@ Scopes are permissions that a developer application requests from a client. The 
 
 {{% content "docs/reference/scopesReference.md" %}}
 
-*Note that more scopes will be added when the chat API is fully complete.*
+*Note that more scopes will be added over time*

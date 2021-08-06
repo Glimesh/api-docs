@@ -5,7 +5,6 @@ bookHidden: true
 All the possbile data to query from a chat part.
 
 ```js
-
 subscription{
   chatMessage(channelId:6) {
     message,
@@ -19,7 +18,6 @@ subscription{
         src,
         text,
         type,
-        url
       },
       ...on TextToken {
         text,
@@ -33,7 +31,6 @@ subscription{
     }
   }
 }
-
 ```
 
 A possible response. (Dependent on query and message)
@@ -57,12 +54,11 @@ A possible response. (Dependent on query and message)
                      "src":"/emotes/svg/glimsmile.svg",
                      "text":":glimsmile:",
                      "type":"emote",
-                     "url":"https://glimesh.tv/emotes/svg/glimsmile-af9a10c9d4c4181dbd87ab245d3e3bee.svg?vsn=d"
                   },
                   {
-                    "text": "http://glimdrops.com",
+                    "text": "http://glimesh.tv",
                     "type": "url",
-                    "url": "http://glimdrops.com"
+                    "url": "http://glimesh.tv"
                   },
                ]
             }
