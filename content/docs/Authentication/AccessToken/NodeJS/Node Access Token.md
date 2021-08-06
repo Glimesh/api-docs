@@ -135,7 +135,7 @@ You should see a confirmation message in your browser. The server is now sending
 
 ![Imgur](https://i.imgur.com/67sv2eV.png)
 
-You can use the *access_token* to query the API on the users behalf. This will expire after a few hours so you will need to refresh the token or get a new one.  If you have any question talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).  We would love to hear what you are making!
+You can use the *access_token* to query the API on the users behalf. This will expire after a few hours so you will need to refresh the token or get a new one.  If you have any question talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).  We would love to hear what you are making!
 
 The full file can be found here.
 

@@ -179,4 +179,4 @@ This will return an array of data showing the moderation logs. Moderation logs a
 
 That is the basis for using moderation actions with the API. All of the above queries and mutations can be done through a websocket connection as well as a normal query.
 
-If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).
+If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).

@@ -29,4 +29,4 @@ Glimesh will respond with:
 ```
 The access token received will allow us to make requests as if we were using a normal access token. We have permissions for all the scopes and have access to any user specific properties. The token generated will expire in 6 hours just like a normal token. Unlike normal tokens, this cannot be refreshed. As with all auth information you must keep this private.
 
-If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).
+If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).

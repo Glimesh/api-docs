@@ -112,4 +112,4 @@ After the title was changed Glimesh sent us the new title.  All properties will 
 
 > Looking for a reference? Click [here](/api-docs/docs/reference/channel/) to view all the channel properties.
 
-If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).
+If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).
