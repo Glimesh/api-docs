@@ -36,5 +36,5 @@ Not seeing what you are looking for? Consider adding a tutorial for it or talkin
 
 Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
- - [Create API requests on Glimesh without a dev environment](https://glimesh.tv/api)
- - Our developer channel in [Discord](https://discord.gg/Glimesh)
+ - [Create API requests on Glimesh without a dev environment](docs/api/api-explorer)
+ - Our dev-questions channel in [Discord](https://discord.gg/Glimesh)

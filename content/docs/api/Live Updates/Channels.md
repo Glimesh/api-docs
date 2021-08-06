@@ -13,7 +13,7 @@ Before we can subscribe to a user we need a channel ID. This will specify which 
 
 ```GraphQL
 query {
-  channel(username: "YOURNAME") {
+  channel(streamerUsername: "YOURNAME") {
     id
   }
 }

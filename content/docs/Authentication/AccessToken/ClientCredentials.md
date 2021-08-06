@@ -18,7 +18,6 @@ https://glimesh.tv/api/oauth/token?grant_type=client_credentials&client_id=CLIEN
 
 Glimesh will respond with:
 ```JSON
-
 {
 "access_token":  "qwertyuiop1234567890",
 "created_at":  "2021-03-21T19:32:21",
@@ -27,7 +26,6 @@ Glimesh will respond with:
 "scope":  "public",
 "token_type":  "bearer"
 }
-
 ```
 The access token received will allow us to make requests as if we were using a normal access token. We have permissions for all the scopes and have access to any user specific properties. The token generated will expire in 6 hours just like a normal token. Unlike normal tokens, this cannot be refreshed. As with all auth information you must keep this private.
 
