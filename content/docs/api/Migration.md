@@ -1,26 +1,32 @@
 # API Migration
 
+Glimesh has started migrated to a new API because of major changes in the way result data is returned from the API. We've added pagination to all queries that return lists to improve performance on the app, and renamed several fields for consistency. 
 
-Glimesh has migrated to a new API and a new Authentication system. This migration changes the endpoint URL, adds pagination, and modifies some fields. The Auth change adds PKCE auth and changes the structure of the credentials.
+In addition, we are in the process of migrating to a new OAuth 2.0 provider which adds additional features, but may require some changes for your application. The migration to the new OAuth 2.0 provider will complete on August 20th 2021 at 8AM EDT.
+
 > ***If you are new to the API you can safely skip this doc.***
 
+## Timeline
+The new API endpoint has already been introduced, however there are currently no plans to remove the old API endpoint. However we will be soon pointing all new developers to our new API only, and removing documentation relating to the older API as we continue to prove the new one out.
 
 ## Using the New API
 
 Using the new API is very easy. Simply point all requests to the new URL.
 
 ```URL
-https://glimesh.tv/api/graph
+HTTP Endpoint: https://glimesh.tv/api/graph
+WebSocket Endpoint: https://glimesh.tv/api/graph/websocket
 ```
 
-This will give you full access to the new endpoints and features of the API. The websocket URL is unchanged, but is affected by the below changes.
+This will give you full access to the new endpoints and features of the API. 
 
 
 ### What Changed?
 
 Some changes are internal and do not affect the developer. However, the following changes will affect you:
 
- - The API explorer at [glimesh.tv/api](https://glimesh.tv/api) has been removed. This is because Glimesh no longer supports the auth format the editor used. We have a new tutorial about using your own editor [here](/api-docs/docs/api/api-explorer).
+- The new API endpoint does not support a built-in graphical editor. This change was required to properly support CORS across the new API endpoint. We have a new tutorial about using your own editor [here](https://glimesh.github.io/api-docs/docs/api/api-explorer).
+- Query Complexity analysis has been added which will help us maintain API performance. You should not run into any limits with any possible queries (due to pagination), but if you do receive errors about query complexity, let us know so we can check it out!
  ___
  - The following fields have been **added** to the API.
 	 - Category
