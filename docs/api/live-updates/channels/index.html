@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Channel Changes #  Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.
@@ -14,12 +14,12 @@
  Selecting a Channel #  Before we can subscribe to a user we need a channel ID.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-07T14:37:44-05:00">
+<meta property="article:modified_time" content="2021-08-05T22:53:44-05:00">
 <title>Channels | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -80,7 +80,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -241,9 +247,9 @@ Channel Changes
 Selecting a Channel
 <a class=anchor href=#selecting-a-channel>#</a>
 </h2>
-<p>Before we can subscribe to a user we need a channel ID. This will specify which channel we are wanting to connect to. The easiest way to get a channel ID is to go to <a href=https://glimesh.tv/api>glimesh.tv/api</a> and make the following query. Simply replace YOURNAME with the channel you want to listen to.</p>
+<p>Before we can subscribe to a user we need a channel ID. This will specify which channel we are wanting to connect to. The easiest way to get a channel ID is to and make the following query. Simply replace YOURNAME with the channel you want to listen to.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>channel</span>(username: <span style=color:#e6db74>&#34;YOURNAME&#34;</span>) {
+  <span style=color:#a6e22e>channel</span>(streamerUsername: <span style=color:#e6db74>&#34;YOURNAME&#34;</span>) {
     <span style=color:#a6e22e>id</span>
   }
 }
@@ -333,13 +339,13 @@ Websocket Connection
 <blockquote>
 <p>Looking for a reference? Click <a href=/api-docs/docs/reference/channel/>here</a> to view all the channel properties.</p>
 </blockquote>
-<p>If you have any questions talk to us in the #dev channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
+<p>If you have any questions talk to us in the #dev-questions channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/bcd3396c7fe50ed9d410e8af1bedbda2d1c3fb52 title="Last modified by MythoAway7 | May 7, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/db1616a85475e845881cbdfe985e565f318c109c title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 7, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>

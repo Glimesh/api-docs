@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Chat WebSockets #  Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
@@ -10,12 +10,12 @@
  If you are testing you can use client credentials to get an access token.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/websockets/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-07T14:37:44-05:00">
+<meta property="article:modified_time" content="2021-08-05T20:26:40-05:00">
 <title>Websockets | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -76,7 +76,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -275,7 +281,7 @@ Joining Chat
 <pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&quot;,&quot;variables&quot;:{} }]
 </code></pre><p><em>Make sure to replace 6 with your channel ID!</em> The query we just sent will determine what data is sent to us every time a chat message appears in chat. In this example we requested the message and the user who sent it. We ask for the username and avatar of the user in the <code>user</code> object.</p>
 <blockquote>
-<p>To view a list of everything you can request check out the API docs <a href=https://glimesh.tv/api>here</a> (Docs => subscription => chatMessage).</p>
+<p>To view a list of everything you can request check out voyager <a href=/api-docs/docs/api/voyager>here</a></p>
 </blockquote>
 <p>Glimesh will send us a response:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>[<span style=color:#e6db74>&#34;1&#34;</span>,<span style=color:#e6db74>&#34;1&#34;</span>,<span style=color:#e6db74>&#34;__absinthe__:control&#34;</span>,<span style=color:#e6db74>&#34;phx_reply&#34;</span>,{<span style=color:#f92672>&#34;response&#34;</span>:{<span style=color:#f92672>&#34;subscriptionId&#34;</span>:<span style=color:#e6db74>&#34;__absinthe__:doc:-576460752303349214:33B2AA3BF7B8F0E158810EF0E0166F5E05840BE57444C92365C921943942A47D&#34;</span>},<span style=color:#f92672>&#34;status&#34;</span>:<span style=color:#e6db74>&#34;ok&#34;</span>}]
@@ -345,9 +351,9 @@ Connection Issues
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/bcd3396c7fe50ed9d410e8af1bedbda2d1c3fb52 title="Last modified by MythoAway7 | May 7, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d56364ec766119c23f04b7649a8fa104c96c62a0 title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 7, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>

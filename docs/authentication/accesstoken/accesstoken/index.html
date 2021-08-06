@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Access Tokens #  An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
@@ -12,12 +12,12 @@
  Requesting A Token #  Before requesting a token you must have a developer application.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-06T15:35:12-05:00">
+<meta property="article:modified_time" content="2021-08-05T22:53:44-05:00">
 <title>Access Token | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -78,7 +78,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -244,7 +250,7 @@ Requesting A Token
 <ul>
 <li><strong>public</strong>: Get public information about the user and other users on Glimesh.</li>
 <li><strong>email</strong>: View the email of the user.</li>
-<li><strong>chat</strong>: View and speak in a chatroom. <em>Note that speaking through the api is not yet supported.</em></li>
+<li><strong>chat</strong>: View and speak in a chatroom.</li>
 <li><strong>stream</strong> View the streamkey of the user.</li>
 </ul>
 <p>When the user is sent to the link they will have to accept your app scopes. They will then be sent to your apps redirect URL. Glimesh will send a code inside the URL when they are sent back to your app. You need to extract it from the URL.</p>
@@ -260,29 +266,24 @@ Requesting A Token
   <span style=color:#a6e22e>scope</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;public email chat streamkey&#39;</span>,
   <span style=color:#a6e22e>token_type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;bearer&#39;</span>
 }
-
-</code></pre></div><p>Now you can query the Glimesh API on behalf of a user. This token will expire after a few hours so you need to refresh it or ask the user for a new one. If you have any questions talk to us in the #dev channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
+</code></pre></div><p>Now you can query the Glimesh API on behalf of a user. This token will expire after a few hours so you need to refresh it or ask the user for a new one. If you have any questions talk to us in the #dev-questions channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
 <blockquote>
-<p>Ready to refresh your token? Continue with OAuth <a href=/api-docs/docs/authencation/refreshtoken/refreshtoken/>here</a></p>
+<p>Ready to refresh your token? Continue with OAuth <a href=/api-docs/docs/authentication/refreshtoken/refreshtoken/>here</a></p>
 </blockquote>
 <h2 id=common-errors>
 Common Errors
 <a class=anchor href=#common-errors>#</a>
 </h2>
 <p>There are a few errors you may encounter while requesting a token.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>{
   <span style=color:#a6e22e>error</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;invalid_grant&#39;</span>,
   <span style=color:#a6e22e>error_description</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client.&#39;</span>
 }
-
 </code></pre></div><p>This means something is wrong with your URL. You can only use each code once. You must send the request with the <code>grant_type=authorization_code</code> for Glimesh to send you the access token. Ensure all of the data in the URL matches the data in your dev application. Glimesh will refuse any request that is not properly formatted.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>{
   <span style=color:#a6e22e>error</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;invalid_request&#39;</span>,
   <span style=color:#a6e22e>error_description</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed.&#39;</span>
 }
-
 </code></pre></div><p>This is a request error. Some part of your URL is not necessary or missing. Ensure the parameters in the URL are spelled correctly. You should also check that you have all of the required data in the URL.</p>
 <p><code>Error: 401 Unauthorized. You must be logged in to access the API.</code></p>
 <p>This is an authentication issue. This is commonly seen when querying the API but I added it here because it most likely means you must request another token. You must renew or request a new token and send the API request to Glimesh properly. Tokens expire after a few hours unless they are renewed.</p>
@@ -292,9 +293,9 @@ Common Errors
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d1dc26813a00eb1dafc876480ce0889b801b9613 title="Last modified by MythoAway7 | May 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/db1616a85475e845881cbdfe985e565f318c109c title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 6, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>

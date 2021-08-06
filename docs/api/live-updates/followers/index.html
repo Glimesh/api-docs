@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Follower Alerts #  This is a tutorial for follow alerts. This guide assumes you have a client ID or an access token from a user. You should also have a websocket connection open from this tutorial. Having basic GraphQL knowledge would also be helpful.
@@ -12,12 +12,12 @@
  Building the Subscription #  Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/live-updates/followers/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-06T15:35:12-05:00">
+<meta property="article:modified_time" content="2021-08-05T20:26:40-05:00">
 <title>Followers | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -78,7 +78,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -236,19 +242,16 @@ Building the Subscription
 <a class=anchor href=#building-the-subscription>#</a>
 </h2>
 <p>Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required. A streamer ID is equal to the user ID. You can acquire the ID with the below query.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>query</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
   <span style=color:#a6e22e>user</span>(username:<span style=color:#e6db74>&#34;Mytho&#34;</span>) {
     <span style=color:#a6e22e>id</span>
   }
 }
-
 </code></pre></div><blockquote>
 <p>Make sure to replace Mytho with the channel name.</p>
 </blockquote>
 <p>We will insert this ID into the below subscription. You must subscribe to this event through a websocket connection. Glimesh will notify us whenever a user follows the channel.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>subscription</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>subscription</span> {
   <span style=color:#a6e22e>followers</span>(streamerId:<span style=color:#a6e22e>6</span>) {
     hasLiveNotifications,
     id,
@@ -262,7 +265,6 @@ Building the Subscription
     }
   }
 }
-
 </code></pre></div><p>The above subscription shows all of the properties we can receive. This excludes nested properties. This information will be sent to us whenever the specified channel gets a new follower.</p>
 <blockquote>
 <p>Need a tutorial for connecting to the API with websockets? Click <a href=/api-docs/docs/chat/websockets/>here</a></p>
@@ -271,76 +273,91 @@ Building the Subscription
 Follower Query
 <a class=anchor href=#follower-query>#</a>
 </h2>
-<p>A subscription is the standard way to get follower alerts. However, this is not the only method to get the followers of a channel. We can make a query to get the followers of a channel as well as the followers of a user. You will need name of the streamer or of the user. The following query will return the followers of a streamer.</p>
+<p>A subscription is the standard way to get follower alerts. However, this is not the only method to get the followers of a channel. We can make a query to get the followers of a channel as well as the followers of a user. You will need the ID of the streamer or of the user. The following query will return the followers of a streamer.</p>
+<blockquote>
+<p>streamerId is the <strong>user</strong> ID, not the channel ID.</p>
+</blockquote>
+<blockquote>
+<p>Followers are paginated, see our guide on that <a href=/api-docs/docs/api/pagination>here</a></p>
+</blockquote>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>followers</span>(streamerUsername:<span style=color:#e6db74>&#34;Mytho&#34;</span>) {
-    <span style=color:#a6e22e>hasLiveNotifications</span>,
-    id,
-    insertedAt,
-    streamer {
-      username
-    },
-    updatedAt,
-    user {
-      username
+  <span style=color:#a6e22e>followers</span>(streamerId: <span style=color:#a6e22e>6</span>) {
+    edges {
+      node {
+        hasLiveNotifications
+        id
+        insertedAt
+        streamer {
+          username
+        }
+        updatedAt
+        user {
+          username
+        }
+      }
     }
   }
 }
 </code></pre></div><p>We requested the same properties as before. Glimesh will send us a JSON format response.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>{
   <span style=color:#e6db74>&#34;data&#34;</span><span style=color:#f92672>:</span> {
-    <span style=color:#e6db74>&#34;followers&#34;</span><span style=color:#f92672>:</span> [
-      {
-        <span style=color:#e6db74>&#34;hasLiveNotifications&#34;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>,
-        <span style=color:#e6db74>&#34;id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;16946&#34;</span>,
-        <span style=color:#e6db74>&#34;insertedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2021-02-06T01:04:42&#34;</span>,
-        <span style=color:#e6db74>&#34;streamer&#34;</span><span style=color:#f92672>:</span> {
-          <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+    <span style=color:#e6db74>&#34;followers&#34;</span><span style=color:#f92672>:</span> {
+      <span style=color:#e6db74>&#34;edges&#34;</span><span style=color:#f92672>:</span> [
+        {
+          <span style=color:#e6db74>&#34;node&#34;</span><span style=color:#f92672>:</span> {
+            <span style=color:#e6db74>&#34;hasLiveNotifications&#34;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>,
+            <span style=color:#e6db74>&#34;id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;613&#34;</span>,
+            <span style=color:#e6db74>&#34;insertedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2020-08-09T15:14:21&#34;</span>,
+            <span style=color:#e6db74>&#34;streamer&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+            },
+            <span style=color:#e6db74>&#34;updatedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2020-08-09T15:14:21&#34;</span>,
+            <span style=color:#e6db74>&#34;user&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+            }
+          }
         },
-        <span style=color:#e6db74>&#34;updatedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2021-02-06T01:04:42&#34;</span>,
-        <span style=color:#e6db74>&#34;user&#34;</span><span style=color:#f92672>:</span> {
-          <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Heiwa&#34;</span>
-        }
-      },
-      {
-        <span style=color:#e6db74>&#34;hasLiveNotifications&#34;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>,
-        <span style=color:#e6db74>&#34;id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;629&#34;</span>,
-        <span style=color:#e6db74>&#34;insertedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2020-08-09T16:35:55&#34;</span>,
-        <span style=color:#e6db74>&#34;streamer&#34;</span><span style=color:#f92672>:</span> {
-          <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+        {
+          <span style=color:#e6db74>&#34;node&#34;</span><span style=color:#f92672>:</span> {
+            <span style=color:#e6db74>&#34;hasLiveNotifications&#34;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>,
+            <span style=color:#e6db74>&#34;id&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;629&#34;</span>,
+            <span style=color:#e6db74>&#34;insertedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2020-08-09T16:35:55&#34;</span>,
+            <span style=color:#e6db74>&#34;streamer&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+            },
+            <span style=color:#e6db74>&#34;updatedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2020-08-09T16:35:55&#34;</span>,
+            <span style=color:#e6db74>&#34;user&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;TheCat&#34;</span>
+            }
+          }
         },
-        <span style=color:#e6db74>&#34;updatedAt&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;2020-08-09T16:35:55&#34;</span>,
-        <span style=color:#e6db74>&#34;user&#34;</span><span style=color:#f92672>:</span> {
-          <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;TheCat&#34;</span>
-        }
-      },
       <span style=color:#a6e22e>and</span> <span style=color:#a6e22e>so</span> <span style=color:#a6e22e>on</span>...
-
-</code></pre></div><p>We can also request who a user is following. The query is nearly identical. The only thing we change is the parameter. Replace <code>streamerUsername</code> with <code>userUsername</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>followers</span>(userUsername:<span style=color:#e6db74>&#34;Mytho&#34;</span>) {
-    <span style=color:#a6e22e>hasLiveNotifications</span>,
-    id,
-    insertedAt,
-    streamer {
-      username
-    },
-    updatedAt,
-    user {
-      username
+</code></pre></div><p>We can also request who a user is following. The query is nearly identical. The only thing we change is the parameter. Replace <code>streamerId</code> with <code>userId</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
+  <span style=color:#a6e22e>followers</span>(userId: <span style=color:#a6e22e>6</span>) {
+    edges {
+      node {
+        hasLiveNotifications
+        id
+        insertedAt
+        streamer {
+          username
+        }
+        updatedAt
+        user {
+          username
+        }
+      }
     }
   }
 }
-
 </code></pre></div><p>Stuck with something? Talk to us in <a href=https://discord.gg/Glimesh>Discord</a>. We would be happy to help you!</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d1dc26813a00eb1dafc876480ce0889b801b9613 title="Last modified by MythoAway7 | May 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d56364ec766119c23f04b7649a8fa104c96c62a0 title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 6, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>

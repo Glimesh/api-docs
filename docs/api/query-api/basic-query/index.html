@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Glimesh API Requests #  This is a basic tutorial for communicating with the Glimesh API. This guide assumes you have a client ID or an access token from a user. Having basic GraphQL knowledge would also be helpful.
@@ -12,12 +12,12 @@
  Authentication #  All requests made to Glimesh must contain the proper authentication. The authentication value should be included as a header of the request.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-06T15:35:12-05:00">
+<meta property="article:modified_time" content="2021-08-05T20:26:40-05:00">
 <title>Basic Query | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -78,7 +78,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -219,7 +225,7 @@
 <ul>
 <li><a href=#authentication>Authentication</a></li>
 <li><a href=#building-our-request>Building Our Request</a></li>
-<li><a href=#glimeshtvapihttpsglimeshtvapi><a href=https://glimesh.tv/api>Glimesh.tv/api</a></a></li>
+<li><a href=#api-explorer>API Explorer</a></li>
 <li><a href=#common-errors>Common Errors</a></li>
 </ul>
 </nav>
@@ -249,15 +255,17 @@ Authentication
 Building Our Request
 <a class=anchor href=#building-our-request>#</a>
 </h2>
-<p>The Glimesh API uses GraphQL. You must structure your query accordingly. The API has documentation <a href=https://github.com/Glimesh/glimesh.tv/wiki/GraphQL-API>here</a>. It will allow you to view all of the possible queries. Some data requires an access token with a special scope. For this example we will structure a basic request that requires no special scope. The query must be included in the body of the request.</p>
+<p>The Glimesh API uses GraphQL. You must structure your query accordingly. Some data requires an access token with a special scope. For this example we will structure a basic request that requires no special scope. The query must be included in the body of the request.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=color:#66d9ef>query</span> {
-<span style=color:#a6e22e>user</span> (username: <span style=color:#e6db74>&#34;USERNAME&#34;</span>){
-<span style=color:#a6e22e>username</span>,
-id}
+  <span style=color:#a6e22e>user</span>(username: <span style=color:#e6db74>&#34;USERNAME&#34;</span>) {
+    <span style=color:#a6e22e>username</span>
+    id
+  }
 }
+
 </code></pre></div><p>Make sure to change &ldquo;USERNAME&rdquo; to a user on Glimesh. We are requesting the username and ID of the user. Now that we have our authentication and our query we can request the data. Send a POST request with our query and header from above to:</p>
-<p><code>https://glimesh.tv/api</code></p>
-<p>Glimesh will send a JSON formatted response when it receives our request.</p>
+<pre><code class=language-url data-lang=url>https://glimesh.tv/api/graph
+</code></pre><p>Glimesh will send a JSON formatted response when it receives our request.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>{
   <span style=color:#f92672>&#34;data&#34;</span>: {
     <span style=color:#f92672>&#34;user&#34;</span>: {
@@ -267,18 +275,13 @@ id}
   }
 }
 </code></pre></div><p>You can parse the response to get the data you want. You <em>could</em> test every query like this but there is an easier way.</p>
-<h2 id=glimeshtvapihttpsglimeshtvapi>
-<a href=https://glimesh.tv/api>Glimesh.tv/api</a>
-<a class=anchor href=#glimeshtvapihttpsglimeshtvapi>#</a>
+<h2 id=api-explorer>
+API Explorer
+<a class=anchor href=#api-explorer>#</a>
 </h2>
-<p>Glimesh has a website that we can visit to make queries. This is a basic GUI that lets us view the API and has intellisense built in. It is very useful for testing queries.</p>
-<blockquote>
-<p>You must be logged in to Glimesh for this site to work. You make queries as the authenticated user.</p>
-</blockquote>
-<p>Visit the website <a href=https://glimesh.tv/api>here</a>. You can make any query that you want.</p>
-<p><img src=https://i.imgur.com/Z43UaOq.png alt="api Image">
-In this example we request a list of categories on Glimesh. We specify that we want the name of each. Glimesh will return the data on the right.</p>
-<p>From this website you can read the API spec and query for any data that you want. If you have any questions feel free to talk to us in <a href=https;//discord.gg/Glimesh>Discord</a>.</p>
+<p>You can use an API explorer to make queries without the need of a dev environment. API explorers let you run queries with intellisense and some even handle authentication for you.</p>
+<p>We have a dedicated tutorial on using the Insomnia GraphQL editor <a href=/api-docs/docs/api/pagination>here</a>. We also provide a collection of common requests which can be found in that tutorial.</p>
+<p>If you have any questions feel free to talk to us in <a href=https;//discord.gg/Glimesh>Discord</a>.</p>
 <h2 id=common-errors>
 Common Errors
 <a class=anchor href=#common-errors>#</a>
@@ -302,9 +305,9 @@ Common Errors
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d1dc26813a00eb1dafc876480ce0889b801b9613 title="Last modified by MythoAway7 | May 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d56364ec766119c23f04b7649a8fa104c96c62a0 title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 6, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>
@@ -318,7 +321,7 @@ Common Errors
 <ul>
 <li><a href=#authentication>Authentication</a></li>
 <li><a href=#building-our-request>Building Our Request</a></li>
-<li><a href=#glimeshtvapihttpsglimeshtvapi><a href=https://glimesh.tv/api>Glimesh.tv/api</a></a></li>
+<li><a href=#api-explorer>API Explorer</a></li>
 <li><a href=#common-errors>Common Errors</a></li>
 </ul>
 </nav>

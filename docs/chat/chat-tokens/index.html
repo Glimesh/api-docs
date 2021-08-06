@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Chat Tokens #  Chat tokens are a different way to handle messages sent from chat. A normal message is just a simple string. A chat token is an array of data that shows you all sorts of information about the message and what it contains.
@@ -10,12 +10,12 @@
  This is a continuation of the websocket tutorial. If you have not already completed the tutorial you can do so here. A chat connection is required for this tutorial.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/chat-tokens/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-06T15:35:12-05:00">
+<meta property="article:modified_time" content="2021-08-05T20:26:40-05:00">
 <title>Chat Tokens | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -76,7 +76,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -249,8 +255,7 @@ Building The Query/Subscription
 </h2>
 <p>We need to query <code>chatMessage</code>. We will plan for every possible type of data in a message. If you do not already have a working websocket for Glimesh you need to get one. If you don&rsquo;t want to keep a connection open you can make a normal query to the channel and view the <code>chatMessages</code> property. Either method is valid.</p>
 <p>Start with this subscription</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>subscription</span>{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>subscription</span>{
   <span style=color:#a6e22e>chatMessage</span>(channelId:<span style=color:#a6e22e>6</span>) {
     message,
     user {
@@ -261,9 +266,8 @@ Building The Query/Subscription
         src,
         text,
         <span style=color:#66d9ef>type</span>,
-        <span style=color:#a6e22e>url</span>
       },
-      <span style=color:#66d9ef>...on</span> TextToken {
+      <span style=color:#66d9ef>...</span><span style=color:#a6e22e>on</span> TextToken {
         text,
         <span style=color:#66d9ef>type</span>
       },
@@ -275,43 +279,43 @@ Building The Query/Subscription
     }
   }
 }
-
 </code></pre></div><p>Or use a query.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>query</span>{
-  <span style=color:#a6e22e>channel</span>(id:<span style=color:#a6e22e>6</span>) {
-  chatMessages {
-    message,
-    user {
-      id
-    },
-    tokens {
-      <span style=color:#66d9ef>...on</span> EmoteToken {
-        src,
-        text,
-        <span style=color:#66d9ef>type</span>,
-        <span style=color:#a6e22e>url</span>
-      },
-      <span style=color:#66d9ef>...on</span> TextToken {
-        text,
-        <span style=color:#66d9ef>type</span>
-      },
-      <span style=color:#66d9ef>...</span><span style=color:#a6e22e>on</span> UrlToken {
-        text,
-        <span style=color:#66d9ef>type</span>,
-        <span style=color:#a6e22e>url</span>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
+  <span style=color:#a6e22e>channel</span>(id: <span style=color:#a6e22e>6</span>) {
+    chatMessages(last: <span style=color:#a6e22e>5</span>) {
+      edges {
+        node {
+          message
+          user {
+            id
+          }
+          tokens {
+            <span style=color:#66d9ef>...</span> <span style=color:#66d9ef>on</span> EmoteToken {
+              src
+              text
+              <span style=color:#66d9ef>type</span>
+            }
+            <span style=color:#66d9ef>...</span> <span style=color:#a6e22e>on</span> TextToken {
+              text
+              <span style=color:#66d9ef>type</span>
+            }
+            <span style=color:#66d9ef>...</span> <span style=color:#a6e22e>on</span> UrlToken {
+              text
+              <span style=color:#66d9ef>type</span>
+              <span style=color:#a6e22e>url</span>
+            }
+          }
+        }
       }
     }
   }
-  }
 }
-
 </code></pre></div><blockquote>
 <p>Make sure to replace 6 with your channel ID!</p>
 </blockquote>
 <p>You don&rsquo;t need to request every property, adjust the request as needed.</p>
 <p>These requests will return the chat message as well as its message parts. The parts are in an array. The array values are generated if the message contains the type requested. If the type does not exist an array value is not generated.</p>
-<p>Response:</p>
+<p>Example websocket response:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>[
    <span style=color:#66d9ef>null</span>,
    <span style=color:#66d9ef>null</span>,
@@ -348,7 +352,7 @@ Building The Query/Subscription
 FAQ
 <a class=anchor href=#faq>#</a>
 </h2>
-<p>Q: What happens if I use a nonexistent emote? :fakeemote:</p>
+<p>Q: What happens if I use a nonexistent emote? :fake_emote:</p>
 <blockquote>
 <p>A: Glimesh will realize the emote is not real and detect it as text.</p>
 </blockquote>
@@ -364,9 +368,9 @@ FAQ
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d1dc26813a00eb1dafc876480ce0889b801b9613 title="Last modified by MythoAway7 | May 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d56364ec766119c23f04b7649a8fa104c96c62a0 title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 6, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>

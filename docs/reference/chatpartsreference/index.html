@@ -1,23 +1,23 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="All the possbile data to query from a chat part.
-subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, type, ...on EmoteToken { src, text, type, url }, ...on TextToken { text, type }, ...on UrlToken { text, type, url } } } } A possible response. (Dependent on query and message)
+subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, type, ...on EmoteToken { src, text, type, }, ...on TextToken { text, type }, ...on UrlToken { text, type, url } } } } A possible response. (Dependent on query and message)
 [ null, null, &#34;__absinthe__:doc:-576460752302054414:1C57C19163D4D59F61626243BCCA79AB4E50D5C4C2BD8BDA0DDCE83517B20C16&#34;, &#34;subscription:data&#34;, { &#34;result&#34;:{ &#34;data&#34;:{ &#34;chatMessage&#34;:{ &#34;tokens&#34;:[ { &#34;text&#34;:&#34;Hello Glimesh Devs &#34;, &#34;type&#34;:&#34;text&#34; }, { &#34;src&#34;:&#34;/emotes/svg/glimsmile.">
 <meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
 <meta property="og:description" content="All the possbile data to query from a chat part.
-subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, type, ...on EmoteToken { src, text, type, url }, ...on TextToken { text, type }, ...on UrlToken { text, type, url } } } } A possible response. (Dependent on query and message)
+subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, type, ...on EmoteToken { src, text, type, }, ...on TextToken { text, type }, ...on UrlToken { text, type, url } } } } A possible response. (Dependent on query and message)
 [ null, null, &#34;__absinthe__:doc:-576460752302054414:1C57C19163D4D59F61626243BCCA79AB4E50D5C4C2BD8BDA0DDCE83517B20C16&#34;, &#34;subscription:data&#34;, { &#34;result&#34;:{ &#34;data&#34;:{ &#34;chatMessage&#34;:{ &#34;tokens&#34;:[ { &#34;text&#34;:&#34;Hello Glimesh Devs &#34;, &#34;type&#34;:&#34;text&#34; }, { &#34;src&#34;:&#34;/emotes/svg/glimsmile.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/reference/chatpartsreference/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-06T15:35:12-05:00">
+<meta property="article:modified_time" content="2021-08-05T20:26:28-05:00">
 <title>Chat Parts Reference | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -78,7 +78,13 @@ subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, ty
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -219,8 +225,7 @@ subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, ty
 </aside>
 </header>
 <article class=markdown><p>All the possbile data to query from a chat part.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>
-<span style=color:#a6e22e>subscription</span>{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#a6e22e>subscription</span>{
   <span style=color:#a6e22e>chatMessage</span>(<span style=color:#a6e22e>channelId</span><span style=color:#f92672>:</span><span style=color:#ae81ff>6</span>) {
     <span style=color:#a6e22e>message</span>,
     <span style=color:#a6e22e>user</span> {
@@ -233,7 +238,6 @@ subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, ty
         <span style=color:#a6e22e>src</span>,
         <span style=color:#a6e22e>text</span>,
         <span style=color:#a6e22e>type</span>,
-        <span style=color:#a6e22e>url</span>
       },
       ...<span style=color:#a6e22e>on</span> <span style=color:#a6e22e>TextToken</span> {
         <span style=color:#a6e22e>text</span>,
@@ -247,7 +251,6 @@ subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, ty
     }
   }
 }
-
 </code></pre></div><p>A possible response. (Dependent on query and message)</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>[
    <span style=color:#66d9ef>null</span>,
@@ -267,12 +270,11 @@ subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, ty
                      <span style=color:#f92672>&#34;src&#34;</span>:<span style=color:#e6db74>&#34;/emotes/svg/glimsmile.svg&#34;</span>,
                      <span style=color:#f92672>&#34;text&#34;</span>:<span style=color:#e6db74>&#34;:glimsmile:&#34;</span>,
                      <span style=color:#f92672>&#34;type&#34;</span>:<span style=color:#e6db74>&#34;emote&#34;</span>,
-                     <span style=color:#f92672>&#34;url&#34;</span>:<span style=color:#e6db74>&#34;https://glimesh.tv/emotes/svg/glimsmile-af9a10c9d4c4181dbd87ab245d3e3bee.svg?vsn=d&#34;</span>
                   },
                   {
-                    <span style=color:#f92672>&#34;text&#34;</span>: <span style=color:#e6db74>&#34;http://glimdrops.com&#34;</span>,
+                    <span style=color:#f92672>&#34;text&#34;</span>: <span style=color:#e6db74>&#34;http://glimesh.tv&#34;</span>,
                     <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;url&#34;</span>,
-                    <span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;http://glimdrops.com&#34;</span>
+                    <span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;http://glimesh.tv&#34;</span>
                   },
                ]
             }
@@ -284,9 +286,9 @@ subscription{ chatMessage(channelId:6) { message, user { id }, tokens { text, ty
 </code></pre></div></article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d1dc26813a00eb1dafc876480ce0889b801b9613 title="Last modified by MythoAway7 | May 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/3a4cdaa849df1e83391714b1a4b2b40273f2a44e title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 6, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>

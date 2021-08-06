@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.86.0">
+<meta name=generator content="Hugo 0.87.0">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Chat Moderation #  Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
@@ -12,12 +12,12 @@
   If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial here.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/moderation/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-06T15:35:12-05:00">
+<meta property="article:modified_time" content="2021-08-05T22:53:44-05:00">
 <title>Moderation | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.4144e379761305d08a2e46f06f8a0a5fdf31169f27e54a46b42e36e12dd8b9fb.js integrity="sha256-QUTjeXYTBdCKLkbwb4oKX98xFp8n5UpGtC424S3Yufs="></script>
+<script defer src=/api-docs/en.search.min.3197820d3e9a28d070c8c1d95ec70451e5b37e3930b061e9abe6fce2920ff380.js integrity="sha256-MZeCDT6aKNBwyMHZXscEUeWzfjkwsGHpq+b84pIP84A="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -78,7 +78,13 @@
 </ul>
 </li>
 <li>
-<a href=https://glimesh.github.io/api-docs/docs/api/graphiql/>Graphiql</a>
+<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
 </li>
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
@@ -277,16 +283,13 @@ Understanding Mod Actions
 </tbody>
 </table>
 <p>To use any of these methods you must have the proper rank in the chat. You need to be a streamer or a moderator in their chat. You also need the user ID of the user who will receive the action and the channel ID of the channel in which the action will take place. You can get a channel ID with the below query.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL>
-<span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>channel</span>(username: <span style=color:#e6db74>&#34;NAMEHERE&#34;</span>) {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=color:#66d9ef>query</span> {
+  <span style=color:#a6e22e>channel</span>(streamerUsername: <span style=color:#e6db74>&#34;NAMEHERE&#34;</span>) {
     <span style=color:#a6e22e>id</span>
   }
 }
-
 </code></pre></div><p>A user ID can be attained from various queries. Since you are likely in a chat you can pull the ID from the chatMessage event. Your subscription to a chat (to listen for chat messages) would look something like this.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL>
-<span style=color:#66d9ef>subscription</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=color:#66d9ef>subscription</span> {
   <span style=color:#a6e22e>chatMessage</span>(channelId:<span style=color:#a6e22e>6</span>) {
     message,
     user {
@@ -294,7 +297,6 @@ Understanding Mod Actions
     }
   }
 }
-
 </code></pre></div><p>The message would be the chat message and the ID in the user object would be the ID of the user who sent the message.</p>
 <blockquote>
 <p>There is also an ID property in the chatMessage. This is the ID of the message, <strong>not</strong> a user or channel ID. Don&rsquo;t get them confused!</p>
@@ -323,51 +325,43 @@ Timeouts
 <p>You need to replace 6 and 201 with the proper IDs.</p>
 </blockquote>
 <p>A long timeout is very similar. This will last for 15 minutes.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>mutation</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>mutation</span> {
   <span style=color:#a6e22e>longTimeoutUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
     action,
     moderator {displayname},
   }
 }
-
 </code></pre></div><h3 id=bans>
 Bans
 <a class=anchor href=#bans>#</a>
 </h3>
 <p>Banning users works the same way. Simply replace the timeout mutation with the ban mutation.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>mutation</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>mutation</span> {
   <span style=color:#a6e22e>banUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
     action,
     moderator {displayname}
   }
 }
-
 </code></pre></div><p>If you need to unban a user you can use this mutation.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>mutation</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>mutation</span> {
   <span style=color:#a6e22e>unbanUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
     action,
     moderator {displayname}
   }
 }
-
 </code></pre></div><h3 id=delete-messages>
 Delete Messages
 <a class=anchor href=#delete-messages>#</a>
 </h3>
 <p>You can also delete messages. You need the channel ID and the message ID. The message ID can be attained by querying the messages in a channel or by requesting it in a chatMessage subscription. Use this mutation to delete a message.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>mutation</span> {
-  <span style=color:#a6e22e>deleteMessage</span>(channelId:<span style=color:#a6e22e>6</span>, messageId: <span style=color:#a6e22e>111</span>) {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>mutation</span> {
+  <span style=color:#a6e22e>deleteChatMessage</span>(channelId:<span style=color:#a6e22e>6</span>, messageId: <span style=color:#a6e22e>111</span>) {
     action,
     moderator {
       displayname
     }
   }
 }
-
 </code></pre></div><p>Attempting to unban a user that is not banned will return an internal server error. Attempting to use any moderator action on a user or message that does not exist will return &ldquo;not found&rdquo;. Using moderator actions in a channel that you do not have the authorization will result in an error. If you need more information about what properties you can receive from a moderator action check out the <a href=/api-docs/docs/reference/mod/>moderator reference</a>. It provides a list of all the properties you can request. <a href=https://glimesh.tv/api>Glimesh.tv/api</a> has a full list of all the API features.</p>
 <h2 id=moderation-log>
 Moderation Log
@@ -376,71 +370,61 @@ Moderation Log
 <p>Glimesh stores a copy of all the moderation events that happen to a user. This log can be viewed by the streamer <a href=https://glimesh.tv/users/settings/channel/mods>here</a>.
 <img src=https://i.imgur.com/zy3yhhy.png alt="Mod Log"></p>
 <p>We can also access this log via the API. Unlike the webpage, this log can be viewed by any user! Let&rsquo;s create a basic query.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>
-<span style=color:#66d9ef>query</span> {
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
   <span style=color:#a6e22e>channel</span>(id:<span style=color:#a6e22e>6</span>) {
-    moderationLogs {
-      action,
-      moderator {username}
+    moderationLogs(last: <span style=color:#a6e22e>3</span>) {
+      edges {
+        node {
+          action,
+          moderator {username}
+        }
+      }
     }
   }
 }
-
-</code></pre></div><p>This will return an array of data showing the moderation log.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>
-{
+</code></pre></div><p>This will return an array of data showing the moderation logs. Moderation logs are paginated, you can read more about that <a href=/api-docs/docs/api/pagination>here</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>{
   <span style=color:#e6db74>&#34;data&#34;</span><span style=color:#f92672>:</span> {
     <span style=color:#e6db74>&#34;channel&#34;</span><span style=color:#f92672>:</span> {
-      <span style=color:#e6db74>&#34;moderationLogs&#34;</span><span style=color:#f92672>:</span> [
-        {
-          <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;short_timeout&#34;</span>,
-          <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
-            <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+      <span style=color:#e6db74>&#34;moderationLogs&#34;</span><span style=color:#f92672>:</span> {
+        <span style=color:#e6db74>&#34;edges&#34;</span><span style=color:#f92672>:</span> [
+          {
+            <span style=color:#e6db74>&#34;node&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;delete_message&#34;</span>,
+              <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
+                <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+              }
+            }
+          },
+          {
+            <span style=color:#e6db74>&#34;node&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;delete_message&#34;</span>,
+              <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
+                <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;AFaithfulServant&#34;</span>
+              }
+            }
+          },
+          {
+            <span style=color:#e6db74>&#34;node&#34;</span><span style=color:#f92672>:</span> {
+              <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;delete_message&#34;</span>,
+              <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
+                <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
+              }
+            }
           }
-        },
-        {
-          <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;short_timeout&#34;</span>,
-          <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
-            <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
-          }
-        },
-        {
-          <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;long_timeout&#34;</span>,
-          <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
-            <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
-          }
-        },
-        {
-          <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;long_timeout&#34;</span>,
-          <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
-            <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
-          }
-        },
-        {
-          <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;ban&#34;</span>,
-          <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
-            <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
-          }
-        },
-        {
-          <span style=color:#e6db74>&#34;action&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;unban&#34;</span>,
-          <span style=color:#e6db74>&#34;moderator&#34;</span><span style=color:#f92672>:</span> {
-            <span style=color:#e6db74>&#34;username&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Mytho&#34;</span>
-          }
-        }
-      ]
+        ]
+      }
     }
   }
 }
-
 </code></pre></div><p>That is the basis for using moderation actions with the API. All of the above queries and mutations can be done through a websocket connection as well as a normal query.</p>
-<p>If you have any questions talk to us in the #dev channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
+<p>If you have any questions talk to us in the #dev-questions channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d1dc26813a00eb1dafc876480ce0889b801b9613 title="Last modified by MythoAway7 | May 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/db1616a85475e845881cbdfe985e565f318c109c title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 6, 2021</span>
+<span>August 6, 2021</span>
 </a>
 </div>
 </div>
