@@ -20,7 +20,7 @@ This will give you full access to the new endpoints and features of the API. The
 
 Some changes are internal and do not affect the developer. However, the following changes will affect you:
 
- - The API explorer at [glimesh.tv/api](https://glimesh.tv/api) has been removed. This is because Glimesh no longer supports the auth format the editor used. We have a new tutorial about using your own editor [here]().
+ - The API explorer at [glimesh.tv/api](https://glimesh.tv/api) has been removed. This is because Glimesh no longer supports the auth format the editor used. We have a new tutorial about using your own editor [here](/api-docs/docs/api/api-explorer).
  ___
  - The following fields have been **added** to the API.
 	 - Category
@@ -67,10 +67,13 @@ ___
 - The following fields have been **removed** from the API. Some have been moved or had their names changed to a new field.
 	- Channel
 		- thumbnail: Moved to Stream as thumbnailUrl
+        - Replaced hmackey and username as arguments. Added streamerId and streamerUsername
     - deleteMessage
         - Changed to deleteChatMessage
 	- Emote Token
 		- url: Use src instead.
+    - Followers
+        - Replaced streamerUsername and userUsername as arguments. Added streamerId and userId
 	- Stream
 		- avgChatters
 		- avgViewers
