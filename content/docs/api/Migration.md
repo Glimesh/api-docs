@@ -5,7 +5,6 @@ Glimesh has migrated to a new API and a new Authentication system. This migratio
 > ***If you are new to the API you can safely skip this doc.***
 
 
-
 ## Using the New API
 
 Using the new API is very easy. Simply point all requests to the new URL.
@@ -14,7 +13,7 @@ Using the new API is very easy. Simply point all requests to the new URL.
 https://glimesh.tv/api/graph
 ```
 
- This will give you full access to the new endpoints and features of the API. The websocket URL is unchanged, but is affected by the below changes.
+This will give you full access to the new endpoints and features of the API. The websocket URL is unchanged, but is affected by the below changes.
 
 
 ### What Changed?
@@ -26,7 +25,6 @@ Some changes are internal and do not affect the developer. However, the followin
  - The following fields have been **added** to the API.
 	 - Category
 		 - insertedAt: Creation time of the category.
-		 - showOnHomePage: Has the user enabled the selection to be on the homepage?
 		 - updatedAt: When the category was last updated.
 	 - Channel
 		 - chatBgUrl : The URL of the channels chat background.
@@ -45,6 +43,7 @@ Some changes are internal and do not affect the developer. However, the followin
 		- email: The user's email address (scope protected).
 		- followingLiveChannels: The channels that the user is following that are currently streaming.
 		- insertedAt: When the user was inserted into the database.
+        - showOnHomePage: Has the user enabled the selection to be on the homepage?
 		- teamRole: The role the user has on the Glimesh Team (dev, design, GCT, etc)
 		- updatedAt: The last time the user was modified.
 ---
@@ -68,6 +67,8 @@ ___
 - The following fields have been **removed** from the API. Some have been moved or had their names changed to a new field.
 	- Channel
 		- thumbnail: Moved to Stream as thumbnailUrl
+    - deleteMessage
+        - Changed to deleteChatMessage
 	- Emote Token
 		- url: Use src instead.
 	- Stream
