@@ -1,3 +1,7 @@
+---
+title: Home
+---
+
 # Welcome
 
 This is the repo hosting all of the Glimesh Developer docs. We have separated the information into language specific guides (Node,Python,C,etc). Each topic also has a file explaining the basics of the spec. If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
@@ -32,5 +36,5 @@ Not seeing what you are looking for? Consider adding a tutorial for it or talkin
 
 Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
- - [Create API requests on Glimesh without a dev environment](https://glimesh.tv/api)
- - Our developer channel in [Discord](https://discord.gg/Glimesh)
+ - [Create API requests on Glimesh without a dev environment](docs/api/api-explorer)
+ - Our dev-questions channel in [Discord](https://discord.gg/Glimesh)

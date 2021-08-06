@@ -5,7 +5,7 @@ The Glimesh API allows you to subscribe to any channel to listen for chat messag
 First we need to open a websocket connection to Glimesh. Use the process from the websocket tutorial linked above to get the connection open. Instead of subscribing to a specific channel you want to subscribe to the `chatMessage` event. You can do so with this:
 
 ```JSON
-["1","1","__absinthe__:control","doc",{"query":"subscription{ chatMessage { user { username avatar } message } }"}]
+["1","1","__absinthe__:control","doc",{"query":"subscription{ chatMessage { user { username avatarUrl } message } }"}]
 ```
 
 Normally the event requires a channel ID as a parameter. Since we don't specify which channel to listen to it connects to every channel on the site. All you have to do is log the messages as they come in!
@@ -17,7 +17,6 @@ Normally the event requires a channel ID as a parameter. Since we don't specify 
 In the example above we requested the message as well as the username and avatar of the chatter. This query shows all of the possible data we can get from a chat message.
 
 ```graphql
-
 subscription {
   chatMessage {
     id,
@@ -37,7 +36,6 @@ subscription {
         src,
         text,
         type,
-        url
       },
       ...on TextToken {
         text,
@@ -51,7 +49,6 @@ subscription {
     }
   }
 }
-
 ```
 
 This is all of the info required to listen to every chatroom. If you have any questions talk to us on our [Discord](https://discord.gg/Glimesh).

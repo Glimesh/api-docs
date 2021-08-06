@@ -21,17 +21,21 @@ Replace YOUR_CLIENT_ID with your ID. This will allow you access to the API.
 
 ## Building Our Request
 
-The Glimesh API uses GraphQL. You must structure your query accordingly. The API has documentation [here](https://github.com/Glimesh/glimesh.tv/wiki/GraphQL-API). It will allow you to view all of the possible queries. Some data requires an access token with a special scope. For this example we will structure a basic request that requires no special scope. The query must be included in the body of the request.
+The Glimesh API uses GraphQL. You must structure your query accordingly. Some data requires an access token with a special scope. For this example we will structure a basic request that requires no special scope. The query must be included in the body of the request.
 ```GraphQL
 query {
-user (username: "USERNAME"){
-username,
-id}
+  user(username: "USERNAME") {
+    username
+    id
+  }
 }
+
 ```
 Make sure to change "USERNAME" to a user on Glimesh. We are requesting the username and ID of the user. Now that we have our authentication and our query we can request the data. Send a POST request with our query and header from above to:
 
-`https://glimesh.tv/api`
+```url
+https://glimesh.tv/api/graph
+````
 
 Glimesh will send a JSON formatted response when it receives our request.
 ```JSON
@@ -47,18 +51,13 @@ Glimesh will send a JSON formatted response when it receives our request.
 
 You can parse the response to get the data you want. You *could* test every query like this but there is an easier way.
 
-## [Glimesh.tv/api](https://glimesh.tv/api)
+## API Explorer
 
-Glimesh has a website that we can visit to make queries. This is a basic GUI that lets us view the API and has intellisense built in. It is very useful for testing queries.
+You can use an API explorer to make queries without the need of a dev environment. API explorers let you run queries with intellisense and some even handle authentication for you.
 
-> You must be logged in to Glimesh for this site to work. You make queries as the authenticated user.
+We have a dedicated tutorial on using the Insomnia GraphQL editor [here](/api-docs/docs/api/pagination). We also provide a collection of common requests which can be found in that tutorial.
 
-Visit the website [here](https://glimesh.tv/api). You can make any query that you want.
-
-![api Image](https://i.imgur.com/Z43UaOq.png)
-In this example we request a list of categories on Glimesh. We specify that we want the name of each. Glimesh will return the data on the right.
-
-From this website you can read the API spec and query for any data that you want. If you have any questions feel free to talk to us in [Discord](https;//discord.gg/Glimesh).
+If you have any questions feel free to talk to us in [Discord](https;//discord.gg/Glimesh).
 
 ## Common Errors
 

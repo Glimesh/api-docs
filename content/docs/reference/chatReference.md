@@ -5,18 +5,16 @@ bookHidden: true
 Shows all of the fields in the chatMessage object.
 
 ```JS
-
   chatMessage {
     id,
     insertedAt,
     message,
     updatedAt,
-    channel { 
+    channel {
       // Channel data
     },
-    user { 
+    user {
       // User data
     }
   }
-
 ```
