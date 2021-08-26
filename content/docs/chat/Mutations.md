@@ -31,7 +31,7 @@ We need to set up a query to gather the chat messages. You will need the channel
 ```GraphQL
 
 query {
-  channel(username: "Mytho") {
+  channel(streamerUsername: "Mytho") {
     id
   }
 }
@@ -43,12 +43,16 @@ Once you have the ID we can build our request. The query needs to be in the body
 ```GraphQL
 
 query {
-  channel(id:ID) {
-    chatMessages {
-      message,
-      user {
-        username,
-        avatarUrl
+  channel(id: ID) {
+    chatMessages(last: 10) {
+      edges {
+        node {
+          message,
+          user {
+            username,
+            avatarUrl
+          }
+        }
       }
     }
   }
@@ -56,7 +60,7 @@ query {
 
 ```
 
-> Don't forget to replace ID with the channel ID! If you want more data you can view the chatMessage reference [here](/api-docs/docs/reference/chat/)
+> Don't forget to replace ID with the channel ID! If you want more data you can view the chatMessage reference [here](/api-docs/docs/reference/chat/) Chat messages are paginated, you can read about that [here](/api-docs/docs/api/pagination)
 
 Glimesh will respond with a set of JSON data. You need to parse it to get the data that you want.
 
@@ -65,21 +69,26 @@ Glimesh will respond with a set of JSON data. You need to parse it to get the da
 {
   "data": {
     "channel": {
-      "chatMessages": [
-        {
-          "message": "Glimesh is pretty great!",
-          "user": {
-            "avatarUrl": "https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Mytho.png?v=63762672056",
-            "username": "Mytho"
-          }
-        },
-        {
-          "message": "Hello there",
-          "user": {
-            "avatarUrl": "https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Mytho.png?v=63762672056",
-            "username": "Mytho"
-          }
-        },
+      "chatMessages": {
+        "edges": [
+          {
+            "node": {
+              "message": "lee run the free truck in ovals bro no chance of rating loss and really gives you a good feeling ",
+              "user": {
+                "avatarUrl": "https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Sainted_Lord.png?v=63782488662",
+                "username": "Sainted_Lord"
+              }
+            }
+          },
+          {
+            "node": {
+              "message": "You all make this game seem so awesome! D:",
+              "user": {
+                "avatarUrl": "https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/FadedKamui.png?v=63794027172",
+                "username": "FadedKamui"
+              }
+            }
+          },
         // and so on...
 ```
 

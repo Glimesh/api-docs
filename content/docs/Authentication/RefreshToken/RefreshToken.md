@@ -51,4 +51,4 @@ This will allow you to use the new token and continue to query the Glimesh API. 
  - Refresh tokens last for about 1 year.
  - If a user revokes your dev app you cannot use the access or refresh tokens. This would require the user to authenticate again.
 
-If you have any questions talk to us in the #dev channel in our [Discord](https://discord.gg/Glimesh).
+If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).

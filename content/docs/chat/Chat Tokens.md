@@ -6,13 +6,13 @@ Chat tokens are a different way to handle messages sent from chat. A normal mess
 
 ## The Basics
 
-A chat token is the original message split by several factors. 
+A chat token is the original message split by several factors.
 
  1. Normal text
  2. Emotes
  3. URL's
 
-Using the `token` property we can identify information we would previously have had to parse.  Normal text is exactly what is sounds like. Emotes are emotes from Glimesh. The URL is included as well as the text to create it `:glimsmile:` . URL's are also detected separately from text. This information is also provided alongside the default `message` property.  This means you don't have to use chat tokens if you don't want to. 
+Using the `token` property we can identify information we would previously have had to parse.  Normal text is exactly what is sounds like. Emotes are emotes from Glimesh. The URL is included as well as the text to create it `:glimsmile:` . URL's are also detected separately from text. This information is also provided alongside the default `message` property.  This means you don't have to use chat tokens if you don't want to.
 
 ![Chat Parts Example](https://i.imgur.com/vCIasEk.png)
 
@@ -20,11 +20,10 @@ As shown in the image above the chat parts contain all the data from the chat me
 
 ## Building The Query/Subscription
 
-We need to query `chatMessage`. We will plan for every possible type of data in a message. If you do not already have a working websocket for Glimesh you need to get one. If you don't want to keep a connection open you can make a normal query to the channel and view the `chatMessages` property.  Either method is valid. 
+We need to query `chatMessage`. We will plan for every possible type of data in a message. If you do not already have a working websocket for Glimesh you need to get one. If you don't want to keep a connection open you can make a normal query to the channel and view the `chatMessages` property.  Either method is valid.
 
 Start with this subscription
 ```graphql
-
 subscription{
   chatMessage(channelId:6) {
     message,
@@ -36,7 +35,6 @@ subscription{
         src,
         text,
         type,
-        url
       },
       ...on TextToken {
         text,
@@ -50,41 +48,41 @@ subscription{
     }
   }
 }
-
 ```
 
 Or use a query.
 
 ```graphql
-
-query{
-  channel(id:6) {
-  chatMessages {
-    message,
-    user {
-      id
-    },
-    tokens {
-      ...on EmoteToken {
-        src,
-        text,
-        type,
-        url
-      },
-      ...on TextToken {
-        text,
-        type
-      },
-      ...on UrlToken {
-        text,
-        type,
-        url
+query {
+  channel(id: 6) {
+    chatMessages(last: 5) {
+      edges {
+        node {
+          message
+          user {
+            id
+          }
+          tokens {
+            ... on EmoteToken {
+              src
+              text
+              type
+            }
+            ... on TextToken {
+              text
+              type
+            }
+            ... on UrlToken {
+              text
+              type
+              url
+            }
+          }
+        }
       }
     }
   }
-  }
 }
-
 ```
 > Make sure to replace 6 with your channel ID!
 
@@ -93,7 +91,7 @@ You don't need to request every property, adjust the request as needed.
 
 These requests will return the chat message as well as its message parts. The parts are in an array. The array values are generated if the message contains the type requested. If the type does not exist an array value is not generated.
 
-Response:
+Example websocket response:
 ```json
 [
    null,
@@ -126,11 +124,11 @@ Response:
 ```
 > Message: Hello Glimesh Devs :glimsmile:
 
-Your response will vary slightly depending on the message and the query. 
+Your response will vary slightly depending on the message and the query.
 
 ## FAQ
 
-Q: What happens if I use a nonexistent emote? :fakeemote:
+Q: What happens if I use a nonexistent emote? :fake_emote:
 > A: Glimesh will realize the emote is not real and detect it as text.
 
 Q: What is the difference between this and the normal chat API?

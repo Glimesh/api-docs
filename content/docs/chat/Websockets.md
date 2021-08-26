@@ -68,7 +68,7 @@ query {
 
 *Make sure to replace 6 with your channel ID!* The query we just sent will determine what data is sent to us every time a chat message appears in chat. In this example we requested the message and the user who sent it. We ask for the username and avatar of the user in the `user` object.
 
-> To view a list of everything you can request check out the API docs [here](https://glimesh.tv/api) (Docs => subscription => chatMessage).
+> To view a list of everything you can request check out voyager [here](/api-docs/docs/api/voyager)
 
 Glimesh will send us a response:
 
