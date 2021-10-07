@@ -4,7 +4,7 @@ title: Home
 
 # Welcome
 
-This is the repo hosting all of the Glimesh Developer docs. We have separated the information into language specific guides (Node,Python,C,etc). Each topic also has a file explaining the basics of the spec. If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
+This is the website hosting all of the Glimesh Developer docs. We have separated the information into general topics (auth, queries, etc). Each topic  has a page explaining the basics. Some topics also have language specific tutorials. If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
 
 ## Structure
 

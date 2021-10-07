@@ -55,7 +55,7 @@ You can parse the response to get the data you want. You *could* test every quer
 
 You can use an API explorer to make queries without the need of a dev environment. API explorers let you run queries with intellisense and some even handle authentication for you.
 
-We have a dedicated tutorial on using the Insomnia GraphQL editor [here](/api-docs/docs/api/pagination). We also provide a collection of common requests which can be found in that tutorial.
+We have a dedicated tutorial on using the Insomnia GraphQL editor [here](/api-docs/docs/api/api-explorer). We also provide a collection of common requests which can be found in that tutorial.
 
 If you have any questions feel free to talk to us in [Discord](https;//discord.gg/Glimesh).
 
