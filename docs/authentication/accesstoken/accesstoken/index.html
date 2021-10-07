@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Access Tokens #  An access token can be used to query the Glimesh API on behalf of a user. You can also get info about the user that the token belongs to.
@@ -16,8 +16,8 @@
 <title>Access Token | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.d4cf293ffafef170899cdd0426d78097354e0f456e32095c845e962e73379131.js integrity="sha256-1M8pP/r+8XCJnN0EJteAlzVOD0VuMglchF6WLnM3kTE="></script>
+<link rel=stylesheet href=/api-docs/book.min.27286d1fbd1cefccc1b60ca4f59e7ec4f9175c3b6343ab5284bfebf73cfd806f.css integrity="sha256-JyhtH70c78zBtgyk9Z5+xPkXXDtjQ6tShL/r9zz9gG8=">
+<script defer src=/api-docs/en.search.min.3fd65a63504bf7c07c3f8feb5a390117247430bbd312c8ad53f34e99e23dd726.js integrity="sha256-P9ZaY1BL98B8P4/rWjkBFyR0MLvTEsitU/NOmeI91yY="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -130,6 +130,9 @@
 <a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
 </li>
 </ul>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
 </li>
 </ul>
 </li>
@@ -247,7 +250,7 @@ Requesting A Token
 <p>Before requesting a token you must have a <a href=https://glimesh.tv/users/settings/applications>developer application</a>. You will need your client ID, secret ID, and redirect URL.
 <img src=https://i.imgur.com/IIzwkHc.png alt="app image"></p>
 <p>First you need to have a user authenticate with your app. The user must be directed to</p>
-<pre><code class=language-URL data-lang=URL>https://glimesh.tv/oauth/authorize?response_type=code&amp;state=&amp;client_id=CLIENT_ID&amp;scope=public%20email%20chat%20streamkey&amp;redirect_uri=REDIRECT_URL
+<pre tabindex=0><code class=language-URL data-lang=URL>https://glimesh.tv/oauth/authorize?response_type=code&amp;state=&amp;client_id=CLIENT_ID&amp;scope=public%20email%20chat%20streamkey&amp;redirect_uri=REDIRECT_URL
 </code></pre><p>Make sure to replace your client ID and your redirect URL. The redirect URL must match one of the URL&rsquo;s on your application. Scopes are space separated values that determine what permissions you want from the user. Only request the scopes that you need.</p>
 <p>The current scopes are:</p>
 <ul>
@@ -257,9 +260,9 @@ Requesting A Token
 <li><strong>stream</strong> View the streamkey of the user.</li>
 </ul>
 <p>When the user is sent to the link they will have to accept your app scopes. They will then be sent to your apps redirect URL. Glimesh will send a code inside the URL when they are sent back to your app. You need to extract it from the URL.</p>
-<pre><code class=language-URL data-lang=URL>http://your-app.com/some/area?code=qwertyuiop123
+<pre tabindex=0><code class=language-URL data-lang=URL>http://your-app.com/some/area?code=qwertyuiop123
 </code></pre><p>Once you have the code you need to make a request to Glimesh. We will exchange the code for an access token.</p>
-<pre><code class=language-URL data-lang=URL>POST https://glimesh.tv/api/oauth/token?grant_type=authorization_code&amp;code=CODE&amp;redirect_uri=REDIRECT_URL&amp;client_id=CLIENTID&amp;client_secret=SECRETID
+<pre tabindex=0><code class=language-URL data-lang=URL>POST https://glimesh.tv/api/oauth/token?grant_type=authorization_code&amp;code=CODE&amp;redirect_uri=REDIRECT_URL&amp;client_id=CLIENTID&amp;client_secret=SECRETID
 </code></pre><p>Send a POST request with the URL above replacing the code,redirect url, client ID, and secret ID. Remember to <strong>keep the secret ID hidden</strong> from your users. When Glimesh receives the POST request it will send back the information we want. Once it is parsed it will look like this:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>{
   <span style=color:#a6e22e>access_token</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;qwertyuiopo1234567890&#39;</span>,

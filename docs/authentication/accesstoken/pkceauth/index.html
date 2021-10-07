@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="PKCE Authentication Flow #  PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.
@@ -16,8 +16,8 @@
 <title>Pkce Auth | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.d4cf293ffafef170899cdd0426d78097354e0f456e32095c845e962e73379131.js integrity="sha256-1M8pP/r+8XCJnN0EJteAlzVOD0VuMglchF6WLnM3kTE="></script>
+<link rel=stylesheet href=/api-docs/book.min.27286d1fbd1cefccc1b60ca4f59e7ec4f9175c3b6343ab5284bfebf73cfd806f.css integrity="sha256-JyhtH70c78zBtgyk9Z5+xPkXXDtjQ6tShL/r9zz9gG8=">
+<script defer src=/api-docs/en.search.min.3fd65a63504bf7c07c3f8feb5a390117247430bbd312c8ad53f34e99e23dd726.js integrity="sha256-P9ZaY1BL98B8P4/rWjkBFyR0MLvTEsitU/NOmeI91yY="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -130,6 +130,9 @@
 <a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
 </li>
 </ul>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
 </li>
 </ul>
 </li>
@@ -247,7 +250,7 @@ Verifier and Challenge
 </h2>
 <p>First we need to generate a <em>code verifier</em> and a <em>code challenge</em> to use in the authorization request.</p>
 <p>A code verifier is a random string using unreserved characters that is 43-128 characters long. The <a href=https://datatracker.ietf.org/doc/html/rfc7636>RFC</a> acceptable characters are listed below.</p>
-<pre><code>code-verifier = 43*128unreserved
+<pre tabindex=0><code>code-verifier = 43*128unreserved
 unreserved = ALPHA / DIGIT / &quot;-&quot; / &quot;.&quot; / &quot;_&quot; / &quot;~&quot;
 ALPHA = %x41-5A / %x61-7A
 DIGIT = %x30-39
@@ -303,9 +306,9 @@ Authorization Code
 <p>Need a client ID? Create a dev app <a href=https://glimesh.tv/users/settings/applications>here</a>.</p>
 </blockquote>
 <p>The user must be directed to the authorization URL with the below query parameters.</p>
-<pre><code class=language-url data-lang=url>https://glimesh.tv/oauth/authorize?response_type=code&amp;code_challenge=CODE_CHALLENGE&amp;code_challenge_method=S256&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=YOUR_CALLBACK_URL&amp;scope=SCOPE
+<pre tabindex=0><code class=language-url data-lang=url>https://glimesh.tv/oauth/authorize?response_type=code&amp;code_challenge=CODE_CHALLENGE&amp;code_challenge_method=S256&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=YOUR_CALLBACK_URL&amp;scope=SCOPE
 </code></pre><p>Make sure to replace the parameters with their values. When the user is directed to Glimesh they will be asked to approve the scopes you requested. If they approve it they will be redirected to the redirect URL provided. We need to extract the authorization code from the URL (sent as a query param). There are many libraries for each language to help with this. Since we are just testing we can look at the URL and copy it manually.</p>
-<pre><code class=language-url data-lang=url>http://localhost:3000/success?code=qwertyuiop1234567890
+<pre tabindex=0><code class=language-url data-lang=url>http://localhost:3000/success?code=qwertyuiop1234567890
 </code></pre><blockquote>
 <p>Example redirect URL response. We want the code value.</p>
 </blockquote>
@@ -315,8 +318,8 @@ Getting Tokens
 <a class=anchor href=#getting-tokens>#</a>
 </h2>
 <p>Now that we have an authorization code we can request an access token. Simply send a HTTP POST request to the below URL adding the body as x-www-form-urlencoded.</p>
-<pre><code class=language-url data-lang=url>https://glimesh.tv/api/oauth/token
-</code></pre><pre><code>code_verifier:Verifier Here
+<pre tabindex=0><code class=language-url data-lang=url>https://glimesh.tv/api/oauth/token
+</code></pre><pre tabindex=0><code>code_verifier:Verifier Here
 client_id: Client ID Here
 redirect_uri: Redirect Uri Here
 scope:public

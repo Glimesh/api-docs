@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.88.1">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Chat WebSockets #  Glimesh uses WebSockets to allow for constant communication between you and the chat API. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the chat scope to post messages.
@@ -14,8 +14,8 @@
 <title>Websockets | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.7838c35ddbb4cde77e72b64000950beac8cc33922973a118ebc2c915f0e3e2f8.css integrity="sha256-eDjDXdu0zed+crZAAJUL6sjMM5Ipc6EY68LJFfDj4vg=">
-<script defer src=/api-docs/en.search.min.d4cf293ffafef170899cdd0426d78097354e0f456e32095c845e962e73379131.js integrity="sha256-1M8pP/r+8XCJnN0EJteAlzVOD0VuMglchF6WLnM3kTE="></script>
+<link rel=stylesheet href=/api-docs/book.min.27286d1fbd1cefccc1b60ca4f59e7ec4f9175c3b6343ab5284bfebf73cfd806f.css integrity="sha256-JyhtH70c78zBtgyk9Z5+xPkXXDtjQ6tShL/r9zz9gG8=">
+<script defer src=/api-docs/en.search.min.3fd65a63504bf7c07c3f8feb5a390117247430bbd312c8ad53f34e99e23dd726.js integrity="sha256-P9ZaY1BL98B8P4/rWjkBFyR0MLvTEsitU/NOmeI91yY="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -128,6 +128,9 @@
 <a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
 </li>
 </ul>
+</li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
 </li>
 </ul>
 </li>
@@ -248,14 +251,14 @@ Preparing the Connection
 <a class=anchor href=#preparing-the-connection>#</a>
 </h2>
 <p>First, build your URL that you will connect to. It should look like this:</p>
-<pre><code class=language-URL data-lang=URL>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;token=TOKEN_HERE
+<pre tabindex=0><code class=language-URL data-lang=URL>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;token=TOKEN_HERE
 </code></pre><p>That URL is for access token authentication. If you are using a client ID use this instead:</p>
-<pre><code class=language-URL data-lang=URL>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;client_id=CLIENT_ID
+<pre tabindex=0><code class=language-URL data-lang=URL>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;client_id=CLIENT_ID
 </code></pre><blockquote>
 <p>Make sure to replace TOKEN_HERE or CLIENT_ID with the proper token or ID.</p>
 </blockquote>
 <p>Start by opening a secure websocket connection to the URL you are using. When the connection is opened we send Glimesh a join request in JSON format to stay connected to the socket. The array below is a example of what this should look like.</p>
-<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;phx_join&quot;,{}]
+<pre tabindex=0><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;phx_join&quot;,{}]
 </code></pre><p>Notice that this is a JSON array. Some WebSocket libraries only allow you to send strings or specially formatted JSON. Sometimes you need to encase the data in a string. If the connection closes immediately you may need to change the type of your request. This depends purely on your library, if you are having trouble talk to us in our <a href=https://discord.gg/Glimesh>discord.</a></p>
 <blockquote>
 <p>Javascript example using the ws NPM package:</p>
@@ -281,7 +284,7 @@ Joining Chat
 <p>Remember: Channel IDs and user IDs are different things. Everyone is a user but not everyone has a channel.</p>
 </blockquote>
 <p>Once you have the ID we can join the chat. Send this through the connection:</p>
-<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&quot;,&quot;variables&quot;:{} }]
+<pre tabindex=0><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&quot;,&quot;variables&quot;:{} }]
 </code></pre><p><em>Make sure to replace 6 with your channel ID!</em> The query we just sent will determine what data is sent to us every time a chat message appears in chat. In this example we requested the message and the user who sent it. We ask for the username and avatar of the user in the <code>user</code> object.</p>
 <blockquote>
 <p>To view a list of everything you can request check out voyager <a href=/api-docs/docs/api/voyager>here</a></p>
@@ -293,7 +296,7 @@ Staying Connected (heartbeat)
 <a class=anchor href=#staying-connected-heartbeat>#</a>
 </h2>
 <p>Now we are connected to chat! The only thing left to do is send a heartbeat to Glimesh so the connection won&rsquo;t be closed. You need to send a heartbeat every 20 seconds. Structure it as follows:</p>
-<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;phoenix&quot;,&quot;heartbeat&quot;,{}]
+<pre tabindex=0><code>[&quot;1&quot;,&quot;1&quot;,&quot;phoenix&quot;,&quot;heartbeat&quot;,{}]
 </code></pre><p>Glimesh will respond with:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>[<span style=color:#e6db74>&#34;null&#34;</span>,<span style=color:#e6db74>&#34;1&#34;</span>,<span style=color:#e6db74>&#34;phoenix&#34;</span>,<span style=color:#e6db74>&#34;phx_reply&#34;</span>,{<span style=color:#f92672>&#34;response&#34;</span>:{},<span style=color:#f92672>&#34;status&#34;</span>:<span style=color:#e6db74>&#34;ok&#34;</span>}]
 </code></pre></div><p>Now Glimesh won&rsquo;t disconnect us and we have a stable chat connection! Next we will parse incoming messages and send messages back to chat.</p>
@@ -312,7 +315,7 @@ Sending Messages
 <a class=anchor href=#sending-messages>#</a>
 </h2>
 <p>Next we will send a message back to chat. We must use a mutation to do so. Send this to chat:</p>
-<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;mutation {createChatMessage(channelId:6, message: {message: \&quot;Hello There!\&quot;}) {message }}&quot;,&quot;variables&quot;:{}}]
+<pre tabindex=0><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;mutation {createChatMessage(channelId:6, message: {message: \&quot;Hello There!\&quot;}) {message }}&quot;,&quot;variables&quot;:{}}]
 </code></pre><blockquote>
 <p>Don&rsquo;t forget to replace 6 with your channel ID and Hello World with your message! The \ before the quotes are used to prevent the JSON structure from breaking. Depending on how your lib handles ws messages they may not be necessary.
 The format for sending messages is very strict, ensure Glimesh receives your data as valid JSON.</p>
@@ -335,7 +338,7 @@ WebSocket API Queries
 }
 
 </code></pre></div><p>In this example we request the ID and username of the followers of a channel. Replace CHANNEL with any streamer on Glimesh. Keep in mind that they must be a channel and not just a normal user. Add this query as the payload in the message that we will send to the API. As with all requests we must make this valid JSON before sending it to Glimesh.</p>
-<pre><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;query {followers(streamerUsername: \&quot;CHANNEL\&quot;) {id,user {username}}}&quot;}]
+<pre tabindex=0><code>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;query {followers(streamerUsername: \&quot;CHANNEL\&quot;) {id,user {username}}}&quot;}]
 </code></pre><blockquote>
 <p>This snippet is already JSON, you may have to make adjustments depending on your websocket library.</p>
 </blockquote>
