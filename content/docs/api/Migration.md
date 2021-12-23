@@ -1,6 +1,6 @@
 # API Migration
 
-Glimesh has started migrated to a new API because of major changes in the way result data is returned from the API. We've added pagination to all queries that return lists to improve performance on the app, and renamed several fields for consistency. 
+Glimesh has started migrated to a new API because of major changes in the way result data is returned from the API. We've added pagination to all queries that return lists to improve performance on the app, and renamed several fields for consistency.
 
 In addition, we are in the process of migrating to a new OAuth 2.0 provider which adds additional features, but may require some changes for your application. The migration to the new OAuth 2.0 provider will complete on August 20th 2021 at 8AM EDT.
 
@@ -18,7 +18,7 @@ HTTP Endpoint: https://glimesh.tv/api/graph
 WebSocket Endpoint: https://glimesh.tv/api/graph/websocket
 ```
 
-This will give you full access to the new endpoints and features of the API. 
+This will give you full access to the new endpoints and features of the API.
 
 
 ### What Changed?
@@ -109,4 +109,4 @@ Credentials now use new formats. Client IDs and Secret Keys will be converted fo
 	- Can now contain upper case values.
 	- Max length increased to 255 characters.
 
-Our OAuth system now supports PKCE auth. This is a new standard and it is not required to use the API. We have a guide on getting it setup shortly.
+Our OAuth system now supports PKCE auth. This is a new standard and it is not required to use the API. We have a guide on it [here](/api-docs/docs/authentication/accesstoken/pkceauth/).

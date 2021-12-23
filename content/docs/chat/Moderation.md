@@ -17,7 +17,7 @@ Glimesh has various methods to help streamers moderate their chat. All of the be
 | unbanUser | Removes the ban on a user. |
 | longTimeoutUser | Prevents a user from typing for 15 minutes. |
 | shortTimeoutUser | Prevents a user from typing for 5 minutes. |
-| deleteMessage | Removes a message from chat. |
+| deleteChatMessage | Removes a message from chat. |
 
 To use any of these methods you must have the proper rank in the chat. You need to be a streamer or a moderator in their chat. You also need the user ID of the user who will receive the action and the channel ID of the channel in which the action will take place.  You can get a channel ID with the below query.
 
