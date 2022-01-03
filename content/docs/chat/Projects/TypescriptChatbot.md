@@ -6,7 +6,7 @@ This tutorial will show how to make a basic chatbot for Glimesh. You should have
  - Code Editor ([VSCode](https://code.visualstudio.com/) works great with this project)
  - Glimesh account with a channel and a [Dev App](https://glimesh.tv/users/settings/applications)
 
-You can follow the below document or watch the video. They are the same. The finished project can be found on Github [here](https://github.com/aMytho/Glimesh-Chatbot).  We suggest that you follow along and use it as a point of reference only if needed.
+The finished project can be found on Github [here](https://github.com/aMytho/Glimesh-Chatbot).  We suggest that you follow along and use it as a point of reference only if needed.
 
 > Note that if future tutorials are created the repo may look different. You can always go back to the commit for each tutorial. This one is called "Getting Started".
 
@@ -93,7 +93,7 @@ Save the file.  We could run the compiler from the command line but it's easier 
 "start": "node build/index.js"
 ```
 
-Your file should closely mirror the below file.
+`package.json` should now closely mirror the below file.
 
 ```json
 {
@@ -158,7 +158,7 @@ Now that we have a proper dev env setup we can start to build our bot.
 
 ## Authentication
 
-All projects that use the Glimesh API require some form of authentication. Glimesh needs to know which project is making API requests. There are many different methods to authenticate our chatbot but we will use [client credentials](https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/). We are using this method because we are the only person who will view our source code. It is also the easiest form of auth.
+All projects that use the Glimesh API require some form of authentication. Glimesh needs to know which project is making API requests. There are many different methods to authenticate our chatbot but we will use [client credentials](https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/). We are using this method because we are the only people who will view our source code. It is also the easiest form of auth.
 
 We will start by creating a module to handle all auth related code. Create a folder called `lib`. In this folder create a file called `auth.ts`. Fill it with the data shown below.
 
@@ -209,7 +209,7 @@ auth.json
 build/
 ```
 
-Now we need to import the auth info so we can send it to Glimesh. We will create a variable that mirrors the structure from the auth file. We create a function to read the auth file and a function to request an access token from Glimesh. These will both be imported and called from *index.ts* Add the below lines to the auth file.
+Now we need to import the auth info so we can send it to Glimesh. We will create a variable that mirrors the structure from the auth file. We also create a function to read the auth file and a function to request an access token from Glimesh. These will both be imported and called from *index.ts*. Add the below lines to the auth file.
 
 ```ts
 /* lib/auth.ts */
@@ -261,7 +261,7 @@ export {getAccessToken, readAuthInfo}
 This is a lot of code!
 Let's start with the first function `readAuthInfo()`. This is an async function so it returns a promise. It tries to read the auth file and then returns a JSON parsed version of the auth data. This lets us easily access the properties. This function will return false if anything goes wrong.
 
-The next function `getAccessToken()` returns a Glimesh access token. It requires our client and secret ID to be passed to it as parameters. We send a HTTP POST request and wait for the result. If all goes well we will receive an access token.
+The next function `getAccessToken()` returns a Glimesh access token. It requires our client and secret ID to be passed to it as parameters. We send a HTTP POST request to Glimesh and wait for the result. If all goes well we will receive an access token.
 
 > Note the type defs on the bottom. These provide autocompletion for our data. They are removed at runtime.
 
@@ -291,11 +291,11 @@ waitForAuth.then(data => {
 })
 ```
 
-First we define a token variable. This will hold our access token when we receive it. Then we read the auth file and use it to request a token. When we receive the token we return it and set our token variable equal to it. We can now connect to the API!
+First we define a token variable. This will hold our access token when we receive it. Then we read the auth file and use it to request a token. When we receive the token we set our token variable equal to it. We can now connect to the API!
 
 ## Connecting to Chat
 
-We will create a function to connect to chat and add several listeners. We will also make a module for parsing data and a module for running commands. This helps to keep our code organized. Add the following lines to the top of `index.ts`.
+We will create a function `connectToGlimesh` to connect to chat and add several listeners. We will also make a module for parsing data and a module for running commands. This helps to keep our code organized. Add the following lines to the top of `index.ts`.
 
 ```ts
 /* Top of index.ts */
@@ -339,7 +339,7 @@ async function connectToGlimesh(token: string) {
 }
 ```
 
-We connect to chat once we receive our token. Run the function below the `token = data` line. The `waitForAuth` callback function should look like the code below.
+This function needs to run once we receive our token. Call the function below the `token = data` line. The `waitForAuth` callback function should look like the code below.
 
 ```ts
 /* index.ts */
@@ -374,7 +374,7 @@ setInterval(() => {
 ```
 
 
-This will complete the chat connection and send us chat messages on the specified ID. If you know your channel ID you can add it to the above code. If you do not know your ID you can head to [/API](https://glimesh.tv/api) and make the below query in the editor replacing Mytho with your channel. It will return the ID of your channel.
+This will complete the chat connection and send us chat messages on the specified ID. If you know your channel ID you can add it to the above code replacing 6 with your ID. If you do not know your ID you can head to [/API](https://glimesh.tv/api) and make the below query in the editor replacing Mytho with your channel. It will return the ID of your channel.
 
 ```graphql
 query {
@@ -384,18 +384,19 @@ query {
 }
 ```
 
-> You don't need any special permission to listen for chat messages. Any access token or client ID can listen to any channel. Once you complete this tutorial have a look at [listening to every channel at once]().
+> You don't need any special permission to listen for chat messages. Any access token or client ID can listen to any channel. Once you complete this tutorial have a look at [listening to every channel at once](/api-docs/docs/chat/projects/sitewidesubscription/).
 
 Save and run the file. It should connect to chat and listen for messages. Try sending one! It will also send you a heartbeat every 30 seconds.
+
+> Make sure the file is compiled before you run it!
 
 ### Handling Incoming Data
 
 Now that we have messages we need to parse the incoming data and make it check for commands. Create the 2 files shown below.
 
-Responsible for handling all data from Glimesh (not just chatMessages)
-`lib/packet.ts`
-Responsible for scanning messages and running commands.
-`lib/command.ts`
+Responsible for handling all data from Glimesh (not just chatMessages) `lib/packet.ts`
+
+Responsible for scanning messages and running commands. `lib/command.ts`
 
 Add the below code to `lib/packet.ts`
 
@@ -488,7 +489,7 @@ connection.on("message", (data: any) => {
 })
 ```
 
-This checks for a message and if it exists it checks for a command. If the command exists the command message is returned. We need to make a the `sendMessage` function so we can talk to chat. Add the following function just below the message handler function. (It must be within the `connectToGlimesh` function. Replace 6 with your channel ID.
+This checks for a message and if it exists it checks for a command. If the command exists the command message is returned. We need to make the `sendMessage` function so we can talk to chat. Add the following function just below the message handler function. (It must be within the `connectToGlimesh` function. Replace 6 with your channel ID.
 
 ```ts
 function sendMessage(message: string) {
