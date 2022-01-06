@@ -1,6 +1,6 @@
 <!doctype html><html lang=en>
 <head>
-<meta name=generator content="Hugo 0.89.0">
+<meta name=generator content="Hugo 0.91.2">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=description content="Client Credentials (Access Token) #  An access token can be used to query the Glimesh API on behalf of a user. Normally you have to get a token from a user. Client credentials allows us to generate an access token for our own account to act as an authenticated user. This is frequently used for testing purposes.
@@ -10,12 +10,12 @@ Requesting A Token #  Before requesting a token you must have a developer applic
 Requesting A Token #  Before requesting a token you must have a developer application.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-08-05T22:53:44-05:00">
+<meta property="article:modified_time" content="2021-12-13T20:15:29-06:00">
 <title>Client Credentials | API-Docs</title>
 <link rel=manifest href=/api-docs/manifest.json>
 <link rel=icon href=/api-docs/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.63e4145dc89ab42b912dd319eed25b5476f3ee2ce4a834c046d390e1e46da81b.js integrity="sha256-Y+QUXciatCuRLdMZ7tJbVHbz7izkqDTARtOQ4eRtqBs="></script>
+<script defer src=/api-docs/en.search.min.f9f5068b7e8206b235dbc31db5a2076cd8cada5ce86b0c4b2cb486ee8740e540.js integrity="sha256-+fUGi36CBrI128MdtaIHbNjK2lzoawxLLLSG7odA5UA="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -151,6 +151,9 @@ Requesting A Token #  Before requesting a token you must have a developer applic
 <li>
 <a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
 </li>
+<li>
+<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a>
+</li>
 </ul>
 </li>
 <li>
@@ -255,13 +258,16 @@ Requesting A Token
 <span style=color:#f92672>&#34;token_type&#34;</span>:  <span style=color:#e6db74>&#34;bearer&#34;</span>
 }
 </code></pre></div><p>The access token received will allow us to make requests as if we were using a normal access token. We have permissions for all the scopes and have access to any user specific properties. The token generated will expire in 6 hours just like a normal token. Unlike normal tokens, this cannot be refreshed. As with all auth information you must keep this private.</p>
+<blockquote>
+<p>If you don&rsquo;t request any scopes you automatically have access to every scope. If you <strong>do</strong> request a scope you only have access to the scopes that you requested.</p>
+</blockquote>
 <p>If you have any questions talk to us in the #dev-questions channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/db1616a85475e845881cbdfe985e565f318c109c title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
+<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/4a9249032bebb219993a3a21ae80f315c1241a08 title="Last modified by MythoAway7 | December 14, 2021" target=_blank rel=noopener>
 <img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>August 6, 2021</span>
+<span>December 14, 2021</span>
 </a>
 </div>
 </div>
