@@ -3355,20 +3355,6 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 						{
 							"args": [
 								{
-									"defaultValue": null,
-									"description": null,
-									"name": "channelId",
-									"type": {
-										"kind": "NON_NULL",
-										"name": null,
-										"ofType": {
-											"kind": "SCALAR",
-											"name": "ID",
-											"ofType": null
-										}
-									}
-								},
-								{
 									"defaultValue": "false",
 									"description": null,
 									"name": "liveNotifications",
@@ -3378,6 +3364,20 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 										"ofType": {
 											"kind": "SCALAR",
 											"name": "Boolean",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": null,
+									"name": "streamerId",
+									"type": {
+										"kind": "NON_NULL",
+										"name": null,
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "ID",
 											"ofType": null
 										}
 									}
@@ -3589,7 +3589,7 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 								{
 									"defaultValue": null,
 									"description": null,
-									"name": "channelId",
+									"name": "streamerId",
 									"type": {
 										"kind": "NON_NULL",
 										"name": null,
@@ -3984,7 +3984,7 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 									"name": "streamerId",
 									"type": {
 										"kind": "SCALAR",
-										"name": "Int",
+										"name": "ID",
 										"ofType": null
 									}
 								},
@@ -3994,7 +3994,7 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 									"name": "userId",
 									"type": {
 										"kind": "SCALAR",
-										"name": "Int",
+										"name": "ID",
 										"ofType": null
 									}
 								}
@@ -6223,7 +6223,7 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 			]
 		}
 	}
-}
+} // Delete this one and up
     });
 
     // Sets the new margins and spacing for voyager
