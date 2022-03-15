@@ -1,596 +1,296 @@
-<!doctype html><html lang=en>
-<head>
-<meta name=generator content="Hugo 0.92.1">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="API Pagination #  Some fields in the API are paginated. We have to sort through the pages to get the data we requested. Glimesh follows the GraphQL pagination spec.
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.94.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="API Pagination #  Some fields in the API are paginated. We have to sort through the pages to get the data we requested. Glimesh follows the GraphQL pagination spec.
  GraphQL pagination can be found here
- Connection, Edges, and Nodes #  Pagination is used when the data requested is too large to send to the user. Take the below query as an example. This query would return the ID of all the users on the site.">
-<meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
-<meta property="og:description" content="API Pagination #  Some fields in the API are paginated. We have to sort through the pages to get the data we requested. Glimesh follows the GraphQL pagination spec.
+ Connection, Edges, and Nodes #  Pagination is used when the data requested is too large to send to the user. Take the below query as an example. This query would return the ID of all the users on the site."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="API Pagination #  Some fields in the API are paginated. We have to sort through the pages to get the data we requested. Glimesh follows the GraphQL pagination spec.
  GraphQL pagination can be found here
- Connection, Edges, and Nodes #  Pagination is used when the data requested is too large to send to the user. Take the below query as an example. This query would return the ID of all the users on the site.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/pagination/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-08-05T22:48:00-05:00">
-<title>Pagination | API-Docs</title>
-<link rel=manifest href=/api-docs/manifest.json>
-<link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.2b01b127225281f5ae3cf8b80c0541d9efef8677f8031b55a651f7f1ef97d40e.js integrity="sha256-KwGxJyJSgfWuPPi4DAVB2e/vhnf4AxtVplH38e+X1A4="></script>
+ Connection, Edges, and Nodes #  Pagination is used when the data requested is too large to send to the user. Take the below query as an example. This query would return the ID of all the users on the site."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/pagination/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2021-08-05T22:48:00-05:00"><title>Pagination | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.8df307fd82e102d753dd7f0330c0d379903d3b0d16e17b31f63bcca72c9bf88b.js integrity="sha256-jfMH/YLhAtdT3X8DMMDTeZA9Ow0W4Xsx9jvMpyyb+Is="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css>
-<script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script>
-</head>
-<body>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<nav>
-<h2 class=book-brand>
-<a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle checked>
-<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between">
-<a>API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
-<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between">
-<a>Live Updates</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
-<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between">
-<a>Query API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/pagination/ class=active>Pagination</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
-<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between">
-<a>Authentication</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
-<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between">
-<a>Access Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
-<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between">
-<a>Refresh Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
-<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between">
-<a>Chat</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
-<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between">
-<a>Projects</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
-<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between">
-<a>Reference</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a>
-</li>
-<li>
-<input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
-<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between">
-<a>Developer Resources</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/api-docs/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css><script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle checked>
+<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between"><a>API</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
+<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between"><a>Live Updates</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a></li></ul></li><li><input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
+<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between"><a>Query API</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/pagination/ class=active>Pagination</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a></li></ul></li><li><input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
+<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between"><a>Authentication</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
+<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between"><a>Access Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a></li></ul></li><li><input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
+<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between"><a>Refresh Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a></li></ul></li><li><input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
+<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between"><a>Chat</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
+<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between"><a>Projects</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a></li><li><a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a></li><li><input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
+<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between"><a>Developer Resources</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/api-docs/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Pagination</strong>
-<label for=toc-control>
-<img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#connection-edges-and-nodes>Connection, Edges, and Nodes</a>
-<ul>
-<li><a href=#connections>Connections</a></li>
-<li><a href=#edges>Edges</a></li>
-<li><a href=#pageinfo>PageInfo</a></li>
-</ul>
-</li>
-<li><a href=#paginating-through-data>Paginating Through Data</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=api-pagination>
-API Pagination
-<a class=anchor href=#api-pagination>#</a>
-</h1>
-<p>Some fields in the API are paginated. We have to sort through the pages to get the data we requested. Glimesh follows the GraphQL pagination spec.</p>
-<blockquote>
-<p>GraphQL pagination can be found <a href=https://graphql.org/learn/pagination/>here</a></p>
-</blockquote>
-<h2 id=connection-edges-and-nodes>
-Connection, Edges, and Nodes
-<a class=anchor href=#connection-edges-and-nodes>#</a>
-</h2>
-<p>Pagination is used when the data requested is too large to send to the user. Take the below query as an example. This query would return the ID of all the users on the site. This would take a long time for Glimesh to get the data and would be a large payload to send.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>users</span> {
-    id
-  }
-}
-<span style=color:#75715e># Above query will not work :(</span>
-</code></pre></div><p>Instead of sending all the users, Glimesh sends us a UserConnection. This contains data on how to get the data we requested.</p>
-<blockquote>
-<p>Note that each paginated field has its own Connection type. They always correspond to the field requested. Since we queried users we received a UserConnection</p>
-</blockquote>
-<h3 id=connections>
-Connections
-<a class=anchor href=#connections>#</a>
-</h3>
-<p>Connections contain a count of all the edges, the edges themselves, and a pageInfo. They help us get the data we requested, and show us how much data we can paginate through.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>users {
-  count, <span style=color:#75715e># How many edges exist on this query</span>
-  edges {}, <span style=color:#75715e># Some edges that match the query</span>
-  pageInfo {} <span style=color:#75715e># pageInfo containing info on the page returned</span>
-}
-</code></pre></div><p>The count returns how many edges exist <strong>based on your query</strong>. This does not return the total amount of edges. For example, if you ask for the first 5 results you will have a count of 5, even though the total amount of edges is far more.</p>
-<h3 id=edges>
-Edges
-<a class=anchor href=#edges>#</a>
-</h3>
-<p>Each edge contains a cursor and a node. The cursor is a string of text that identifies the edge. The node is the data on that edge. Each node has 1 item we queried (in this case a user).</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>edges {
-  cursor,<span style=color:#75715e># Unique ID that identifies the node</span>
-  node {id, username} <span style=color:#75715e># The node contains data that we requested</span>
-}
-</code></pre></div><h3 id=pageinfo>
-PageInfo
-<a class=anchor href=#pageinfo>#</a>
-</h3>
-<p>A PageInfo object exists on every connection. They contain an end and start cursor, as well as a hasNextPage and hasPreviousPage. Pageinfo can be used to determine if there is any more data to paginate through.</p>
-<blockquote>
-<p>Note that the next and previous are determined by the first item returned, not the last.</p>
-</blockquote>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql>pageInfo {
-  endCursor, <span style=color:#75715e># ID of the last cursor for the connection</span>
-  hasNextPage, <span style=color:#75715e># bool</span>
-  hasPreviousPage, <span style=color:#75715e># bool,</span>
-  startCursor <span style=color:#75715e># ID of the first cursor for the collection</span>
-}
-</code></pre></div><h2 id=paginating-through-data>
-Paginating Through Data
-<a class=anchor href=#paginating-through-data>#</a>
-</h2>
-<p>Now that we know how pagination works, let&rsquo;s get the 5 most recent users and the first 5 users on Glimesh. All the necessary queries are posted below, but you will need to run them in your own project or use a graphql explorer.</p>
-<p>First we start by making a query to get the first 5 users. We can query more at a time, but for this tutorial 5 will suffice. We also ask for the cursor of each edge.</p>
-<div class=book-tabs><input type=radio class=toggle name=tabs-first5 id=tabs-first5-0 checked>
-<label for=tabs-first5-0>Request</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
-	<span style=color:#a6e22e>users</span>(first: <span style=color:#a6e22e>5</span>) {
-		edges {
-			cursor
-			node {
-				id
-				username
-			}
-		}
-	}
-}
-</code></pre></div></div><input type=radio class=toggle name=tabs-first5 id=tabs-first5-1>
-<label for=tabs-first5-1>Result</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-    <span style=color:#f92672>&#34;data&#34;</span>: {
-        <span style=color:#f92672>&#34;users&#34;</span>: {
-            <span style=color:#f92672>&#34;edges&#34;</span>: [
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjA=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;1&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;clone1018&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjE=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;2&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;IKAROS&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjI=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;3&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Kristoff&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjM=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;4&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Ember&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQ=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;5&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Heiwa&#34;</span>
-                    }
-                }
-            ]
-        }
-    }
-}
-</code></pre></div></div></div>
-<p>Now we have the first 5 users. Since we also have the cursors of each edge we could query the next 5. Take the below query as an example. We still ask for the first 5 but we request it <strong>after</strong> the 5th edge from the last query.</p>
-<div class=book-tabs><input type=radio class=toggle name=tabs-next5 id=tabs-next5-0 checked>
-<label for=tabs-next5-0>Request</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
-	<span style=color:#a6e22e>users</span>(first: <span style=color:#a6e22e>5</span>, after: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQ=&#34;</span> ) {
-		<span style=color:#a6e22e>edges</span> {
-			cursor
-			node {
-				id
-				username
-			}
-		}
-	}
-}
-</code></pre></div></div><input type=radio class=toggle name=tabs-next5 id=tabs-next5-1>
-<label for=tabs-next5-1>Result</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-    <span style=color:#f92672>&#34;data&#34;</span>: {
-        <span style=color:#f92672>&#34;users&#34;</span>: {
-            <span style=color:#f92672>&#34;edges&#34;</span>: [
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjU=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;6&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Bubdrum&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjY=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;7&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Deicefenrir&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjc=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;8&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Umbreo&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjg=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;9&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;UnTubular&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjk=&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;10&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Asterisk&#34;</span>
-                    }
-                }
-            ]
-        }
-    }
-}
-</code></pre></div></div></div>
-<p>Now we have the next 5 users. You can use this to move through the entire database. However, we wanted the last 5 users. We <em>could</em> continue in this way (although we would query more than 5 at a time!) but there is an easier way. We can use the <strong>last</strong> parameter. Simply replace <strong>first</strong> with <strong>last</strong> from the first query.</p>
-<div class=book-tabs><input type=radio class=toggle name=tabs-getLast id=tabs-getLast-0 checked>
-<label for=tabs-getLast-0>Request</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
-	<span style=color:#a6e22e>users</span>(last: <span style=color:#a6e22e>5</span>) {
-		edges {
-			cursor
-			node {
-				id
-				username
-			}
-		}
-	}
-}
-</code></pre></div></div><input type=radio class=toggle name=tabs-getLast id=tabs-getLast-1>
-<label for=tabs-getLast-1>Result</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-    <span style=color:#f92672>&#34;data&#34;</span>: {
-        <span style=color:#f92672>&#34;users&#34;</span>: {
-            <span style=color:#f92672>&#34;edges&#34;</span>: [
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc1&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42336&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Emad&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc2&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42337&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Mr_Emotional&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc3&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42338&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;BruteMouse&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc4&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42339&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Bruhh&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc5&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42340&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;VeganGaymer&#34;</span>
-                    }
-                }
-            ]
-        }
-    }
-}
-</code></pre></div></div></div>
-<p>This will return the 5 most recent users. Glimesh adds users in the order that they were created, so these users have the highest user IDs.</p>
-<blockquote>
-<p>Note that you will get a different result. Users have been added since this doc was written, so you will get different users.</p>
-</blockquote>
-<p>We can also request pageInfo with each paginated query. This will tell us if there is another page after or before our result, and show us the first and last cursor of our result. For our queries this wasn&rsquo;t neccassary, but if you plan to paginate through a large amount of users it is very helpful. The below query gets 5 users before the last 5 users with the <strong>before</strong> parameter.</p>
-<div class=book-tabs><input type=radio class=toggle name=tabs-getBeforeLast id=tabs-getBeforeLast-0 checked>
-<label for=tabs-getBeforeLast-0>Request</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
-    <span style=color:#a6e22e>users</span>(last: <span style=color:#a6e22e>5</span>, before: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc1&#34;</span>) {
-        <span style=color:#a6e22e>edges</span> {
-            cursor
-            node {
-                id
-                username
-            }
-        },
-        pageInfo {
-            endCursor,  <span style=color:#75715e># ID of the last cursor for the result</span>
-            hasNextPage, <span style=color:#75715e># bool</span>
-            hasPreviousPage,  <span style=color:#75715e># bool,</span>
-            startCursor  <span style=color:#75715e># ID of the first cursor for the result</span>
-        }
-    }
-}
-</code></pre></div></div><input type=radio class=toggle name=tabs-getBeforeLast id=tabs-getBeforeLast-1>
-<label for=tabs-getBeforeLast-1>Result</label>
-<div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-    <span style=color:#f92672>&#34;data&#34;</span>: {
-        <span style=color:#f92672>&#34;users&#34;</span>: {
-            <span style=color:#f92672>&#34;edges&#34;</span>: [
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcw&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42331&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;FsnGaming&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcx&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42332&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;ajsdlasdasd&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcy&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42333&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;dfhdhsad&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcz&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42334&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;dqbyudvbqhdbvzh&#34;</span>
-                    }
-                },
-                {
-                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc0&#34;</span>,
-                    <span style=color:#f92672>&#34;node&#34;</span>: {
-                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42335&#34;</span>,
-                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Elitex&#34;</span>
-                    }
-                }
-            ],
-            <span style=color:#f92672>&#34;pageInfo&#34;</span>: {
-                <span style=color:#f92672>&#34;endCursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc0&#34;</span>,
-                <span style=color:#f92672>&#34;hasNextPage&#34;</span>: <span style=color:#66d9ef>true</span>,
-                <span style=color:#f92672>&#34;hasPreviousPage&#34;</span>: <span style=color:#66d9ef>true</span>,
-                <span style=color:#f92672>&#34;startCursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcw&#34;</span>
-            }
-        }
-    }
-}
-</code></pre></div></div></div>
-<p>The same process applies for all paginated fields. If you have any questions be sure to let us know in discord!</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/3d3bbdda092d3e87100ede227cd48a00ecac90fe title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
-<img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>August 6, 2021</span>
-</a>
-</div>
-</div>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#connection-edges-and-nodes>Connection, Edges, and Nodes</a>
-<ul>
-<li><a href=#connections>Connections</a></li>
-<li><a href=#edges>Edges</a></li>
-<li><a href=#pageinfo>PageInfo</a></li>
-</ul>
-</li>
-<li><a href=#paginating-through-data>Paginating Through Data</a></li>
-</ul>
-</nav>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#connection-edges-and-nodes>Connection, Edges, and Nodes</a><ul><li><a href=#connections>Connections</a></li><li><a href=#edges>Edges</a></li><li><a href=#pageinfo>PageInfo</a></li></ul></li><li><a href=#paginating-through-data>Paginating Through Data</a></li></ul></nav></aside></header><article class=markdown><h1 id=api-pagination>API Pagination
+<a class=anchor href=#api-pagination>#</a></h1><p>Some fields in the API are paginated. We have to sort through the pages to get the data we requested. Glimesh follows the GraphQL pagination spec.</p><blockquote><p>GraphQL pagination can be found <a href=https://graphql.org/learn/pagination/>here</a></p></blockquote><h2 id=connection-edges-and-nodes>Connection, Edges, and Nodes
+<a class=anchor href=#connection-edges-and-nodes>#</a></h2><p>Pagination is used when the data requested is too large to send to the user. Take the below query as an example. This query would return the ID of all the users on the site. This would take a long time for Glimesh to get the data and would be a large payload to send.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>users</span> {
+</span></span><span style=display:flex><span>    id
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#75715e># Above query will not work :(</span>
+</span></span></code></pre></div><p>Instead of sending all the users, Glimesh sends us a UserConnection. This contains data on how to get the data we requested.</p><blockquote><p>Note that each paginated field has its own Connection type. They always correspond to the field requested. Since we queried users we received a UserConnection</p></blockquote><h3 id=connections>Connections
+<a class=anchor href=#connections>#</a></h3><p>Connections contain a count of all the edges, the edges themselves, and a pageInfo. They help us get the data we requested, and show us how much data we can paginate through.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span>users {
+</span></span><span style=display:flex><span>  count, <span style=color:#75715e># How many edges exist on this query</span>
+</span></span><span style=display:flex><span>  edges {}, <span style=color:#75715e># Some edges that match the query</span>
+</span></span><span style=display:flex><span>  pageInfo {} <span style=color:#75715e># pageInfo containing info on the page returned</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>The count returns how many edges exist <strong>based on your query</strong>. This does not return the total amount of edges. For example, if you ask for the first 5 results you will have a count of 5, even though the total amount of edges is far more.</p><h3 id=edges>Edges
+<a class=anchor href=#edges>#</a></h3><p>Each edge contains a cursor and a node. The cursor is a string of text that identifies the edge. The node is the data on that edge. Each node has 1 item we queried (in this case a user).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span>edges {
+</span></span><span style=display:flex><span>  cursor,<span style=color:#75715e># Unique ID that identifies the node</span>
+</span></span><span style=display:flex><span>  node {id, username} <span style=color:#75715e># The node contains data that we requested</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=pageinfo>PageInfo
+<a class=anchor href=#pageinfo>#</a></h3><p>A PageInfo object exists on every connection. They contain an end and start cursor, as well as a hasNextPage and hasPreviousPage. Pageinfo can be used to determine if there is any more data to paginate through.</p><blockquote><p>Note that the next and previous are determined by the first item returned, not the last.</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span>pageInfo {
+</span></span><span style=display:flex><span>  endCursor, <span style=color:#75715e># ID of the last cursor for the connection</span>
+</span></span><span style=display:flex><span>  hasNextPage, <span style=color:#75715e># bool</span>
+</span></span><span style=display:flex><span>  hasPreviousPage, <span style=color:#75715e># bool,</span>
+</span></span><span style=display:flex><span>  startCursor <span style=color:#75715e># ID of the first cursor for the collection</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=paginating-through-data>Paginating Through Data
+<a class=anchor href=#paginating-through-data>#</a></h2><p>Now that we know how pagination works, let&rsquo;s get the 5 most recent users and the first 5 users on Glimesh. All the necessary queries are posted below, but you will need to run them in your own project or use a graphql explorer.</p><p>First we start by making a query to get the first 5 users. We can query more at a time, but for this tutorial 5 will suffice. We also ask for the cursor of each edge.</p><div class=book-tabs><input type=radio class=toggle name=tabs-first5 id=tabs-first5-0 checked>
+<label for=tabs-first5-0>Request</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>users</span>(first: <span style=color:#a6e22e>5</span>) {
+</span></span><span style=display:flex><span>		edges {
+</span></span><span style=display:flex><span>			cursor
+</span></span><span style=display:flex><span>			node {
+</span></span><span style=display:flex><span>				id
+</span></span><span style=display:flex><span>				username
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><input type=radio class=toggle name=tabs-first5 id=tabs-first5-1>
+<label for=tabs-first5-1>Result</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;users&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;edges&#34;</span>: [
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjA=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;1&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;clone1018&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjE=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;2&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;IKAROS&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjI=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;3&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Kristoff&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjM=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;4&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Ember&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQ=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;5&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Heiwa&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></div><p>Now we have the first 5 users. Since we also have the cursors of each edge we could query the next 5. Take the below query as an example. We still ask for the first 5 but we request it <strong>after</strong> the 5th edge from the last query.</p><div class=book-tabs><input type=radio class=toggle name=tabs-next5 id=tabs-next5-0 checked>
+<label for=tabs-next5-0>Request</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>users</span>(first: <span style=color:#a6e22e>5</span>, after: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQ=&#34;</span> ) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>edges</span> {
+</span></span><span style=display:flex><span>			cursor
+</span></span><span style=display:flex><span>			node {
+</span></span><span style=display:flex><span>				id
+</span></span><span style=display:flex><span>				username
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><input type=radio class=toggle name=tabs-next5 id=tabs-next5-1>
+<label for=tabs-next5-1>Result</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;users&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;edges&#34;</span>: [
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjU=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;6&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Bubdrum&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjY=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;7&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Deicefenrir&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjc=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;8&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Umbreo&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjg=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;9&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;UnTubular&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjk=&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;10&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Asterisk&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></div><p>Now we have the next 5 users. You can use this to move through the entire database. However, we wanted the last 5 users. We <em>could</em> continue in this way (although we would query more than 5 at a time!) but there is an easier way. We can use the <strong>last</strong> parameter. Simply replace <strong>first</strong> with <strong>last</strong> from the first query.</p><div class=book-tabs><input type=radio class=toggle name=tabs-getLast id=tabs-getLast-0 checked>
+<label for=tabs-getLast-0>Request</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>users</span>(last: <span style=color:#a6e22e>5</span>) {
+</span></span><span style=display:flex><span>		edges {
+</span></span><span style=display:flex><span>			cursor
+</span></span><span style=display:flex><span>			node {
+</span></span><span style=display:flex><span>				id
+</span></span><span style=display:flex><span>				username
+</span></span><span style=display:flex><span>			}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><input type=radio class=toggle name=tabs-getLast id=tabs-getLast-1>
+<label for=tabs-getLast-1>Result</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;users&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;edges&#34;</span>: [
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc1&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42336&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Emad&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc2&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42337&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Mr_Emotional&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc3&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42338&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;BruteMouse&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc4&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42339&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Bruhh&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc5&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42340&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;VeganGaymer&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></div><p>This will return the 5 most recent users. Glimesh adds users in the order that they were created, so these users have the highest user IDs.</p><blockquote><p>Note that you will get a different result. Users have been added since this doc was written, so you will get different users.</p></blockquote><p>We can also request pageInfo with each paginated query. This will tell us if there is another page after or before our result, and show us the first and last cursor of our result. For our queries this wasn&rsquo;t neccassary, but if you plan to paginate through a large amount of users it is very helpful. The below query gets 5 users before the last 5 users with the <strong>before</strong> parameter.</p><div class=book-tabs><input type=radio class=toggle name=tabs-getBeforeLast id=tabs-getBeforeLast-0 checked>
+<label for=tabs-getBeforeLast-0>Request</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>users</span>(last: <span style=color:#a6e22e>5</span>, before: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc1&#34;</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>edges</span> {
+</span></span><span style=display:flex><span>            cursor
+</span></span><span style=display:flex><span>            node {
+</span></span><span style=display:flex><span>                id
+</span></span><span style=display:flex><span>                username
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>        pageInfo {
+</span></span><span style=display:flex><span>            endCursor,  <span style=color:#75715e># ID of the last cursor for the result</span>
+</span></span><span style=display:flex><span>            hasNextPage, <span style=color:#75715e># bool</span>
+</span></span><span style=display:flex><span>            hasPreviousPage,  <span style=color:#75715e># bool,</span>
+</span></span><span style=display:flex><span>            startCursor  <span style=color:#75715e># ID of the first cursor for the result</span>
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div><input type=radio class=toggle name=tabs-getBeforeLast id=tabs-getBeforeLast-1>
+<label for=tabs-getBeforeLast-1>Result</label><div class="book-tabs-content markdown-inner"><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;users&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;edges&#34;</span>: [
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcw&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42331&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;FsnGaming&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcx&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42332&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;ajsdlasdasd&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcy&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42333&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;dfhdhsad&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcz&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42334&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;dqbyudvbqhdbvzh&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                {
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;cursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc0&#34;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;42335&#34;</span>,
+</span></span><span style=display:flex><span>                        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Elitex&#34;</span>
+</span></span><span style=display:flex><span>                    }
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>            ],
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;pageInfo&#34;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;endCursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDc0&#34;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;hasNextPage&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;hasPreviousPage&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;startCursor&#34;</span>: <span style=color:#e6db74>&#34;YXJyYXljb25uZWN0aW9uOjQyMDcw&#34;</span>
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></div><p>The same process applies for all paginated fields. If you have any questions be sure to let us know in discord!</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/3d3bbdda092d3e87100ede227cd48a00ecac90fe title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener><img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
+<span>August 6, 2021</span></a></div></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#connection-edges-and-nodes>Connection, Edges, and Nodes</a><ul><li><a href=#connections>Connections</a></li><li><a href=#edges>Edges</a></li><li><a href=#pageinfo>PageInfo</a></li></ul></li><li><a href=#paginating-through-data>Paginating Through Data</a></li></ul></nav></aside></main></body></html>

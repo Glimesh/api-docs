@@ -1,386 +1,103 @@
-<!doctype html><html lang=en>
-<head>
-<meta name=generator content="Hugo 0.92.1">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Chat Mutations #  This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view this tutorial. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments.">
-<meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
-<meta property="og:description" content="Chat Mutations #  This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view this tutorial. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/mutations/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-08-05T20:26:40-05:00">
-<title>Mutations | API-Docs</title>
-<link rel=manifest href=/api-docs/manifest.json>
-<link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.2b01b127225281f5ae3cf8b80c0541d9efef8677f8031b55a651f7f1ef97d40e.js integrity="sha256-KwGxJyJSgfWuPPi4DAVB2e/vhnf4AxtVplH38e+X1A4="></script>
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.94.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Chat Mutations #  This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view this tutorial. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="Chat Mutations #  This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view this tutorial. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/mutations/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2021-08-05T20:26:40-05:00"><title>Mutations | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.8df307fd82e102d753dd7f0330c0d379903d3b0d16e17b31f63bcca72c9bf88b.js integrity="sha256-jfMH/YLhAtdT3X8DMMDTeZA9Ow0W4Xsx9jvMpyyb+Is="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css>
-<script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script>
-</head>
-<body>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<nav>
-<h2 class=book-brand>
-<a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
-<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between">
-<a>API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
-<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between">
-<a>Live Updates</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
-<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between">
-<a>Query API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
-<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between">
-<a>Authentication</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
-<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between">
-<a>Access Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
-<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between">
-<a>Refresh Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle checked>
-<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between">
-<a>Chat</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
-<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between">
-<a>Projects</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/mutations/ class=active>Mutations</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
-<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between">
-<a>Reference</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a>
-</li>
-<li>
-<input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
-<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between">
-<a>Developer Resources</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/api-docs/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css><script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
+<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between"><a>API</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
+<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between"><a>Live Updates</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a></li></ul></li><li><input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
+<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between"><a>Query API</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a></li></ul></li><li><input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
+<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between"><a>Authentication</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
+<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between"><a>Access Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a></li></ul></li><li><input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
+<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between"><a>Refresh Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a></li></ul></li><li><input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle checked>
+<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between"><a>Chat</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
+<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between"><a>Projects</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/mutations/ class=active>Mutations</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a></li><li><a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a></li><li><input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
+<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between"><a>Developer Resources</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/api-docs/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Mutations</strong>
-<label for=toc-control>
-<img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#starting-up>Starting Up</a></li>
-<li><a href=#authentication>Authentication</a></li>
-<li><a href=#querying-existing-messages>Querying Existing Messages</a></li>
-<li><a href=#sending-messages>Sending Messages</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=chat-mutations>
-Chat Mutations
-<a class=anchor href=#chat-mutations>#</a>
-</h1>
-<p>This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view <a href=/api-docs/docs/chat/websockets/>this tutorial</a>. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the <code>chat</code> scope to post messages.</p>
-<blockquote>
-<p>If you are testing you can use <a href=/api-docs/docs/authentication/accesstoken/clientcredentials/>client credentials</a> to get an access token. This will allow you to talk as your own account without going through the entire auth process.</p>
-</blockquote>
-<h2 id=starting-up>
-Starting Up
-<a class=anchor href=#starting-up>#</a>
-</h2>
-<p>Since we are not using a websocket connection we have to manually query and send chat messages. This is done through the Glimesh API. We can query any channel for chat messages. We can also send messages to any channel that we choose. Understanding how API requests work will be important for completing this tutorial.</p>
-<blockquote>
-<p>New to the API? Read <a href=/api-docs/docs/api/query-api/basic-query/>this</a> before starting.</p>
-</blockquote>
-<h2 id=authentication>
-Authentication
-<a class=anchor href=#authentication>#</a>
-</h2>
-<p>All API requests must contain the proper authentication. The authentication value should be included as a header of the request. This value will change depending on the authentication type. For access tokens use:</p>
-<p><code>Authorization: Bearer YOUR_TOKEN</code> .</p>
-<p>Replace YOUR_TOKEN with your access token. If you are using a client ID to authenticate you must use this instead:</p>
-<p><code>Authorization: Client-ID YOUR_CLIENT_ID</code></p>
-<p>Replace YOUR_CLIENT_ID with your ID. This will allow you access to the API.</p>
-<blockquote>
-<p>A client ID can only use the API in read only mode. An access token must have the <code>chat</code> scope.</p>
-</blockquote>
-<h2 id=querying-existing-messages>
-Querying Existing Messages
-<a class=anchor href=#querying-existing-messages>#</a>
-</h2>
-<p>We need to set up a query to gather the chat messages. You will need the channel ID of a streamer to get the messages. You can get a channel ID with this query. Replace Mytho with the name of the user that you want the ID from.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL>
-<span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>channel</span>(streamerUsername: <span style=color:#e6db74>&#34;Mytho&#34;</span>) {
-    <span style=color:#a6e22e>id</span>
-  }
-}
-
-</code></pre></div><p>Once you have the ID we can build our request. The query needs to be in the body of the request. You must send the query as a POST request. Structure it as follows:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL>
-<span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>channel</span>(id: <span style=color:#a6e22e>ID</span>) {
-    chatMessages(last: <span style=color:#a6e22e>10</span>) {
-      edges {
-        node {
-          message,
-          user {
-            username,
-            avatarUrl
-          }
-        }
-      }
-    }
-  }
-}
-
-</code></pre></div><blockquote>
-<p>Don&rsquo;t forget to replace ID with the channel ID! If you want more data you can view the chatMessage reference <a href=/api-docs/docs/reference/chat/>here</a> Chat messages are paginated, you can read about that <a href=/api-docs/docs/api/pagination>here</a></p>
-</blockquote>
-<p>Glimesh will respond with a set of JSON data. You need to parse it to get the data that you want.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>
-{
-  <span style=color:#f92672>&#34;data&#34;</span>: {
-    <span style=color:#f92672>&#34;channel&#34;</span>: {
-      <span style=color:#f92672>&#34;chatMessages&#34;</span>: {
-        <span style=color:#f92672>&#34;edges&#34;</span>: [
-          {
-            <span style=color:#f92672>&#34;node&#34;</span>: {
-              <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;lee run the free truck in ovals bro no chance of rating loss and really gives you a good feeling &#34;</span>,
-              <span style=color:#f92672>&#34;user&#34;</span>: {
-                <span style=color:#f92672>&#34;avatarUrl&#34;</span>: <span style=color:#e6db74>&#34;https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Sainted_Lord.png?v=63782488662&#34;</span>,
-                <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Sainted_Lord&#34;</span>
-              }
-            }
-          },
-          {
-            <span style=color:#f92672>&#34;node&#34;</span>: {
-              <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;You all make this game seem so awesome! D:&#34;</span>,
-              <span style=color:#f92672>&#34;user&#34;</span>: {
-                <span style=color:#f92672>&#34;avatarUrl&#34;</span>: <span style=color:#e6db74>&#34;https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/FadedKamui.png?v=63794027172&#34;</span>,
-                <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;FadedKamui&#34;</span>
-              }
-            }
-          },
-        <span style=color:#75715e>// and so on...
-</span></code></pre></div><h2 id=sending-messages>
-Sending Messages
-<a class=anchor href=#sending-messages>#</a>
-</h2>
-<p>The Glimesh API uses mutations to send messages. The request must contain this mutation with a channel ID and a chat message. Structure it as show below. Make sure to replace MESSAGE with your chat message and ID with your channel ID.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL>
-<span style=color:#66d9ef>mutation</span> {
-  <span style=color:#a6e22e>createChatMessage</span>(channelId:<span style=color:#a6e22e>6</span>, message: {<span style=color:#a6e22e>message</span>: <span style=color:#e6db74>&#34;MESSAGE&#34;</span>}) {
-    <span style=color:#a6e22e>message</span>,
-    insertedAt,
-    user {
-      username
-    }
-  }
-}
-
-</code></pre></div><blockquote>
-<p>This should go in the body of the request.</p>
-</blockquote>
-<p>Glimesh will return with the message that was sent to chat. If you want more data you have to request it. The chatMessage reference can be found <a href=/api-docs/docs/reference/chat/>here</a>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>
-{
-  <span style=color:#f92672>&#34;data&#34;</span>: {
-    <span style=color:#f92672>&#34;createChatMessage&#34;</span>: {
-      <span style=color:#f92672>&#34;insertedAt&#34;</span>: <span style=color:#e6db74>&#34;2021-01-08T05:03:44&#34;</span>,
-      <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;MESSAGE&#34;</span>,
-      <span style=color:#f92672>&#34;user&#34;</span>: {
-        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;AFaithfulServant&#34;</span>
-      }
-    }
-  }
-}
-
-</code></pre></div><p>This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our <a href=https://discord.gg/Glimesh>discord</a>.</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d56364ec766119c23f04b7649a8fa104c96c62a0 title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
-<img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>August 6, 2021</span>
-</a>
-</div>
-</div>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#starting-up>Starting Up</a></li>
-<li><a href=#authentication>Authentication</a></li>
-<li><a href=#querying-existing-messages>Querying Existing Messages</a></li>
-<li><a href=#sending-messages>Sending Messages</a></li>
-</ul>
-</nav>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#starting-up>Starting Up</a></li><li><a href=#authentication>Authentication</a></li><li><a href=#querying-existing-messages>Querying Existing Messages</a></li><li><a href=#sending-messages>Sending Messages</a></li></ul></nav></aside></header><article class=markdown><h1 id=chat-mutations>Chat Mutations
+<a class=anchor href=#chat-mutations>#</a></h1><p>This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view <a href=/api-docs/docs/chat/websockets/>this tutorial</a>. To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the <code>chat</code> scope to post messages.</p><blockquote><p>If you are testing you can use <a href=/api-docs/docs/authentication/accesstoken/clientcredentials/>client credentials</a> to get an access token. This will allow you to talk as your own account without going through the entire auth process.</p></blockquote><h2 id=starting-up>Starting Up
+<a class=anchor href=#starting-up>#</a></h2><p>Since we are not using a websocket connection we have to manually query and send chat messages. This is done through the Glimesh API. We can query any channel for chat messages. We can also send messages to any channel that we choose. Understanding how API requests work will be important for completing this tutorial.</p><blockquote><p>New to the API? Read <a href=/api-docs/docs/api/query-api/basic-query/>this</a> before starting.</p></blockquote><h2 id=authentication>Authentication
+<a class=anchor href=#authentication>#</a></h2><p>All API requests must contain the proper authentication. The authentication value should be included as a header of the request. This value will change depending on the authentication type. For access tokens use:</p><p><code>Authorization: Bearer YOUR_TOKEN</code> .</p><p>Replace YOUR_TOKEN with your access token. If you are using a client ID to authenticate you must use this instead:</p><p><code>Authorization: Client-ID YOUR_CLIENT_ID</code></p><p>Replace YOUR_CLIENT_ID with your ID. This will allow you access to the API.</p><blockquote><p>A client ID can only use the API in read only mode. An access token must have the <code>chat</code> scope.</p></blockquote><h2 id=querying-existing-messages>Querying Existing Messages
+<a class=anchor href=#querying-existing-messages>#</a></h2><p>We need to set up a query to gather the chat messages. You will need the channel ID of a streamer to get the messages. You can get a channel ID with this query. Replace Mytho with the name of the user that you want the ID from.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(streamerUsername: <span style=color:#e6db74>&#34;Mytho&#34;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>id</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Once you have the ID we can build our request. The query needs to be in the body of the request. You must send the query as a POST request. Structure it as follows:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(id: <span style=color:#a6e22e>ID</span>) {
+</span></span><span style=display:flex><span>    chatMessages(last: <span style=color:#a6e22e>10</span>) {
+</span></span><span style=display:flex><span>      edges {
+</span></span><span style=display:flex><span>        node {
+</span></span><span style=display:flex><span>          message,
+</span></span><span style=display:flex><span>          user {
+</span></span><span style=display:flex><span>            username,
+</span></span><span style=display:flex><span>            avatarUrl
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>Don&rsquo;t forget to replace ID with the channel ID! If you want more data you can view the chatMessage reference <a href=/api-docs/docs/reference/chat/>here</a> Chat messages are paginated, you can read about that <a href=/api-docs/docs/api/pagination>here</a></p></blockquote><p>Glimesh will respond with a set of JSON data. You need to parse it to get the data that you want.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;channel&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;chatMessages&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;edges&#34;</span>: [
+</span></span><span style=display:flex><span>          {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;lee run the free truck in ovals bro no chance of rating loss and really gives you a good feeling &#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;user&#34;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;avatarUrl&#34;</span>: <span style=color:#e6db74>&#34;https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/Sainted_Lord.png?v=63782488662&#34;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;Sainted_Lord&#34;</span>
+</span></span><span style=display:flex><span>              }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;node&#34;</span>: {
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;You all make this game seem so awesome! D:&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#f92672>&#34;user&#34;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;avatarUrl&#34;</span>: <span style=color:#e6db74>&#34;https://glimesh-user-assets.nyc3.cdn.digitaloceanspaces.com/uploads/avatars/FadedKamui.png?v=63794027172&#34;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;FadedKamui&#34;</span>
+</span></span><span style=display:flex><span>              }
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// and so on...
+</span></span></span></code></pre></div><h2 id=sending-messages>Sending Messages
+<a class=anchor href=#sending-messages>#</a></h2><p>The Glimesh API uses mutations to send messages. The request must contain this mutation with a channel ID and a chat message. Structure it as show below. Make sure to replace MESSAGE with your chat message and ID with your channel ID.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>mutation</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createChatMessage</span>(channelId:<span style=color:#a6e22e>6</span>, message: {<span style=color:#a6e22e>message</span>: <span style=color:#e6db74>&#34;MESSAGE&#34;</span>}) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>message</span>,
+</span></span><span style=display:flex><span>    insertedAt,
+</span></span><span style=display:flex><span>    user {
+</span></span><span style=display:flex><span>      username
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>This should go in the body of the request.</p></blockquote><p>Glimesh will return with the message that was sent to chat. If you want more data you have to request it. The chatMessage reference can be found <a href=/api-docs/docs/reference/chat/>here</a>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;createChatMessage&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;insertedAt&#34;</span>: <span style=color:#e6db74>&#34;2021-01-08T05:03:44&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;message&#34;</span>: <span style=color:#e6db74>&#34;MESSAGE&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;user&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;username&#34;</span>: <span style=color:#e6db74>&#34;AFaithfulServant&#34;</span>
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our <a href=https://discord.gg/Glimesh>discord</a>.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/d56364ec766119c23f04b7649a8fa104c96c62a0 title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener><img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
+<span>August 6, 2021</span></a></div></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#starting-up>Starting Up</a></li><li><a href=#authentication>Authentication</a></li><li><a href=#querying-existing-messages>Querying Existing Messages</a></li><li><a href=#sending-messages>Sending Messages</a></li></ul></nav></aside></main></body></html>

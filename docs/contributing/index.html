@@ -1,317 +1,40 @@
-<!doctype html><html lang=en>
-<head>
-<meta name=generator content="Hugo 0.92.1">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Contributing #  Thanks for wanting to contribute to the api-docs! We are grateful for your help.
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.94.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Contributing #  Thanks for wanting to contribute to the api-docs! We are grateful for your help.
 Contributing to the API Docs. #  Anyone can contribute to the docs. We only ask that you follow a few guidelines when contributing.
-  Follow the file structure. Each topic (or sub-topic) has language specific folders and a basic guide. Inside each language folder there should be a tutorial and a code file if applicable.">
-<meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
-<meta property="og:description" content="Contributing #  Thanks for wanting to contribute to the api-docs! We are grateful for your help.
+  Follow the file structure. Each topic (or sub-topic) has language specific folders and a basic guide. Inside each language folder there should be a tutorial and a code file if applicable."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="Contributing #  Thanks for wanting to contribute to the api-docs! We are grateful for your help.
 Contributing to the API Docs. #  Anyone can contribute to the docs. We only ask that you follow a few guidelines when contributing.
-  Follow the file structure. Each topic (or sub-topic) has language specific folders and a basic guide. Inside each language folder there should be a tutorial and a code file if applicable.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/contributing/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-05-07T14:37:44-05:00">
-<title>Contributing | API-Docs</title>
-<link rel=manifest href=/api-docs/manifest.json>
-<link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.2b01b127225281f5ae3cf8b80c0541d9efef8677f8031b55a651f7f1ef97d40e.js integrity="sha256-KwGxJyJSgfWuPPi4DAVB2e/vhnf4AxtVplH38e+X1A4="></script>
+  Follow the file structure. Each topic (or sub-topic) has language specific folders and a basic guide. Inside each language folder there should be a tutorial and a code file if applicable."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/contributing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2021-05-07T14:37:44-05:00"><title>Contributing | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.8df307fd82e102d753dd7f0330c0d379903d3b0d16e17b31f63bcca72c9bf88b.js integrity="sha256-jfMH/YLhAtdT3X8DMMDTeZA9Ow0W4Xsx9jvMpyyb+Is="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css>
-<script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script>
-</head>
-<body>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<nav>
-<h2 class=book-brand>
-<a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
-<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between">
-<a>API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
-<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between">
-<a>Live Updates</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
-<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between">
-<a>Query API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
-<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between">
-<a>Authentication</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
-<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between">
-<a>Access Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
-<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between">
-<a>Refresh Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
-<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between">
-<a>Chat</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
-<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between">
-<a>Projects</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
-<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between">
-<a>Reference</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/contributing/ class=active>Contributing</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a>
-</li>
-<li>
-<input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
-<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between">
-<a>Developer Resources</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/api-docs/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css><script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
+<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between"><a>API</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
+<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between"><a>Live Updates</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a></li></ul></li><li><input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
+<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between"><a>Query API</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a></li></ul></li><li><input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
+<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between"><a>Authentication</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
+<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between"><a>Access Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a></li></ul></li><li><input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
+<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between"><a>Refresh Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a></li></ul></li><li><input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
+<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between"><a>Chat</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
+<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between"><a>Projects</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/contributing/ class=active>Contributing</a></li><li><a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a></li><li><input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
+<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between"><a>Developer Resources</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/api-docs/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Contributing</strong>
-<label for=toc-control>
-<img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#contributing>Contributing</a></li>
-<li><a href=#contributing-to-the-api-docs>Contributing to the API Docs.</a></li>
-<li><a href=#process>Process</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h2 id=contributing>
-Contributing
-<a class=anchor href=#contributing>#</a>
-</h2>
-<p>Thanks for wanting to contribute to the api-docs! We are grateful for your help.</p>
-<h2 id=contributing-to-the-api-docs>
-Contributing to the API Docs.
-<a class=anchor href=#contributing-to-the-api-docs>#</a>
-</h2>
-<p>Anyone can contribute to the docs. We only ask that you follow a few guidelines when contributing.</p>
-<ol>
-<li>
-<p><strong>Follow the file structure.</strong> Each topic (or sub-topic) has language specific folders and a basic guide. Inside each language folder there should be a tutorial and a code file if applicable. <em>You do not need to tackle an entire topic by yourself.</em> Completing even one tutorial is helpful!</p>
-</li>
-<li>
-<p><strong>Follow the tutorial structure.</strong> Try to keep each tutorial as objective as possible. You can have some personal expression but try to keep it limited. We want these guides to be as short and as simple as they can get. The tutorial should be written in <a href=https://stackedit.io/>Markdown</a>. Explain every step and clearly document any code used. <strong>Don&rsquo;t</strong> do <a href="https://www.youtube.com/watch?v=MAlSjtxy5ak">this</a>.</p>
-</li>
-<li>
-<p><strong>Run any code through a prettier software.</strong> Try to keep the code looking nice! It doesn&rsquo;t matter which formatter you use but we want the code to be readable.</p>
-</li>
-<li>
-<p><strong>Follow the Glimesh and Github TOS (Terms of Service).</strong> Any tutorial that violates either of the TOS will be removed. Any malicious code will be removed.</p>
-</li>
-</ol>
-<h2 id=process>
-Process
-<a class=anchor href=#process>#</a>
-</h2>
-<p>Start by forking the repository. Access the fork on your PC or on <code>https://github.com/YOURNAME/api-docs</code> . You will want an environment capable of editing markdown (.md) files. Any IDE will do.</p>
-<blockquote>
-<p><a href=https://stackedit.io/app#>Stack Edit</a> is a free markdown editor running in the browser. It is easy to use and has many tools for markdown formatting. You can copy the contents of the files there to edit them.</p>
-</blockquote>
-<p>You will need to create your tutorial as described above. You will also need <a href=https://github.com/gohugoio/hugo/releases>Hugo</a> installed. Get the extended features edition.</p>
-<blockquote>
-<p>This installation can be a bit complex for Windows users so you may want to follow a <a href=https://youtu.be/C04dlR1Ufj4>tutorial</a>.</p>
-</blockquote>
-<p>In the command line navigate to the folder containing your fork. Run <code>hugo server --minify --theme book</code> in your terminal. If you get a theme error you can run <code>git clone https://github.com/alex-shpak/hugo-book themes/book</code> or install the git submodules. It will install the necessary theme files. When it finishes installing run the server command again. This will open a server on <a href=http://localhost:1313/api-docs>http://localhost:1313/api-docs</a>.</p>
-<blockquote>
-<p>The server will restart when any changes are saved. Editing config or other important files will require a manual restart though.</p>
-</blockquote>
-<p>You can add special markdown formatting if you want to. If you are making a new file Hugo will detect the it and update the menu on the left side of the page with your new file. The menu will alter itself to match the file directory. This may require a restart of the server for the menu to update.</p>
-<blockquote>
-<p>Notice that every folder with content has a _index.md file. Create a new _index.md file and fill it with the info below if you created a new folder. This allows the tutorial to be collapsible in the menu. If the weight is the same they will be alphabetically sorted.</p>
-</blockquote>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-MD data-lang=MD>---
-bookCollapseSection: true
-weight: 20
----
-</code></pre></div><p>When you are satisfied with the look of your tutorial you can submit a PR. Close the server. Commit and push your changes. Create a pull request with a brief overview of your tutorial/topic. We may ask you to make changes. Once accepted we will add your tutorial to the repo and add it to the website.</p>
-<p>Thank you for contributing!</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/bcd3396c7fe50ed9d410e8af1bedbda2d1c3fb52 title="Last modified by MythoAway7 | May 7, 2021" target=_blank rel=noopener>
-<img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>May 7, 2021</span>
-</a>
-</div>
-</div>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#contributing>Contributing</a></li>
-<li><a href=#contributing-to-the-api-docs>Contributing to the API Docs.</a></li>
-<li><a href=#process>Process</a></li>
-</ul>
-</nav>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#contributing>Contributing</a></li><li><a href=#contributing-to-the-api-docs>Contributing to the API Docs.</a></li><li><a href=#process>Process</a></li></ul></nav></aside></header><article class=markdown><h2 id=contributing>Contributing
+<a class=anchor href=#contributing>#</a></h2><p>Thanks for wanting to contribute to the api-docs! We are grateful for your help.</p><h2 id=contributing-to-the-api-docs>Contributing to the API Docs.
+<a class=anchor href=#contributing-to-the-api-docs>#</a></h2><p>Anyone can contribute to the docs. We only ask that you follow a few guidelines when contributing.</p><ol><li><p><strong>Follow the file structure.</strong> Each topic (or sub-topic) has language specific folders and a basic guide. Inside each language folder there should be a tutorial and a code file if applicable. <em>You do not need to tackle an entire topic by yourself.</em> Completing even one tutorial is helpful!</p></li><li><p><strong>Follow the tutorial structure.</strong> Try to keep each tutorial as objective as possible. You can have some personal expression but try to keep it limited. We want these guides to be as short and as simple as they can get. The tutorial should be written in <a href=https://stackedit.io/>Markdown</a>. Explain every step and clearly document any code used. <strong>Don&rsquo;t</strong> do <a href="https://www.youtube.com/watch?v=MAlSjtxy5ak">this</a>.</p></li><li><p><strong>Run any code through a prettier software.</strong> Try to keep the code looking nice! It doesn&rsquo;t matter which formatter you use but we want the code to be readable.</p></li><li><p><strong>Follow the Glimesh and Github TOS (Terms of Service).</strong> Any tutorial that violates either of the TOS will be removed. Any malicious code will be removed.</p></li></ol><h2 id=process>Process
+<a class=anchor href=#process>#</a></h2><p>Start by forking the repository. Access the fork on your PC or on <code>https://github.com/YOURNAME/api-docs</code> . You will want an environment capable of editing markdown (.md) files. Any IDE will do.</p><blockquote><p><a href=https://stackedit.io/app#>Stack Edit</a> is a free markdown editor running in the browser. It is easy to use and has many tools for markdown formatting. You can copy the contents of the files there to edit them.</p></blockquote><p>You will need to create your tutorial as described above. You will also need <a href=https://github.com/gohugoio/hugo/releases>Hugo</a> installed. Get the extended features edition.</p><blockquote><p>This installation can be a bit complex for Windows users so you may want to follow a <a href=https://youtu.be/C04dlR1Ufj4>tutorial</a>.</p></blockquote><p>In the command line navigate to the folder containing your fork. Run <code>hugo server --minify --theme book</code> in your terminal. If you get a theme error you can run <code>git clone https://github.com/alex-shpak/hugo-book themes/book</code> or install the git submodules. It will install the necessary theme files. When it finishes installing run the server command again. This will open a server on <a href=http://localhost:1313/api-docs>http://localhost:1313/api-docs</a>.</p><blockquote><p>The server will restart when any changes are saved. Editing config or other important files will require a manual restart though.</p></blockquote><p>You can add special markdown formatting if you want to. If you are making a new file Hugo will detect the it and update the menu on the left side of the page with your new file. The menu will alter itself to match the file directory. This may require a restart of the server for the menu to update.</p><blockquote><p>Notice that every folder with content has a _index.md file. Create a new _index.md file and fill it with the info below if you created a new folder. This allows the tutorial to be collapsible in the menu. If the weight is the same they will be alphabetically sorted.</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-MD data-lang=MD><span style=display:flex><span>---
+</span></span><span style=display:flex><span>bookCollapseSection: true
+</span></span><span style=display:flex><span>weight: 20
+</span></span><span style=display:flex><span>---
+</span></span></code></pre></div><p>When you are satisfied with the look of your tutorial you can submit a PR. Close the server. Commit and push your changes. Create a pull request with a brief overview of your tutorial/topic. We may ask you to make changes. Once accepted we will add your tutorial to the repo and add it to the website.</p><p>Thank you for contributing!</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/bcd3396c7fe50ed9d410e8af1bedbda2d1c3fb52 title="Last modified by MythoAway7 | May 7, 2021" target=_blank rel=noopener><img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
+<span>May 7, 2021</span></a></div></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#contributing>Contributing</a></li><li><a href=#contributing-to-the-api-docs>Contributing to the API Docs.</a></li><li><a href=#process>Process</a></li></ul></nav></aside></main></body></html>

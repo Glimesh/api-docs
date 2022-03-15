@@ -1,377 +1,76 @@
-<!doctype html><html lang=en>
-<head>
-<meta name=generator content="Hugo 0.92.1">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Channel Changes #  Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.94.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Channel Changes #  Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.
  Need authentication? Start with access tokens
   Websocket tutorial can be found here
- Selecting a Channel #  Before we can subscribe to a user we need a channel ID.">
-<meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
-<meta property="og:description" content="Channel Changes #  Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.
+ Selecting a Channel #  Before we can subscribe to a user we need a channel ID."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="Channel Changes #  Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.
  Need authentication? Start with access tokens
   Websocket tutorial can be found here
- Selecting a Channel #  Before we can subscribe to a user we need a channel ID.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-08-05T22:53:44-05:00">
-<title>Channels | API-Docs</title>
-<link rel=manifest href=/api-docs/manifest.json>
-<link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.2b01b127225281f5ae3cf8b80c0541d9efef8677f8031b55a651f7f1ef97d40e.js integrity="sha256-KwGxJyJSgfWuPPi4DAVB2e/vhnf4AxtVplH38e+X1A4="></script>
+ Selecting a Channel #  Before we can subscribe to a user we need a channel ID."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/api/live-updates/channels/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2021-08-05T22:53:44-05:00"><title>Channels | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.8df307fd82e102d753dd7f0330c0d379903d3b0d16e17b31f63bcca72c9bf88b.js integrity="sha256-jfMH/YLhAtdT3X8DMMDTeZA9Ow0W4Xsx9jvMpyyb+Is="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css>
-<script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script>
-</head>
-<body>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<nav>
-<h2 class=book-brand>
-<a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle checked>
-<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between">
-<a>API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle checked>
-<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between">
-<a>Live Updates</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/ class=active>Channels</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
-<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between">
-<a>Query API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
-<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between">
-<a>Authentication</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
-<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between">
-<a>Access Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
-<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between">
-<a>Refresh Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
-<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between">
-<a>Chat</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
-<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between">
-<a>Projects</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
-<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between">
-<a>Reference</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a>
-</li>
-<li>
-<input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
-<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between">
-<a>Developer Resources</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/api-docs/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css><script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle checked>
+<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between"><a>API</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle checked>
+<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between"><a>Live Updates</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/ class=active>Channels</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a></li></ul></li><li><input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
+<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between"><a>Query API</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a></li></ul></li><li><input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
+<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between"><a>Authentication</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
+<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between"><a>Access Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a></li></ul></li><li><input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
+<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between"><a>Refresh Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a></li></ul></li><li><input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
+<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between"><a>Chat</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
+<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between"><a>Projects</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a></li><li><a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a></li><li><input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
+<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between"><a>Developer Resources</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/api-docs/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Channels</strong>
-<label for=toc-control>
-<img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#selecting-a-channel>Selecting a Channel</a></li>
-<li><a href=#building-our-subscription>Building Our Subscription</a></li>
-<li><a href=#websocket-connection>Websocket Connection</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=channel-changes>
-Channel Changes
-<a class=anchor href=#channel-changes>#</a>
-</h1>
-<p>Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.</p>
-<blockquote>
-<p>Need authentication? Start with <a href=/api-docs/docs/authentication/accesstoken/accesstoken/>access tokens</a></p>
-</blockquote>
-<blockquote>
-<p>Websocket tutorial can be found <a href=/api-docs/docs/chat/websockets/>here</a></p>
-</blockquote>
-<h2 id=selecting-a-channel>
-Selecting a Channel
-<a class=anchor href=#selecting-a-channel>#</a>
-</h2>
-<p>Before we can subscribe to a user we need a channel ID. This will specify which channel we are wanting to connect to. The easiest way to get a channel ID is to and make the following query. Simply replace YOURNAME with the channel you want to listen to.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>channel</span>(streamerUsername: <span style=color:#e6db74>&#34;YOURNAME&#34;</span>) {
-    <span style=color:#a6e22e>id</span>
-  }
-}
-</code></pre></div><p>Glimesh will return a response that should look something like this.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>{
-  <span style=color:#f92672>&#34;data&#34;</span>: {
-    <span style=color:#f92672>&#34;channel&#34;</span>: {
-      <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;6&#34;</span>
-    }
-  }
-}
-</code></pre></div><h2 id=building-our-subscription>
-Building Our Subscription
-<a class=anchor href=#building-our-subscription>#</a>
-</h2>
-<p>Now that we have a channel ID we can build our subscription query. Glimesh will send us data through this subscription whenever a change is made to the selected channel. Our query needs to specify the information we want returned when this happens.</p>
-<blockquote>
-<p>Note that any change to the channel will result in data being sent even if you did not listen for that specific change. The data received will contain the query and nothing more.</p>
-</blockquote>
-<p>To keep things simple we will listen for a change in the channel title.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Graphql data-lang=Graphql><span style=color:#66d9ef>subscription</span> {
-  <span style=color:#a6e22e>channel</span>(id:<span style=color:#a6e22e>6</span>) {
-    title
-  }
-}
-</code></pre></div><blockquote>
-<p>Don&rsquo;t forget to replace 6 with your channel ID!</p>
-</blockquote>
-<p>If Glimesh detects a change in the channel it will send us the data that we asked for. As noted above any change will cause this data to be sent, not just a title change. Next we will create a connection to Glimesh and send them our subscription!</p>
-<h2 id=websocket-connection>
-Websocket Connection
-<a class=anchor href=#websocket-connection>#</a>
-</h2>
-<p>Since this is a subscription a websocket connection is needed. If you have followed the chat websocket tutorial you can modify that code to fit this tutorial. If you have not done so you must do the following -</p>
-<ol>
-<li>
-<p>Create a connection URL:</p>
-<ul>
-<li>
-<p>For Access Tokens: <code>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&token=TOKEN_HERE</code></p>
-</li>
-<li>
-<p>For Client IDs: <code>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&client_id=CLIENT_ID</code></p>
-</li>
-</ul>
-<blockquote>
-<p>Make sure to replace TOKEN_HERE or CLIENT_ID with their proper values!</p>
-</blockquote>
-</li>
-<li>
-<p>Open a connection and send this through:</p>
-</li>
-</ol>
-<pre tabindex=0><code class=language-WS data-lang=WS>[&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;phx_join&quot;,{}]
-</code></pre><ol start=3>
-<li>Send this through replacing 6 with your channel ID.</li>
-</ol>
-<pre tabindex=0><code class=language-WS data-lang=WS> [&quot;1&quot;,&quot;1&quot;,&quot;__absinthe__:control&quot;,&quot;doc&quot;,{&quot;query&quot;:&quot;subscription{ channel(ID: 6) { title, id } }&quot;,&quot;variables&quot;:{} }]
-</code></pre><ol start=4>
-<li>Send this through every 30 seconds.</li>
-</ol>
-<pre tabindex=0><code class=language-WS data-lang=WS>[&quot;1&quot;,&quot;1&quot;,&quot;phoenix&quot;,&quot;heartbeat&quot;,{}]
-</code></pre><blockquote>
-<p>Having issues? The <a href=/api-docs/docs/chat/websockets/>websocket tutorial</a> goes into more detail about the connection. You may find it helpful to complete that tutorial first. If you are still having problems talk to us in <a href=https://discord.gg/Glimesh>discord</a>.</p>
-</blockquote>
-<p>The above code will connect to Glimesh, subscribe to any changes, and keep us from getting disconnected. To test our code we need to make a change on the channel that we specified. We requested to be sent the current title. Lets change it and see our code in action!</p>
-<p>Before (Basic Query)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>{
-  <span style=color:#e6db74>&#34;data&#34;</span><span style=color:#f92672>:</span> {
-    <span style=color:#e6db74>&#34;channel&#34;</span><span style=color:#f92672>:</span> {
-      <span style=color:#e6db74>&#34;title&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Hello Glimesh API &#34;</span>
-    }
-  }
-}
-</code></pre></div><p>After (Websocket)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS>[
-  <span style=color:#66d9ef>null</span>,
-  <span style=color:#66d9ef>null</span>,
-  <span style=color:#e6db74>&#39;__absinthe__:doc:-576460752299317854:BEF9A4EF11FCFAD0A1B750BCEE8C2CBEAB66ADDAFE214A6CF692FBA68473F68A&#39;</span>,
-  <span style=color:#e6db74>&#39;subscription:data&#39;</span>,
-  {
-    <span style=color:#a6e22e>result</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>channel</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>id</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;6&#39;</span>, <span style=color:#a6e22e>title</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Hello Glimesh API &#39;</span> } },
-    <span style=color:#a6e22e>subscriptionId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;__absinthe__:doc:-576460752299317854:BEF9A4EF11FCFAD0A1B750BCEE8C2CBEAB66ADDAFE214A6CF692FBA68473F68A&#39;</span>
-  }
-]
-</code></pre></div><p>After the title was changed Glimesh sent us the new title. All properties will function the same way. Using this format you can listen to any property of any channel on Glimesh!</p>
-<blockquote>
-<p>Looking for a reference? Click <a href=/api-docs/docs/reference/channel/>here</a> to view all the channel properties.</p>
-</blockquote>
-<p>If you have any questions talk to us in the #dev-questions channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/db1616a85475e845881cbdfe985e565f318c109c title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener>
-<img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>August 6, 2021</span>
-</a>
-</div>
-</div>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#selecting-a-channel>Selecting a Channel</a></li>
-<li><a href=#building-our-subscription>Building Our Subscription</a></li>
-<li><a href=#websocket-connection>Websocket Connection</a></li>
-</ul>
-</nav>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#selecting-a-channel>Selecting a Channel</a></li><li><a href=#building-our-subscription>Building Our Subscription</a></li><li><a href=#websocket-connection>Websocket Connection</a></li></ul></nav></aside></header><article class=markdown><h1 id=channel-changes>Channel Changes
+<a class=anchor href=#channel-changes>#</a></h1><p>Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.</p><blockquote><p>Need authentication? Start with <a href=/api-docs/docs/authentication/accesstoken/accesstoken/>access tokens</a></p></blockquote><blockquote><p>Websocket tutorial can be found <a href=/api-docs/docs/chat/websockets/>here</a></p></blockquote><h2 id=selecting-a-channel>Selecting a Channel
+<a class=anchor href=#selecting-a-channel>#</a></h2><p>Before we can subscribe to a user we need a channel ID. This will specify which channel we are wanting to connect to. The easiest way to get a channel ID is to and make the following query. Simply replace YOURNAME with the channel you want to listen to.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(streamerUsername: <span style=color:#e6db74>&#34;YOURNAME&#34;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>id</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Glimesh will return a response that should look something like this.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;data&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;channel&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;6&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=building-our-subscription>Building Our Subscription
+<a class=anchor href=#building-our-subscription>#</a></h2><p>Now that we have a channel ID we can build our subscription query. Glimesh will send us data through this subscription whenever a change is made to the selected channel. Our query needs to specify the information we want returned when this happens.</p><blockquote><p>Note that any change to the channel will result in data being sent even if you did not listen for that specific change. The data received will contain the query and nothing more.</p></blockquote><p>To keep things simple we will listen for a change in the channel title.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Graphql data-lang=Graphql><span style=display:flex><span><span style=color:#66d9ef>subscription</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(id:<span style=color:#a6e22e>6</span>) {
+</span></span><span style=display:flex><span>    title
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>Don&rsquo;t forget to replace 6 with your channel ID!</p></blockquote><p>If Glimesh detects a change in the channel it will send us the data that we asked for. As noted above any change will cause this data to be sent, not just a title change. Next we will create a connection to Glimesh and send them our subscription!</p><h2 id=websocket-connection>Websocket Connection
+<a class=anchor href=#websocket-connection>#</a></h2><p>Since this is a subscription a websocket connection is needed. If you have followed the chat websocket tutorial you can modify that code to fit this tutorial. If you have not done so you must do the following -</p><ol><li><p>Create a connection URL:</p><ul><li><p>For Access Tokens: <code>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&token=TOKEN_HERE</code></p></li><li><p>For Client IDs: <code>wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&client_id=CLIENT_ID</code></p></li></ul><blockquote><p>Make sure to replace TOKEN_HERE or CLIENT_ID with their proper values!</p></blockquote></li><li><p>Open a connection and send this through:</p></li></ol><pre tabindex=0><code class=language-WS data-lang=WS>[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]
+</code></pre><ol start=3><li>Send this through replacing 6 with your channel ID.</li></ol><pre tabindex=0><code class=language-WS data-lang=WS> [&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;doc&#34;,{&#34;query&#34;:&#34;subscription{ channel(ID: 6) { title, id } }&#34;,&#34;variables&#34;:{} }]
+</code></pre><ol start=4><li>Send this through every 30 seconds.</li></ol><pre tabindex=0><code class=language-WS data-lang=WS>[&#34;1&#34;,&#34;1&#34;,&#34;phoenix&#34;,&#34;heartbeat&#34;,{}]
+</code></pre><blockquote><p>Having issues? The <a href=/api-docs/docs/chat/websockets/>websocket tutorial</a> goes into more detail about the connection. You may find it helpful to complete that tutorial first. If you are still having problems talk to us in <a href=https://discord.gg/Glimesh>discord</a>.</p></blockquote><p>The above code will connect to Glimesh, subscribe to any changes, and keep us from getting disconnected. To test our code we need to make a change on the channel that we specified. We requested to be sent the current title. Lets change it and see our code in action!</p><p>Before (Basic Query)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;data&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;channel&#34;</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>      <span style=color:#e6db74>&#34;title&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Hello Glimesh API &#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>After (Websocket)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JS data-lang=JS><span style=display:flex><span>[
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>null</span>,
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>null</span>,
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#39;__absinthe__:doc:-576460752299317854:BEF9A4EF11FCFAD0A1B750BCEE8C2CBEAB66ADDAFE214A6CF692FBA68473F68A&#39;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#39;subscription:data&#39;</span>,
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>result</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>channel</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>id</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;6&#39;</span>, <span style=color:#a6e22e>title</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Hello Glimesh API &#39;</span> } },
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>subscriptionId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;__absinthe__:doc:-576460752299317854:BEF9A4EF11FCFAD0A1B750BCEE8C2CBEAB66ADDAFE214A6CF692FBA68473F68A&#39;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>]
+</span></span></code></pre></div><p>After the title was changed Glimesh sent us the new title. All properties will function the same way. Using this format you can listen to any property of any channel on Glimesh!</p><blockquote><p>Looking for a reference? Click <a href=/api-docs/docs/reference/channel/>here</a> to view all the channel properties.</p></blockquote><p>If you have any questions talk to us in the #dev-questions channel in our <a href=https://discord.gg/Glimesh>Discord</a>.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/db1616a85475e845881cbdfe985e565f318c109c title="Last modified by aMytho | August 6, 2021" target=_blank rel=noopener><img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
+<span>August 6, 2021</span></a></div></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#selecting-a-channel>Selecting a Channel</a></li><li><a href=#building-our-subscription>Building Our Subscription</a></li><li><a href=#websocket-connection>Websocket Connection</a></li></ul></nav></aside></main></body></html>

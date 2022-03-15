@@ -1,701 +1,326 @@
-<!doctype html><html lang=en>
-<head>
-<meta name=generator content="Hugo 0.92.1">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Creating a Chatbot with Typescript #  This tutorial will show how to make a basic chatbot for Glimesh. You should have some experience in Javascript or Typescript. This tutorial is focused towards beginners so as long as you have some programming experience you will be alright. You will need the below items.
- NodeJS (Recent version, 12+) Code Editor (VSCode works great with this project) Glimesh account with a channel and a Dev App  The finished project can be found on Github here.">
-<meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
-<meta property="og:description" content="Creating a Chatbot with Typescript #  This tutorial will show how to make a basic chatbot for Glimesh. You should have some experience in Javascript or Typescript. This tutorial is focused towards beginners so as long as you have some programming experience you will be alright. You will need the below items.
- NodeJS (Recent version, 12+) Code Editor (VSCode works great with this project) Glimesh account with a channel and a Dev App  The finished project can be found on Github here.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2022-01-03T13:43:28-06:00">
-<title>Typescript Chatbot | API-Docs</title>
-<link rel=manifest href=/api-docs/manifest.json>
-<link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.2b01b127225281f5ae3cf8b80c0541d9efef8677f8031b55a651f7f1ef97d40e.js integrity="sha256-KwGxJyJSgfWuPPi4DAVB2e/vhnf4AxtVplH38e+X1A4="></script>
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.94.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Creating a Chatbot with Typescript #  This tutorial will show how to make a basic chatbot for Glimesh. You should have some experience in Javascript or Typescript. This tutorial is focused towards beginners so as long as you have some programming experience you will be alright. You will need the below items.
+ NodeJS (Recent version, 12+) Code Editor (VSCode works great with this project) Glimesh account with a channel and a Dev App  The finished project can be found on Github here."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="Creating a Chatbot with Typescript #  This tutorial will show how to make a basic chatbot for Glimesh. You should have some experience in Javascript or Typescript. This tutorial is focused towards beginners so as long as you have some programming experience you will be alright. You will need the below items.
+ NodeJS (Recent version, 12+) Code Editor (VSCode works great with this project) Glimesh account with a channel and a Dev App  The finished project can be found on Github here."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-01-03T13:43:28-06:00"><title>Typescript Chatbot | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.8df307fd82e102d753dd7f0330c0d379903d3b0d16e17b31f63bcca72c9bf88b.js integrity="sha256-jfMH/YLhAtdT3X8DMMDTeZA9Ow0W4Xsx9jvMpyyb+Is="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css>
-<script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script>
-</head>
-<body>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<nav>
-<h2 class=book-brand>
-<a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
-<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between">
-<a>API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
-<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between">
-<a>Live Updates</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
-<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between">
-<a>Query API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
-<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between">
-<a>Authentication</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
-<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between">
-<a>Access Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
-<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between">
-<a>Refresh Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle checked>
-<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between">
-<a>Chat</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle checked>
-<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between">
-<a>Projects</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/ class=active>Typescript Chatbot</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
-<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between">
-<a>Reference</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a>
-</li>
-<li>
-<input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
-<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between">
-<a>Developer Resources</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/api-docs/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css><script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
+<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between"><a>API</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
+<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between"><a>Live Updates</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a></li></ul></li><li><input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
+<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between"><a>Query API</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a></li></ul></li><li><input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle>
+<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between"><a>Authentication</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle>
+<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between"><a>Access Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/>Pkce Auth</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a></li></ul></li><li><input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
+<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between"><a>Refresh Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a></li></ul></li><li><input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle checked>
+<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between"><a>Chat</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle checked>
+<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between"><a>Projects</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/ class=active>Typescript Chatbot</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a></li><li><a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a></li><li><input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
+<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between"><a>Developer Resources</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/api-docs/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Typescript Chatbot</strong>
-<label for=toc-control>
-<img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#getting-started>Getting started</a></li>
-<li><a href=#authentication>Authentication</a></li>
-<li><a href=#connecting-to-chat>Connecting to Chat</a>
-<ul>
-<li><a href=#handling-incoming-data>Handling Incoming Data</a></li>
-<li><a href=#handling-commands>Handling Commands</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=creating-a-chatbot-with-typescript>
-Creating a Chatbot with Typescript
-<a class=anchor href=#creating-a-chatbot-with-typescript>#</a>
-</h1>
-<p>This tutorial will show how to make a basic chatbot for Glimesh. You should have some experience in Javascript or Typescript. This tutorial is focused towards beginners so <strong>as long as you have some programming experience you will be alright.</strong> You will need the below items.</p>
-<ul>
-<li><a href=https://nodejs.org/en/>NodeJS</a> (Recent version, 12+)</li>
-<li>Code Editor (<a href=https://code.visualstudio.com/>VSCode</a> works great with this project)</li>
-<li>Glimesh account with a channel and a <a href=https://glimesh.tv/users/settings/applications>Dev App</a></li>
-</ul>
-<p>The finished project can be found on Github <a href=https://github.com/aMytho/Glimesh-Chatbot>here</a>. We suggest that you follow along and use it as a point of reference only if needed.</p>
-<blockquote>
-<p>Note that if future tutorials are created the repo may look different. You can always go back to the commit for each tutorial. This one is called &ldquo;Getting Started&rdquo;.</p>
-</blockquote>
-<p>If you have any questions let us know in the #dev-questions channel in Discord.</p>
-<h2 id=getting-started>
-Getting started
-<a class=anchor href=#getting-started>#</a>
-</h2>
-<p>First we will create the package.json file for our chatbot. This file contains info about our project and our dependencies. In a <strong>new folder</strong> run the below command in your terminal.</p>
-<p><code>npm init -y</code></p>
-<p>This will create a basic <code>package.json</code> file as seen below.</p>
-<blockquote>
-<p>Your file will look slightly different depending on the projects git status and info entered (if <code>-y</code> is removed).</p>
-</blockquote>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-	<span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;glimesh-chatbot&#34;</span>,
-	<span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>,
-	<span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Tutorial for creating a chatbot on Glimesh.tv&#34;</span>,
-	<span style=color:#f92672>&#34;main&#34;</span>: <span style=color:#e6db74>&#34;index.js&#34;</span>,
-	<span style=color:#f92672>&#34;scripts&#34;</span>: {
-		<span style=color:#f92672>&#34;test&#34;</span>: <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
-	},
-	<span style=color:#f92672>&#34;repository&#34;</span>: {
-	<span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;git&#34;</span>,
-	<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;git+https://github.com/aMytho/Glimesh-Chatbot.git&#34;</span>
-	},
-	<span style=color:#f92672>&#34;author&#34;</span>: <span style=color:#e6db74>&#34;Mytho&#34;</span>,
-	<span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;MIT&#34;</span>,
-	<span style=color:#f92672>&#34;bugs&#34;</span>: {
-		<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot/issues&#34;</span>
-	},
-	<span style=color:#f92672>&#34;homepage&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot#readme&#34;</span>,
-}
-</code></pre></div><p>Now we can begin installing the required dependencies. Type the below commands into your terminal.</p>
-<p><code>npm install ws</code></p>
-<p><code>npm install --save-dev typescript @types/ws</code></p>
-<blockquote>
-<p>ws is a websocket client and server library. @types/ws is the type definitions for the websocket library. Typescript is the language we will be using.</p>
-</blockquote>
-<p>Let&rsquo;s create our first typescript file for the project. Create a <code>index.ts</code>file in the root directory of the project. Add the below line into the file.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* index.ts */</span>
-
-<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Hello World&#34;</span>);
-</code></pre></div><blockquote>
-<p>Don&rsquo;t copy the /* index.ts */ part. That is just to show which file the code belongs in! This will be applied to all files in this tutorial.</p>
-</blockquote>
-<p>Now we need to run this file. Typescript files cannot be run natively. They need to be compiled to javascript. We will set up a tsconfig file to handle this for us. Create a file with the name <code>tsconfig.json</code> . Paste the below code into it. This sets the basic typescript options and tells the compiler which files and folders to compile.</p>
-<blockquote>
-<p>We don&rsquo;t have the lib folder yet, it will be created soon!</p>
-</blockquote>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-	<span style=color:#f92672>&#34;compilerOptions&#34;</span>: {
-	<span style=color:#f92672>&#34;target&#34;</span>: <span style=color:#e6db74>&#34;ESNext&#34;</span>,
-	<span style=color:#f92672>&#34;outDir&#34;</span>: <span style=color:#e6db74>&#34;build&#34;</span>,
-	<span style=color:#f92672>&#34;module&#34;</span>: <span style=color:#e6db74>&#34;commonjs&#34;</span>,
-	<span style=color:#f92672>&#34;esModuleInterop&#34;</span>: <span style=color:#66d9ef>true</span>,
-	<span style=color:#f92672>&#34;forceConsistentCasingInFileNames&#34;</span>: <span style=color:#66d9ef>true</span>,
-	<span style=color:#f92672>&#34;strict&#34;</span>: <span style=color:#66d9ef>true</span>,
-	<span style=color:#f92672>&#34;skipLibCheck&#34;</span>: <span style=color:#66d9ef>true</span>
-	},
-	<span style=color:#f92672>&#34;include&#34;</span>: [<span style=color:#e6db74>&#34;index.ts&#34;</span>, <span style=color:#e6db74>&#34;lib/&#34;</span>]
-}
-</code></pre></div><blockquote>
-<p>Visit <a href=https://aka.ms/tsconfig.json>https://aka.ms/tsconfig.json</a> to read more about this file!</p>
-</blockquote>
-<p>Save the file. We could run the compiler from the command line but it&rsquo;s easier to set it up as a npm script. Add the compile, dev, and start scripts as shown below. The script section of <code>package.json</code> should look like this.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#960050;background-color:#1e0010>/*</span> <span style=color:#960050;background-color:#1e0010>package.json</span> <span style=color:#960050;background-color:#1e0010>*/</span>
-
-<span style=color:#e6db74>&#34;test&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span style=color:#960050;background-color:#1e0010>,</span>
-<span style=color:#e6db74>&#34;compile&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;tsc&#34;</span><span style=color:#960050;background-color:#1e0010>,</span>
-<span style=color:#e6db74>&#34;dev&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;tsc --watch&#34;</span><span style=color:#960050;background-color:#1e0010>,</span>
-<span style=color:#e6db74>&#34;start&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;node build/index.js&#34;</span>
-</code></pre></div><p><code>package.json</code> should now closely mirror the below file.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-	<span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;glimesh-chatbot&#34;</span>,
-	<span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>,
-	<span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Tutorial for creating a chatbot on Glimesh.tv&#34;</span>,
-	<span style=color:#f92672>&#34;main&#34;</span>: <span style=color:#e6db74>&#34;index.js&#34;</span>,
-	<span style=color:#f92672>&#34;scripts&#34;</span>: {
-		<span style=color:#f92672>&#34;test&#34;</span>: <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
-		<span style=color:#f92672>&#34;compile&#34;</span>: <span style=color:#e6db74>&#34;tsc&#34;</span>,
-		<span style=color:#f92672>&#34;dev&#34;</span>: <span style=color:#e6db74>&#34;tsc --watch&#34;</span>,
-		<span style=color:#f92672>&#34;start&#34;</span>: <span style=color:#e6db74>&#34;node build/index.js&#34;</span>
-	},
-	<span style=color:#f92672>&#34;repository&#34;</span>: {
-		<span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;git&#34;</span>,
-		<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;git+https://github.com/aMytho/Glimesh-Chatbot.git&#34;</span>
-	},
-	<span style=color:#f92672>&#34;author&#34;</span>: <span style=color:#e6db74>&#34;Mytho&#34;</span>,
-	<span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;MIT&#34;</span>,
-	<span style=color:#f92672>&#34;bugs&#34;</span>: {
-		<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot/issues&#34;</span>
-	},
-	<span style=color:#f92672>&#34;homepage&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot#readme&#34;</span>,
-	<span style=color:#f92672>&#34;devDependencies&#34;</span>: {
-		<span style=color:#f92672>&#34;@types/ws&#34;</span>: <span style=color:#e6db74>&#34;^8.2.0&#34;</span>,
-		<span style=color:#f92672>&#34;typescript&#34;</span>: <span style=color:#e6db74>&#34;^4.4.4&#34;</span>
-	},
-	<span style=color:#f92672>&#34;dependencies&#34;</span>: {
-		<span style=color:#f92672>&#34;ws&#34;</span>: <span style=color:#e6db74>&#34;^8.2.3&#34;</span>
-	}
-}
-</code></pre></div><p>This adds 3 scripts.</p>
-<ul>
-<li><strong>compile</strong> will compile all of the Typescript to Javascript once.</li>
-<li><strong>dev</strong> will compile all the code and recompile files automatically as changes are saved.</li>
-<li><strong>start</strong> will run our project. <em>We have to compile the JS files first!</em></li>
-</ul>
-<p>Let&rsquo;s compile the file and run it. Enter the below lines into the terminal one after the other.</p>
-<p><code>npm run compile</code></p>
-<p><code>npm run start</code></p>
-<p>This should compile the file and then output <code>Hello World</code> to the console. We should also run our <code>dev</code> script and ensure that it works.</p>
-<p><code>npm run dev</code></p>
-<p>While its running modify <code>index.ts</code> as shown below. Save the file.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>/* index.ts */</span>
-
-<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Hello Glimesh&#34;</span>);
-</code></pre></div><p>The file will be recompiled when saved because the <code>dev</code> script is running. In a new terminal window run <code>npm run start</code> . This will run the compiled file.</p>
-<blockquote>
-<p>It is common to have 2 terminal windows open. One runs the dev script in the background and the other is for manually runs your scripts. You can also use auto-reload tools such as <a href=https://www.npmjs.com/package/nodemon>nodemon</a>.</p>
-</blockquote>
-<p>Now that we have a proper dev env setup we can start to build our bot.</p>
-<h2 id=authentication>
-Authentication
-<a class=anchor href=#authentication>#</a>
-</h2>
-<p>All projects that use the Glimesh API require some form of authentication. Glimesh needs to know which project is making API requests. There are many different methods to authenticate our chatbot but we will use <a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>client credentials</a>. We are using this method because we are the only people who will view our source code. It is also the easiest form of auth.</p>
-<p>We will start by creating a module to handle all auth related code. Create a folder called <code>lib</code>. In this folder create a file called <code>auth.ts</code>. Fill it with the data shown below.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* lib/auth.ts */</span>
-
-<span style=color:#75715e>// File handles all auth functions.
-</span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>readFile</span>} <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;fs/promises&#34;</span>
-<span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>join</span>} <span style=color:#66d9ef>from</span>  <span style=color:#e6db74>&#34;path&#34;</span>
-<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>axios</span>:<span style=color:#66d9ef>typeof</span> <span style=color:#66d9ef>import</span>(<span style=color:#e6db74>&#34;axios&#34;</span>).<span style=color:#66d9ef>default</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>require</span>(<span style=color:#e6db74>&#39;axios&#39;</span>).<span style=color:#66d9ef>default</span>;
-<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Auth Dependencies loaded!&#34;</span>);
-</code></pre></div><p><strong>readFile</strong> is a function to read a specific file asynchronously. This will read our auth file when we create one.
+<label for=toc-control><img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#getting-started>Getting started</a></li><li><a href=#authentication>Authentication</a></li><li><a href=#connecting-to-chat>Connecting to Chat</a><ul><li><a href=#handling-incoming-data>Handling Incoming Data</a></li><li><a href=#handling-commands>Handling Commands</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=creating-a-chatbot-with-typescript>Creating a Chatbot with Typescript
+<a class=anchor href=#creating-a-chatbot-with-typescript>#</a></h1><p>This tutorial will show how to make a basic chatbot for Glimesh. You should have some experience in Javascript or Typescript. This tutorial is focused towards beginners so <strong>as long as you have some programming experience you will be alright.</strong> You will need the below items.</p><ul><li><a href=https://nodejs.org/en/>NodeJS</a> (Recent version, 12+)</li><li>Code Editor (<a href=https://code.visualstudio.com/>VSCode</a> works great with this project)</li><li>Glimesh account with a channel and a <a href=https://glimesh.tv/users/settings/applications>Dev App</a></li></ul><p>The finished project can be found on Github <a href=https://github.com/aMytho/Glimesh-Chatbot>here</a>. We suggest that you follow along and use it as a point of reference only if needed.</p><blockquote><p>Note that if future tutorials are created the repo may look different. You can always go back to the commit for each tutorial. This one is called &ldquo;Getting Started&rdquo;.</p></blockquote><p>If you have any questions let us know in the #dev-questions channel in Discord.</p><h2 id=getting-started>Getting started
+<a class=anchor href=#getting-started>#</a></h2><p>First we will create the package.json file for our chatbot. This file contains info about our project and our dependencies. In a <strong>new folder</strong> run the below command in your terminal.</p><p><code>npm init -y</code></p><p>This will create a basic <code>package.json</code> file as seen below.</p><blockquote><p>Your file will look slightly different depending on the projects git status and info entered (if <code>-y</code> is removed).</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;glimesh-chatbot&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Tutorial for creating a chatbot on Glimesh.tv&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;main&#34;</span>: <span style=color:#e6db74>&#34;index.js&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;scripts&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;test&#34;</span>: <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;repository&#34;</span>: {
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;git&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;git+https://github.com/aMytho/Glimesh-Chatbot.git&#34;</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;author&#34;</span>: <span style=color:#e6db74>&#34;Mytho&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;MIT&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;bugs&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot/issues&#34;</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;homepage&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot#readme&#34;</span>,
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now we can begin installing the required dependencies. Type the below commands into your terminal.</p><p><code>npm install ws</code></p><p><code>npm install --save-dev typescript @types/ws</code></p><blockquote><p>ws is a websocket client and server library. @types/ws is the type definitions for the websocket library. Typescript is the language we will be using.</p></blockquote><p>Let&rsquo;s create our first typescript file for the project. Create a <code>index.ts</code>file in the root directory of the project. Add the below line into the file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* index.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Hello World&#34;</span>);
+</span></span></code></pre></div><blockquote><p>Don&rsquo;t copy the /* index.ts */ part. That is just to show which file the code belongs in! This will be applied to all files in this tutorial.</p></blockquote><p>Now we need to run this file. Typescript files cannot be run natively. They need to be compiled to javascript. We will set up a tsconfig file to handle this for us. Create a file with the name <code>tsconfig.json</code> . Paste the below code into it. This sets the basic typescript options and tells the compiler which files and folders to compile.</p><blockquote><p>We don&rsquo;t have the lib folder yet, it will be created soon!</p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;compilerOptions&#34;</span>: {
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;target&#34;</span>: <span style=color:#e6db74>&#34;ESNext&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;outDir&#34;</span>: <span style=color:#e6db74>&#34;build&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;module&#34;</span>: <span style=color:#e6db74>&#34;commonjs&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;esModuleInterop&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;forceConsistentCasingInFileNames&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;strict&#34;</span>: <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;skipLibCheck&#34;</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;include&#34;</span>: [<span style=color:#e6db74>&#34;index.ts&#34;</span>, <span style=color:#e6db74>&#34;lib/&#34;</span>]
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>Visit <a href=https://aka.ms/tsconfig.json>https://aka.ms/tsconfig.json</a> to read more about this file!</p></blockquote><p>Save the file. We could run the compiler from the command line but it&rsquo;s easier to set it up as a npm script. Add the compile, dev, and start scripts as shown below. The script section of <code>package.json</code> should look like this.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>/*</span> <span style=color:#960050;background-color:#1e0010>package.json</span> <span style=color:#960050;background-color:#1e0010>*/</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;test&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span><span style=color:#960050;background-color:#1e0010>,</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;compile&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;tsc&#34;</span><span style=color:#960050;background-color:#1e0010>,</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;dev&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;tsc --watch&#34;</span><span style=color:#960050;background-color:#1e0010>,</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;start&#34;</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#e6db74>&#34;node build/index.js&#34;</span>
+</span></span></code></pre></div><p><code>package.json</code> should now closely mirror the below file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;glimesh-chatbot&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Tutorial for creating a chatbot on Glimesh.tv&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;main&#34;</span>: <span style=color:#e6db74>&#34;index.js&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;scripts&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;test&#34;</span>: <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;compile&#34;</span>: <span style=color:#e6db74>&#34;tsc&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;dev&#34;</span>: <span style=color:#e6db74>&#34;tsc --watch&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;start&#34;</span>: <span style=color:#e6db74>&#34;node build/index.js&#34;</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;repository&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;git&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;git+https://github.com/aMytho/Glimesh-Chatbot.git&#34;</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;author&#34;</span>: <span style=color:#e6db74>&#34;Mytho&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;MIT&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;bugs&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot/issues&#34;</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;homepage&#34;</span>: <span style=color:#e6db74>&#34;https://github.com/aMytho/Glimesh-Chatbot#readme&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;devDependencies&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;@types/ws&#34;</span>: <span style=color:#e6db74>&#34;^8.2.0&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;typescript&#34;</span>: <span style=color:#e6db74>&#34;^4.4.4&#34;</span>
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;dependencies&#34;</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#f92672>&#34;ws&#34;</span>: <span style=color:#e6db74>&#34;^8.2.3&#34;</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>This adds 3 scripts.</p><ul><li><strong>compile</strong> will compile all of the Typescript to Javascript once.</li><li><strong>dev</strong> will compile all the code and recompile files automatically as changes are saved.</li><li><strong>start</strong> will run our project. <em>We have to compile the JS files first!</em></li></ul><p>Let&rsquo;s compile the file and run it. Enter the below lines into the terminal one after the other.</p><p><code>npm run compile</code></p><p><code>npm run start</code></p><p>This should compile the file and then output <code>Hello World</code> to the console. We should also run our <code>dev</code> script and ensure that it works.</p><p><code>npm run dev</code></p><p>While its running modify <code>index.ts</code> as shown below. Save the file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#75715e>/* index.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Hello Glimesh&#34;</span>);
+</span></span></code></pre></div><p>The file will be recompiled when saved because the <code>dev</code> script is running. In a new terminal window run <code>npm run start</code> . This will run the compiled file.</p><blockquote><p>It is common to have 2 terminal windows open. One runs the dev script in the background and the other is for manually runs your scripts. You can also use auto-reload tools such as <a href=https://www.npmjs.com/package/nodemon>nodemon</a>.</p></blockquote><p>Now that we have a proper dev env setup we can start to build our bot.</p><h2 id=authentication>Authentication
+<a class=anchor href=#authentication>#</a></h2><p>All projects that use the Glimesh API require some form of authentication. Glimesh needs to know which project is making API requests. There are many different methods to authenticate our chatbot but we will use <a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>client credentials</a>. We are using this method because we are the only people who will view our source code. It is also the easiest form of auth.</p><p>We will start by creating a module to handle all auth related code. Create a folder called <code>lib</code>. In this folder create a file called <code>auth.ts</code>. Fill it with the data shown below.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* lib/auth.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// File handles all auth functions.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>readFile</span>} <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;fs/promises&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> {<span style=color:#a6e22e>join</span>} <span style=color:#66d9ef>from</span>  <span style=color:#e6db74>&#34;path&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>axios</span>:<span style=color:#66d9ef>typeof</span> <span style=color:#66d9ef>import</span>(<span style=color:#e6db74>&#34;axios&#34;</span>).<span style=color:#66d9ef>default</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>require</span>(<span style=color:#e6db74>&#39;axios&#39;</span>).<span style=color:#66d9ef>default</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Auth Dependencies loaded!&#34;</span>);
+</span></span></code></pre></div><p><strong>readFile</strong> is a function to read a specific file asynchronously. This will read our auth file when we create one.
 <strong>join</strong> is a function to combine file paths. This will help us to locate our auth file.
-<strong>axios</strong> is a library to make HTTP requests. We will send our auth information to Glimesh using this library.</p>
-<p><strong>Notice the error that shows up on the line that imports axios.</strong> This is because Axios is not installed by default. We need to add it to our dependencies. Run the below line in your terminal.</p>
-<p><code>npm install axios</code></p>
-<blockquote>
-<p>You can install any NPM library this way!</p>
-</blockquote>
-<p>We also need a place to store our auth info (clientId / secretId). It is not wise to include your secretId in your source code. We will make a dedicated json file to store the auth info. We will also add a reference to it in the .gitignore file. This prevents it from being included in commit history.</p>
-<blockquote>
-<p>If you want even more security you can do this through env variables instead of an auth.json file.</p>
-</blockquote>
-<p>Create the files shown below in the root of the project.</p>
-<p><strong>auth.json</strong></p>
-<p>Replace your client ID and client secret as shown below. If you do not yet have a developer application you can get one <a href=https://glimesh.tv/users/settings/applications/new>here</a>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-	<span style=color:#f92672>&#34;clientId&#34;</span>: <span style=color:#e6db74>&#34;YOUR ID HERE&#34;</span>,
-	<span style=color:#f92672>&#34;secretId&#34;</span>: <span style=color:#e6db74>&#34;YOUR SECRET ID HERE&#34;</span>
-}
-</code></pre></div><p><strong>.gitignore</strong></p>
-<p>This may already be created. If so just add the lines to the bottom of the file. If not create the file. This prevents git from commiting our auth code and generated files.</p>
-<pre tabindex=0><code class=language-git data-lang=git># Ignore our credentials
+<strong>axios</strong> is a library to make HTTP requests. We will send our auth information to Glimesh using this library.</p><p><strong>Notice the error that shows up on the line that imports axios.</strong> This is because Axios is not installed by default. We need to add it to our dependencies. Run the below line in your terminal.</p><p><code>npm install axios</code></p><blockquote><p>You can install any NPM library this way!</p></blockquote><p>We also need a place to store our auth info (clientId / secretId). It is not wise to include your secretId in your source code. We will make a dedicated json file to store the auth info. We will also add a reference to it in the .gitignore file. This prevents it from being included in commit history.</p><blockquote><p>If you want even more security you can do this through env variables instead of an auth.json file.</p></blockquote><p>Create the files shown below in the root of the project.</p><p><strong>auth.json</strong></p><p>Replace your client ID and client secret as shown below. If you do not yet have a developer application you can get one <a href=https://glimesh.tv/users/settings/applications/new>here</a>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;clientId&#34;</span>: <span style=color:#e6db74>&#34;YOUR ID HERE&#34;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#f92672>&#34;secretId&#34;</span>: <span style=color:#e6db74>&#34;YOUR SECRET ID HERE&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><strong>.gitignore</strong></p><p>This may already be created. If so just add the lines to the bottom of the file. If not create the file. This prevents git from commiting our auth code and generated files.</p><pre tabindex=0><code class=language-git data-lang=git># Ignore our credentials
 auth.json
 
 # Ignore our js built files
 build/
-</code></pre><p>Now we need to import the auth info so we can send it to Glimesh. We will create a variable that mirrors the structure from the auth file. We also create a function to read the auth file and a function to request an access token from Glimesh. These will both be imported and called from <em>index.ts</em>. Add the below lines to the auth file.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* lib/auth.ts */</span>
-<span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>readAuthInfo</span>()<span style=color:#f92672>:</span> <span style=color:#a6e22e>Promise</span>&lt;<span style=color:#f92672>AuthFile</span> <span style=color:#960050;background-color:#1e0010>|</span> <span style=color:#a6e22e>false</span>&gt; {
-	<span style=color:#66d9ef>try</span> {
-		<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>path</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>join</span>(<span style=color:#a6e22e>__dirname</span>, <span style=color:#e6db74>&#34;..&#34;</span>, <span style=color:#e6db74>&#34;..&#34;</span>, <span style=color:#e6db74>&#34;auth.json&#34;</span>);
-		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>readFile</span>(<span style=color:#a6e22e>path</span>);
-		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>authData</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>toString</span>();
-		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>authData</span>);
-	} <span style=color:#66d9ef>catch</span>(<span style=color:#a6e22e>e</span>) {
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Error getting auth info&#34;</span>, <span style=color:#a6e22e>e</span>);
-		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-	}
-}
-
-<span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getAccessToken</span>(<span style=color:#a6e22e>client</span>: <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>secret</span>: <span style=color:#66d9ef>string</span>) {
-	<span style=color:#66d9ef>try</span> {
-		<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>URL</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`https://glimesh.tv/api/oauth/token?grant_type=client_credentials&amp;client_id=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>client</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&amp;client_secret=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>secret</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&amp;scope=chat public`</span>;
-		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>axios</span>.<span style=color:#a6e22e>post</span>(<span style=color:#a6e22e>URL</span>);
-		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>tokenInfo</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>data</span> <span style=color:#66d9ef>as</span> <span style=color:#a6e22e>ClientCredentialsResult</span>;
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>tokenInfo</span>);
-		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>tokenInfo</span>.<span style=color:#a6e22e>access_token</span>
-	} <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) {
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>e</span>);
-		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-	}
-}
-
-<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>AuthFile</span> {
-	<span style=color:#a6e22e>clientId</span>: <span style=color:#66d9ef>string</span>;
-	<span style=color:#a6e22e>secretId</span>: <span style=color:#66d9ef>string</span>;
-}
-
-<span style=color:#75715e>/**
-</span><span style=color:#75715e>* Info from a client cred request.
-</span><span style=color:#75715e>*/</span>
-<span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>ClientCredentialsResult</span> {
-	<span style=color:#a6e22e>access_token</span>: <span style=color:#66d9ef>string</span>,
-	<span style=color:#a6e22e>created_at</span>: <span style=color:#66d9ef>string</span>,
-	<span style=color:#a6e22e>expires_in</span>: <span style=color:#66d9ef>number</span>,
-	<span style=color:#a6e22e>refresh_token</span>: <span style=color:#66d9ef>null</span>,
-	<span style=color:#a6e22e>scope</span>: <span style=color:#66d9ef>string</span>,
-	<span style=color:#a6e22e>token_type</span>: <span style=color:#66d9ef>string</span>
-}
-
-<span style=color:#66d9ef>export</span> {<span style=color:#a6e22e>getAccessToken</span>, <span style=color:#a6e22e>readAuthInfo</span>}
-</code></pre></div><p>This is a lot of code!
-Let&rsquo;s start with the first function <code>readAuthInfo()</code>. This is an async function so it returns a promise. It tries to read the auth file and then returns a JSON parsed version of the auth data. This lets us easily access the properties. This function will return false if anything goes wrong.</p>
-<p>The next function <code>getAccessToken()</code> returns a Glimesh access token. It requires our client and secret ID to be passed to it as parameters. We send a HTTP POST request to Glimesh and wait for the result. If all goes well we will receive an access token.</p>
-<blockquote>
-<p>Note the type defs on the bottom. These provide autocompletion for our data. They are removed at runtime.</p>
-</blockquote>
-<p>Now we can import the functions and run them to get an access token. Add the lines to <code>index.ts</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* index.ts */</span>
-
-<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>getAccessToken</span>, <span style=color:#a6e22e>readAuthInfo</span> } <span style=color:#66d9ef>from</span>  <span style=color:#e6db74>&#34;./lib/auth&#34;</span>;
-
-<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>;
-<span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>authenticate() {</span>
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>authInfo</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>readAuthInfo</span>();
-	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>authInfo</span>) {
-		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>accessToken</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>getAccessToken</span>(<span style=color:#a6e22e>authInfo</span>.<span style=color:#a6e22e>clientId</span>, <span style=color:#a6e22e>authInfo</span>.<span style=color:#a6e22e>secretId</span>);
-		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>accessToken</span>
-	}
-}
-
-<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>waitForAuth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>authenticate</span>();
-<span style=color:#a6e22e>waitForAuth</span>.<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>data</span> <span style=color:#f92672>=&gt;</span> {
-	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>);
-	<span style=color:#75715e>// Make sure everything worked correctly.
-</span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>data</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;string&#34;</span>) {
-		<span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
-	}
-})
-</code></pre></div><p>First we define a token variable. This will hold our access token when we receive it. Then we read the auth file and use it to request a token. When we receive the token we set our token variable equal to it. We can now connect to the API!</p>
-<h2 id=connecting-to-chat>
-Connecting to Chat
-<a class=anchor href=#connecting-to-chat>#</a>
-</h2>
-<p>We will create a function <code>connectToGlimesh</code> to connect to chat and add several listeners. We will also make a module for parsing data and a module for running commands. This helps to keep our code organized. Add the following lines to the top of <code>index.ts</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* Top of index.ts */</span>
-<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>WebSocket</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;ws&#34;</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* index.ts */</span>
-
-<span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>connectToGlimesh</span>(<span style=color:#a6e22e>token</span>: <span style=color:#66d9ef>string</span>) {
-	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Trying to connect to the Glimesh API.&#34;</span>);
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>WebSocket</span>(<span style=color:#e6db74>`wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;token=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>token</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
-
-	<span style=color:#75715e>// Add listeners.
-</span><span style=color:#75715e></span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;open&#34;</span>, (<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Connected to Glimesh.&#34;</span>);
-		<span style=color:#75715e>// Connect to phoenix websocket
-</span><span style=color:#75715e></span>		<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);
-		<span style=color:#75715e>// Join a chat and listen for messages
-</span><span style=color:#75715e></span>		<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;2&#34;,&#34;__absinthe__:control&#34;,&#34;doc&#34;,{&#34;query&#34;:&#34;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&#34;,&#34;variables&#34;:{} }]&#39;</span>);
-		<span style=color:#75715e>// Send a heartbeat every 30 sec so glimesh knows we still exist
-</span><span style=color:#75715e></span>		<span style=color:#a6e22e>setInterval</span>(() <span style=color:#f92672>=&gt;</span> {
-			<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;3&#34;,&#34;phoenix&#34;,&#34;heartbeat&#34;,{}]&#39;</span>);
-		}, <span style=color:#ae81ff>30000</span>)
-	})
-
-	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;close&#34;</span>, (<span style=color:#a6e22e>closure</span>:<span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`Connection was closed.`</span>);
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>closure</span>);
-	})
-
-	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;error&#34;</span>, (<span style=color:#a6e22e>err</span>:<span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Connection encountered an error! This will likely disconnect and fire the close event.&#34;</span>);
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>err</span>);
-	})
-
-	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;message&#34;</span>, (<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>Buffer</span>) <span style=color:#f92672>=&gt;</span> {
-		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>toString</span>());
-	})
-}
-</code></pre></div><p>This function needs to run once we receive our token. Call the function below the <code>token = data</code> line. The <code>waitForAuth</code> callback function should look like the code below.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* index.ts */</span>
-
-<span style=color:#a6e22e>waitForAuth</span>.<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>data</span> <span style=color:#f92672>=&gt;</span> {
-	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>);
-	<span style=color:#75715e>// Make sure everything worked correctly.
-</span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>data</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;string&#34;</span>) {
-		<span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
-		<span style=color:#75715e>// Now that we have a token we can connect to chat!
-</span><span style=color:#75715e></span>		<span style=color:#a6e22e>connectToGlimesh</span>(<span style=color:#a6e22e>token</span>);
-	}
-})
-</code></pre></div><p>The function <code>connectToGlimesh</code> will connect us to the Glimesh websocket server. Once connected we add event listeners to the <code>connection</code> variable. They will run whenever the specified event occurs. When the connection is completed we send a few packets to the server.</p>
-<p>Connects to the internal Phoenix endpoint.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);
-</code></pre></div><p>Connects to a channel with a specified ID. (We will explain this later). Subscribes to new chat messages and asks for the message and the user&rsquo;s name and avatar.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;2&#34;,&#34;__absinthe__:control&#34;,&#34;doc&#34;,{&#34;query&#34;:&#34;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&#34;,&#34;variables&#34;:{} }]&#39;</span>);
-</code></pre></div><p>Sends a heartbeat to Glimesh every 30 seconds. This let&rsquo;s Glimesh know your connection still exists.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#a6e22e>setInterval</span>(() <span style=color:#f92672>=&gt;</span> {
-	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;3&#34;,&#34;phoenix&#34;,&#34;heartbeat&#34;,{}]&#39;</span>);
-}, <span style=color:#ae81ff>30000</span>)
-</code></pre></div><p>This will complete the chat connection and send us chat messages on the specified ID. If you know your channel ID you can add it to the above code replacing 6 with your ID. If you do not know your ID you can head to <a href=https://glimesh.tv/api>/API</a> and make the below query in the editor replacing Mytho with your channel. It will return the ID of your channel.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=color:#66d9ef>query</span> {
-  <span style=color:#a6e22e>channel</span>(username: <span style=color:#e6db74>&#34;Mytho&#34;</span>) {
-    <span style=color:#a6e22e>id</span>
-  }
-}
-</code></pre></div><blockquote>
-<p>You don&rsquo;t need any special permission to listen for chat messages. Any access token or client ID can listen to any channel. Once you complete this tutorial have a look at <a href=/api-docs/docs/chat/projects/sitewidesubscription/>listening to every channel at once</a>.</p>
-</blockquote>
-<p>Save and run the file. It should connect to chat and listen for messages. Try sending one! It will also send you a heartbeat every 30 seconds.</p>
-<blockquote>
-<p>Make sure the file is compiled before you run it!</p>
-</blockquote>
-<h3 id=handling-incoming-data>
-Handling Incoming Data
-<a class=anchor href=#handling-incoming-data>#</a>
-</h3>
-<p>Now that we have messages we need to parse the incoming data and make it check for commands. Create the 2 files shown below.</p>
-<p>Responsible for handling all data from Glimesh (not just chatMessages) <code>lib/packet.ts</code></p>
-<p>Responsible for scanning messages and running commands. <code>lib/command.ts</code></p>
-<p>Add the below code to <code>lib/packet.ts</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* lib/packet.ts */</span>
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>parsePacket</span>(<span style=color:#a6e22e>packet</span>: <span style=color:#66d9ef>any</span>) {
-	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>) {
-		<span style=color:#75715e>// Its the connection response, do nothing.
-</span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-	} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>) {
-		<span style=color:#75715e>// Glimesh confirming our chat message subscription.
-</span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-	} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span>) {
-		<span style=color:#75715e>// Its a heartbeat. We can ignore it.
-</span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-	} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>4</span>) {
-		<span style=color:#75715e>// Its a response to a message we sent. We don&#39;t respond to those.
-</span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-	} <span style=color:#66d9ef>else</span> {
-		<span style=color:#75715e>// Its a chat message!
-</span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>4</span>].<span style=color:#a6e22e>result</span>.<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>chatMessage</span>.<span style=color:#a6e22e>message</span>
-	}
-}
-
-<span style=color:#66d9ef>export</span> {<span style=color:#a6e22e>parsePacket</span>}
-</code></pre></div><p>This creates a function to parse the data from Glimesh. We only return data if the packet is a chatmessage. This ignores heartbeats and all other data. If you want to add the ability to make queries from the websocket you would need to modify this function or use the same first 2 values as the chatMessage query. We will not be covering that in this doc.</p>
-<h3 id=handling-commands>
-Handling Commands
-<a class=anchor href=#handling-commands>#</a>
-</h3>
-<p>We also need to add the code to handle commands. Add the following to <code>lib/command.ts</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* lib/command.ts */</span>
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>checkForCommand</span>(<span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>string</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>string</span> <span style=color:#f92672>|</span> <span style=color:#66d9ef>false</span> {
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>firstWord</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>message</span>.<span style=color:#a6e22e>split</span>(<span style=color:#e6db74>&#34; &#34;</span>)[<span style=color:#ae81ff>0</span>];
-	<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>Commands</span>.<span style=color:#a6e22e>length</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
-		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>Commands</span>[<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>cmdName</span> <span style=color:#f92672>==</span> <span style=color:#a6e22e>firstWord</span>) {
-			<span style=color:#66d9ef>return</span>  <span style=color:#a6e22e>Commands</span>[<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>cmdMessage</span>;
-		}
-	}
-	<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
-}
-
-<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Commands</span>:<span style=color:#66d9ef>Command</span>[] <span style=color:#f92672>=</span> [
-	{
-		<span style=color:#a6e22e>cmdName</span><span style=color:#f92672>:</span>  <span style=color:#e6db74>&#34;!example&#34;</span>,
-		<span style=color:#a6e22e>cmdMessage</span><span style=color:#f92672>:</span>  <span style=color:#e6db74>&#34;Hello World!&#34;</span>
-	}
-]
-
-<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Command</span> <span style=color:#f92672>=</span> {
-	<span style=color:#a6e22e>cmdName</span>: <span style=color:#66d9ef>string</span>;
-	<span style=color:#a6e22e>cmdMessage</span>: <span style=color:#66d9ef>string</span>
-}
-
-<span style=color:#66d9ef>export</span> { <span style=color:#a6e22e>checkForCommand</span> }
-</code></pre></div><p>This file adds a few things.
-We define a <code>Command</code> type. This provides type safety and handy autocompletion. We also create the <code>Commands</code> variable. This holds all of our commands. In our case we added the command <code>example</code>. Feel free to add as many commands as you want in the above format. We also define a function to scan for the command and return the message if it finds a match.</p>
-<blockquote>
-<p>Although adding commands in the code is fine for this example in a real scenario you would want some sort of data storage. A JSON file or small database would work well.</p>
-</blockquote>
-<p>We need to run the function we created in the last 2 files. Import them at the top of <code>index.ts</code></p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>checkForCommand</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./lib/command&#34;</span>;
-<span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>parsePacket</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./lib/packet&#34;</span>;
-</code></pre></div><p>Call them in the websocket message handler function. It should look like the code below.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#75715e>/* index.ts */</span>
-
-<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;message&#34;</span>, (<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>glimeshData</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>toString</span>();
-	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>glimeshData</span>.<span style=color:#a6e22e>toString</span>());
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>message</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>parsePacket</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>glimeshData</span>));
-	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>message</span>) {
-		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>command</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>checkForCommand</span>(<span style=color:#a6e22e>message</span>);
-		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>command</span>) {
-			<span style=color:#a6e22e>sendMessage</span>(<span style=color:#a6e22e>command</span>);
-		}
-	}
-})
-</code></pre></div><p>This checks for a message and if it exists it checks for a command. If the command exists the command message is returned. We need to make the <code>sendMessage</code> function so we can talk to chat. Add the following function just below the message handler function. (It must be within the <code>connectToGlimesh</code> function. Replace 6 with your channel ID.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>sendMessage</span>(<span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>string</span>) {
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>query</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`mutation {createChatMessage(channelId: 6, message: {message: &#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>message</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;}) { message }}`</span>
-	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>packet</span> <span style=color:#f92672>=</span> [
-		<span style=color:#e6db74>&#34;1&#34;</span>, <span style=color:#e6db74>&#34;4&#34;</span>, <span style=color:#e6db74>&#34;__absinthe__:control&#34;</span>, <span style=color:#e6db74>&#34;doc&#34;</span>,
-		{
-			<span style=color:#a6e22e>query</span>: <span style=color:#66d9ef>query</span>,
-			<span style=color:#a6e22e>variables</span><span style=color:#f92672>:</span> {}
-		}
-	]
-	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>packet</span>))
-	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>packet</span>))
-}
-</code></pre></div><p>Now we call this function if a command is triggered. Whenever a command is triggered the message of the command is sent back to chat.</p>
-<p>Congratulations! You now have a fully functioning chatbot. You can continue to add commands in the format shown.</p>
-<p>What next?</p>
-<blockquote>
-<p>Add a dedicated database to store commands. Small databases such as <a href=https://www.npmjs.com/package/nedb>NEDB</a> and <a href=https://www.npmjs.com/package/sqlite3>SQLite</a> work well for this. You would need to add a way to programmatically add and edit commands in the database.
+</code></pre><p>Now we need to import the auth info so we can send it to Glimesh. We will create a variable that mirrors the structure from the auth file. We also create a function to read the auth file and a function to request an access token from Glimesh. These will both be imported and called from <em>index.ts</em>. Add the below lines to the auth file.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* lib/auth.ts */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>readAuthInfo</span>()<span style=color:#f92672>:</span> <span style=color:#a6e22e>Promise</span>&lt;<span style=color:#f92672>AuthFile</span> <span style=color:#960050;background-color:#1e0010>|</span> <span style=color:#a6e22e>false</span>&gt; {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>path</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>join</span>(<span style=color:#a6e22e>__dirname</span>, <span style=color:#e6db74>&#34;..&#34;</span>, <span style=color:#e6db74>&#34;..&#34;</span>, <span style=color:#e6db74>&#34;auth.json&#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>readFile</span>(<span style=color:#a6e22e>path</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>authData</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>toString</span>();
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>authData</span>);
+</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>catch</span>(<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Error getting auth info&#34;</span>, <span style=color:#a6e22e>e</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>getAccessToken</span>(<span style=color:#a6e22e>client</span>: <span style=color:#66d9ef>string</span>, <span style=color:#a6e22e>secret</span>: <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>URL</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`https://glimesh.tv/api/oauth/token?grant_type=client_credentials&amp;client_id=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>client</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&amp;client_secret=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>secret</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&amp;scope=chat public`</span>;
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>axios</span>.<span style=color:#a6e22e>post</span>(<span style=color:#a6e22e>URL</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>tokenInfo</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>data</span> <span style=color:#66d9ef>as</span> <span style=color:#a6e22e>ClientCredentialsResult</span>;
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>tokenInfo</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>tokenInfo</span>.<span style=color:#a6e22e>access_token</span>
+</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>e</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>AuthFile</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>clientId</span>: <span style=color:#66d9ef>string</span>;
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>secretId</span>: <span style=color:#66d9ef>string</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>* Info from a client cred request.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>*/</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>interface</span> <span style=color:#a6e22e>ClientCredentialsResult</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>access_token</span>: <span style=color:#66d9ef>string</span>,
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>created_at</span>: <span style=color:#66d9ef>string</span>,
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>expires_in</span>: <span style=color:#66d9ef>number</span>,
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>refresh_token</span>: <span style=color:#66d9ef>null</span>,
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>scope</span>: <span style=color:#66d9ef>string</span>,
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>token_type</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> {<span style=color:#a6e22e>getAccessToken</span>, <span style=color:#a6e22e>readAuthInfo</span>}
+</span></span></code></pre></div><p>This is a lot of code!
+Let&rsquo;s start with the first function <code>readAuthInfo()</code>. This is an async function so it returns a promise. It tries to read the auth file and then returns a JSON parsed version of the auth data. This lets us easily access the properties. This function will return false if anything goes wrong.</p><p>The next function <code>getAccessToken()</code> returns a Glimesh access token. It requires our client and secret ID to be passed to it as parameters. We send a HTTP POST request to Glimesh and wait for the result. If all goes well we will receive an access token.</p><blockquote><p>Note the type defs on the bottom. These provide autocompletion for our data. They are removed at runtime.</p></blockquote><p>Now we can import the functions and run them to get an access token. Add the lines to <code>index.ts</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* index.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>getAccessToken</span>, <span style=color:#a6e22e>readAuthInfo</span> } <span style=color:#66d9ef>from</span>  <span style=color:#e6db74>&#34;./lib/auth&#34;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>authenticate() {</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>authInfo</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>readAuthInfo</span>();
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>authInfo</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>accessToken</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>getAccessToken</span>(<span style=color:#a6e22e>authInfo</span>.<span style=color:#a6e22e>clientId</span>, <span style=color:#a6e22e>authInfo</span>.<span style=color:#a6e22e>secretId</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>accessToken</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>waitForAuth</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>authenticate</span>();
+</span></span><span style=display:flex><span><span style=color:#a6e22e>waitForAuth</span>.<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>data</span> <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Make sure everything worked correctly.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>data</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;string&#34;</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><p>First we define a token variable. This will hold our access token when we receive it. Then we read the auth file and use it to request a token. When we receive the token we set our token variable equal to it. We can now connect to the API!</p><h2 id=connecting-to-chat>Connecting to Chat
+<a class=anchor href=#connecting-to-chat>#</a></h2><p>We will create a function <code>connectToGlimesh</code> to connect to chat and add several listeners. We will also make a module for parsing data and a module for running commands. This helps to keep our code organized. Add the following lines to the top of <code>index.ts</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* Top of index.ts */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>WebSocket</span> <span style=color:#66d9ef>from</span> <span style=color:#e6db74>&#34;ws&#34;</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* index.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>connectToGlimesh</span>(<span style=color:#a6e22e>token</span>: <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Trying to connect to the Glimesh API.&#34;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>WebSocket</span>(<span style=color:#e6db74>`wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&amp;token=</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>token</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Add listeners.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;open&#34;</span>, (<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Connected to Glimesh.&#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Connect to phoenix websocket
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Join a chat and listen for messages
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;2&#34;,&#34;__absinthe__:control&#34;,&#34;doc&#34;,{&#34;query&#34;:&#34;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&#34;,&#34;variables&#34;:{} }]&#39;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Send a heartbeat every 30 sec so glimesh knows we still exist
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#a6e22e>setInterval</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;3&#34;,&#34;phoenix&#34;,&#34;heartbeat&#34;,{}]&#39;</span>);
+</span></span><span style=display:flex><span>		}, <span style=color:#ae81ff>30000</span>)
+</span></span><span style=display:flex><span>	})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;close&#34;</span>, (<span style=color:#a6e22e>closure</span>:<span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`Connection was closed.`</span>);
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>closure</span>);
+</span></span><span style=display:flex><span>	})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;error&#34;</span>, (<span style=color:#a6e22e>err</span>:<span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Connection encountered an error! This will likely disconnect and fire the close event.&#34;</span>);
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>err</span>);
+</span></span><span style=display:flex><span>	})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;message&#34;</span>, (<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>Buffer</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>toString</span>());
+</span></span><span style=display:flex><span>	})
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>This function needs to run once we receive our token. Call the function below the <code>token = data</code> line. The <code>waitForAuth</code> callback function should look like the code below.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* index.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>waitForAuth</span>.<span style=color:#a6e22e>then</span>(<span style=color:#a6e22e>data</span> <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// Make sure everything worked correctly.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>data</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>typeof</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;string&#34;</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>token</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>;
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Now that we have a token we can connect to chat!
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#a6e22e>connectToGlimesh</span>(<span style=color:#a6e22e>token</span>);
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><p>The function <code>connectToGlimesh</code> will connect us to the Glimesh websocket server. Once connected we add event listeners to the <code>connection</code> variable. They will run whenever the specified event occurs. When the connection is completed we send a few packets to the server.</p><p>Connects to the internal Phoenix endpoint.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;1&#34;,&#34;__absinthe__:control&#34;,&#34;phx_join&#34;,{}]&#39;</span>);
+</span></span></code></pre></div><p>Connects to a channel with a specified ID. (We will explain this later). Subscribes to new chat messages and asks for the message and the user&rsquo;s name and avatar.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;2&#34;,&#34;__absinthe__:control&#34;,&#34;doc&#34;,{&#34;query&#34;:&#34;subscription{ chatMessage(channelId: 6) { user { username avatar } message } }&#34;,&#34;variables&#34;:{} }]&#39;</span>);
+</span></span></code></pre></div><p>Sends a heartbeat to Glimesh every 30 seconds. This let&rsquo;s Glimesh know your connection still exists.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#a6e22e>setInterval</span>(() <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#e6db74>&#39;[&#34;1&#34;,&#34;3&#34;,&#34;phoenix&#34;,&#34;heartbeat&#34;,{}]&#39;</span>);
+</span></span><span style=display:flex><span>}, <span style=color:#ae81ff>30000</span>)
+</span></span></code></pre></div><p>This will complete the chat connection and send us chat messages on the specified ID. If you know your channel ID you can add it to the above code replacing 6 with your ID. If you do not know your ID you can head to <a href=https://glimesh.tv/api>/API</a> and make the below query in the editor replacing Mytho with your channel. It will return the ID of your channel.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(username: <span style=color:#e6db74>&#34;Mytho&#34;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>id</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>You don&rsquo;t need any special permission to listen for chat messages. Any access token or client ID can listen to any channel. Once you complete this tutorial have a look at <a href=/api-docs/docs/chat/projects/sitewidesubscription/>listening to every channel at once</a>.</p></blockquote><p>Save and run the file. It should connect to chat and listen for messages. Try sending one! It will also send you a heartbeat every 30 seconds.</p><blockquote><p>Make sure the file is compiled before you run it!</p></blockquote><h3 id=handling-incoming-data>Handling Incoming Data
+<a class=anchor href=#handling-incoming-data>#</a></h3><p>Now that we have messages we need to parse the incoming data and make it check for commands. Create the 2 files shown below.</p><p>Responsible for handling all data from Glimesh (not just chatMessages) <code>lib/packet.ts</code></p><p>Responsible for scanning messages and running commands. <code>lib/command.ts</code></p><p>Add the below code to <code>lib/packet.ts</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* lib/packet.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>parsePacket</span>(<span style=color:#a6e22e>packet</span>: <span style=color:#66d9ef>any</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Its the connection response, do nothing.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Glimesh confirming our chat message subscription.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Its a heartbeat. We can ignore it.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>==</span> <span style=color:#ae81ff>4</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Its a response to a message we sent. We don&#39;t respond to those.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>	} <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>		<span style=color:#75715e>// Its a chat message!
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>		<span style=color:#66d9ef>return</span> <span style=color:#a6e22e>packet</span>[<span style=color:#ae81ff>4</span>].<span style=color:#a6e22e>result</span>.<span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>chatMessage</span>.<span style=color:#a6e22e>message</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> {<span style=color:#a6e22e>parsePacket</span>}
+</span></span></code></pre></div><p>This creates a function to parse the data from Glimesh. We only return data if the packet is a chatmessage. This ignores heartbeats and all other data. If you want to add the ability to make queries from the websocket you would need to modify this function or use the same first 2 values as the chatMessage query. We will not be covering that in this doc.</p><h3 id=handling-commands>Handling Commands
+<a class=anchor href=#handling-commands>#</a></h3><p>We also need to add the code to handle commands. Add the following to <code>lib/command.ts</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* lib/command.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>checkForCommand</span>(<span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>string</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>string</span> <span style=color:#f92672>|</span> <span style=color:#66d9ef>false</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>firstWord</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>message</span>.<span style=color:#a6e22e>split</span>(<span style=color:#e6db74>&#34; &#34;</span>)[<span style=color:#ae81ff>0</span>];
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span><span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>Commands</span>.<span style=color:#a6e22e>length</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>Commands</span>[<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>cmdName</span> <span style=color:#f92672>==</span> <span style=color:#a6e22e>firstWord</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#66d9ef>return</span>  <span style=color:#a6e22e>Commands</span>[<span style=color:#a6e22e>i</span>].<span style=color:#a6e22e>cmdMessage</span>;
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Commands</span>:<span style=color:#66d9ef>Command</span>[] <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>	{
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>cmdName</span><span style=color:#f92672>:</span>  <span style=color:#e6db74>&#34;!example&#34;</span>,
+</span></span><span style=display:flex><span>		<span style=color:#a6e22e>cmdMessage</span><span style=color:#f92672>:</span>  <span style=color:#e6db74>&#34;Hello World!&#34;</span>
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>Command</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>cmdName</span>: <span style=color:#66d9ef>string</span>;
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>cmdMessage</span>: <span style=color:#66d9ef>string</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>export</span> { <span style=color:#a6e22e>checkForCommand</span> }
+</span></span></code></pre></div><p>This file adds a few things.
+We define a <code>Command</code> type. This provides type safety and handy autocompletion. We also create the <code>Commands</code> variable. This holds all of our commands. In our case we added the command <code>example</code>. Feel free to add as many commands as you want in the above format. We also define a function to scan for the command and return the message if it finds a match.</p><blockquote><p>Although adding commands in the code is fine for this example in a real scenario you would want some sort of data storage. A JSON file or small database would work well.</p></blockquote><p>We need to run the function we created in the last 2 files. Import them at the top of <code>index.ts</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>checkForCommand</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./lib/command&#34;</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>import</span> { <span style=color:#a6e22e>parsePacket</span> } <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./lib/packet&#34;</span>;
+</span></span></code></pre></div><p>Call them in the websocket message handler function. It should look like the code below.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#75715e>/* index.ts */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;message&#34;</span>, (<span style=color:#a6e22e>data</span>: <span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>glimeshData</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>data</span>.<span style=color:#a6e22e>toString</span>();
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>glimeshData</span>.<span style=color:#a6e22e>toString</span>());
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>message</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>parsePacket</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>parse</span>(<span style=color:#a6e22e>glimeshData</span>));
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>message</span>) {
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>command</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>checkForCommand</span>(<span style=color:#a6e22e>message</span>);
+</span></span><span style=display:flex><span>		<span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>command</span>) {
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>sendMessage</span>(<span style=color:#a6e22e>command</span>);
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><p>This checks for a message and if it exists it checks for a command. If the command exists the command message is returned. We need to make the <code>sendMessage</code> function so we can talk to chat. Add the following function just below the message handler function. (It must be within the <code>connectToGlimesh</code> function. Replace 6 with your channel ID.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ts data-lang=ts><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>sendMessage</span>(<span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>string</span>) {
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>query</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`mutation {createChatMessage(channelId: 6, message: {message: &#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>message</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;}) { message }}`</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>packet</span> <span style=color:#f92672>=</span> [
+</span></span><span style=display:flex><span>		<span style=color:#e6db74>&#34;1&#34;</span>, <span style=color:#e6db74>&#34;4&#34;</span>, <span style=color:#e6db74>&#34;__absinthe__:control&#34;</span>, <span style=color:#e6db74>&#34;doc&#34;</span>,
+</span></span><span style=display:flex><span>		{
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>query</span>: <span style=color:#66d9ef>query</span>,
+</span></span><span style=display:flex><span>			<span style=color:#a6e22e>variables</span><span style=color:#f92672>:</span> {}
+</span></span><span style=display:flex><span>		}
+</span></span><span style=display:flex><span>	]
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>packet</span>))
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>connection</span>.<span style=color:#a6e22e>send</span>(<span style=color:#a6e22e>JSON</span>.<span style=color:#a6e22e>stringify</span>(<span style=color:#a6e22e>packet</span>))
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Now we call this function if a command is triggered. Whenever a command is triggered the message of the command is sent back to chat.</p><p>Congratulations! You now have a fully functioning chatbot. You can continue to add commands in the format shown.</p><p>What next?</p><blockquote><p>Add a dedicated database to store commands. Small databases such as <a href=https://www.npmjs.com/package/nedb>NEDB</a> and <a href=https://www.npmjs.com/package/sqlite3>SQLite</a> work well for this. You would need to add a way to programmatically add and edit commands in the database.
 Add modules for storing user data (watch time, points, etc).
-Add a web panel to modify and monitor the bot (advanced).</p>
-</blockquote>
-<p>Questions?</p>
-<p>Ask your questions in the dev-questions channel in discord. We will try to help with any issue provided the project is Glimesh related.</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/e20b500da73b6161aab029615ed1c88058122f7d title="Last modified by MythoAway7 | January 3, 2022" target=_blank rel=noopener>
-<img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>January 3, 2022</span>
-</a>
-</div>
-</div>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#getting-started>Getting started</a></li>
-<li><a href=#authentication>Authentication</a></li>
-<li><a href=#connecting-to-chat>Connecting to Chat</a>
-<ul>
-<li><a href=#handling-incoming-data>Handling Incoming Data</a></li>
-<li><a href=#handling-commands>Handling Commands</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</aside>
-</main>
-</body>
-</html>
+Add a web panel to modify and monitor the bot (advanced).</p></blockquote><p>Questions?</p><p>Ask your questions in the dev-questions channel in discord. We will try to help with any issue provided the project is Glimesh related.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/e20b500da73b6161aab029615ed1c88058122f7d title="Last modified by MythoAway7 | January 3, 2022" target=_blank rel=noopener><img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
+<span>January 3, 2022</span></a></div></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#getting-started>Getting started</a></li><li><a href=#authentication>Authentication</a></li><li><a href=#connecting-to-chat>Connecting to Chat</a><ul><li><a href=#handling-incoming-data>Handling Incoming Data</a></li><li><a href=#handling-commands>Handling Commands</a></li></ul></li></ul></nav></aside></main></body></html>

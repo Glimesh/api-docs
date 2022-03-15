@@ -1,373 +1,93 @@
-<!doctype html><html lang=en>
-<head>
-<meta name=generator content="Hugo 0.92.1">
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="PKCE Authentication Flow #  PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.94.2"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="PKCE Authentication Flow #  PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.
  Glimesh closely follows the RFC spec which can be found here.
- Verifier and Challenge #  First we need to generate a code verifier and a code challenge to use in the authorization request.">
-<meta name=theme-color content="#FFFFFF"><meta property="og:title" content>
-<meta property="og:description" content="PKCE Authentication Flow #  PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.
+ Verifier and Challenge #  First we need to generate a code verifier and a code challenge to use in the authorization request."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="PKCE Authentication Flow #  PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.
  Glimesh closely follows the RFC spec which can be found here.
- Verifier and Challenge #  First we need to generate a code verifier and a code challenge to use in the authorization request.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/"><meta property="article:section" content="docs">
-<meta property="article:modified_time" content="2021-08-25T21:05:50-05:00">
-<title>Pkce Auth | API-Docs</title>
-<link rel=manifest href=/api-docs/manifest.json>
-<link rel=icon href=/api-docs/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ=">
-<script defer src=/api-docs/en.search.min.2b01b127225281f5ae3cf8b80c0541d9efef8677f8031b55a651f7f1ef97d40e.js integrity="sha256-KwGxJyJSgfWuPPi4DAVB2e/vhnf4AxtVplH38e+X1A4="></script>
+ Verifier and Challenge #  First we need to generate a code verifier and a code challenge to use in the authorization request."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2021-08-25T21:05:50-05:00"><title>Pkce Auth | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.8df307fd82e102d753dd7f0330c0d379903d3b0d16e17b31f63bcca72c9bf88b.js integrity="sha256-jfMH/YLhAtdT3X8DMMDTeZA9Ow0W4Xsx9jvMpyyb+Is="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css>
-<script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script>
-</head>
-<body>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<nav>
-<h2 class=book-brand>
-<a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li>
-<input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
-<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between">
-<a>API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
-<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between">
-<a>Live Updates</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
-<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between">
-<a>Query API</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle checked>
-<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between">
-<a>Authentication</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle checked>
-<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between">
-<a>Access Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/ class=active>Pkce Auth</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
-<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between">
-<a>Refresh Token</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
-<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between">
-<a>Chat</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
-<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between">
-<a>Projects</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
-<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between">
-<a>Reference</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a>
-</li>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a>
-</li>
-<li>
-<input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
-<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between">
-<a>Developer Resources</a>
-<span>▾</span>
-</label>
-<ul>
-<li>
-<a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/api-docs/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.css><script src=https://cdn.jsdelivr.net/npm/graphql-voyager/dist/voyager.min.js></script></head><body><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><nav><h2 class=book-brand><a href=/api-docs><img src=/api-docs/glimesh.png alt=Logo><span>API-Docs</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-bf7b3283e3790c00c8caaa140299052b class=toggle>
+<label for=section-bf7b3283e3790c00c8caaa140299052b class="flex justify-between"><a>API</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-ed8e1e4d4f4c1e3672708d733258fa51 class=toggle>
+<label for=section-ed8e1e4d4f4c1e3672708d733258fa51 class="flex justify-between"><a>Live Updates</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/channels/>Channels</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/live-updates/followers/>Followers</a></li></ul></li><li><input type=checkbox id=section-ed972e555096d8550e03791bdee2d785 class=toggle>
+<label for=section-ed972e555096d8550e03791bdee2d785 class="flex justify-between"><a>Query API</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/basic-query/>Basic Query</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/query-api/nodejs/node-query/>Node Query</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/api/api-explorer/>API Explorer</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/migration/>Migration</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/pagination/>Pagination</a></li><li><a href=https://glimesh.github.io/api-docs/docs/api/voyager/>Voyager</a></li></ul></li><li><input type=checkbox id=section-46070fb9a15f8281e5989a88905887d2 class=toggle checked>
+<label for=section-46070fb9a15f8281e5989a88905887d2 class="flex justify-between"><a>Authentication</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-cd9d01c15ace32e6fd3da5d1201bcd57 class=toggle checked>
+<label for=section-cd9d01c15ace32e6fd3da5d1201bcd57 class="flex justify-between"><a>Access Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/clientcredentials/>Client Credentials</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/pkceauth/ class=active>Pkce Auth</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/accesstoken/>Access Token</a></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/>Node Access Token</a></li></ul></li><li><input type=checkbox id=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class=toggle>
+<label for=section-1a1dc1f670e3426ff413fcd1f7e7ec36 class="flex justify-between"><a>Refresh Token</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/authentication/refreshtoken/refreshtoken/>Refresh Token</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/authentication/auth-explained/>Auth Explained</a></li></ul></li><li><input type=checkbox id=section-05db2d31fc2e5a419ce9fd1c0e938e4e class=toggle>
+<label for=section-05db2d31fc2e5a419ce9fd1c0e938e4e class="flex justify-between"><a>Chat</a>
+<span>▾</span></label><ul><li><input type=checkbox id=section-9c7ac9316f3056fdea1a344042fc8cb8 class=toggle>
+<label for=section-9c7ac9316f3056fdea1a344042fc8cb8 class="flex justify-between"><a>Projects</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/sitewidesubscription/>Site Wide Subscription</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/projects/typescriptchatbot/>Typescript Chatbot</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/chat-tokens/>Chat Tokens</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/moderation/>Moderation</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/mutations/>Mutations</a></li><li><a href=https://glimesh.github.io/api-docs/docs/chat/websockets/>Websockets</a></li></ul></li><li><input type=checkbox id=section-084ba1dbb512652712ad881ff8045610 class=toggle>
+<label for=section-084ba1dbb512652712ad881ff8045610 class="flex justify-between"><a>Reference</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/reference/channel/>Channel</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chat/>Chat</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/chatparts/>Chat Parts</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/mod/>Mod</a></li><li><a href=https://glimesh.github.io/api-docs/docs/reference/scopes/>Scopes</a></li></ul></li><li><a href=https://glimesh.github.io/api-docs/docs/contributing/>Contributing</a></li><li><a href=https://glimesh.github.io/api-docs/docs/dev-app/>Dev App</a></li><li><input type=checkbox id=section-c51f25d1917de848e9ad26913759c6eb class=toggle>
+<label for=section-c51f25d1917de848e9ad26913759c6eb class="flex justify-between"><a>Developer Resources</a>
+<span>▾</span></label><ul><li><a href=https://glimesh.github.io/api-docs/docs/developerresources/libraries/>Libraries</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/api-docs/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Pkce Auth</strong>
-<label for=toc-control>
-<img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#verifier-and-challenge>Verifier and Challenge</a></li>
-<li><a href=#authorization-code>Authorization Code</a></li>
-<li><a href=#getting-tokens>Getting Tokens</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=pkce-authentication-flow>
-PKCE Authentication Flow
-<a class=anchor href=#pkce-authentication-flow>#</a>
-</h1>
-<p>PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.</p>
-<blockquote>
-<p>Glimesh closely follows the RFC spec which can be found <a href=https://datatracker.ietf.org/doc/html/rfc7636>here</a>.</p>
-</blockquote>
-<h2 id=verifier-and-challenge>
-Verifier and Challenge
-<a class=anchor href=#verifier-and-challenge>#</a>
-</h2>
-<p>First we need to generate a <em>code verifier</em> and a <em>code challenge</em> to use in the authorization request.</p>
-<p>A code verifier is a random string using unreserved characters that is 43-128 characters long. The <a href=https://datatracker.ietf.org/doc/html/rfc7636>RFC</a> acceptable characters are listed below.</p>
-<pre tabindex=0><code>code-verifier = 43*128unreserved
-unreserved = ALPHA / DIGIT / &quot;-&quot; / &quot;.&quot; / &quot;_&quot; / &quot;~&quot;
+<label for=toc-control><img src=/api-docs/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#verifier-and-challenge>Verifier and Challenge</a></li><li><a href=#authorization-code>Authorization Code</a></li><li><a href=#getting-tokens>Getting Tokens</a></li></ul></nav></aside></header><article class=markdown><h1 id=pkce-authentication-flow>PKCE Authentication Flow
+<a class=anchor href=#pkce-authentication-flow>#</a></h1><p>PKCE builds upon authorization flow. PKCE is commonly used for mobile and frontend code where your source code (namely client ID) is accessible to your users. PKCE auth does not require a client secret.</p><blockquote><p>Glimesh closely follows the RFC spec which can be found <a href=https://datatracker.ietf.org/doc/html/rfc7636>here</a>.</p></blockquote><h2 id=verifier-and-challenge>Verifier and Challenge
+<a class=anchor href=#verifier-and-challenge>#</a></h2><p>First we need to generate a <em>code verifier</em> and a <em>code challenge</em> to use in the authorization request.</p><p>A code verifier is a random string using unreserved characters that is 43-128 characters long. The <a href=https://datatracker.ietf.org/doc/html/rfc7636>RFC</a> acceptable characters are listed below.</p><pre tabindex=0><code>code-verifier = 43*128unreserved
+unreserved = ALPHA / DIGIT / &#34;-&#34; / &#34;.&#34; / &#34;_&#34; / &#34;~&#34;
 ALPHA = %x41-5A / %x61-7A
 DIGIT = %x30-39
-</code></pre><p>You can generate the verifier in whichever method is the most convenient for your application. There is a great set of <a href=https://docs.cotter.app/sdk-reference/api-for-other-mobile-apps/api-for-mobile-apps#step-1-create-a-code-verifier>code samples</a> to generate the code verifier. Below is their example for javascript.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>dec2hex</span>(<span style=color:#a6e22e>dec</span>) {
-  <span style=color:#66d9ef>return</span> (<span style=color:#e6db74>&#39;0&#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>dec</span>.<span style=color:#a6e22e>toString</span>(<span style=color:#ae81ff>16</span>)).<span style=color:#a6e22e>substr</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
-}
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>generateRandomString</span>() {
-  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>array</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint32Array</span>(<span style=color:#ae81ff>56</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>);
-  window.<span style=color:#a6e22e>crypto</span>.<span style=color:#a6e22e>getRandomValues</span>(<span style=color:#a6e22e>array</span>);
-  <span style=color:#66d9ef>return</span> Array.<span style=color:#a6e22e>from</span>(<span style=color:#a6e22e>array</span>, <span style=color:#a6e22e>dec2hex</span>).<span style=color:#a6e22e>join</span>(<span style=color:#e6db74>&#39;&#39;</span>);
-}
-<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>verifier</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>generateRandomString</span>();
-</code></pre></div><p>Next we need to create a code challenge. We use the verifier to create the challenge. Glimesh requires us to use the S256 transformation as specified in the <a href=https://datatracker.ietf.org/doc/html/rfc7636>RFC</a> spec.</p>
-<p><code>code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))</code></p>
-<p>As before we will use the <a href=https://docs.cotter.app/sdk-reference/api-for-other-mobile-apps/api-for-mobile-apps#step-1-b-create-a-code-challenge-from-code-verifier>code samples</a> to generate our example. Their javascript example is listed below.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>sha256</span>(<span style=color:#a6e22e>plain</span>) { <span style=color:#75715e>// returns promise ArrayBuffer
-</span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>encoder</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>TextEncoder</span>();
-  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>encoder</span>.<span style=color:#a6e22e>encode</span>(<span style=color:#a6e22e>plain</span>);
-  <span style=color:#66d9ef>return</span> window.<span style=color:#a6e22e>crypto</span>.<span style=color:#a6e22e>subtle</span>.<span style=color:#a6e22e>digest</span>(<span style=color:#e6db74>&#39;SHA-256&#39;</span>, <span style=color:#a6e22e>data</span>);
-}
-
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>base64urlencode</span>(<span style=color:#a6e22e>a</span>) {
-      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>str</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>;
-      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>bytes</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint8Array</span>(<span style=color:#a6e22e>a</span>);
-      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>len</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>bytes</span>.<span style=color:#a6e22e>byteLength</span>;
-      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>len</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
-        <span style=color:#a6e22e>str</span> <span style=color:#f92672>+=</span> String.<span style=color:#a6e22e>fromCharCode</span>(<span style=color:#a6e22e>bytes</span>[<span style=color:#a6e22e>i</span>]);
-      }
-      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>btoa</span>(<span style=color:#a6e22e>str</span>)
-        .<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>/\+/g</span>, <span style=color:#e6db74>&#34;-&#34;</span>)
-        .<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>/\//g</span>, <span style=color:#e6db74>&#34;_&#34;</span>)
-        .<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>/=+$/</span>, <span style=color:#e6db74>&#34;&#34;</span>);
-    }
-
-<span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>challenge_from_verifier</span>(<span style=color:#a6e22e>v</span>) {
-  <span style=color:#a6e22e>hashed</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>sha256</span>(<span style=color:#a6e22e>v</span>);
-  <span style=color:#a6e22e>base64encoded</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>base64urlencode</span>(<span style=color:#a6e22e>hashed</span>);
-  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>base64encoded</span>;
-}
-
-<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>challenge</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>challenge_from_verifier</span>(<span style=color:#a6e22e>verifier</span>);
-</code></pre></div><p>Now we need to get permission from the user.</p>
-<blockquote>
-<p>You should create a new verifier and challenge for each user. They should be kept private, and deleted when the user is authenticated.</p>
-</blockquote>
-<h2 id=authorization-code>
-Authorization Code
-<a class=anchor href=#authorization-code>#</a>
-</h2>
-<p>Now that we have our code verifier and code challenge we can direct our user to Glimesh so they can approve our app. You will need a client ID handy.</p>
-<blockquote>
-<p>Need a client ID? Create a dev app <a href=https://glimesh.tv/users/settings/applications>here</a>.</p>
-</blockquote>
-<p>The user must be directed to the authorization URL with the below query parameters.</p>
-<pre tabindex=0><code class=language-url data-lang=url>https://glimesh.tv/oauth/authorize?response_type=code&amp;code_challenge=CODE_CHALLENGE&amp;code_challenge_method=S256&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=YOUR_CALLBACK_URL&amp;scope=SCOPE
-</code></pre><p>Make sure to replace the parameters with their values. When the user is directed to Glimesh they will be asked to approve the scopes you requested. If they approve it they will be redirected to the redirect URL provided. We need to extract the authorization code from the URL (sent as a query param). There are many libraries for each language to help with this. Since we are just testing we can look at the URL and copy it manually.</p>
-<pre tabindex=0><code class=language-url data-lang=url>http://localhost:3000/success?code=qwertyuiop1234567890
-</code></pre><blockquote>
-<p>Example redirect URL response. We want the code value.</p>
-</blockquote>
-<p>This code expires in 60 seconds. If it expires you have to get the user to authorize your app again.</p>
-<h2 id=getting-tokens>
-Getting Tokens
-<a class=anchor href=#getting-tokens>#</a>
-</h2>
-<p>Now that we have an authorization code we can request an access token. Simply send a HTTP POST request to the below URL adding the body as x-www-form-urlencoded.</p>
-<pre tabindex=0><code class=language-url data-lang=url>https://glimesh.tv/api/oauth/token
+</code></pre><p>You can generate the verifier in whichever method is the most convenient for your application. There is a great set of <a href=https://docs.cotter.app/sdk-reference/api-for-other-mobile-apps/api-for-mobile-apps#step-1-create-a-code-verifier>code samples</a> to generate the code verifier. Below is their example for javascript.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>dec2hex</span>(<span style=color:#a6e22e>dec</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (<span style=color:#e6db74>&#39;0&#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>dec</span>.<span style=color:#a6e22e>toString</span>(<span style=color:#ae81ff>16</span>)).<span style=color:#a6e22e>substr</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>generateRandomString</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>array</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint32Array</span>(<span style=color:#ae81ff>56</span><span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>  window.<span style=color:#a6e22e>crypto</span>.<span style=color:#a6e22e>getRandomValues</span>(<span style=color:#a6e22e>array</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> Array.<span style=color:#a6e22e>from</span>(<span style=color:#a6e22e>array</span>, <span style=color:#a6e22e>dec2hex</span>).<span style=color:#a6e22e>join</span>(<span style=color:#e6db74>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>verifier</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>generateRandomString</span>();
+</span></span></code></pre></div><p>Next we need to create a code challenge. We use the verifier to create the challenge. Glimesh requires us to use the S256 transformation as specified in the <a href=https://datatracker.ietf.org/doc/html/rfc7636>RFC</a> spec.</p><p><code>code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))</code></p><p>As before we will use the <a href=https://docs.cotter.app/sdk-reference/api-for-other-mobile-apps/api-for-mobile-apps#step-1-b-create-a-code-challenge-from-code-verifier>code samples</a> to generate our example. Their javascript example is listed below.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>sha256</span>(<span style=color:#a6e22e>plain</span>) { <span style=color:#75715e>// returns promise ArrayBuffer
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>encoder</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>TextEncoder</span>();
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>data</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>encoder</span>.<span style=color:#a6e22e>encode</span>(<span style=color:#a6e22e>plain</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> window.<span style=color:#a6e22e>crypto</span>.<span style=color:#a6e22e>subtle</span>.<span style=color:#a6e22e>digest</span>(<span style=color:#e6db74>&#39;SHA-256&#39;</span>, <span style=color:#a6e22e>data</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>base64urlencode</span>(<span style=color:#a6e22e>a</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>str</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;&#34;</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>bytes</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Uint8Array</span>(<span style=color:#a6e22e>a</span>);
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>len</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>bytes</span>.<span style=color:#a6e22e>byteLength</span>;
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>i</span> <span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>len</span>; <span style=color:#a6e22e>i</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>str</span> <span style=color:#f92672>+=</span> String.<span style=color:#a6e22e>fromCharCode</span>(<span style=color:#a6e22e>bytes</span>[<span style=color:#a6e22e>i</span>]);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>btoa</span>(<span style=color:#a6e22e>str</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>/\+/g</span>, <span style=color:#e6db74>&#34;-&#34;</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>/\//g</span>, <span style=color:#e6db74>&#34;_&#34;</span>)
+</span></span><span style=display:flex><span>        .<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>/=+$/</span>, <span style=color:#e6db74>&#34;&#34;</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>async</span> <span style=color:#66d9ef>function</span> <span style=color:#a6e22e>challenge_from_verifier</span>(<span style=color:#a6e22e>v</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>hashed</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>sha256</span>(<span style=color:#a6e22e>v</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>base64encoded</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>base64urlencode</span>(<span style=color:#a6e22e>hashed</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>base64encoded</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>challenge</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>await</span> <span style=color:#a6e22e>challenge_from_verifier</span>(<span style=color:#a6e22e>verifier</span>);
+</span></span></code></pre></div><p>Now we need to get permission from the user.</p><blockquote><p>You should create a new verifier and challenge for each user. They should be kept private, and deleted when the user is authenticated.</p></blockquote><h2 id=authorization-code>Authorization Code
+<a class=anchor href=#authorization-code>#</a></h2><p>Now that we have our code verifier and code challenge we can direct our user to Glimesh so they can approve our app. You will need a client ID handy.</p><blockquote><p>Need a client ID? Create a dev app <a href=https://glimesh.tv/users/settings/applications>here</a>.</p></blockquote><p>The user must be directed to the authorization URL with the below query parameters.</p><pre tabindex=0><code class=language-url data-lang=url>https://glimesh.tv/oauth/authorize?response_type=code&amp;code_challenge=CODE_CHALLENGE&amp;code_challenge_method=S256&amp;client_id=YOUR_CLIENT_ID&amp;redirect_uri=YOUR_CALLBACK_URL&amp;scope=SCOPE
+</code></pre><p>Make sure to replace the parameters with their values. When the user is directed to Glimesh they will be asked to approve the scopes you requested. If they approve it they will be redirected to the redirect URL provided. We need to extract the authorization code from the URL (sent as a query param). There are many libraries for each language to help with this. Since we are just testing we can look at the URL and copy it manually.</p><pre tabindex=0><code class=language-url data-lang=url>http://localhost:3000/success?code=qwertyuiop1234567890
+</code></pre><blockquote><p>Example redirect URL response. We want the code value.</p></blockquote><p>This code expires in 60 seconds. If it expires you have to get the user to authorize your app again.</p><h2 id=getting-tokens>Getting Tokens
+<a class=anchor href=#getting-tokens>#</a></h2><p>Now that we have an authorization code we can request an access token. Simply send a HTTP POST request to the below URL adding the body as x-www-form-urlencoded.</p><pre tabindex=0><code class=language-url data-lang=url>https://glimesh.tv/api/oauth/token
 </code></pre><pre tabindex=0><code>code_verifier:Verifier Here
 client_id: Client ID Here
 redirect_uri: Redirect Uri Here
 scope:public
 code:Authorization Code Here
 grant_type:authorization_code
-</code></pre><blockquote>
-<p>Each line is one key/value.</p>
-</blockquote>
-<p>When Glimesh receives your request they will send back an access and refresh token, as well as other info about the request.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js>{
-  <span style=color:#a6e22e>access_token</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;qwertyuiopo1234567890&#39;</span>,
-  <span style=color:#a6e22e>created_at</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;2020-12-14T15:15:29&#39;</span>,
-  <span style=color:#a6e22e>expires_in</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>21600</span>,
-  <span style=color:#a6e22e>refresh_token</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;qwertyuiop0987654321&#39;</span>,
-  <span style=color:#a6e22e>scope</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;public email chat streamkey&#39;</span>,
-  <span style=color:#a6e22e>token_type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;bearer&#39;</span>
-}
-</code></pre></div><blockquote>
-<p>Glimesh will send an error in JSON format if your request has an error. Keep in mind that all credentials must be accurate and you must request a token within 1 minute of the user authorizing your app. You need to include the code_<strong>verifier</strong>, not the challenge!</p>
-</blockquote>
-<p>You can use the access token for 6 hours. When it expires you need to request a new one with your refresh token. We have a guide on refreshing tokens which can be found <a href=/api-docs/docs/authentication/refreshtoken/refreshtoken>here</a>.</p>
-<p>Questions? Join the #dev-questions channel on our <a href=https://discord.gg/Glimesh>discord</a>.</p>
-</article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-<div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/bcd17b96aeb0425c3491e0ad492b6a120a61e593 title="Last modified by MythoAway7 | August 26, 2021" target=_blank rel=noopener>
-<img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
-<span>August 26, 2021</span>
-</a>
-</div>
-</div>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#verifier-and-challenge>Verifier and Challenge</a></li>
-<li><a href=#authorization-code>Authorization Code</a></li>
-<li><a href=#getting-tokens>Getting Tokens</a></li>
-</ul>
-</nav>
-</aside>
-</main>
-</body>
-</html>
+</code></pre><blockquote><p>Each line is one key/value.</p></blockquote><p>When Glimesh receives your request they will send back an access and refresh token, as well as other info about the request.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>access_token</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;qwertyuiopo1234567890&#39;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>created_at</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;2020-12-14T15:15:29&#39;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>expires_in</span><span style=color:#f92672>:</span> <span style=color:#ae81ff>21600</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>refresh_token</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;qwertyuiop0987654321&#39;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>scope</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;public email chat streamkey&#39;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>token_type</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;bearer&#39;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><blockquote><p>Glimesh will send an error in JSON format if your request has an error. Keep in mind that all credentials must be accurate and you must request a token within 1 minute of the user authorizing your app. You need to include the code_<strong>verifier</strong>, not the challenge!</p></blockquote><p>You can use the access token for 6 hours. When it expires you need to request a new one with your refresh token. We have a guide on refreshing tokens which can be found <a href=/api-docs/docs/authentication/refreshtoken/refreshtoken>here</a>.</p><p>Questions? Join the #dev-questions channel on our <a href=https://discord.gg/Glimesh>discord</a>.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/Glimesh/api-docs/commit/bcd17b96aeb0425c3491e0ad492b6a120a61e593 title="Last modified by MythoAway7 | August 26, 2021" target=_blank rel=noopener><img src=/api-docs/svg/calendar.svg class=book-icon alt=Calendar>
+<span>August 26, 2021</span></a></div></div></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><nav id=TableOfContents><ul><li><a href=#verifier-and-challenge>Verifier and Challenge</a></li><li><a href=#authorization-code>Authorization Code</a></li><li><a href=#getting-tokens>Getting Tokens</a></li></ul></nav></aside></main></body></html>
