@@ -24,7 +24,7 @@ It is recommended to follow these tutorials in this order. This will give you a 
 - [Making requests to the API](docs/api/query-api/basic-query/)
 - ### WebSocket Connections
 - [Connecting to chat](docs/chat/websockets/)
-- [Channel Updates](docs/api/live-updates/channels/)
+- [Channel Updates](docs/live-updates/channels/)
 - ### OAuth Authentication
 - [Generating your own access token](docs/authentication/accesstoken/clientcredentials/)
 - [Getting a users access token](docs/authentication/accesstoken/accesstoken/)
