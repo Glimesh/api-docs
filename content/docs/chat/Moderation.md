@@ -1,10 +1,13 @@
+---
+weight: 40
+---
 # Chat Moderation
 
 Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
 
 > New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
 
-> If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial [here](/api-docs/docs/api/live-updates/channels).
+> If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial [here](/api-docs/docs/live-updates/channels).
 
 
 ## Understanding Mod Actions

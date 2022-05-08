@@ -1,4 +1,6 @@
-
+---
+title: Generic Query
+---
 # Glimesh API Requests
 
 This is a basic tutorial for communicating with the Glimesh API. This guide assumes you have a [client ID](https://glimesh.tv/users/settings/applications) or an access token from a user.  Having basic GraphQL knowledge would also be helpful.
