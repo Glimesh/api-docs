@@ -1,3 +1,6 @@
+---
+weight: 10
+---
 # Channel Changes
 
 Using graphQL subscriptions we can listen for changes to a channel without making repeated queries! Before starting this tutorial you should understand basic graphQL and have a method of authentication. Completing our websocket tutorial will also be helpful.

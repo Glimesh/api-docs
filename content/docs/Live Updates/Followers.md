@@ -1,4 +1,6 @@
-
+---
+weight: 20
+---
 # Follower Alerts
 
 This is a tutorial for follow alerts. This guide assumes you have a [client ID](https://glimesh.tv/users/settings/applications) or an access token from a user. You should also have a websocket connection open from [this](/api-docs/docs/chat/websockets/) tutorial. Having basic GraphQL knowledge would also be helpful.

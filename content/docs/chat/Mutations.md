@@ -1,6 +1,14 @@
-# Chat Mutations
+---
+weight: 20
+title: Sending Messages
+---
+# Sending Messages
 
-This tutorial will enable you to query and send messages to the chat using the Glimesh API. If you are looking to build a chatbot or other program that needs a constant connection view [this tutorial](/api-docs/docs/chat/websockets/). To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the `chat` scope to post messages.
+This tutorial will enable you to send and receive chat messages using the Glimesh API.
+
+This tutorial is for the HTTP API. This is not a websocket tutorial. If you are looking to build a chatbot or other program that needs a **constant connection** view [this tutorial](/api-docs/docs/chat/websockets/).
+
+To connect to a chat you will need an access token or a client ID. Keep in mind that using a client ID will keep you in read-only mode for chat environments. The access token must have the `chat` scope to post messages.
 
 > If you are testing you can use [client credentials](/api-docs/docs/authentication/accesstoken/clientcredentials/) to get an access token. This will allow you to talk as your own account without going through the entire auth process.
 

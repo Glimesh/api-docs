@@ -1,3 +1,7 @@
+---
+weight: 30
+title: Tokens (Message Parts)
+---
 # Chat Tokens
 
 Chat tokens are a different way to handle messages sent from chat. A normal message is just a simple string. A chat token is an array of data that shows you all sorts of information about the message and what it contains.
