@@ -15,6 +15,7 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
       hideSettings: false,
       displayOptions: {
         sortByAlphabet: true,
+        skipDeprecated: false
       },
       introspection: {
 	"data": {
