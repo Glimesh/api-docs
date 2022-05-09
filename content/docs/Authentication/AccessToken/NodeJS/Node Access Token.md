@@ -1,4 +1,8 @@
-﻿# Getting User Tokens With NodeJS
+﻿---
+title: NodeJS Access Token
+---
+
+# Getting User Tokens With NodeJS
 
 This is a basic tutorial for getting an auth token from a user using Oauth with NodeJS. This guide assumes you know basic JS and understand the workings of Oauth 2.
 

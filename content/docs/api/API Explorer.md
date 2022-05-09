@@ -24,7 +24,7 @@ The file contains a few common requests. To test one, click on the request. Then
 ![example query](https://i.imgur.com/gM3Mi8f.png)
 
 
-All the requests in this file have the auth header. If you make a new request you will have to add it yourself. Simply have the header name  as "Authorization" and the value your *access_token* environment variable (ctrl+space to view env variables). You can use the *default_url* variable for the URL.
+All the requests in this file have the auth header. If you make a new request you will have to add it yourself. Simply have the header name as "Authorization" and the value as the *access_token* environment variable (ctrl+space in the text field to view env variables). You can use the *default_url* variable for the URL.
 
 ![Header example](https://i.imgur.com/PoJqnn7.png)
 
@@ -51,7 +51,7 @@ Use the following values for the form entries.
 
 ![Auth headers](https://i.imgur.com/LlD0k1V.png)
 
-The purple boxes are the variables from earlier. Press ctrl+space to view all variables and select the proper variables. To verify that the request is valid send the request. You should receive an access token from the response. If you don't receive one make sure all the values are correct.
+The purple boxes are the variables from earlier. Press ctrl+space while in the text field to view all variables and select the proper variables. To verify that the request is valid send the request. You should receive an access token from the response. If you don't receive one make sure all the values are correct.
 
 > Note that I have 5 headers, you will not have that many for this request. The default Insomnia headers will suffice.
 
