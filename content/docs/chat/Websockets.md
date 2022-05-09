@@ -53,13 +53,11 @@ If Glimesh successfully receives our request we will get a response similar to w
 Now that Glimesh has accepted our connection we can connect to a chat. You will need a channel ID for the channel you want to connect to. If you do not know the channel ID you can query the API for it. Simply replace Mytho with the proper user.
 
 ```GraphQL
-
 query {
   channel(username: "Mytho") {
     id
   }
 }
-
 ```
 > Remember: Channel IDs and user IDs are different things. Everyone is a user but not everyone has a channel.
 
@@ -82,7 +80,7 @@ Glimesh will send us a response:
 
 ## Staying Connected (heartbeat)
 
-Now we are connected to chat! The only thing left to do is send a heartbeat to Glimesh so the connection won't be closed. You need to send a heartbeat every 20 seconds. Structure it as follows:
+Now we are connected to chat! The only thing left to do is send a heartbeat to Glimesh so the connection won't be closed. You need to send a heartbeat every 30 seconds. Structure it as follows:
 
 ```
 ["1","1","phoenix","heartbeat",{}]
@@ -127,7 +125,6 @@ Only access tokens with the `chat` scope can talk in chat. Client IDs are read o
 You don't need to disconnect from the connection to make a normal API request. You can send requests from within your websocket connection! As with normal queries you are limited by the scope of your access token or client ID. Let's build a simple request.
 
 ```GraphQL
-
 query {
   followers(streamerUsername: "CHANNEL") {
     id,
@@ -136,7 +133,6 @@ query {
     }
   }
 }
-
 ```
 In this example we request the ID and username of the followers of a channel. Replace CHANNEL with any streamer on Glimesh. Keep in mind that they must be a channel and not just a normal user.  Add this query as the payload in the message that we will send to the API. As with all requests we must make this valid JSON before sending it to Glimesh.
 
