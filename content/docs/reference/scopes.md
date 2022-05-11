@@ -4,4 +4,4 @@ Scopes are permissions that a developer application requests from a client. The 
 
 {{% content "docs/reference/scopesReference.md" %}}
 
-*Note that more scopes will be added over time*
+*More scopes will be added over time. Your users will have to manually approve the new scopes.*

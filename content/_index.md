@@ -4,15 +4,16 @@ title: Home
 
 # Welcome
 
-This is the website hosting all of the Glimesh Developer docs. We have separated the information into general topics (auth, queries, etc). Each topic  has a page explaining the basics. Some topics also have language specific tutorials. If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
+This is the website hosting all of the Glimesh API documentation.  If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
 
 ## Structure
 
-This repo is divided into topics. Each topic has a tutorial for each programming language as they are added. The tutorial contains a full guide explaining the topic as basic as possible. Code snippets are included as well as a working example upon completion of the tutorial. In addition to the tutorials a basic spec is added. This does not have any code and is intended so languages without tutorials can still access the Glimesh service.
+This repo is divided into topics (auth, chat, etc.). Each topic has several tutorial pages. Most of the examples are generic and not specific to any programming language. However, some pages do contain code samples.
+Some pages will help you understand the API while others help you build something (chatbot/follow alerts).
 
 This documentation is a work in progress. We will do our best to keep this updated!
 
->Interested in contributing? Click [here](docs/contributing) to help out!
+> Interested in contributing? Click [here](docs/contributing) to help out!
 
 ## Get Started
 
@@ -36,5 +37,5 @@ Not seeing what you are looking for? Consider adding a tutorial for it or talkin
 
 Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
- - [Create API requests on Glimesh without a dev environment](docs/api/api-explorer)
+ - [Create API requests on Glimesh without a dev environment](docs/api/api-explorer) (Old API)
  - Our dev-questions channel in [Discord](https://discord.gg/Glimesh)

@@ -8,6 +8,7 @@ An access token can be used to query the Glimesh API on behalf of a user. Normal
 ## Requesting A Token
 
 Before requesting a token you must have a [developer application](https://glimesh.tv/users/settings/applications). You will need your client ID and secret key.
+
 ![app image](https://i.imgur.com/IIzwkHc.png)
 
 Simply make a POST request to the following URL replacing CLIENT_ID and SECRET_KEY with the info from your dev app.

@@ -37,19 +37,16 @@ Replace YOUR_CLIENT_ID with your ID. This will allow you access to the API.
 We need to set up a query to gather the chat messages. You will need the channel ID of a streamer to get the messages. You can get a channel ID with this query. Replace Mytho with the name of the user that you want the ID from.
 
 ```GraphQL
-
 query {
   channel(streamerUsername: "Mytho") {
     id
   }
 }
-
 ```
 
 Once you have the ID we can build our request. The query needs to be in the body of the request. You must send the query as a POST request. Structure it as follows:
 
 ```GraphQL
-
 query {
   channel(id: ID) {
     chatMessages(last: 10) {
@@ -65,7 +62,6 @@ query {
     }
   }
 }
-
 ```
 
 > Don't forget to replace ID with the channel ID! If you want more data you can view the chatMessage reference [here](/api-docs/docs/reference/chat/) Chat messages are paginated, you can read about that [here](/api-docs/docs/api/pagination)
@@ -73,7 +69,6 @@ query {
 Glimesh will respond with a set of JSON data. You need to parse it to get the data that you want.
 
 ```JSON
-
 {
   "data": {
     "channel": {
@@ -105,7 +100,6 @@ Glimesh will respond with a set of JSON data. You need to parse it to get the da
 The Glimesh API uses mutations to send messages. The request must contain this mutation with a channel ID and a chat message. Structure it as show below. Make sure to replace MESSAGE with your chat message and ID with your channel ID.
 
 ```GraphQL
-
 mutation {
   createChatMessage(channelId:6, message: {message: "MESSAGE"}) {
     message,
@@ -115,17 +109,14 @@ mutation {
     }
   }
 }
-
 ```
 
 > This should go in the body of the request.
 
 
-
 Glimesh will return with the message that was sent to chat. If you want more data you have to request it. The chatMessage reference can be found [here](/api-docs/docs/reference/chat/).
 
 ```JSON
-
 {
   "data": {
     "createChatMessage": {
@@ -137,7 +128,6 @@ Glimesh will return with the message that was sent to chat. If you want more dat
     }
   }
 }
-
 ```
 
 This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our [discord](https://discord.gg/Glimesh).
