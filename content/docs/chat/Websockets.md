@@ -54,7 +54,7 @@ Now that Glimesh has accepted our connection we can connect to a chat. You will 
 
 ```GraphQL
 query {
-  channel(username: "Mytho") {
+  channel(streamerUsername: "Mytho") {
     id
   }
 }
@@ -90,7 +90,7 @@ Glimesh will respond with:
 ```JSON
 ["null","1","phoenix","phx_reply",{"response":{},"status":"ok"}]
 ```
-Now Glimesh won't disconnect us  and we have a stable chat connection! Next we will parse incoming messages and send messages back to chat.
+Now Glimesh won't disconnect us and we have a stable chat connection! Next we will parse incoming messages and send messages back to chat.
 
 
 ## Incoming Messages
