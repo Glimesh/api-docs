@@ -2596,6 +2596,18 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 						{
 							"args": [],
 							"deprecationReason": null,
+							"description": "A collection of metadata attributed to the chat message",
+							"isDeprecated": false,
+							"name": "metadata",
+							"type": {
+								"kind": "OBJECT",
+								"name": "ChatMessageMetadata",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
 							"description": "List of chat message tokens used",
 							"isDeprecated": false,
 							"name": "tokens",
@@ -2757,6 +2769,89 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 					"interfaces": null,
 					"kind": "INPUT_OBJECT",
 					"name": "ChatMessageInput",
+					"possibleTypes": null
+				},
+				{
+					"description": "Metadata attributed to the chat message",
+					"enumValues": null,
+					"fields": [
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Was the user a admin at the time of this message",
+							"isDeprecated": false,
+							"name": "admin",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Was the user a moderator at the time of this message",
+							"isDeprecated": false,
+							"name": "moderator",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Was the user a platform_founder_subscriber at the time of this message",
+							"isDeprecated": false,
+							"name": "platformFounderSubscriber",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Was the user a platform_supporter_subscriber at the time of this message",
+							"isDeprecated": false,
+							"name": "platformSupporterSubscriber",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Was the user a streamer at the time of this message",
+							"isDeprecated": false,
+							"name": "streamer",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						},
+						{
+							"args": [],
+							"deprecationReason": null,
+							"description": "Was the user a subscriber at the time of this message",
+							"isDeprecated": false,
+							"name": "subscriber",
+							"type": {
+								"kind": "SCALAR",
+								"name": "Boolean",
+								"ofType": null
+							}
+						}
+					],
+					"inputFields": null,
+					"interfaces": [],
+					"kind": "OBJECT",
+					"name": "ChatMessageMetadata",
 					"possibleTypes": null
 				},
 				{

@@ -15,6 +15,9 @@ Shows all of the fields in the chatMessage object.
     channel {
       // Channel data
     },
+    metadata {
+        // Metadata about the user at the time of the message (is sub/mod/founder/etc)
+    }
     user {
       // User data
     }
