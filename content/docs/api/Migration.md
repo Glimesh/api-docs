@@ -25,7 +25,7 @@ This will give you full access to the new endpoints and features of the API.
 
 Some changes are internal and do not affect the developer. However, the following changes will affect you:
 
-- The new API endpoint does not support a built-in graphical editor. This change was required to properly support CORS across the new API endpoint. We have a new tutorial about using your own editor [here](https://glimesh.github.io/api-docs/docs/api/api-explorer).
+- The new API endpoint does not support a built-in graphical editor. This change was required to properly support CORS across the new API endpoint. We have a new tutorial about using your own editor [here](/api-docs/docs/api/api-explorer).
 - Query Complexity analysis has been added which will help us maintain API performance. You should not run into any limits with any possible queries (due to pagination), but if you do receive errors about query complexity, let us know so we can check it out!
  ___
  - The following fields have been **added** to the API.

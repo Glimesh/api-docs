@@ -13,7 +13,7 @@ Simply ask Glimesh for the added property in a chatmessage subscription. This is
 subscription{
   chatMessage(channelId:1) {
     message,
-    # True if the new subsriber message
+    # True if new subscriber message
     isSubscriptionMessage,
     # True if new follower message
     isFollowedMessage,
