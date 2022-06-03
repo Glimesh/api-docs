@@ -6,4 +6,5 @@ This guide is for getting a token from a real user. If you are just testing or d
 Requesting A Token # Before requesting a token you must have a developer application.</description></item><item><title>NodeJS Access Token</title><link>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://glimesh.github.io/api-docs/docs/authentication/accesstoken/nodejs/node-access-token/</guid><description>Getting User Tokens With NodeJS # This is a basic tutorial for getting an auth token from a user using Oauth with NodeJS. This guide assumes you know basic JS and understand the workings of Oauth 2.
 Need a refresh? This tutorial explains the basics of Oauth 2 https://darutk.medium.com/the-simplest-guide-to-oauth-2-0-8c71bd9a15bb
 Creating the Project # We need to create a basic project. In your terminal type:
-npm init -y</description></item></channel></rss>
+npm init -y
+This will create a project.</description></item></channel></rss>
