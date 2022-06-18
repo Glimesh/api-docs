@@ -58,9 +58,9 @@ If Glimesh detects a change in the channel it will send us the data that we aske
 Since this is a subscription a websocket connection is needed. If you have followed the chat websocket tutorial you can modify that code to fit this tutorial. If you have not done so you must do the following -
 
  1.  Create a connection URL:
-	 - For Access Tokens:  ```wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&token=TOKEN_HERE```
+	 - For Access Tokens:  ```wss://glimesh.tv/api/graph/websocket?vsn=2.0.0&token=TOKEN_HERE```
 
-	 - For Client IDs: ```wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&client_id=CLIENT_ID```
+	 - For Client IDs: ```wss://glimesh.tv/api/graph/websocket?vsn=2.0.0&client_id=CLIENT_ID```
 
 	 > Make sure to replace TOKEN_HERE or CLIENT_ID with their proper values!
 
