@@ -1,14 +1,14 @@
 {
   "name": "API-Docs",
   "short_name": "API-Docs",
-  "start_url": "/api-docs/",
-  "scope": "/api-docs/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/api-docs/favicon.svg",
+      "src": "/favicon.svg",
       "sizes": "512x512"
     }
   ]
