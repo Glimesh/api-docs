@@ -316,7 +316,7 @@ async function connectToGlimesh(token: string) {
 		// Connect to phoenix websocket
 		connection.send('["1","1","__absinthe__:control","phx_join",{}]');
 		// Join a chat and listen for messages
-		connection.send('["1","2","__absinthe__:control","doc",{"query":"subscription{ chatMessage(channelId: 6) { user { username avatar } message } }","variables":{} }]');
+		connection.send('["1","2","__absinthe__:control","doc",{"query":"subscription{ chatMessage(channelId: 6) { user { username avatarUrl } message } }","variables":{} }]');
 		// Send a heartbeat every 30 sec so glimesh knows we still exist
 		setInterval(() => {
 			connection.send('["1","3","phoenix","heartbeat",{}]');

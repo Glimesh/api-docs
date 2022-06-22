@@ -13,13 +13,13 @@ Glimesh uses WebSockets to allow for constant communication between you and the 
 First, build your URL that you will connect to.  It should look like this:
 
 ```URL
-wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&token=TOKEN_HERE
+wss://glimesh.tv/api/graph/websocket?vsn=2.0.0&token=TOKEN_HERE
 ```
 
 That URL is for access token authentication. If you are using a client ID use this instead:
 
 ```URL
-wss://glimesh.tv/api/socket/websocket?vsn=2.0.0&client_id=CLIENT_ID
+wss://glimesh.tv/api/graph/websocket?vsn=2.0.0&client_id=CLIENT_ID
 ```
 
 
