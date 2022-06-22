@@ -21,11 +21,17 @@ Refresh tokens are sent when you request an access token. You can pull them from
 
 You can refresh a token at any time. You do not need to wait for the access token to expire. Refresh tokens last for about one year. When you refresh a token you will need all the info from when you requested an access token.
 
-Send a POST request to:
+Send a POST request to below URL depending on your authentication type:
 
+*Authorization flow*
 ```
 https://glimesh.tv/api/oauth/token?grant_type=refresh_token&refresh_token=REFRESH_TOKEN&redirect_uri=REDIRECT_URL&
 client_id=CLIENT_ID&client_secret=SECRET_ID
+```
+
+*PKCE Auth*
+```
+https://glimesh.tv/api/oauth/token?grant_type=refresh_token&refresh_token=REFRESH_TOKEN&client_id=CLIENT_ID&redirect_url=REDIRECT_URL
 ```
 
 Make sure to replace REFRESH_TOKEN, REDIRECT_URL, CLIENT_ID, and SECRET_ID with their corresponding values. They must match the values that were sent when you requested an access token. If you want new scopes you must request a new token.
