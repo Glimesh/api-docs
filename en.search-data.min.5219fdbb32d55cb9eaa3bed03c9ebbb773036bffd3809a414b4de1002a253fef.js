@@ -391,6 +391,10 @@ C# # https://www.nuget.org/packages/StreamingClientLibrary.Glimesh/
 A library for connecting to the Glimesh chat API in C#.
 This library has other functions for subscriptions and queries.
 Created by SaviorXTanren
+Java # https://github.com/Casterlabs/GlimeshApiJava
+A library for interacting with the Glimesh api.
+This library provides realtime connections for followers, chat, and channel. It also provides api query request helpers with POJO responses.
+Created by Casterlabs
 `}),e.add({id:22,href:"/api-docs/docs/developerresources/tools/",title:"Tools",section:"Developer Resources",content:` Community Libraries # This is a list of tools to help develop apps with the API. None of these are required but they may help you during development.
 Insomnia # https://insomnia.rest
 A tool for working with GraphQL APIs. This allows you to view all of the data and make queries. We have a tutorial for using it here.
