@@ -7,4 +7,5 @@ bookHidden: true
  - **chat**: View and speak in a chatroom.
  - **stream** View the streamkey of the user.
  - **follow** Follow and unfollow on behalf of the user.
+ - **stream_info** Change the title on behalf of the channel. (Will be expanded to cover more fields)
 

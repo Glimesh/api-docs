@@ -3712,6 +3712,47 @@ Voyager is an interactive GraphQL API explorer. It allows you to view all the da
 								{
 									"defaultValue": null,
 									"description": null,
+									"name": "channelId",
+									"type": {
+										"kind": "NON_NULL",
+										"name": null,
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "ID",
+											"ofType": null
+										}
+									}
+								},
+								{
+									"defaultValue": null,
+									"description": null,
+									"name": "title",
+									"type": {
+										"kind": "NON_NULL",
+										"name": null,
+										"ofType": {
+											"kind": "SCALAR",
+											"name": "String",
+											"ofType": null
+										}
+									}
+								}
+							],
+							"deprecationReason": null,
+							"description": "Update a channel's stream info",
+							"isDeprecated": false,
+							"name": "updateStreamInfo",
+							"type": {
+								"kind": "OBJECT",
+								"name": "Channel",
+								"ofType": null
+							}
+						},
+						{
+							"args": [
+								{
+									"defaultValue": null,
+									"description": null,
 									"name": "streamId",
 									"type": {
 										"kind": "NON_NULL",
