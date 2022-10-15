@@ -30,7 +30,7 @@ Start by opening a secure websocket connection to the URL you are using. When th
 ````
 ["1","1","__absinthe__:control","phx_join",{}]
 ````
-Notice that this is a JSON array. Some WebSocket libraries only allow you to send strings or specially formatted JSON. Sometimes you need to encase the data in a string. If the connection closes immediately you may need to change the type of your request.  This depends purely on your library, if you are having trouble talk to us in our [discord.](https://discord.gg/Glimesh)
+Notice that this is a JSON array. Some WebSocket libraries only allow you to send strings or specially formatted JSON. Sometimes you need to encase the data in a string. If the connection closes immediately you may need to change the type of your request.  This depends purely on your library, if you are having trouble talk to us in our [discord.](https://glimesh.tv/s/discord)
 
 > Javascript example using the ws NPM package:
 >  ```JS
@@ -147,7 +147,7 @@ Glimesh will respond:
 ["1","1","__absinthe__:control","phx_reply",{"response":{"data":{"followers":[{"id":"613","user":{"username":"Mytho"}},{"id":"629","user":{"username":"TheCat"}},{"id":"752","user":{"username":"Kirby"}},{"id":"11992","user":{"username":"RainbowFist"}}]}},"status":"ok"}]
 ```
 
-This is all the info you will need to connect and use the chat API.  If you have any questions talk to us in our [discord!](https://discord.gg/Glimesh)
+This is all the info you will need to connect and use the chat API.  If you have any questions talk to us in our [discord!](https://glimesh.tv/s/discord)
 
 
 ## Connection Issues

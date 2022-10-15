@@ -123,7 +123,7 @@ When you are ready, **save the file** and type the line below in your terminal t
 
 # Conclusion
 
-This is the basis for most API requests. If you have any questions let us know in the #dev-questions channel in our [Discord](https://Discord.gg/Glimesh).
+This is the basis for most API requests. If you have any questions let us know in the #dev-questions channel in our [Discord](https://glimesh.tv/s/discord).
 
 The full file can be found here.
 ```JS

@@ -39,7 +39,7 @@ Authorization: Bearer YOUR_TOKEN
 Access tokens have the below limits:
 
  - Limited by your scopes.
- - Expire in a short period (check the ````expires_in```` when you receive a token, usually 1-6 hours)
+ - Expire in a short period (check the ````expires_in```` when you receive a token, usually 24 hours)
 
 
 ## Obtaining Tokens

@@ -4,7 +4,7 @@ title: Home
 
 # Welcome
 
-This is the website hosting all of the Glimesh API documentation.  If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
+This is the website hosting all of the Glimesh API documentation.  If you have any questions let us know in our [Discord](https://glimesh.tv/s/discord)!
 
 ## Structure
 
@@ -38,4 +38,4 @@ Not seeing what you are looking for? Consider adding a tutorial for it or talkin
 Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
  - [Create API requests on Glimesh without a dev environment](docs/api/api-explorer) (Old API)
- - Our dev-questions channel in [Discord](https://discord.gg/Glimesh)
+ - Our dev-questions channel in [Discord](https://glimesh.tv/s/discord)

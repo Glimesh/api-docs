@@ -141,6 +141,6 @@ Q: What is the difference between this and the normal chat API?
 Q: Should I switch to chat parts?
 > A: That depends on your project. The normal chat API isn't going away so you can use whichever method you like.
 
-If you have more questions feel free to talk to us in our [discord](https://discord.gg/Glimesh)!
+If you have more questions feel free to talk to us in our [discord](https://glimesh.tv/s/discord)!
 
 

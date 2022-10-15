@@ -81,7 +81,7 @@ Since this is a subscription a websocket connection is needed. If you have follo
 ```
 
 
-> Having issues? The [websocket tutorial](/api-docs/docs/chat/websockets/) goes into more detail about the connection. You may find it helpful to complete that tutorial first. If you are still having problems talk to us in [discord](https://discord.gg/Glimesh).
+> Having issues? The [websocket tutorial](/api-docs/docs/chat/websockets/) goes into more detail about the connection. You may find it helpful to complete that tutorial first. If you are still having problems talk to us in [discord](https://glimesh.tv/s/discord).
 
 The above code will connect to Glimesh, subscribe to any changes, and keep us from getting disconnected. To test our code we need to make a change on the channel that we specified. We requested to be sent the current title. Lets change it and see our code in action!
 
@@ -115,4 +115,4 @@ After the title was changed Glimesh sent us the new title.  All properties will 
 
 > Looking for a reference? Click [here](/api-docs/docs/reference/channel/) to view all the channel properties.
 
-If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).
+If you have any questions talk to us in the #dev-questions channel in our [Discord](https://glimesh.tv/s/discord).

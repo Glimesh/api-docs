@@ -89,4 +89,4 @@ Insomnia can generate code based on your request to the API. Although the code w
 
 ![Generate Code](https://i.imgur.com/7FCxpAs.png)
 
-This will open a box and you can choose the format and language. If you have any questions about using the Glimesh collection or using the Glimesh API let us know in #dev-questions in our [discord](https://discord.gg/Glimesh).
+This will open a box and you can choose the format and language. If you have any questions about using the Glimesh collection or using the Glimesh API let us know in #dev-questions in our [discord](https://glimesh.tv/s/discord).

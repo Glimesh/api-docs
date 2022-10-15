@@ -19,7 +19,7 @@ Refresh tokens are sent when you request an access token. You can pull them from
 }
 ```
 
-You can refresh a token at any time. You do not need to wait for the access token to expire. Refresh tokens last for about one year. When you refresh a token you will need all the info from when you requested an access token.
+You can refresh a token at any time. You do not need to wait for the access token to expire. Refresh tokens last for 1 week. When you refresh a token you will need all the info from when you requested an access token.
 
 Send a POST request to below URL depending on your authentication type:
 
@@ -57,4 +57,4 @@ This will allow you to use the new token and continue to query the Glimesh API. 
  - Refresh tokens last for about 1 year.
  - If a user revokes your dev app you cannot use the access or refresh tokens. This would require the user to authenticate again.
 
-If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).
+If you have any questions talk to us in the #dev-questions channel in our [Discord](https://glimesh.tv/s/discord).

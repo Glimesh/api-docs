@@ -45,7 +45,7 @@ Send a POST request with the URL above replacing the code,redirect url, client I
 }
 ```
 
-Now you can query the Glimesh API on behalf of a user. This token will expire after a few hours so you need to refresh it or ask the user for a new one. If you have any questions talk to us in the #dev-questions channel in our [Discord](https://discord.gg/Glimesh).
+Now you can query the Glimesh API on behalf of a user. This token will expire in 24 hours so you need to refresh it or ask the user for a new one. If you have any questions talk to us in the #dev-questions channel in our [Discord](https://glimesh.tv/s/discord).
 
 > Ready to refresh your token? Continue with OAuth [here](/api-docs/docs/authentication/refreshtoken/refreshtoken/)
 
@@ -73,6 +73,6 @@ This is a request error. Some part of your URL is not necessary or missing. Ensu
 
 `Error: 401 Unauthorized. You must be logged in to access the API.`
 
-This is an authentication issue. This is commonly seen when querying the API but I added it here because it most likely means you must request another token. You must renew or request a new token and send the API request to Glimesh properly.  Tokens expire after a few hours unless they are renewed.
+This is an authentication issue. This is commonly seen when querying the API but I added it here because it most likely means you must request another token. You must renew or request a new token and send the API request to Glimesh properly.  Tokens expire daily unless they are renewed.
 
-> Stuck with something? Talk to us in [Discord](https://discord.gg/Glimesh). We would be happy to help you!
+> Stuck with something? Talk to us in [Discord](https://glimesh.tv/s/discord). We would be happy to help you!
