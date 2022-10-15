@@ -126,6 +126,6 @@ When Glimesh receives your request they will send back an access and refresh tok
 ```
 > Glimesh will send an error in JSON format if your request has an error. Keep in mind that all credentials must be accurate and you must request a token within 1 minute of the user authorizing your app. You need to include the code **verifier**, not the challenge!
 
-You can use the access token for 6 hours. When it expires you need to request a new one with your refresh token. We have a guide on refreshing tokens which can be found [here](/api-docs/docs/authentication/refreshtoken/refreshtoken).
+You can use the access token for 24 hours. When it expires you need to request a new one with your refresh token. We have a guide on refreshing tokens which can be found [here](/api-docs/docs/authentication/refreshtoken/refreshtoken).
 
-Questions? Join the #dev-questions channel on our [discord](https://discord.gg/Glimesh).
+Questions? Join the #dev-questions channel on our [discord](https://glimesh.tv/s/discord).
