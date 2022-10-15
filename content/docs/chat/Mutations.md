@@ -130,4 +130,4 @@ Glimesh will return with the message that was sent to chat. If you want more dat
 }
 ```
 
-This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our [discord](https://discord.gg/Glimesh).
+This is all of the info required to interact with the chat API. Although this is a viable method, using websockets is the standard way of connecting to the chat. Websockets provide a constant connection and eliminates the need to query the API for new information. This is essential for services such as chatbots. If you have any questions talk to us in our [discord](https://glimesh.tv/s/discord).

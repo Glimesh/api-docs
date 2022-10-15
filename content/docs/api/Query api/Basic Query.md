@@ -83,4 +83,4 @@ ___
 
 
 
-> Stuck with something? Talk to us in [Discord](https://discord.gg/Glimesh). We would be happy to help you!
+> Stuck with something? Talk to us in [Discord](https://glimesh.tv/s/discord). We would be happy to help you!

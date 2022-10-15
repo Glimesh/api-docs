@@ -1,6 +1,6 @@
 # Welcome
 
-This is the website hosting all of the Glimesh API documentation.  If you have any questions let us know in our [Discord](https://discord.gg/Glimesh)!
+This is the website hosting all of the Glimesh API documentation.  If you have any questions let us know in our [Discord](https://glimesh.tv/s/discord)!
 
 The API docs are hosted [here](https://glimesh.github.io/api-docs/).
 
@@ -19,4 +19,4 @@ This documentation is a work in progress. We will do our best to keep this updat
 Links you may find useful:
  - [Glimesh developer applications](https://glimesh.tv/users/settings/applications)
  - [Create API requests on Glimesh](https://glimesh.tv/api) (Old API)
- - Our developer channel in [Discord](https://discord.gg/Glimesh)
+ - Our developer channel in [Discord](https://glimesh.tv/s/discord)

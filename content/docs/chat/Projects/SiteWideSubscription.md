@@ -59,4 +59,4 @@ subscription {
 }
 ```
 
-This is all of the info required to listen to every chatroom. If you have any questions talk to us on our [Discord](https://discord.gg/Glimesh).
+This is all of the info required to listen to every chatroom. If you have any questions talk to us on our [Discord](https://glimesh.tv/s/discord).
