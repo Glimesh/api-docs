@@ -53,8 +53,8 @@ This will allow you to use the new token and continue to query the Glimesh API. 
 ## Other Info
 
  - You cannot get new scopes from refresh tokens. You must make the user authenticate again with the new scopes.
- - Access tokens last for about 6 hours. You can refresh them earlier if needed.
- - Refresh tokens last for about 1 year.
+ - Access tokens last for 24 hours. You can refresh them earlier if needed.
+ - Refresh tokens last for 30 days.
  - If a user revokes your dev app you cannot use the access or refresh tokens. This would require the user to authenticate again.
 
 If you have any questions talk to us in the #dev-questions channel in our [Discord](https://glimesh.tv/s/discord).
