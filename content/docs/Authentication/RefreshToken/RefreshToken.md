@@ -19,7 +19,7 @@ Refresh tokens are sent when you request an access token. You can pull them from
 }
 ```
 
-You can refresh a token at any time. You do not need to wait for the access token to expire. Refresh tokens last for 1 week. When you refresh a token you will need all the info from when you requested an access token.
+You can refresh a token at any time. You do not need to wait for the access token to expire. Refresh tokens last for 1 month. When you refresh a token you will need all the info from when you requested an access token.
 
 Send a POST request to below URL depending on your authentication type:
 
