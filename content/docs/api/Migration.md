@@ -15,7 +15,7 @@ Using the new API is very easy. Simply point all requests to the new URL.
 
 ```URL
 HTTP Endpoint: https://glimesh.tv/api/graph
-WebSocket Endpoint: https://glimesh.tv/api/graph/websocket
+WebSocket Endpoint: wss://glimesh.tv/api/graph/websocket
 ```
 
 This will give you full access to the new endpoints and features of the API.
