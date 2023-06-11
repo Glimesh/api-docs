@@ -200,7 +200,7 @@ Replace your client ID and client secret as shown below. If you do not yet have 
 
 **.gitignore**
 
-This may already be created. If so just add the lines to the bottom of the file.  If not create the file. This prevents git from commiting our auth code and generated files.
+This may already be created. If so just add the lines to the bottom of the file.  If not create the file. This prevents git from committing our auth code and generated files.
 ```git
 # Ignore our credentials
 auth.json

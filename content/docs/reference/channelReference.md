@@ -2,7 +2,7 @@
 bookHidden: true
 ---
 
-Shows all the properties of the channel object. Note that for nested objects only one propery is shown.
+Shows all the properties of the channel object. Note that for nested objects only one property is shown.
 
 ```js
 subscription {

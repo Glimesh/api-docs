@@ -275,7 +275,7 @@ This will return the 5 most recent users. Glimesh adds users in the order that t
 
 > Note that you will get a different result. Users have been added since this doc was written, so you will get different users.
 
-We can also request pageInfo with each paginated query. This will tell us if there is another page after or before our result, and show us the first and last cursor of our result. For our queries this wasn't neccassary, but if you plan to paginate through a large amount of users it is very helpful. The below query gets 5 users before the last 5 users with the **before** parameter.
+We can also request pageInfo with each paginated query. This will tell us if there is another page after or before our result, and show us the first and last cursor of our result. For our queries this wasn't necessary, but if you plan to paginate through a large amount of users it is very helpful. The below query gets 5 users before the last 5 users with the **before** parameter.
 
 {{< tabs "getBeforeLast" >}}
 {{< tab "Request" >}}

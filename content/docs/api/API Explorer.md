@@ -57,7 +57,7 @@ The purple boxes are the variables from earlier. Press ctrl+space while in the t
 
 Next we need to set our access token to the *access_token* variable in Insomnia. Open the environment tab from earlier. In the access token value after Bearer press ctrl+space. Select response => body-attribute. Click on the box that appeared in the value.
 
-Request must be set to out Auth Request from eariler. Filter must be $.access_token . This pulls the token from the auth response. The trigger behavior must be set to "when expired". Max age is 21600 (the life of the token).
+Request must be set to out Auth Request from earlier. Filter must be $.access_token . This pulls the token from the auth response. The trigger behavior must be set to "when expired". Max age is 21600 (the life of the token).
 ![token](https://i.imgur.com/Q4niJEK.png)
 
  Select done. Close the variable window.
