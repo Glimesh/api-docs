@@ -6,6 +6,8 @@ title: Home
 
 This is the website hosting all of the Glimesh API documentation.  If you have any questions let us know in our [Discord](https://glimesh.tv/s/discord)!
 
+> While Glimesh is shutting down, you may want to run your own instance of Glimesh on a custom server. These docs will be removed, but you can access the markdown files at the [documentation repo](https://github.com/Glimesh/api-docs).
+
 ## Structure
 
 This repo is divided into topics (auth, chat, etc.). Each topic has several tutorial pages. Most of the examples are generic and not specific to any programming language. However, some pages do contain code samples.

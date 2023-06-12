@@ -2,7 +2,7 @@
 bookHidden: true
 ---
 
-All the possbile data to query from a chat part.
+All the possible data to query from a chat part.
 
 ```js
 subscription{

@@ -158,7 +158,7 @@ var options = {
     }
 };
 
-//Callback function runs when the data is recieved. We convert it to an object on arrival.
+//Callback function runs when the data is received. We convert it to an object on arrival.
 function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
         console.log(body); //The unfiltered response

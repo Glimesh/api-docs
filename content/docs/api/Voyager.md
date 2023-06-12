@@ -2,7 +2,7 @@
 enableInlineShortcodes: true
 bookToC: false
 ---
-Voyager is an interactive GraphQL API explorer. It allows you to view all the data in our API. Click and drag to move around the explorer. Click on a field to view its properties. Scoll to adjust zoom.
+Voyager is an interactive GraphQL API explorer. It allows you to view all the data in our API. Click and drag to move around the explorer. Click on a field to view its properties. Scroll to adjust zoom.
 
 {{< rawhtml >}}
     <div id="voyager">Loading...</div>
