@@ -1,8 +1,8 @@
-<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.105.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Chat Moderation # Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.113.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Chat Moderation # Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
 New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
 If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial here."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="Chat Moderation # Using the Glimesh API we can use mod features such as timeouts and bans. These are critical for chatbots and other services. Before starting this tutorial you should have a working connection to the API and understand basic GraphQL.
 New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
-If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial here."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/moderation/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-10-15T14:35:05-05:00"><title>Moderation | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.27028cd672cf068946d1e14dec17c1b42847582ec2e5f4973ea8723ef047c09f.js integrity="sha256-JwKM1nLPBolG0eFN7BfBtChHWC7C5fSXPqhyPvBHwJ8="></script>
+If you are looking for live updates related to moderation you can apply the queries in this tutorial to our Live Updates tutorial here."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/chat/moderation/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-10-15T14:35:05-05:00"><title>Moderation | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.08b371dd1051df07b8e068cf74390c1b2223d6eaea1dcb9e3bbb0434626757a5.js integrity="sha256-CLNx3RBR3we44GjPdDkMGyIj1urqHcueO7sENGJnV6U="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -39,8 +39,8 @@ If you are looking for live updates related to moderation you can apply the quer
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>A user ID can be attained from various queries. Since you are likely in a chat you can pull the ID from the chatMessage event. Your subscription to a chat (to listen for chat messages) would look something like this.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=display:flex><span><span style=color:#66d9ef>subscription</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>chatMessage</span>(channelId:<span style=color:#a6e22e>6</span>) {
-</span></span><span style=display:flex><span>    message,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>chatMessage</span>(channelId:<span style=color:#ae81ff>6</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>message</span>,
 </span></span><span style=display:flex><span>    user {
 </span></span><span style=display:flex><span>      id
 </span></span><span style=display:flex><span>    }
@@ -49,34 +49,34 @@ If you are looking for live updates related to moderation you can apply the quer
 </span></span></code></pre></div><p>The message would be the chat message and the ID in the user object would be the ID of the user who sent the message.</p><blockquote><p>There is also an ID property in the chatMessage. This is the ID of the message, <strong>not</strong> a user or channel ID. Don&rsquo;t get them confused!</p></blockquote><h2 id=connection>Connection
 <a class=anchor href=#connection>#</a></h2><p>Now that we have a method to get the user and channel IDs we can start <del>banning everyone</del> moderating!</p><blockquote><p>Memes aside, you always need to use the API responsibly. Bots, AI, and message parsing can fail and you never want to wrongly ban a user. Always ensure that any automated services log all their actions. You may need to go back and unban someone if a mistake is made.</p></blockquote><p>For testing purposes you should use your own channel and a bot account. You <em>can</em> ban yourself but it&rsquo;s easier to use a different account. Glimesh uses mutations to moderate users. Mutations can be sent in http or websocket form. If you are in chat it is best to use the websocket since a connection would already be open.</p><h3 id=timeouts>Timeouts
 <a class=anchor href=#timeouts>#</a></h3><p>Send this to the API to timeout a user for 5 minutes.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Graphql data-lang=Graphql><span style=display:flex><span><span style=color:#66d9ef>mutation</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>shortTimeoutUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
-</span></span><span style=display:flex><span>    action,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>shortTimeoutUser</span>(channelId:<span style=color:#ae81ff>6</span>, <span style=color:#a6e22e>userId</span>:<span style=color:#ae81ff>201</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>action</span>,
 </span></span><span style=display:flex><span>    moderator {displayname},
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><blockquote><p>You need to replace 6 and 201 with the proper IDs.</p></blockquote><p>A long timeout is very similar. This will last for 15 minutes.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>mutation</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>longTimeoutUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
-</span></span><span style=display:flex><span>    action,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>longTimeoutUser</span>(channelId:<span style=color:#ae81ff>6</span>, <span style=color:#a6e22e>userId</span>:<span style=color:#ae81ff>201</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>action</span>,
 </span></span><span style=display:flex><span>    moderator {displayname},
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h3 id=bans>Bans
 <a class=anchor href=#bans>#</a></h3><p>Banning users works the same way. Simply replace the timeout mutation with the ban mutation.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>mutation</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>banUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
-</span></span><span style=display:flex><span>    action,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>banUser</span>(channelId:<span style=color:#ae81ff>6</span>, <span style=color:#a6e22e>userId</span>:<span style=color:#ae81ff>201</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>action</span>,
 </span></span><span style=display:flex><span>    moderator {displayname}
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>If you need to unban a user you can use this mutation.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>mutation</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>unbanUser</span>(channelId:<span style=color:#a6e22e>6</span>, userId:<span style=color:#a6e22e>201</span>) {
-</span></span><span style=display:flex><span>    action,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>unbanUser</span>(channelId:<span style=color:#ae81ff>6</span>, <span style=color:#a6e22e>userId</span>:<span style=color:#ae81ff>201</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>action</span>,
 </span></span><span style=display:flex><span>    moderator {displayname}
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h3 id=delete-messages>Delete Messages
 <a class=anchor href=#delete-messages>#</a></h3><p>You can also delete messages. You need the channel ID and the message ID. The message ID can be attained by querying the messages in a channel or by requesting it in a chatMessage subscription. Use this mutation to delete a message.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>mutation</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>deleteChatMessage</span>(channelId:<span style=color:#a6e22e>6</span>, messageId: <span style=color:#a6e22e>111</span>) {
-</span></span><span style=display:flex><span>    action,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>deleteChatMessage</span>(channelId:<span style=color:#ae81ff>6</span>, <span style=color:#a6e22e>messageId</span>: <span style=color:#ae81ff>111</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>action</span>,
 </span></span><span style=display:flex><span>    moderator {
 </span></span><span style=display:flex><span>      displayname
 </span></span><span style=display:flex><span>    }
@@ -85,9 +85,9 @@ If you are looking for live updates related to moderation you can apply the quer
 </span></span></code></pre></div><p>Attempting to unban a user that is not banned will return an internal server error. Attempting to use any moderator action on a user or message that does not exist will return &ldquo;not found&rdquo;. Using moderator actions in a channel that you do not have the authorization will result in an error. If you need more information about what properties you can receive from a moderator action check out the <a href=/api-docs/docs/reference/mod/>moderator reference</a>. It provides a list of all the properties you can request. <a href=https://glimesh.tv/api>Glimesh.tv/api</a> has a full list of all the API features.</p><h2 id=moderation-log>Moderation Log
 <a class=anchor href=#moderation-log>#</a></h2><p>Glimesh stores a copy of all the moderation events that happen to a user. This log can be viewed by the streamer <a href=https://glimesh.tv/users/settings/channel/mods>here</a>.
 <img src=https://i.imgur.com/zy3yhhy.png alt="Mod Log"></p><p>We can also access this log via the API. Unlike the webpage, this log can be viewed by any user! Let&rsquo;s create a basic query.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(id:<span style=color:#a6e22e>6</span>) {
-</span></span><span style=display:flex><span>    moderationLogs(last: <span style=color:#a6e22e>3</span>) {
-</span></span><span style=display:flex><span>      edges {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>channel</span>(id:<span style=color:#ae81ff>6</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>moderationLogs</span>(last: <span style=color:#ae81ff>3</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>edges</span> {
 </span></span><span style=display:flex><span>        node {
 </span></span><span style=display:flex><span>          action,
 </span></span><span style=display:flex><span>          moderator {username}

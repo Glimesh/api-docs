@@ -1,8 +1,8 @@
-<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.105.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Follower Alerts # This is a tutorial for follow alerts. This guide assumes you have a client ID or an access token from a user. You should also have a websocket connection open from this tutorial. Having basic GraphQL knowledge would also be helpful.
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.113.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Follower Alerts # This is a tutorial for follow alerts. This guide assumes you have a client ID or an access token from a user. You should also have a websocket connection open from this tutorial. Having basic GraphQL knowledge would also be helpful.
 New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
 Building the Subscription # Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required."><meta name=theme-color content="#FFFFFF"><meta property="og:title" content><meta property="og:description" content="Follower Alerts # This is a tutorial for follow alerts. This guide assumes you have a client ID or an access token from a user. You should also have a websocket connection open from this tutorial. Having basic GraphQL knowledge would also be helpful.
 New to GraphQL? This tutorial explains the basics. https://graphql.org/learn/schema/
-Building the Subscription # Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/live-updates/followers/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-10-15T14:35:05-05:00"><title>Followers | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.27028cd672cf068946d1e14dec17c1b42847582ec2e5f4973ea8723ef047c09f.js integrity="sha256-JwKM1nLPBolG0eFN7BfBtChHWC7C5fSXPqhyPvBHwJ8="></script>
+Building the Subscription # Follow alerts are made of a standard subscription. The streamer ID of the channel that you want to have alerts for is required."><meta property="og:type" content="article"><meta property="og:url" content="https://glimesh.github.io/api-docs/docs/live-updates/followers/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2022-10-15T14:35:05-05:00"><title>Followers | API-Docs</title><link rel=manifest href=/api-docs/manifest.json><link rel=icon href=/api-docs/favicon.png type=image/x-icon><link rel=stylesheet href=/api-docs/book.min.8cbfebb3cede38504cf8ec2af15528c78f5d6c0aa02b6e39dcffcd3320289b34.css integrity="sha256-jL/rs87eOFBM+Owq8VUox49dbAqgK2453P/NMyAomzQ="><script defer src=/api-docs/en.search.min.08b371dd1051df07b8e068cf74390c1b2223d6eaea1dcb9e3bbb0434626757a5.js integrity="sha256-CLNx3RBR3we44GjPdDkMGyIj1urqHcueO7sENGJnV6U="></script>
 <script src=https://kit.fontawesome.com/a076d05399.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react@16/umd/react.production.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.production.min.js></script>
@@ -39,8 +39,8 @@ Building the Subscription # Follow alerts are made of a standard subscription. T
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><blockquote><p>Make sure to replace Mytho with the channel name.</p></blockquote><p>We will insert this ID into the below subscription. You must subscribe to this event through a websocket connection. Glimesh will notify us whenever a user follows the channel.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>subscription</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>followers</span>(streamerId:<span style=color:#a6e22e>6</span>) {
-</span></span><span style=display:flex><span>    hasLiveNotifications,
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>followers</span>(streamerId:<span style=color:#ae81ff>6</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>hasLiveNotifications</span>,
 </span></span><span style=display:flex><span>    id,
 </span></span><span style=display:flex><span>    insertedAt,
 </span></span><span style=display:flex><span>    streamer {
@@ -54,8 +54,8 @@ Building the Subscription # Follow alerts are made of a standard subscription. T
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>The above subscription shows all of the properties we can receive. This excludes nested properties. This information will be sent to us whenever the specified channel gets a new follower.</p><blockquote><p>Need a tutorial for connecting to the API with websockets? Click <a href=/api-docs/docs/chat/websockets/>here</a></p></blockquote><h2 id=follower-query>Follower Query
 <a class=anchor href=#follower-query>#</a></h2><p>A subscription is the standard way to get follower alerts. However, this is not the only method to get the followers of a channel. We can make a query to get the followers of a channel as well as the followers of a user. You will need the ID of the streamer or of the user. The following query will return the followers of a streamer.</p><blockquote><p>streamerId is the <strong>user</strong> ID, not the channel ID.</p></blockquote><blockquote><p>Followers are paginated, see our guide on that <a href=/api-docs/docs/api/pagination>here</a></p></blockquote><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-GraphQL data-lang=GraphQL><span style=display:flex><span><span style=color:#66d9ef>query</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>followers</span>(streamerId: <span style=color:#a6e22e>6</span>) {
-</span></span><span style=display:flex><span>    edges {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>followers</span>(streamerId: <span style=color:#ae81ff>6</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>edges</span> {
 </span></span><span style=display:flex><span>      node {
 </span></span><span style=display:flex><span>        hasLiveNotifications
 </span></span><span style=display:flex><span>        id
@@ -105,8 +105,8 @@ Building the Subscription # Follow alerts are made of a standard subscription. T
 </span></span><span style=display:flex><span>        },
 </span></span><span style=display:flex><span>      <span style=color:#a6e22e>and</span> <span style=color:#a6e22e>so</span> <span style=color:#a6e22e>on</span>...
 </span></span></code></pre></div><p>We can also request who a user is following. The query is nearly identical. The only thing we change is the parameter. Replace <code>streamerId</code> with <code>userId</code>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-graphql data-lang=graphql><span style=display:flex><span><span style=color:#66d9ef>query</span> {
-</span></span><span style=display:flex><span>  <span style=color:#a6e22e>followers</span>(userId: <span style=color:#a6e22e>6</span>) {
-</span></span><span style=display:flex><span>    edges {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>followers</span>(userId: <span style=color:#ae81ff>6</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>edges</span> {
 </span></span><span style=display:flex><span>      node {
 </span></span><span style=display:flex><span>        hasLiveNotifications
 </span></span><span style=display:flex><span>        id
